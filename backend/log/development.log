@@ -218,3 +218,56 @@ Processing by LevelsController#index as HTML
 Completed 200 OK in 486ms (Views: 444.4ms | ActiveRecord: 27.2ms | Allocations: 7641)
 
 
+Started GET "/_next/static/development/_devPagesManifest.json" for ::1 at 2025-06-30 19:51:41 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (4.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  
+ActionController::RoutingError (No route matches [GET] "/_next/static/development/_devPagesManifest.json"):
+  
+Started POST "/__nextjs_original-stack-frames" for ::1 at 2025-06-30 19:51:42 -0500
+Started GET "/__nextjs_font/geist-mono-latin.woff2" for ::1 at 2025-06-30 19:51:43 -0500
+  
+ActionController::RoutingError (No route matches [POST] "/__nextjs_original-stack-frames"):
+  
+  
+ActionController::RoutingError (No route matches [GET] "/__nextjs_font/geist-mono-latin.woff2"):
+  
+Started GET "/" for ::1 at 2025-06-30 19:51:54 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/stef/.local/share/mise/installs/ruby/3.2.3/lib/ruby/gems/3.2.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/stef/.local/share/mise/installs/ruby/3.2.3/lib/ruby/gems/3.2.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.1ms | Allocations: 370)
+Completed 200 OK in 696ms (Views: 148.9ms | ActiveRecord: 0.0ms | Allocations: 4526)
+
+
+Started GET "/levels" for ::1 at 2025-06-30 19:52:05 -0500
+Processing by LevelsController#index as HTML
+  [1m[36mLevel Load (10.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:4:in `index'
+Completed 200 OK in 637ms (Views: 127.2ms | ActiveRecord: 63.0ms | Allocations: 16030)
+
+
+Started GET "/favicon.ico" for ::1 at 2025-06-30 19:52:06 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/" for ::1 at 2025-06-30 19:52:45 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/stef/.local/share/mise/installs/ruby/3.2.3/lib/ruby/gems/3.2.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/stef/.local/share/mise/installs/ruby/3.2.3/lib/ruby/gems/3.2.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.6ms | Allocations: 16)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 185)
+
+
+Started GET "/levels" for ::1 at 2025-06-30 19:53:27 -0500
+Processing by LevelsController#index as */*
+  [1m[36mLevel Load (4.3ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:4:in `index'
+Completed 200 OK in 19ms (Views: 12.7ms | ActiveRecord: 4.2ms | Allocations: 904)
+
+
+Started GET "/levels" for ::1 at 2025-06-30 19:55:34 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as */*
+  [1m[36mLevel Load (2.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:4:in `index'
+Completed 200 OK in 447ms (Views: 113.2ms | ActiveRecord: 36.2ms | Allocations: 16909)
+
+
