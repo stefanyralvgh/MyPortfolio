@@ -26,7 +26,7 @@ const LevelsPage: React.FC = () => {
     }, []);
 
     const handleUnlockLevel = (levelId: number) => {
-        setUnlockedLevels(prev => new Set([...prev, levelId]));
+        setUnlockedLevels(prev => new Set(Array.from(prev).concat(levelId)));
         // Aquí podrías hacer una llamada a la API para guardar el progreso
         console.log(`Nivel ${levelId} desbloqueado!`);
     };
