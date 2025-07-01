@@ -140,6 +140,10 @@ body::-webkit-scrollbar-thumb:hover {
   color: #00ff41;
   animation: blink 1s infinite;
 }
+.cursor-blur {
+  color: #888;
+  animation: none;
+}
 
 @keyframes blink {
   0%, 50% { opacity: 1; }

@@ -21,6 +21,7 @@ const InteractiveTerminal: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
+  const [isInputFocused, setIsInputFocused] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -37,6 +38,19 @@ const InteractiveTerminal: React.FC = () => {
     }, 500);
 
     return () => clearInterval(cursorInterval);
+  }, []);
+
+  // Auto-focus input when isTyping pasa a false o al montar
+  useEffect(() => {
+    if (!isTyping && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isTyping]);
+
+  useEffect(() => {
+    if (!isTyping && inputRef.current) {
+      inputRef.current.focus();
+    }
   }, []);
 
   const executeCommand = async (commandData: TerminalCommand) => {
@@ -203,7 +217,7 @@ const InteractiveTerminal: React.FC = () => {
           <div className="current-line">
             <span className="prompt">$ </span>
             <span className="command">{currentLine}</span>
-            {showCursor && <span className="cursor">|</span>}
+            <span className={`cursor${isInputFocused ? '' : ' cursor-blur'}`}>{showCursor ? '|' : ' '}</span>
             <input
               ref={inputRef}
               type="text"
@@ -214,6 +228,8 @@ const InteractiveTerminal: React.FC = () => {
               autoFocus
               placeholder=""
               style={{ background: 'transparent', border: 'none', outline: 'none', color: 'inherit', font: 'inherit', width: '90%' }}
+              onFocus={() => setIsInputFocused(true)}
+              onBlur={() => setIsInputFocused(false)}
             />
           </div>
         )}
