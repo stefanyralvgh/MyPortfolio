@@ -25,21 +25,6 @@ const InteractiveTerminal: React.FC = () => {
   const terminalRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  const initialCommands: TerminalCommand[] = [
-    {
-      command: 'ssh stef@portfolio.dev',
-      output: `${t('terminal.welcome')}\nType "help" to see available commands...\n`,
-      delay: 1000
-    }
-  ];
-
-  useEffect(() => {
-    // Auto-start the terminal experience
-    setTimeout(() => {
-      executeCommand(initialCommands[0]);
-    }, 500);
-  }, [language]);
-
   useEffect(() => {
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
@@ -106,11 +91,7 @@ const InteractiveTerminal: React.FC = () => {
     if (e.key === 'Enter' && currentLine.trim()) {
       const command = currentLine.trim();
       setCurrentLine('');
-      
-      // Add command to history
-      setCommandHistory(prev => [...prev, { command, output: '' }]);
-      
-      // Process command
+      // No agregar aquí el comando al historial, solo ejecutarlo
       switch (command.toLowerCase()) {
         case 'ssh stef@portfolio.dev':
           executeCommand({
@@ -217,24 +198,25 @@ const InteractiveTerminal: React.FC = () => {
             )}
           </div>
         ))}
-        
-        <div className="current-line">
-          <span className="prompt">$ </span>
-          <span className="command">{currentLine}</span>
-          {showCursor && !isTyping && <span className="cursor">|</span>}
-        </div>
-        
-        <input
-          ref={inputRef}
-          type="text"
-          value={currentLine}
-          onChange={(e) => setCurrentLine(e.target.value)}
-          onKeyPress={handleKeyPress}
-          className="terminal-input"
-          autoFocus
-          disabled={isTyping}
-          placeholder=""
-        />
+        {/* El prompt de entrada y el input solo aparecen cuando isTyping es false, fuera del historial */}
+        { !isTyping && (
+          <div className="current-line">
+            <span className="prompt">$ </span>
+            <span className="command">{currentLine}</span>
+            {showCursor && <span className="cursor">|</span>}
+            <input
+              ref={inputRef}
+              type="text"
+              value={currentLine}
+              onChange={(e) => setCurrentLine(e.target.value)}
+              onKeyPress={handleKeyPress}
+              className="terminal-input"
+              autoFocus
+              placeholder=""
+              style={{ background: 'transparent', border: 'none', outline: 'none', color: 'inherit', font: 'inherit', width: '90%' }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

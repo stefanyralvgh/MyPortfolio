@@ -11,6 +11,18 @@ body {
   color: #00ff41;
   min-height: 100vh;
   overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+body::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 /* Terminal Styles */
@@ -77,6 +89,19 @@ body {
   overflow-y: auto;
   background: #0a0a0a;
   cursor: text;
+  scrollbar-width: thin;
+  scrollbar-color: #00ff41 #0a0a0a;
+}
+.terminal-body::-webkit-scrollbar {
+  width: 8px;
+  background: #0a0a0a;
+}
+.terminal-body::-webkit-scrollbar-thumb {
+  background: #00ff41;
+  border-radius: 4px;
+}
+.terminal-body::-webkit-scrollbar-thumb:hover {
+  background: #00cc33;
 }
 
 .command-block {
