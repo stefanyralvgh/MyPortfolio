@@ -1,0 +1,32 @@
+{
+  "name": "interactive-portfolio",
+  "version": "1.0.0",
+  "description": "An interactive portfolio showcasing backend development skills with a dynamic frontend.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "typescript": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest"
+  },
+  "keywords": [
+    "portfolio",
+    "interactive",
+    "backend",
+    "frontend",
+    "nextjs"
+  ],
+  "author": "Stef",
+  "license": "MIT"
+}
