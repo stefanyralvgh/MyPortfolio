@@ -53,7 +53,7 @@ const LevelsPage: React.FC = () => {
     }
 
     return (
-        <div className="levels-page">
+        <div className="container">
             <header className="page-header">
                 <h1>🎯 Niveles Desbloqueables</h1>
                 <p>Completa cada nivel para desbloquear el siguiente</p>

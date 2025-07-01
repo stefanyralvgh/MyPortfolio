@@ -9,6 +9,7 @@ gem 'pg', '~> 1.2'
 gem 'jbuilder', '~> 2.7'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'puma'
+gem 'rack-cors'
 
 # Add any additional gems below this line
 # For example, if you want to use a gem for authentication, you can add it here.
