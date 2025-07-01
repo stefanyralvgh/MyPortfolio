@@ -626,3 +626,53 @@ Processing by LevelsController#index as */*
 Completed 200 OK in 205ms (Views: 0.5ms | ActiveRecord: 20.7ms | Allocations: 18546)
 
 
+Started GET "/levels" for ::1 at 2025-06-30 21:21:52 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as HTML
+  [1m[36mLevel Load (1.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 216ms (Views: 0.5ms | ActiveRecord: 17.7ms | Allocations: 18547)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mLevel Load (1.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*application='Backend'*/[0m
+  [1m[36mLevel Load (16.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*application='Backend'*/[0m
+  [1m[36mLevel Load (3.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*application='Backend'*/[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to AddEnglishFieldsToLevels (20250701023725)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[35m (26.4ms)[0m  [1m[35mALTER TABLE "levels" ADD "title_en" character varying /*application='Backend'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "levels" ADD "description_en" text /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (6.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250701023725') RETURNING "version" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mLevel Load (1.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*application='Backend'*/[0m
+  [1m[36mLevel Load (0.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Update (12.6ms)[0m  [1m[33mUPDATE "levels" SET "updated_at" = '2025-07-01 02:38:46.295172', "title_es" = 'Fundamentos de APIs', "description_es" = 'Aprende a construir APIs limpias y confiables con Node.js y Express.', "title_fr" = 'Fondations des APIs', "description_fr" = 'Apprenez à créer des APIs fiables et bien structurées avec Node.js et Express.', "title_en" = 'API Foundations', "description_en" = 'Learn to build clean and reliable APIs with Node.js and Express.' WHERE "levels"."id" = 1 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Update (3.6ms)[0m  [1m[33mUPDATE "levels" SET "updated_at" = '2025-07-01 02:38:46.387770', "title_es" = 'Maestría en Bases de Datos y Consultas', "description_es" = 'Trabaja con bases de datos relacionales y no relacionales, y escribe consultas eficientes.', "title_fr" = 'Bases de Données et Requêtes', "description_fr" = 'Travaillez avec des bases de données relationnelles et non relationnelles, et écrivez des requêtes efficaces.', "title_en" = 'Database & Query Mastery', "description_en" = 'Work with relational and non-relational databases, and write efficient queries.' WHERE "levels"."id" = 2 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Update (3.6ms)[0m  [1m[33mUPDATE "levels" SET "updated_at" = '2025-07-01 02:38:46.401158', "title_es" = 'Arquitectura Backend Escalable', "description_es" = 'Diseña sistemas backend modulares y escalables con estructura clara y lógica sólida.', "title_fr" = 'Architecture Backend Scalable', "description_fr" = 'Concevez des backends modulaires et scalables avec une architecture claire.', "title_en" = 'Scalable Backend Architecture', "description_en" = 'Design modular, scalable backend systems with clean structure and strong logic.' WHERE "levels"."id" = 3 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Update (4.3ms)[0m  [1m[33mUPDATE "levels" SET "updated_at" = '2025-07-01 02:38:46.413341', "title_es" = 'Sistemas Reales y Flujos de Trabajo en Equipo', "description_es" = 'Integra lógica backend en flujos de trabajo de equipo, CI/CD y aplicaciones listas para producción.', "title_fr" = 'Systèmes Réels & Collaboration Équipe', "description_fr" = 'Intégrez la logique backend dans des workflows d''équipe, CI/CD et des apps prêtes pour la production.', "title_en" = 'Real-World Systems & Team Workflows', "description_en" = 'Integrate backend logic into team workflows, CI/CD, and production-ready apps.' WHERE "levels"."id" = 4 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mLevel Load (1.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*application='Backend'*/[0m
+Started GET "/levels" for ::1 at 2025-06-30 21:39:46 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as HTML
+  [1m[36mLevel Load (49.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 514ms (Views: 1.2ms | ActiveRecord: 57.5ms | Allocations: 9127)
+
+
