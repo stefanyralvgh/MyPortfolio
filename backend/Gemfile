@@ -1,0 +1,14 @@
+source 'https://rubygems.org'
+group :development do
+    gem 'bootsnap', require: false
+  end
+  
+
+gem 'rails', '~> 7.1.0'
+gem 'pg', '~> 1.2'
+gem 'jbuilder', '~> 2.7'
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'puma'
+
+# Add any additional gems below this line
+# For example, if you want to use a gem for authentication, you can add it here.
