@@ -12,13 +12,7 @@ interface TerminalCommand {
 const InteractiveTerminal: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
   const [currentLine, setCurrentLine] = useState('');
-  const [commandHistory, setCommandHistory] = useState<TerminalCommand[]>([
-    {
-      command: 'ssh stef@portfolio.dev',
-      output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
-      delay: 0
-    }
-  ]);
+  const [commandHistory, setCommandHistory] = useState<TerminalCommand[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   // const [currentStep, setCurrentStep] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
@@ -54,7 +48,7 @@ const InteractiveTerminal: React.FC = () => {
     }
   }, []);
 
-  // Re-traducir el historial cuando cambie el idioma
+
   useEffect(() => {
     setCommandHistory(prev => 
       prev.map(cmd => {
@@ -88,6 +82,17 @@ const InteractiveTerminal: React.FC = () => {
     );
   }, [language, t]);
 
+  // Ejecutar automáticamente el mensaje de bienvenida al montar
+  useEffect(() => {
+    setTimeout(() => {
+      executeCommand({
+        command: 'ssh stef@portfolio.dev',
+        output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
+        delay: 1000
+      });
+    }, 500);
+  }, []);
+
   const executeCommand = async (commandData: TerminalCommand) => {
     setIsTyping(true);
     
@@ -118,26 +123,6 @@ const InteractiveTerminal: React.FC = () => {
     }
     
     setIsTyping(false);
-    
-    if (commandData.command === 'ssh stef@portfolio.dev') {
-
-      setTimeout(() => {
-        executeCommand({
-          command: 'help',
-          output: `${t('terminal.help')}\n` +
-                  `  help     - ${t('terminal.help')}\n` +
-                  `  help --verbose - ${t('terminal.help.verbose')}\n` +
-                  `  start    - ${t('terminal.start')}\n` +
-                  `  about    - ${t('terminal.about')}\n` +
-                  `  lang     - ${t('terminal.lang')}\n` +
-                  `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
-                  `  skip - ${t('terminal.skip')}\n` +
-                  `  clear    - ${t('terminal.clear')}\n`,
-
-          delay: 300
-        });
-      }, 1000);
-    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -284,7 +269,7 @@ const InteractiveTerminal: React.FC = () => {
             )}
           </div>
         ))}
-        {/* El prompt de entrada y el input solo aparecen cuando isTyping es false, fuera del historial */}
+
         { !isTyping && (
           <div className="current-line">
             <span className="prompt">$ </span>

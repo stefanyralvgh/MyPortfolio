@@ -10,12 +10,12 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-// Translations
+
 const translations = {
   es: {
-    'terminal.welcome': 'Bienvenido a la Aventura de Código de Stef! 🚀',
+    'terminal.welcome': '¡Hola! Bienvenida/o a mi portafolio. Funciona como una terminal interactiva 🖥️\n Escribe comandos para explorar mi perfil, proyectos y más. ',
     'terminal.help': 'Comandos disponibles:',
-    'terminal.help.prompt': 'Escribe "help" para ver comandos disponibles...',
+    'terminal.help.prompt': '¿Primera vez aquí? Escribe `help` para ver los comandos disponibles.',
     'terminal.start': 'Comenzar la aventura',
     'terminal.about': 'Acerca de Stef',
     'terminal.lang': 'Cambiar idioma (es/en/fr)',
