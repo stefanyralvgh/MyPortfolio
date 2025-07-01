@@ -271,3 +271,358 @@ Processing by LevelsController#index as */*
 Completed 200 OK in 447ms (Views: 113.2ms | ActiveRecord: 36.2ms | Allocations: 16909)
 
 
+Started GET "/levels" for ::1 at 2025-06-30 20:25:42 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (5.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as HTML
+  [1m[36mLevel Load (12.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:4:in `index'
+Completed 200 OK in 428ms (Views: 66.1ms | ActiveRecord: 110.5ms | Allocations: 16177)
+
+
+Started GET "/levels?language=fr" for ::1 at 2025-06-30 20:49:18 -0500
+  
+ActiveRecord::DuplicateMigrationNameError (
+
+Multiple migrations have the name AddLanguageFieldsToLevels.
+
+):
+  
+activerecord (7.1.5.1) lib/active_record/migration.rb:1553:in `validate'
+activerecord (7.1.5.1) lib/active_record/migration.rb:1423:in `initialize'
+activerecord (7.1.5.1) lib/active_record/migration.rb:1292:in `new'
+activerecord (7.1.5.1) lib/active_record/migration.rb:1292:in `open'
+activerecord (7.1.5.1) lib/active_record/migration.rb:775:in `block (2 levels) in pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration/pending_migration_connection.rb:8:in `establish_temporary_connection'
+activerecord (7.1.5.1) lib/active_record/migration.rb:774:in `block in pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:773:in `each'
+activerecord (7.1.5.1) lib/active_record/migration.rb:773:in `pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:752:in `check_pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:644:in `block (2 levels) in call'
+activesupport (7.1.5.1) lib/active_support/file_update_checker.rb:85:in `execute'
+activesupport (7.1.5.1) lib/active_support/file_update_checker.rb:95:in `execute_if_updated'
+activerecord (7.1.5.1) lib/active_record/migration.rb:651:in `block in call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:641:in `synchronize'
+activerecord (7.1.5.1) lib/active_record/migration.rb:641:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/levels?language=fr" for ::1 at 2025-06-30 20:49:21 -0500
+  
+ActiveRecord::DuplicateMigrationNameError (
+
+Multiple migrations have the name AddLanguageFieldsToLevels.
+
+):
+  
+activerecord (7.1.5.1) lib/active_record/migration.rb:1553:in `validate'
+activerecord (7.1.5.1) lib/active_record/migration.rb:1423:in `initialize'
+activerecord (7.1.5.1) lib/active_record/migration.rb:1292:in `new'
+activerecord (7.1.5.1) lib/active_record/migration.rb:1292:in `open'
+activerecord (7.1.5.1) lib/active_record/migration.rb:775:in `block (2 levels) in pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration/pending_migration_connection.rb:8:in `establish_temporary_connection'
+activerecord (7.1.5.1) lib/active_record/migration.rb:774:in `block in pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:773:in `each'
+activerecord (7.1.5.1) lib/active_record/migration.rb:773:in `pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:752:in `check_pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:644:in `block (2 levels) in call'
+activesupport (7.1.5.1) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.1.5.1) lib/active_record/migration.rb:649:in `block in call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:641:in `synchronize'
+activerecord (7.1.5.1) lib/active_record/migration.rb:641:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+Started GET "/levels?language=es" for ::1 at 2025-06-30 20:50:52 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (5.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 1 pending migration:
+
+db/migrate/20250701014424_add_language_fields_to_levels.rb
+
+
+):
+  
+activerecord (7.1.5.1) lib/active_record/migration.rb:755:in `check_pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:644:in `block (2 levels) in call'
+activesupport (7.1.5.1) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.1.5.1) lib/active_record/migration.rb:649:in `block in call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:641:in `synchronize'
+activerecord (7.1.5.1) lib/active_record/migration.rb:641:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Started GET "/levels?language=es" for ::1 at 2025-06-30 20:52:18 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate
+
+You have 1 pending migration:
+
+db/migrate/20250701014424_add_language_fields_to_levels.rb
+
+
+):
+  
+activerecord (7.1.5.1) lib/active_record/migration.rb:755:in `check_pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:644:in `block (2 levels) in call'
+activesupport (7.1.5.1) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.1.5.1) lib/active_record/migration.rb:649:in `block in call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:641:in `synchronize'
+activerecord (7.1.5.1) lib/active_record/migration.rb:641:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+  [1m[35m (5.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (27.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to AddLanguageFieldsToLevels (20250701014424)
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (35.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250701014424') RETURNING "version" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (12.3ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Started GET "/levels?language=es" for ::1 at 2025-06-30 20:54:17 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (2.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 500 Internal Server Error in 499ms (ActiveRecord: 20.7ms | Allocations: 16331)
+
+
+  
+NameError (undefined local variable or method `title_es' for #<Level id: 1, title: "Frontend Basics", description: "Learn the fundamentals of HTML, CSS, and JavaScrip...", tech: ["HTML", "CSS", "JavaScript"], created_at: "2025-07-01 00:04:21.878700000 +0000", updated_at: "2025-07-01 00:04:21.878700000 +0000">):
+  
+app/models/level.rb:21:in `title_for_language'
+app/models/level.rb:47:in `as_json'
+app/controllers/levels_controller.rb:5:in `block in index'
+app/controllers/levels_controller.rb:5:in `map'
+app/controllers/levels_controller.rb:5:in `index'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Started GET "/levels?language=es" for ::1 at 2025-06-30 20:56:56 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.3ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 500 Internal Server Error in 192ms (ActiveRecord: 15.5ms | Allocations: 16185)
+
+
+  
+NameError (undefined local variable or method `title_es' for #<Level id: 1, title: "Frontend Basics", description: "Learn the fundamentals of HTML, CSS, and JavaScrip...", tech: ["HTML", "CSS", "JavaScript"], created_at: "2025-07-01 00:04:21.878700000 +0000", updated_at: "2025-07-01 00:04:21.878700000 +0000">):
+  
+app/models/level.rb:21:in `title_for_language'
+app/models/level.rb:47:in `as_json'
+app/controllers/levels_controller.rb:5:in `block in index'
+app/controllers/levels_controller.rb:5:in `map'
+app/controllers/levels_controller.rb:5:in `index'
+Started GET "/levels?language=es" for ::1 at 2025-06-30 20:56:56 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (2.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 2.9ms | Allocations: 714)
+
+
+  
+NameError (undefined local variable or method `title_es' for #<Level id: 1, title: "Frontend Basics", description: "Learn the fundamentals of HTML, CSS, and JavaScrip...", tech: ["HTML", "CSS", "JavaScript"], created_at: "2025-07-01 00:04:21.878700000 +0000", updated_at: "2025-07-01 00:04:21.878700000 +0000">):
+  
+app/models/level.rb:21:in `title_for_language'
+app/models/level.rb:47:in `as_json'
+app/controllers/levels_controller.rb:5:in `block in index'
+app/controllers/levels_controller.rb:5:in `map'
+app/controllers/levels_controller.rb:5:in `index'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to AddLanguageFieldsToLevels (20250701015949)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (4.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250701015949') RETURNING "version" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Started GET "/levels?language=es" for ::1 at 2025-06-30 21:00:42 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 500 Internal Server Error in 215ms (ActiveRecord: 14.5ms | Allocations: 16183)
+
+
+  
+NameError (undefined local variable or method `title_es' for #<Level id: 1, title: "Frontend Basics", description: "Learn the fundamentals of HTML, CSS, and JavaScrip...", tech: ["HTML", "CSS", "JavaScript"], created_at: "2025-07-01 00:04:21.878700000 +0000", updated_at: "2025-07-01 00:04:21.878700000 +0000">):
+  
+app/models/level.rb:21:in `title_for_language'
+app/models/level.rb:47:in `as_json'
+app/controllers/levels_controller.rb:5:in `block in index'
+app/controllers/levels_controller.rb:5:in `map'
+app/controllers/levels_controller.rb:5:in `index'
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(6636507126438415485)[0m
+  [1m[35m (16.2ms)[0m  [1m[31mDELETE FROM schema_migrations WHERE version = '20250701014424' /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to AddLanguageFieldsToLevels (20250701020856)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[35m (19.6ms)[0m  [1m[35mALTER TABLE "levels" ADD "title_es" character varying /*application='Backend'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "levels" ADD "description_es" text /*application='Backend'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "levels" ADD "title_fr" character varying /*application='Backend'*/[0m
+  [1m[35m (3.6ms)[0m  [1m[35mALTER TABLE "levels" ADD "description_fr" text /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250701020856') RETURNING "version" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_advisory_unlock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Started GET "/levels?language=es" for ::1 at 2025-06-30 21:09:48 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (2.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 205ms (Views: 0.5ms | ActiveRecord: 20.7ms | Allocations: 18546)
+
+
