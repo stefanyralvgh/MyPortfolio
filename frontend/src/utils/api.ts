@@ -1,35 +1,36 @@
 import { Level } from "../types";
 
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
-export async function fetchLevels(): Promise<Level[]> {
+export const fetchLevels = async (
+  language: string = "es"
+): Promise<Level[]> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/levels`);
-
+    const response = await fetch(`${API_BASE_URL}/levels?language=${language}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     console.error("Error fetching levels:", error);
-    throw new Error("Failed to fetch levels");
+    throw error;
   }
-}
+};
 
-export async function fetchLevel(id: number): Promise<Level> {
+export const fetchLevel = async (
+  id: number,
+  language: string = "es"
+): Promise<Level> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/levels/${id}`);
-
+    const response = await fetch(
+      `${API_BASE_URL}/levels/${id}?language=${language}`
+    );
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
-    const data = await response.json();
-    return data;
+    return await response.json();
   } catch (error) {
     console.error("Error fetching level:", error);
-    throw new Error("Failed to fetch level");
+    throw error;
   }
-}
+};
