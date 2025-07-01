@@ -9,20 +9,26 @@ interface TerminalCommand {
 }
 
 const InteractiveTerminal: React.FC = () => {
+  const { language, setLanguage, t } = useLanguage();
   const [currentLine, setCurrentLine] = useState('');
-  const [commandHistory, setCommandHistory] = useState<TerminalCommand[]>([]);
+  const [commandHistory, setCommandHistory] = useState<TerminalCommand[]>([
+    {
+      command: 'ssh stef@portfolio.dev',
+      output: `${t('terminal.welcome')}\nType \"help\" to see available commands...`,
+      delay: 0
+    }
+  ]);
   const [isTyping, setIsTyping] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const { language, setLanguage, t } = useLanguage();
 
   const initialCommands: TerminalCommand[] = [
     {
       command: 'ssh stef@portfolio.dev',
-      output: `${t('terminal.welcome')}\nType "help" to see available commands...\n\n$ `,
+      output: `${t('terminal.welcome')}\nType "help" to see available commands...\n`,
       delay: 1000
     }
   ];
@@ -89,7 +95,7 @@ const InteractiveTerminal: React.FC = () => {
                   `  start    - ${t('terminal.start')}\n` +
                   `  about    - ${t('terminal.about')}\n` +
                   `  lang     - ${t('terminal.lang')}\n` +
-                  `  clear    - ${t('terminal.clear')}\n\n$ `,
+                  `  clear    - ${t('terminal.clear')}\n`,
           delay: 300
         });
       }, 1000);
@@ -106,10 +112,17 @@ const InteractiveTerminal: React.FC = () => {
       
       // Process command
       switch (command.toLowerCase()) {
+        case 'ssh stef@portfolio.dev':
+          executeCommand({
+            command,
+            output: 'Already connected!\n',
+            delay: 300
+          });
+          break;
         case 'start':
           executeCommand({
             command,
-            output: `Starting Stef's Code Adventure...\nRedirecting to level 1...\n\n$ `,
+            output: `Starting Stef's Code Adventure...\nRedirecting to level 1...\n`,
             delay: 1000
           });
           setTimeout(() => router.push('/adventure'), 2000);
@@ -118,23 +131,28 @@ const InteractiveTerminal: React.FC = () => {
           executeCommand({
             command,
             output: `${t('terminal.help')}\n` +
-                    `  help     - ${t('terminal.help')}\n` +
                     `  start    - ${t('terminal.start')}\n` +
                     `  about    - ${t('terminal.about')}\n` +
                     `  lang     - ${t('terminal.lang')}\n` +
-                    `  clear    - ${t('terminal.clear')}\n\n$ `,
+                    `  clear    - ${t('terminal.clear')}\n`,
             delay: 300
           });
           break;
         case 'about':
           executeCommand({
             command,
-            output: `${t('terminal.about.stef')}\n\n$ `,
+            output: `${t('terminal.about.stef')}\n`,
             delay: 500
           });
           break;
         case 'clear':
-          setCommandHistory([]);
+          setCommandHistory([
+            {
+              command: 'ssh stef@portfolio.dev',
+              output: `${t('terminal.welcome')}\nType \"help\" to see available commands...`,
+              delay: 0
+            }
+          ]);
           break;
         case 'lang':
           executeCommand({
@@ -142,7 +160,7 @@ const InteractiveTerminal: React.FC = () => {
             output: `${t('terminal.lang')}:\n` +
                     `  lang es  - Español\n` +
                     `  lang en  - English\n` +
-                    `  lang fr  - Français\n\n$ `,
+                    `  lang fr  - Français\n`,
             delay: 300
           });
           break;
@@ -151,21 +169,21 @@ const InteractiveTerminal: React.FC = () => {
         case 'lang fr':
           const lang = command.split(' ')[1];
           const langMessages = {
-            es: `${t('terminal.language.changed')} Español 🇪🇸\n\n$ `,
-            en: `${t('terminal.language.changed')} English 🇺🇸\n\n$ `,
-            fr: `${t('terminal.language.changed')} Français 🇫🇷\n\n$ `
+            es: `${t('terminal.language.changed')} Español 🇪🇸\n`,
+            en: `${t('terminal.language.changed')} English 🇺🇸\n`,
+            fr: `${t('terminal.language.changed')} Français 🇫🇷\n`
           };
           setLanguage(lang as 'es' | 'en' | 'fr');
           executeCommand({
             command,
-            output: langMessages[lang as keyof typeof langMessages] || 'Language not supported\n\n$ ',
+            output: langMessages[lang as keyof typeof langMessages] || 'Language not supported\n',
             delay: 300
           });
           break;
         default:
           executeCommand({
             command,
-            output: `${t('terminal.command.not.found')} ${command}\n${t('terminal.type.help')}\n\n$ `,
+            output: `${t('terminal.command.not.found')} ${command}\n${t('terminal.type.help')}\n`,
             delay: 300
           });
       }
