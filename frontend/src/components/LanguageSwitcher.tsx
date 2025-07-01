@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const LanguageSwitcher = () => {
-    const [language, setLanguage] = useState('en');
+    const { language, setLanguage, t } = useLanguage();
 
-    const handleLanguageChange = (event) => {
-        setLanguage(event.target.value);
-        // Here you can add logic to update the language context or state in your app
+    const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setLanguage(event.target.value as 'en' | 'es' | 'fr');
     };
 
     return (
         <div className="language-switcher">
-            <label htmlFor="language-select">Select Language:</label>
+            <label htmlFor="language-select">{t('terminal.select.language')}:</label>
             <select id="language-select" value={language} onChange={handleLanguageChange}>
                 <option value="en">English</option>
                 <option value="es">Español</option>
