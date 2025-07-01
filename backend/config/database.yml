@@ -1,0 +1,28 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: interactive_portfolio_development
+  pool: 5
+  username: postgres
+  password: admin
+  host: 127.0.0.1
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: interactive_portfolio_test
+  pool: 5
+  username: postgres
+  password: admin
+  host: 127.0.0.1
+  port: 5432
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: interactive_portfolio_production
+  pool: 5
+  username: your_username
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: your_production_host
