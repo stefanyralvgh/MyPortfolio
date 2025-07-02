@@ -64,10 +64,10 @@ const InteractiveTerminal: React.FC = () => {
             output: `${t('terminal.help')}\n` +
             `  help --verbose - ${t('terminal.help.verbose')}\n` +
                     `  start    - ${t('terminal.start')}\n` +
-                    `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
-                    `  skip - ${t('terminal.skip')}\n` +
+                    `  projects - ${t('terminal.projects')}\n` +
                     `  about    - ${t('terminal.about')}\n` +
-                    `  lang     - ${t('terminal.lang')}\n` +
+                    `  funfacts - ${t('terminal.funfacts')}\n` +
+                    `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
                     `  clear    - ${t('terminal.clear')}\n`
           };
         }
@@ -82,7 +82,7 @@ const InteractiveTerminal: React.FC = () => {
     );
   }, [language, t]);
 
-  // Ejecutar automáticamente el mensaje de bienvenida al montar
+
   useEffect(() => {
     setTimeout(() => {
       executeCommand({
@@ -151,10 +151,10 @@ const InteractiveTerminal: React.FC = () => {
             output: `${t('terminal.help')}\n` +
             `  help --verbose - ${t('terminal.help.verbose')}\n` +
                     `  start    - ${t('terminal.start')}\n` +
-                    `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
-                    `  skip - ${t('terminal.skip')}\n` +
+                    `  projects - ${t('terminal.projects')}\n` +
                     `  about    - ${t('terminal.about')}\n` +
-                    `  lang     - ${t('terminal.lang')}\n` +
+                    `  funfacts - ${t('terminal.funfacts')}\n` +
+                    `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
                     `  clear    - ${t('terminal.clear')}\n`,
             delay: 300
           });
@@ -164,6 +164,27 @@ const InteractiveTerminal: React.FC = () => {
             command,
             output: `${t('terminal.about.stef')}\n`,
             delay: 500
+          });
+          break;
+        case 'projects':
+          executeCommand({
+            command,
+            output: `Redirecting to projects view...\n`,
+            delay: 500
+          });
+          setTimeout(() => router.push('/projects'), 1000);
+          break;
+        case 'funfacts':
+          executeCommand({
+            command,
+            output: `🎯 Fun Facts about Stef:\n\n` +
+                    `🦷 Ex-dentist turned backend developer\n` +
+                    `🌍 Speaks Spanish, English, and learning French\n` +
+                    `💡 Built this portfolio with Ruby on Rails\n` +
+                    `🎨 Used AI to help with frontend styling\n` +
+                    `🔍 Loves debugging and solving complex problems\n` +
+                    `🚀 Dream company hint: they do healthcare 👀\n`,
+            delay: 300
           });
           break;
         case 'clear':
@@ -218,14 +239,17 @@ const InteractiveTerminal: React.FC = () => {
           });
           break;
         case 'recruiter-mode':
+          executeCommand({
+            command,
+            output: `⏩ Fast track activated!\n`,
+            delay: 300
+          });
+          setTimeout(() => router.push('/adventure?completed=true'), 1500);
+          break;
         case 'skip':
           executeCommand({
             command,
-            output: `🧠 Stefany Ramos – Backend Developer (Ruby on Rails, PostgreSQL, Redis, APIs)\\n` +
-                    `🌎 Bilingual (English 🇬🇧 / Spanish 🇪🇸) – Remote-ready\\n` +
-                    `🩺 Ex-dentist turned dev – Problem solver by nature\\n` +
-                    `📍 Current role: Software Engineer at [Company]\\n` +
-                    `📄 <a href='[CV_LINK]' target='_blank'>CV</a> | 💼 <a href='[LINKEDIN_LINK]' target='_blank'>LinkedIn</a> | 🐙 <a href='[GITHUB_LINK]' target='_blank'>GitHub</a>\\n`,
+            output: `Command "skip" is deprecated. Try 'recruiter-mode' instead 😉\n`,
             delay: 300
           });
           break;

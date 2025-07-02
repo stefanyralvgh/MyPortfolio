@@ -739,3 +739,31 @@ Processing by LevelsController#index as */*
 Completed 200 OK in 1193ms (Views: 3.7ms | ActiveRecord: 3.2ms | Allocations: 982)
 
 
+Started GET "/levels?language=en" for ::1 at 2025-07-01 18:45:09 -0500
+Started GET "/levels?language=en" for ::1 at 2025-07-01 18:45:10 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (15.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as */*
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (17.3ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+  [1m[36mLevel Load (1.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 1425ms (Views: 1.8ms | ActiveRecord: 144.4ms | Allocations: 24107)
+
+
+Completed 200 OK in 1448ms (Views: 21.1ms | ActiveRecord: 208.9ms | Allocations: 24222)
+
+
+Started GET "/levels" for ::1 at 2025-07-01 18:45:19 -0500
+Processing by LevelsController#index as HTML
+  [1m[36mLevel Load (2.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 2.1ms | Allocations: 986)
+
+
+Started GET "/favicon.ico" for ::1 at 2025-07-01 18:45:19 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
