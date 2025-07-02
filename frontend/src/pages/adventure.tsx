@@ -4,6 +4,7 @@ import AdventureLevel from '../components/AdventureLevel';
 import { useLanguage } from '../contexts/LanguageContext';
 import { fetchLevels } from '../utils/api';
 import { Level } from '../types';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 
 const AdventurePage: React.FC = () => {
   const [currentLevel, setCurrentLevel] = useState(1);
@@ -218,15 +219,20 @@ const AdventurePage: React.FC = () => {
 
   return (
     <div className="adventure-container">
-      <div className="adventure-header">
-        <h1>{t('adventure.title')}</h1>
-        <div className="progress-bar">
-          <div 
-            className="progress-fill" 
-            style={{ width: `${(completedLevels.size / totalLevels) * 100}%` }}
-          ></div>
+      <div className="adventure-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', marginBottom: '0.5rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+          <h1 style={{ margin: 0, fontSize: '2rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', textAlign: 'center' }}>{t('adventure.title')}</h1>
+          <span style={{ margin: 0, fontSize: '1.1rem', color: '#7a3fa4', fontWeight: 500, textAlign: 'center' }}>{t('adventure.level')} {currentLevel} {t('adventure.of')} {totalLevels}</span>
         </div>
-        <p>{t('adventure.level')} {currentLevel} {t('adventure.of')} {totalLevels}</p>
+        <div style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', marginRight: '0.5rem' }}>
+          <LanguageSwitcher hideLabel={true} />
+        </div>
+      </div>
+      <div className="progress-bar" style={{ marginBottom: '1.5rem' }}>
+        <div 
+          className="progress-fill" 
+          style={{ width: `${(completedLevels.size / totalLevels) * 100}%` }}
+        ></div>
       </div>
       
       {currentLevelData && (

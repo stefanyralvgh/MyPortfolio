@@ -1,7 +1,11 @@
 import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
-const LanguageSwitcher = () => {
+interface LanguageSwitcherProps {
+  hideLabel?: boolean;
+}
+
+const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ hideLabel }) => {
     const { language, setLanguage, t } = useLanguage();
 
     const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -10,7 +14,9 @@ const LanguageSwitcher = () => {
 
     return (
         <div className="language-switcher">
-            <label htmlFor="language-select">{t('terminal.select.language')}:</label>
+            {!hideLabel && (
+              <label htmlFor="language-select">{t('terminal.select.language')}:</label>
+            )}
             <select id="language-select" value={language} onChange={handleLanguageChange}>
                 <option value="en">English</option>
                 <option value="es">Español</option>

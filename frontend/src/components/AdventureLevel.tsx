@@ -33,10 +33,34 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [shuffledOptions, setShuffledOptions] = useState<{ text: string; explanation: string; correct: boolean; }[]>([]);
+
+  // Shuffle helper
+  function shuffleArray<T>(array: T[]): T[] {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  useEffect(() => {
+    // Mezclar opciones y explicaciones manteniendo el mapeo
+    const options = level.challenge.options.map((text, idx) => ({
+      text,
+      explanation: level.challenge.explanations ? level.challenge.explanations[idx] : '',
+      correct: idx === level.challenge.correctAnswer
+    }));
+    setShuffledOptions(shuffleArray(options));
+    setSelectedOption(null);
+    setShowResult(false);
+    setIsCorrect(false);
+  }, [level]);
 
   const handleOptionClick = (index: number) => {
     setSelectedOption(index);
-    setIsCorrect(index === level.challenge.correctAnswer);
+    setIsCorrect(shuffledOptions[index].correct);
     setShowResult(true);
   };
 
@@ -80,7 +104,7 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
         {/* Opciones tipo botón en fila horizontal, cuadradas y simétricas */}
         {!showResult && (
           <div className="options-container" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '2rem', margin: '2rem 0' }}>
-            {level.challenge.options.map((option, idx) => (
+            {shuffledOptions.map((option, idx) => (
               <button
                 key={idx}
                 className="option-button"
@@ -102,7 +126,7 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
                   transition: 'background 0.2s, border 0.2s',
                 }}
               >
-                {option}
+                {option.text}
               </button>
             ))}
           </div>
@@ -111,9 +135,11 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
         {showResult && (
           <div className="result-container" style={{ marginTop: '2rem', textAlign: 'center' }}>
             <h4>{isCorrect ? '¡Correcto!' : 'No era esa 😅'}</h4>
-            <p style={{ fontWeight: 500 }}>
-              {selectedOption !== null && level.challenge.explanations && level.challenge.explanations[selectedOption]}
-            </p>
+            {isCorrect ? null : (
+              <p style={{ fontWeight: 500 }}>
+                {selectedOption !== null && shuffledOptions[selectedOption]?.explanation}
+              </p>
+            )}
             <div className="story-content" style={{ marginTop: '1.5rem' }}>
               <h4>Historia personal:</h4>
               <p>{level.story.description}</p>

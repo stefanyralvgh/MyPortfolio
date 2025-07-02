@@ -100,7 +100,7 @@ const translations = {
     'adventure.actions.linkedin': '🤝 Let\'s connect on LinkedIn – maybe even collaborate',
     'adventure.actions.repo': '🛠️ Check out the backend code – it powers this terminal',
     'adventure.actions.restart': '🔄 Restart the adventure and discover new things',
-    'adventure.back': '← Return to terminal mode',
+    'adventure.back': 'Return to terminal mode',
 
   },
   fr: {
