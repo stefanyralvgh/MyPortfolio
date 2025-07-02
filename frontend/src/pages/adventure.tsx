@@ -15,7 +15,7 @@ const AdventurePage: React.FC = () => {
   const router = useRouter();
   const { language, t } = useLanguage();
 
-  // Check if user came from recruiter-mode (fast track)
+
   useEffect(() => {
     if (router.query.completed === 'true') {
       setIsRecruiterMode(true);
@@ -23,7 +23,6 @@ const AdventurePage: React.FC = () => {
     }
   }, [router.query.completed]);
 
-  // Interactive challenges (these stay the same)
   const interactiveChallenges = [
     {
       id: 1,
@@ -101,9 +100,8 @@ const AdventurePage: React.FC = () => {
     }
   ];
 
-  // Fetch levels from PostgreSQL
   useEffect(() => {
-    // Skip fetching if user came from recruiter-mode
+ 
     if (router.query.completed === 'true') {
       setLoading(false);
       return;
@@ -124,10 +122,10 @@ const AdventurePage: React.FC = () => {
     loadLevels();
   }, [language, router.query.completed]);
 
-  // Combine interactive challenges with database levels
+
   const getCurrentLevelData = () => {
     if (currentLevel <= interactiveChallenges.length) {
-      // Use interactive challenge
+   
       const challenge = interactiveChallenges[currentLevel - 1];
       const dbLevel = dbLevels[currentLevel - 1];
       
@@ -140,7 +138,7 @@ const AdventurePage: React.FC = () => {
         }
       };
     } else {
-      // Use database level only
+
       const dbLevel = dbLevels[currentLevel - 1];
       if (!dbLevel) return null;
 
