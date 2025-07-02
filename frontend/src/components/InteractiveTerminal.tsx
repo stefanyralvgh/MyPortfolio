@@ -77,6 +77,30 @@ const InteractiveTerminal: React.FC = () => {
             output: `${t('terminal.about.stef')}\n`
           };
         }
+        if (cmd.command === 'help --verbose') {
+          return {
+            ...cmd,
+            output:
+              `${t('terminal.help.verbose.title')}\n` +
+              `${'='.repeat(50)}\n\n` +
+              `${t('terminal.help.verbose.intro')}\n\n` +
+              `${t('terminal.help.verbose.commands.title')}\n` +
+              `${'-'.repeat(30)}\n` +
+              `  start         - ${t('terminal.help.verbose.start.desc')}\n` +
+              `  projects      - ${t('terminal.help.verbose.projects.desc')}\n` +
+              `  about         - ${t('terminal.help.verbose.about.desc')}\n` +
+              `  funfacts      - ${t('terminal.help.verbose.funfacts.desc')}\n` +
+              `  recruiter-mode - ${t('terminal.help.verbose.recruiter.desc')}\n` +
+              `  clear         - ${t('terminal.help.verbose.clear.desc')}\n\n` +
+              `${t('terminal.help.verbose.tips.title')}\n` +
+              `${'-'.repeat(20)}\n` +
+              `  ${t('terminal.help.verbose.tips.1')}\n` +
+              `  ${t('terminal.help.verbose.tips.2')}\n` +
+              `  ${t('terminal.help.verbose.tips.3')}\n` +
+              `  ${t('terminal.help.verbose.tips.4')}\n\n` +
+              `${t('terminal.help.verbose.footer')}\n`
+          };
+        }
         return cmd;
       })
     );
@@ -226,16 +250,25 @@ const InteractiveTerminal: React.FC = () => {
           executeCommand({
             command,
             output:
-              `Welcome to the interactive terminal! \n` +
-              `You're about to explore my portfolio in a playful, command-line style.\n` +
-              `Type commands as if you're in a real terminal.\n` +
-              `You'll uncover my story, projects, skills, and some quirky facts.\n` +
-              `Some commands are functional, others are just for fun.\n` +
-              `Switch language anytime with 'lang es', 'lang en', or 'lang fr'.\n` +
-              `If you're a recruiter in a hurry, try 'recruiter-mode' for a fast track.\n` +
-              `\n` +
-              `Pro tip: Some commands reveal hidden surprises 😉\n`,
-            delay: 300
+              `${t('terminal.help.verbose.title')}\n` +
+              `${'='.repeat(50)}\n\n` +
+              `${t('terminal.help.verbose.intro')}\n\n` +
+              `${t('terminal.help.verbose.commands.title')}\n` +
+              `${'-'.repeat(30)}\n` +
+              `  start         - ${t('terminal.help.verbose.start.desc')}\n` +
+              `  projects      - ${t('terminal.help.verbose.projects.desc')}\n` +
+              `  about         - ${t('terminal.help.verbose.about.desc')}\n` +
+              `  funfacts      - ${t('terminal.help.verbose.funfacts.desc')}\n` +
+              `  recruiter-mode - ${t('terminal.help.verbose.recruiter.desc')}\n` +
+              `  clear         - ${t('terminal.help.verbose.clear.desc')}\n\n` +
+              `${t('terminal.help.verbose.tips.title')}\n` +
+              `${'-'.repeat(20)}\n` +
+              `  ${t('terminal.help.verbose.tips.1')}\n` +
+              `  ${t('terminal.help.verbose.tips.2')}\n` +
+              `  ${t('terminal.help.verbose.tips.3')}\n` +
+              `  ${t('terminal.help.verbose.tips.4')}\n\n` +
+              `${t('terminal.help.verbose.footer')}\n`,
+            delay: 100
           });
           break;
         case 'recruiter-mode':
