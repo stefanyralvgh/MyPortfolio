@@ -20,12 +20,7 @@ const InteractiveTerminal: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-
-  useEffect(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
-    }
-  }, [commandHistory]);
+  const [isUserAtBottom, setIsUserAtBottom] = useState(true);
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
@@ -296,6 +291,30 @@ const InteractiveTerminal: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!terminalRef.current) return;
+      const { scrollTop, scrollHeight, clientHeight } = terminalRef.current;
+      // Considera "abajo" si está a 10px del fondo
+      setIsUserAtBottom(scrollTop + clientHeight >= scrollHeight - 10);
+    };
+    const ref = terminalRef.current;
+    if (ref) {
+      ref.addEventListener('scroll', handleScroll);
+    }
+    return () => {
+      if (ref) {
+        ref.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (terminalRef.current && isUserAtBottom) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [commandHistory, isUserAtBottom]);
+
   return (
     <div className="terminal-container">
       <div className="terminal-header">
@@ -330,15 +349,13 @@ const InteractiveTerminal: React.FC = () => {
         { !isTyping && (
           <div className="current-line">
             <span className="prompt">$ </span>
-            <span className="command">{currentLine}</span>
-            <span className={`cursor${isInputFocused ? '' : ' cursor-blur'}`}>{showCursor ? '|' : ' '}</span>
             <input
               ref={inputRef}
               type="text"
               value={currentLine}
               onChange={(e) => setCurrentLine(e.target.value)}
               onKeyPress={handleKeyPress}
-              className="terminal-input"
+              className="terminal-input visible-input"
               autoFocus
               placeholder=""
               style={{ background: 'transparent', border: 'none', outline: 'none', color: 'inherit', font: 'inherit', width: '90%' }}
