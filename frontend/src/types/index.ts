@@ -3,6 +3,12 @@ export interface Level {
   title: string;
   description: string;
   tech: string[];
+  title_es?: string;
+  title_en?: string;
+  title_fr?: string;
+  description_es?: string;
+  description_en?: string;
+  description_fr?: string;
 }
 
 export interface Challenge {

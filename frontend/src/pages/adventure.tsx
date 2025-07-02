@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import AdventureLevel from '../components/AdventureLevel';
 import { useLanguage } from '../contexts/LanguageContext';
 import { fetchLevels } from '../utils/api';
 import { Level } from '../types';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 
 const AdventurePage: React.FC = () => {
   const [currentLevel, setCurrentLevel] = useState(1);
@@ -12,9 +13,61 @@ const AdventurePage: React.FC = () => {
   const [dbLevels, setDbLevels] = useState<Level[]>([]);
   const [loading, setLoading] = useState(true);
   const [isRecruiterMode, setIsRecruiterMode] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
   const router = useRouter();
   const { language, t } = useLanguage();
+  // Estado para el menú flotante de CV
+  const [cvMenuOpen, setCvMenuOpen] = useState(false);
+  const cvButtonRef = useRef<HTMLButtonElement>(null);
+  const cvMenuRef = useRef<HTMLDivElement>(null);
 
+  // Preguntas y opciones para cada nivel (puedes personalizarlas luego)
+  const levelQuestions = [
+    {
+      question: "¿Qué es lo más importante al diseñar una API?",
+      options: [
+        { text: "Que sea fácil de entender y usar", correct: true, explanation: "¡Correcto! Una API clara y predecible es clave para que otros desarrolladores la adopten y la usen bien." },
+        { text: "Que tenga muchos endpoints", correct: false, explanation: "No necesariamente. Lo importante es la claridad y consistencia, no la cantidad de endpoints." }
+      ],
+      explanations: [
+        "¡Correcto! Una API clara y predecible es clave para que otros desarrolladores la adopten y la usen bien.",
+        "No necesariamente. Lo importante es la claridad y consistencia, no la cantidad de endpoints."
+      ]
+    },
+    {
+      question: "¿Qué mejora el rendimiento de una consulta a base de datos?",
+      options: [
+        { text: "Usar índices en las columnas consultadas", correct: true, explanation: "¡Exacto! Los índices aceleran las búsquedas y mejoran el rendimiento." },
+        { text: "Hacer SELECT * siempre", correct: false, explanation: "No es recomendable, ya que puede traer datos innecesarios y ralentizar la consulta." }
+      ],
+      explanations: [
+        "¡Exacto! Los índices aceleran las búsquedas y mejoran el rendimiento.",
+        "No es recomendable, ya que puede traer datos innecesarios y ralentizar la consulta."
+      ]
+    },
+    {
+      question: "¿Qué ayuda a escalar un backend?",
+      options: [
+        { text: "Dividir la lógica en módulos claros", correct: true, explanation: "¡Correcto! La modularidad facilita el mantenimiento y la escalabilidad." },
+        { text: "Poner toda la lógica en un solo archivo", correct: false, explanation: "Eso complica el mantenimiento y limita la escalabilidad." }
+      ],
+      explanations: [
+        "¡Correcto! La modularidad facilita el mantenimiento y la escalabilidad.",
+        "Eso complica el mantenimiento y limita la escalabilidad."
+      ]
+    },
+    {
+      question: "¿Qué es esencial para un flujo de trabajo en equipo?",
+      options: [
+        { text: "Integración continua y buenas prácticas de git", correct: true, explanation: "¡Sí! CI/CD y git ayudan a mantener la calidad y la colaboración." },
+        { text: "Hacer todo en producción directamente", correct: false, explanation: "Eso es riesgoso y puede causar errores graves. Mejor usar buenas prácticas y entornos de prueba." }
+      ],
+      explanations: [
+        "¡Sí! CI/CD y git ayudan a mantener la calidad y la colaboración.",
+        "Eso es riesgoso y puede causar errores graves. Mejor usar buenas prácticas y entornos de prueba."
+      ]
+    }
+  ];
 
   useEffect(() => {
     if (router.query.completed === 'true') {
@@ -23,157 +76,68 @@ const AdventurePage: React.FC = () => {
     }
   }, [router.query.completed]);
 
-  const interactiveChallenges = [
-    {
-      id: 1,
-      title: "Debug Detective",
-      type: "debug",
-      challenge: {
-        scenario: "Clerk authentication is broken! Users can't log in.",
-        error: "TypeError: Cannot read property 'keys' of undefined",
-        options: [
-          "Check if Clerk is properly initialized",
-          "Verify the API keys are correctly set",
-          "Look for typos in the authentication flow",
-          "Restart the server"
-        ],
-        correctAnswer: 1,
-        explanation: "The error suggests that 'keys' is undefined, which typically means the API keys aren't properly configured in the environment variables."
-      }
-    },
-    {
-      id: 2,
-      title: "API Explorer",
-      type: "api",
-      challenge: {
-        scenario: "The API endpoint is returning 404 errors. Fix the URL!",
-        brokenUrl: "GET /api/users/123",
-        options: [
-          "/api/user/123",
-          "/api/users/123",
-          "/api/users?id=123",
-          "/api/user?id=123"
-        ],
-        correctAnswer: 0,
-        explanation: "The endpoint should be singular 'user' not plural 'users' based on the API documentation."
-      }
-    },
-    {
-      id: 3,
-      title: "Database Detective",
-      type: "database",
-      challenge: {
-        scenario: "This SQL query is running very slowly. What's wrong?",
-        query: "SELECT * FROM users WHERE email LIKE '%@gmail.com'",
-        options: [
-          "Missing WHERE clause",
-          "No index on email column",
-          "Using SELECT * instead of specific columns",
-          "All of the above"
-        ],
-        correctAnswer: 3,
-        explanation: "The query lacks an index on the email column, and using SELECT * is inefficient. Both issues contribute to poor performance."
-      }
-    },
-    {
-      id: 4,
-      title: "Code Review Master",
-      type: "code_review",
-      challenge: {
-        scenario: "Review this code snippet. What security issue do you spot?",
-        code: `app.post('/login', (req, res) => {
-  const { username, password } = req.body;
-  const user = db.findUser(username, password);
-  if (user) {
-    res.json({ success: true, user });
-  }
-});`,
-        options: [
-          "No input validation",
-          "Passwords stored in plain text",
-          "No rate limiting",
-          "All of the above"
-        ],
-        correctAnswer: 3,
-        explanation: "The code lacks input validation, likely stores passwords in plain text, and has no rate limiting - all major security issues."
-      }
-    }
-  ];
-
   useEffect(() => {
- 
     if (router.query.completed === 'true') {
       setLoading(false);
       return;
     }
 
+    let loadingTimeout: NodeJS.Timeout;
+    setLoading(true);
+    setShowLoading(false);
+    loadingTimeout = setTimeout(() => setShowLoading(true), 300);
+
     const loadLevels = async () => {
       try {
-        setLoading(true);
         const levels = await fetchLevels(language);
         setDbLevels(levels);
       } catch (error) {
         console.error('Error loading levels:', error);
       } finally {
         setLoading(false);
+        clearTimeout(loadingTimeout);
+        setShowLoading(false);
       }
     };
 
     loadLevels();
+    return () => clearTimeout(loadingTimeout);
   }, [language, router.query.completed]);
 
-
+  // Usar los niveles del backend y las preguntas para armar los retos
   const getCurrentLevelData = () => {
-    if (currentLevel <= interactiveChallenges.length) {
-   
-      const challenge = interactiveChallenges[currentLevel - 1];
+    if (dbLevels.length && currentLevel <= dbLevels.length) {
       const dbLevel = dbLevels[currentLevel - 1];
-      
+      const q = levelQuestions[currentLevel - 1] || levelQuestions[0];
       return {
-        ...challenge,
-        story: {
-          title: dbLevel?.title || challenge.title,
-          description: dbLevel?.description || "Historia personal de debugging y resolución de problemas.",
-          tech: dbLevel?.tech || ["Debugging", "Problem Solving", "Technical Skills"]
-        }
-      };
-    } else {
-
-      const dbLevel = dbLevels[currentLevel - 1];
-      if (!dbLevel) return null;
-
-      return {
-        id: currentLevel,
-        title: dbLevel.title,
-        type: "story",
+        id: dbLevel.id,
+        title: dbLevel[`title_${language}`] || dbLevel.title,
+        type: "quiz",
         challenge: {
-          scenario: "Un nuevo desafío técnico",
-          options: ["Continuar"],
-          correctAnswer: 0,
-          explanation: "¡Excelente trabajo!"
+          scenario: q.question,
+          options: q.options.map(opt => opt.text),
+          correctAnswer: q.options.findIndex(opt => opt.correct),
+          explanation: q.options.find(opt => opt.correct)?.explanation || "",
+          explanations: q.explanations,
         },
         story: {
-          title: dbLevel.title,
-          description: dbLevel.description,
+          title: dbLevel[`title_${language}`] || dbLevel.title,
+          description: dbLevel[`description_${language}`] || dbLevel.description,
           tech: dbLevel.tech
         }
       };
+    } else {
+      return null;
     }
   };
 
   const handleLevelComplete = (levelId: number) => {
     setCompletedLevels(prev => new Set(Array.from(prev).concat(levelId)));
-    
-    const totalLevels = Math.max(interactiveChallenges.length, dbLevels.length);
-    
+    const totalLevels = dbLevels.length;
     if (levelId < totalLevels) {
-      setTimeout(() => {
-        setCurrentLevel(levelId + 1);
-      }, 2000);
+      setCurrentLevel(levelId + 1);
     } else {
-      setTimeout(() => {
-        setShowFinale(true);
-      }, 2000);
+      setShowFinale(true);
     }
   };
 
@@ -196,103 +160,220 @@ const AdventurePage: React.FC = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <div className="adventure-container">
-        <div className="loading-container">
-          <div className="loading-spinner"></div>
-          <p>{t('loading')}</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (showFinale) {
-    return (
-      <div className="finale-container">
-        <div className="finale-content">
-          <h1>🎉 {t('adventure.completed')}</h1>
-          <p className="finale-message">
-            {t('adventure.finale.message')}
-          </p>
-          
-          <div className="finale-stats">
-            <div className="stat">
-              <span className="stat-number">{Math.max(interactiveChallenges.length, dbLevels.length)}</span>
-              <span className="stat-label">{t('adventure.stats.completed')}</span>
-            </div>
-            <div className="stat">
-              <span className="stat-number">100%</span>
-              <span className="stat-label">{t('adventure.stats.debugging')}</span>
-            </div>
-            <div className="stat">
-              <span className="stat-number">∞</span>
-              <span className="stat-label">{t('adventure.stats.possibilities')}</span>
-            </div>
-          </div>
-          
-          <div className="finale-actions">
-            <button 
-              className="finale-button cv"
-              onClick={() => handleFinaleAction('cv')}
-            >
-              {t('adventure.actions.cv')}
-            </button>
-            <button 
-              className="finale-button linkedin"
-              onClick={() => handleFinaleAction('linkedin')}
-            >
-              {t('adventure.actions.linkedin')}
-            </button>
-            <button 
-              className="finale-button repo"
-              onClick={() => handleFinaleAction('repo')}
-            >
-              {t('adventure.actions.repo')}
-            </button>
-            <button 
-              className="finale-button restart"
-              onClick={() => handleFinaleAction('restart')}
-            >
-              {t('adventure.actions.restart')}
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   const currentLevelData = getCurrentLevelData();
-  const totalLevels = Math.max(interactiveChallenges.length, dbLevels.length);
+  const totalLevels = dbLevels.length;
+
+  // Cerrar el menú de CV al hacer clic fuera
+  useEffect(() => {
+    if (!cvMenuOpen) return;
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        cvMenuRef.current &&
+        !cvMenuRef.current.contains(event.target as Node) &&
+        cvButtonRef.current &&
+        !cvButtonRef.current.contains(event.target as Node)
+      ) {
+        setCvMenuOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [cvMenuOpen]);
+
+  // Función para descargar el CV
+  const handleDownloadCV = (lang: 'es' | 'en') => {
+    setCvMenuOpen(false);
+    const file = lang === 'es' ? '/cv_es.pdf' : '/cv_en.pdf';
+    const link = document.createElement('a');
+    link.href = file;
+    link.download = file.split('/').pop() || '';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="adventure-container">
-      <div className="adventure-header">
-        <h1>{t('adventure.title')}</h1>
-        <div className="progress-bar">
-          <div 
-            className="progress-fill" 
-            style={{ width: `${(completedLevels.size / totalLevels) * 100}%` }}
-          ></div>
+      {/* Cabecera siempre visible */}
+      <div className="adventure-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', marginBottom: '0.5rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+          <h1 style={{ margin: 0, fontSize: '2rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', textAlign: 'center' }}>{t('adventure.title')}</h1>
+          <span style={{ margin: 0, fontSize: '1.1rem', color: '#7a3fa4', fontWeight: 500, textAlign: 'center' }}>{t('adventure.level')} {currentLevel} {t('adventure.of')} {totalLevels}</span>
         </div>
-        <p>{t('adventure.level')} {currentLevel} {t('adventure.of')} {totalLevels}</p>
+        <div style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', marginRight: '0.5rem' }}>
+          <LanguageSwitcher hideLabel={true} />
+        </div>
       </div>
-      
-      {currentLevelData && (
-        <AdventureLevel
-          level={currentLevelData}
-          onComplete={handleLevelComplete}
-        />
+      {/* Loading */}
+      {showLoading && loading && (
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+        </div>
       )}
-      
-      <div className="adventure-footer">
-        <button 
-          className="back-button"
-          onClick={() => router.push('/')}
-        >
-          {t('adventure.back')}
-        </button>
-      </div>
+      {/* Pantalla final */}
+      {!loading && showFinale && (
+        <>
+        <div className="finale-container">
+          <div className="finale-content">
+            <h1>🎉 {t('adventure.completed')}</h1>
+            <p className="finale-message">
+              {t('adventure.finale.message')}
+            </p>
+            <div className="finale-stats">
+              <div className="stat">
+                <span className="stat-number">{dbLevels.length}</span>
+                <span className="stat-label">{t('adventure.stats.completed')}</span>
+              </div>
+              <div className="stat">
+                <span className="stat-number">100%</span>
+                <span className="stat-label">{t('adventure.stats.debugging')}</span>
+              </div>
+              <div className="stat">
+                <span className="stat-number">∞</span>
+                <span className="stat-label">{t('adventure.stats.possibilities')}</span>
+              </div>
+            </div>
+            <div className="finale-actions" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '1.5rem', marginTop: '2.5rem', position: 'relative' }}>
+              {/* Botón CV con menú flotante */}
+              <button 
+                className="finale-button cv"
+                ref={cvButtonRef}
+                onClick={() => setCvMenuOpen((open) => !open)}
+                style={{ width: '10rem', height: '3.2rem', borderRadius: '2rem', fontWeight: 500, fontSize: '1rem', background: '#f7eaff', border: '2px solid #c9a4e6', color: '#7a3fa4', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0, position: 'relative' }}
+              >
+                <span style={{ fontSize: '1.3rem', marginRight: '0.7rem' }}>📄</span>
+                <span style={{ fontSize: '1.05rem', fontWeight: 500 }}>CV</span>
+                {/* Menú flotante */}
+                {cvMenuOpen && (
+                  <div
+                    ref={cvMenuRef}
+                    style={{
+                      position: 'absolute',
+                      top: '110%',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      background: '#fff9fc',
+                      border: '1.5px solid #e0d7f7',
+                      borderRadius: '1rem',
+                      boxShadow: '0 2px 12px rgba(231, 84, 128, 0.10)',
+                      padding: '0.5rem 1.2rem',
+                      zIndex: 100,
+                      minWidth: '8rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.5rem',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <button
+                      style={{
+                        background: '#f7eaff',
+                        color: '#7a3fa4',
+                        border: 'none',
+                        borderRadius: '0.7rem',
+                        padding: '0.4rem 1.2rem',
+                        fontWeight: 500,
+                        fontSize: '1rem',
+                        cursor: 'pointer',
+                        width: '100%',
+                        marginBottom: '0.2rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        justifyContent: 'center',
+                      }}
+                      onClick={() => handleDownloadCV('es')}
+                    >
+                      <span role="img" aria-label="Español"></span> Español
+                    </button>
+                    <button
+                      style={{
+                        background: '#eafff7',
+                        color: '#3fa47a',
+                        border: 'none',
+                        borderRadius: '0.7rem',
+                        padding: '0.4rem 1.2rem',
+                        fontWeight: 500,
+                        fontSize: '1rem',
+                        cursor: 'pointer',
+                        width: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        justifyContent: 'center',
+                      }}
+                      onClick={() => handleDownloadCV('en')}
+                    >
+                      <span role="img" aria-label="English"></span> English
+                    </button>
+                  </div>
+                )}
+              </button>
+              {/* LinkedIn */}
+              <button 
+                className="finale-button linkedin"
+                onClick={() => window.open('https://www.linkedin.com/in/stefanyralvli/', '_blank')}
+                style={{ width: '10rem', height: '3.2rem', borderRadius: '2rem', fontWeight: 500, fontSize: '1rem', background: '#eafff7', border: '2px solid #a4e6c9', color: '#3fa47a', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0 }}
+              >
+                <span style={{ fontSize: '1.3rem', marginRight: '0.7rem' }}>💼</span>
+                <span style={{ fontSize: '1.05rem', fontWeight: 500 }}>LinkedIn</span>
+              </button>
+              {/* Repo */}
+              <button 
+                className="finale-button repo"
+                onClick={() => window.open('https://github.com/stefanyralvgh/MyPortfolio', '_blank')}
+                style={{ width: '10rem', height: '3.2rem', borderRadius: '2rem', fontWeight: 500, fontSize: '1rem', background: '#f7eaff', border: '2px solid #a4b6e6', color: '#3f5fa4', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0 }}
+              >
+                <span style={{ fontSize: '1.3rem', marginRight: '0.7rem' }}>🐙</span>
+                <span style={{ fontSize: '1.05rem', fontWeight: 500 }}>Repo</span>
+              </button>
+              {/* Reiniciar */}
+              <button 
+                className="finale-button restart"
+                onClick={() => handleFinaleAction('restart')}
+                style={{ width: '10rem', height: '3.2rem', borderRadius: '2rem', fontWeight: 500, fontSize: '1rem', background: '#fff7ea', border: '2px solid #e6c9a4', color: '#a47a3f', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0 }}
+              >
+                <span style={{ fontSize: '1.3rem', marginRight: '0.7rem' }}>🔄</span>
+                <span style={{ fontSize: '1.05rem', fontWeight: 500 }}>Reiniciar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="adventure-footer">
+          <button 
+            className="back-button"
+            onClick={() => router.push('/')}
+          >
+            {t('adventure.back')}
+          </button>
+        </div>
+        </>
+      )}
+      {/* Flujo normal de niveles */}
+      {!loading && !showFinale && (
+        <>
+          <div className="progress-bar" style={{ marginBottom: '1.5rem' }}>
+            <div 
+              className="progress-fill" 
+              style={{ width: `${(completedLevels.size / totalLevels) * 100}%` }}
+            ></div>
+          </div>
+          {currentLevelData && (
+            <AdventureLevel
+              level={currentLevelData}
+              onComplete={handleLevelComplete}
+            />
+          )}
+          <div className="adventure-footer">
+            <button 
+              className="back-button"
+              onClick={() => router.push('/')}
+            >
+              {t('adventure.back')}
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -767,3 +767,727 @@ Started GET "/favicon.ico" for ::1 at 2025-07-01 18:45:19 -0500
   
 ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
   
+Started GET "/levels" for ::1 at 2025-07-02 15:03:24 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (5.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as HTML
+  [1m[36mLevel Load (6.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 390ms (Views: 4.8ms | ActiveRecord: 47.0ms | Allocations: 19710)
+
+
+Started GET "/favicon.ico" for ::1 at 2025-07-02 15:03:26 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:07:41 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (3.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (3.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 276ms (Views: 1.4ms | ActiveRecord: 53.4ms | Allocations: 19719)
+
+
+Started GET "/levels" for ::1 at 2025-07-02 15:07:45 -0500
+Processing by LevelsController#index as HTML
+  [1m[36mLevel Load (2.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 997)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:09:15 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (2.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 11ms (Views: 1.1ms | ActiveRecord: 2.1ms | Allocations: 990)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:09:15 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (0.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.7ms | Allocations: 980)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:20:38 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (266.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 480ms (Views: 13.6ms | ActiveRecord: 342.2ms | Allocations: 4179)
+
+
+Started GET "/levels" for ::1 at 2025-07-02 15:27:53 -0500
+Processing by LevelsController#index as HTML
+  [1m[36mLevel Load (124.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 191ms (Views: 5.0ms | ActiveRecord: 159.6ms | Allocations: 4179)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:30:22 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (4.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 19ms (Views: 3.1ms | ActiveRecord: 4.1ms | Allocations: 980)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:30:38 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (3.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 19ms (Views: 0.5ms | ActiveRecord: 3.0ms | Allocations: 980)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:37:56 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (267.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 404ms (Views: 3.6ms | ActiveRecord: 310.7ms | Allocations: 4199)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:38:15 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (2.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 24ms (Views: 15.2ms | ActiveRecord: 2.8ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:39:40 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (37.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 149ms (Views: 10.4ms | ActiveRecord: 37.2ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:39:50 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (2.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 64ms (Views: 38.9ms | ActiveRecord: 2.0ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:40:11 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (2.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 79ms (Views: 3.1ms | ActiveRecord: 2.8ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:45:01 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (22.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 180ms (Views: 8.9ms | ActiveRecord: 22.7ms | Allocations: 982)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:45:19 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 12ms (Views: 1.6ms | ActiveRecord: 1.8ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:46:02 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.5ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 17ms (Views: 1.8ms | ActiveRecord: 1.5ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:46:25 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 14ms (Views: 3.0ms | ActiveRecord: 1.8ms | Allocations: 981)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 15:49:33 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (20.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 72ms (Views: 5.9ms | ActiveRecord: 20.3ms | Allocations: 979)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:49:40 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 23ms (Views: 3.8ms | ActiveRecord: 1.4ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:50:52 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (3.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 73ms (Views: 2.5ms | ActiveRecord: 3.9ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:51:46 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 55ms (Views: 0.4ms | ActiveRecord: 1.5ms | Allocations: 981)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 15:52:43 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 45ms (Views: 0.9ms | ActiveRecord: 1.1ms | Allocations: 979)
+
+
+Started GET "/levels?language=fr" for ::1 at 2025-07-02 15:52:46 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mLevel Load (1.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 30ms (Views: 0.8ms | ActiveRecord: 1.0ms | Allocations: 982)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 15:52:50 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.5ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 34ms (Views: 5.3ms | ActiveRecord: 1.4ms | Allocations: 979)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:52:54 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 28ms (Views: 1.9ms | ActiveRecord: 1.1ms | Allocations: 981)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 15:53:41 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 30ms (Views: 0.7ms | ActiveRecord: 1.6ms | Allocations: 979)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:54:46 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 25ms (Views: 0.9ms | ActiveRecord: 1.8ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:54:47 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (0.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 25ms (Views: 1.6ms | ActiveRecord: 0.7ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:54:47 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 111ms (Views: 1.5ms | ActiveRecord: 1.4ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 15:54:48 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.3ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 207ms (Views: 40.3ms | ActiveRecord: 1.3ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:07:37 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (276.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 336ms (Views: 2.1ms | ActiveRecord: 342.8ms | Allocations: 4223)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 16:13:18 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (106.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 143ms (Views: 2.9ms | ActiveRecord: 153.0ms | Allocations: 4178)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:14:46 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (2.5ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 12ms (Views: 1.3ms | ActiveRecord: 2.4ms | Allocations: 981)
+
+
+Started GET "/levels?language=fr" for ::1 at 2025-07-02 16:14:53 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mLevel Load (1.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 980)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:18:39 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (33.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 92ms (Views: 4.7ms | ActiveRecord: 33.3ms | Allocations: 982)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:19:22 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (2.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 23ms (Views: 2.6ms | ActiveRecord: 2.5ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:19:22 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 13ms (Views: 0.7ms | ActiveRecord: 0.9ms | Allocations: 982)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:21:18 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (3.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 61ms (Views: 2.8ms | ActiveRecord: 3.0ms | Allocations: 982)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 16:35:06 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (288.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 450ms (Views: 47.3ms | ActiveRecord: 355.5ms | Allocations: 4177)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:37:07 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (5.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 47ms (Views: 2.3ms | ActiveRecord: 5.8ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:38:57 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.3ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 53ms (Views: 2.2ms | ActiveRecord: 1.3ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:38:57 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 10ms (Views: 1.4ms | ActiveRecord: 1.0ms | Allocations: 981)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 16:39:06 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 11ms (Views: 1.8ms | ActiveRecord: 1.1ms | Allocations: 979)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:39:08 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (0.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 15ms (Views: 2.0ms | ActiveRecord: 0.8ms | Allocations: 981)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 16:39:11 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (0.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 0.9ms | Allocations: 979)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:39:14 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 981)
+
+
+Started GET "/levels?language=fr" for ::1 at 2025-07-02 16:39:22 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mLevel Load (2.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 14ms (Views: 1.5ms | ActiveRecord: 1.9ms | Allocations: 980)
+
+
+Started GET "/levels?language=fr" for ::1 at 2025-07-02 16:40:35 -0500
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:40:35 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (2.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 16ms (Views: 1.5ms | ActiveRecord: 2.9ms | Allocations: 988)
+
+
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mLevel Load (1.3ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 24ms (Views: 3.5ms | ActiveRecord: 1.3ms | Allocations: 980)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:40:43 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.5ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 39ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:41:12 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 52ms (Views: 0.8ms | ActiveRecord: 1.1ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:41:12 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (0.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 10ms (Views: 0.5ms | ActiveRecord: 0.7ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:41:36 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (0.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 11ms (Views: 1.1ms | ActiveRecord: 0.8ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:41:36 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (0.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 10ms (Views: 1.0ms | ActiveRecord: 1.7ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:42:12 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 1.0ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:42:12 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (0.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 11ms (Views: 1.0ms | ActiveRecord: 0.9ms | Allocations: 981)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 16:42:19 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 1.4ms | Allocations: 979)
+
+
+Started GET "/levels?language=fr" for ::1 at 2025-07-02 16:42:22 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mLevel Load (1.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 12ms (Views: 1.2ms | ActiveRecord: 1.0ms | Allocations: 980)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:42:26 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (0.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 20ms (Views: 2.2ms | ActiveRecord: 0.7ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:44:13 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (3.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 388ms (Views: 0.3ms | ActiveRecord: 70.4ms | Allocations: 19739)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:44:15 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (0.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 982)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 16:46:45 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (3.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 15ms (Views: 0.9ms | ActiveRecord: 2.8ms | Allocations: 991)
+
+
+Started GET "/levels?language=fr" for ::1 at 2025-07-02 16:46:52 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mLevel Load (5.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 14ms (Views: 0.6ms | ActiveRecord: 5.7ms | Allocations: 991)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:46:56 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.3ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 1.3ms | Allocations: 980)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 16:47:24 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (3.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 13ms (Views: 0.7ms | ActiveRecord: 2.4ms | Allocations: 978)
+
+
+Started GET "/levels?language=fr" for ::1 at 2025-07-02 16:48:34 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mLevel Load (2.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 12ms (Views: 0.5ms | ActiveRecord: 2.2ms | Allocations: 979)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:48:38 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (0.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 980)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 16:49:28 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 1.0ms | Allocations: 978)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:49:41 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 1.4ms | Allocations: 980)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:49:42 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (0.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 0.8ms | Allocations: 980)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:50:27 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 8ms (Views: 0.4ms | ActiveRecord: 1.0ms | Allocations: 980)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:50:33 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 980)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:50:33 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.5ms | Allocations: 980)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 16:50:38 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 8ms (Views: 0.4ms | ActiveRecord: 1.9ms | Allocations: 980)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:50:44 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (0.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 981)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 16:50:54 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (0.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 0.9ms | Allocations: 979)
+
+
+Started GET "/levels?language=fr" for ::1 at 2025-07-02 16:50:58 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mLevel Load (1.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 11ms (Views: 0.6ms | ActiveRecord: 1.5ms | Allocations: 980)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 16:51:09 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 47ms (Views: 0.7ms | ActiveRecord: 1.6ms | Allocations: 981)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-02 16:51:24 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.5ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 9ms (Views: 0.7ms | ActiveRecord: 1.4ms | Allocations: 979)
+
+
+Started GET "/levels?language=fr" for ::1 at 2025-07-02 16:51:27 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mLevel Load (1.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 1.1ms | Allocations: 980)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 17:00:26 -0500
+Started GET "/levels?language=en" for ::1 at 2025-07-02 17:00:26 -0500
+Started GET "/levels?language=fr" for ::1 at 2025-07-02 17:00:26 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"fr"}
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (650.5ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  [1m[36mLevel Load (792.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  [1m[36mLevel Load (615.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 1226ms (Views: 26.5ms | ActiveRecord: 1161.0ms | Allocations: 11626)
+
+
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 1042ms (Views: 2.8ms | ActiveRecord: 939.7ms | Allocations: 11117)
+
+
+Completed 200 OK in 952ms (Views: 1.2ms | ActiveRecord: 859.1ms | Allocations: 10376)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 17:00:28 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 21ms (Views: 2.1ms | ActiveRecord: 1.9ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 17:05:04 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (50.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 264ms (Views: 11.3ms | ActiveRecord: 49.3ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 17:07:26 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (26.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 213ms (Views: 13.3ms | ActiveRecord: 25.7ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 17:07:53 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (3.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 22ms (Views: 3.0ms | ActiveRecord: 3.0ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 17:08:52 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (3.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 31ms (Views: 5.9ms | ActiveRecord: 3.8ms | Allocations: 981)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-02 17:18:58 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1044.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 1825ms (Views: 17.1ms | ActiveRecord: 1210.7ms | Allocations: 4183)
+
+
