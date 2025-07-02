@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import AdventureLevel from '../components/AdventureLevel';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -16,6 +16,10 @@ const AdventurePage: React.FC = () => {
   const [showLoading, setShowLoading] = useState(false);
   const router = useRouter();
   const { language, t } = useLanguage();
+  // Estado para el menú flotante de CV
+  const [cvMenuOpen, setCvMenuOpen] = useState(false);
+  const cvButtonRef = useRef<HTMLButtonElement>(null);
+  const cvMenuRef = useRef<HTMLDivElement>(null);
 
   // Preguntas y opciones para cada nivel (puedes personalizarlas luego)
   const levelQuestions = [
@@ -159,6 +163,35 @@ const AdventurePage: React.FC = () => {
   const currentLevelData = getCurrentLevelData();
   const totalLevels = dbLevels.length;
 
+  // Cerrar el menú de CV al hacer clic fuera
+  useEffect(() => {
+    if (!cvMenuOpen) return;
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        cvMenuRef.current &&
+        !cvMenuRef.current.contains(event.target as Node) &&
+        cvButtonRef.current &&
+        !cvButtonRef.current.contains(event.target as Node)
+      ) {
+        setCvMenuOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [cvMenuOpen]);
+
+  // Función para descargar el CV
+  const handleDownloadCV = (lang: 'es' | 'en') => {
+    setCvMenuOpen(false);
+    const file = lang === 'es' ? '/cv_es.pdf' : '/cv_en.pdf';
+    const link = document.createElement('a');
+    link.href = file;
+    link.download = file.split('/').pop() || '';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="adventure-container">
       {/* Cabecera siempre visible */}
@@ -200,31 +233,101 @@ const AdventurePage: React.FC = () => {
                 <span className="stat-label">{t('adventure.stats.possibilities')}</span>
               </div>
             </div>
-            <div className="finale-actions" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '1.5rem', marginTop: '2.5rem' }}>
+            <div className="finale-actions" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '1.5rem', marginTop: '2.5rem', position: 'relative' }}>
+              {/* Botón CV con menú flotante */}
               <button 
                 className="finale-button cv"
-                onClick={() => handleFinaleAction('cv')}
-                style={{ width: '10rem', height: '3.2rem', borderRadius: '2rem', fontWeight: 500, fontSize: '1rem', background: '#f7eaff', border: '2px solid #c9a4e6', color: '#7a3fa4', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0 }}
+                ref={cvButtonRef}
+                onClick={() => setCvMenuOpen((open) => !open)}
+                style={{ width: '10rem', height: '3.2rem', borderRadius: '2rem', fontWeight: 500, fontSize: '1rem', background: '#f7eaff', border: '2px solid #c9a4e6', color: '#7a3fa4', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0, position: 'relative' }}
               >
                 <span style={{ fontSize: '1.3rem', marginRight: '0.7rem' }}>📄</span>
                 <span style={{ fontSize: '1.05rem', fontWeight: 500 }}>CV</span>
+                {/* Menú flotante */}
+                {cvMenuOpen && (
+                  <div
+                    ref={cvMenuRef}
+                    style={{
+                      position: 'absolute',
+                      top: '110%',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      background: '#fff9fc',
+                      border: '1.5px solid #e0d7f7',
+                      borderRadius: '1rem',
+                      boxShadow: '0 2px 12px rgba(231, 84, 128, 0.10)',
+                      padding: '0.5rem 1.2rem',
+                      zIndex: 100,
+                      minWidth: '8rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.5rem',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <button
+                      style={{
+                        background: '#f7eaff',
+                        color: '#7a3fa4',
+                        border: 'none',
+                        borderRadius: '0.7rem',
+                        padding: '0.4rem 1.2rem',
+                        fontWeight: 500,
+                        fontSize: '1rem',
+                        cursor: 'pointer',
+                        width: '100%',
+                        marginBottom: '0.2rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        justifyContent: 'center',
+                      }}
+                      onClick={() => handleDownloadCV('es')}
+                    >
+                      <span role="img" aria-label="Español"></span> Español
+                    </button>
+                    <button
+                      style={{
+                        background: '#eafff7',
+                        color: '#3fa47a',
+                        border: 'none',
+                        borderRadius: '0.7rem',
+                        padding: '0.4rem 1.2rem',
+                        fontWeight: 500,
+                        fontSize: '1rem',
+                        cursor: 'pointer',
+                        width: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        justifyContent: 'center',
+                      }}
+                      onClick={() => handleDownloadCV('en')}
+                    >
+                      <span role="img" aria-label="English"></span> English
+                    </button>
+                  </div>
+                )}
               </button>
+              {/* LinkedIn */}
               <button 
                 className="finale-button linkedin"
-                onClick={() => handleFinaleAction('linkedin')}
+                onClick={() => window.open('https://www.linkedin.com/in/stefanyralvli/', '_blank')}
                 style={{ width: '10rem', height: '3.2rem', borderRadius: '2rem', fontWeight: 500, fontSize: '1rem', background: '#eafff7', border: '2px solid #a4e6c9', color: '#3fa47a', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0 }}
               >
                 <span style={{ fontSize: '1.3rem', marginRight: '0.7rem' }}>💼</span>
                 <span style={{ fontSize: '1.05rem', fontWeight: 500 }}>LinkedIn</span>
               </button>
+              {/* Repo */}
               <button 
                 className="finale-button repo"
-                onClick={() => handleFinaleAction('repo')}
+                onClick={() => window.open('https://github.com/stefanyralvgh/MyPortfolio', '_blank')}
                 style={{ width: '10rem', height: '3.2rem', borderRadius: '2rem', fontWeight: 500, fontSize: '1rem', background: '#f7eaff', border: '2px solid #a4b6e6', color: '#3f5fa4', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0 }}
               >
                 <span style={{ fontSize: '1.3rem', marginRight: '0.7rem' }}>🐙</span>
                 <span style={{ fontSize: '1.05rem', fontWeight: 500 }}>Repo</span>
               </button>
+              {/* Reiniciar */}
               <button 
                 className="finale-button restart"
                 onClick={() => handleFinaleAction('restart')}
