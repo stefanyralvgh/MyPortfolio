@@ -15,6 +15,53 @@ const AdventurePage: React.FC = () => {
   const router = useRouter();
   const { language, t } = useLanguage();
 
+  // Preguntas y opciones para cada nivel (puedes personalizarlas luego)
+  const levelQuestions = [
+    {
+      question: "¿Qué es lo más importante al diseñar una API?",
+      options: [
+        { text: "Que sea fácil de entender y usar", correct: true, explanation: "¡Correcto! Una API clara y predecible es clave para que otros desarrolladores la adopten y la usen bien." },
+        { text: "Que tenga muchos endpoints", correct: false, explanation: "No necesariamente. Lo importante es la claridad y consistencia, no la cantidad de endpoints." }
+      ],
+      explanations: [
+        "¡Correcto! Una API clara y predecible es clave para que otros desarrolladores la adopten y la usen bien.",
+        "No necesariamente. Lo importante es la claridad y consistencia, no la cantidad de endpoints."
+      ]
+    },
+    {
+      question: "¿Qué mejora el rendimiento de una consulta a base de datos?",
+      options: [
+        { text: "Usar índices en las columnas consultadas", correct: true, explanation: "¡Exacto! Los índices aceleran las búsquedas y mejoran el rendimiento." },
+        { text: "Hacer SELECT * siempre", correct: false, explanation: "No es recomendable, ya que puede traer datos innecesarios y ralentizar la consulta." }
+      ],
+      explanations: [
+        "¡Exacto! Los índices aceleran las búsquedas y mejoran el rendimiento.",
+        "No es recomendable, ya que puede traer datos innecesarios y ralentizar la consulta."
+      ]
+    },
+    {
+      question: "¿Qué ayuda a escalar un backend?",
+      options: [
+        { text: "Dividir la lógica en módulos claros", correct: true, explanation: "¡Correcto! La modularidad facilita el mantenimiento y la escalabilidad." },
+        { text: "Poner toda la lógica en un solo archivo", correct: false, explanation: "Eso complica el mantenimiento y limita la escalabilidad." }
+      ],
+      explanations: [
+        "¡Correcto! La modularidad facilita el mantenimiento y la escalabilidad.",
+        "Eso complica el mantenimiento y limita la escalabilidad."
+      ]
+    },
+    {
+      question: "¿Qué es esencial para un flujo de trabajo en equipo?",
+      options: [
+        { text: "Integración continua y buenas prácticas de git", correct: true, explanation: "¡Sí! CI/CD y git ayudan a mantener la calidad y la colaboración." },
+        { text: "Hacer todo en producción directamente", correct: false, explanation: "Eso es riesgoso y puede causar errores graves. Mejor usar buenas prácticas y entornos de prueba." }
+      ],
+      explanations: [
+        "¡Sí! CI/CD y git ayudan a mantener la calidad y la colaboración.",
+        "Eso es riesgoso y puede causar errores graves. Mejor usar buenas prácticas y entornos de prueba."
+      ]
+    }
+  ];
 
   useEffect(() => {
     if (router.query.completed === 'true') {
@@ -23,85 +70,7 @@ const AdventurePage: React.FC = () => {
     }
   }, [router.query.completed]);
 
-  const interactiveChallenges = [
-    {
-      id: 1,
-      title: "Debug Detective",
-      type: "debug",
-      challenge: {
-        scenario: "Clerk authentication is broken! Users can't log in.",
-        error: "TypeError: Cannot read property 'keys' of undefined",
-        options: [
-          "Check if Clerk is properly initialized",
-          "Verify the API keys are correctly set",
-          "Look for typos in the authentication flow",
-          "Restart the server"
-        ],
-        correctAnswer: 1,
-        explanation: "The error suggests that 'keys' is undefined, which typically means the API keys aren't properly configured in the environment variables."
-      }
-    },
-    {
-      id: 2,
-      title: "API Explorer",
-      type: "api",
-      challenge: {
-        scenario: "The API endpoint is returning 404 errors. Fix the URL!",
-        brokenUrl: "GET /api/users/123",
-        options: [
-          "/api/user/123",
-          "/api/users/123",
-          "/api/users?id=123",
-          "/api/user?id=123"
-        ],
-        correctAnswer: 0,
-        explanation: "The endpoint should be singular 'user' not plural 'users' based on the API documentation."
-      }
-    },
-    {
-      id: 3,
-      title: "Database Detective",
-      type: "database",
-      challenge: {
-        scenario: "This SQL query is running very slowly. What's wrong?",
-        query: "SELECT * FROM users WHERE email LIKE '%@gmail.com'",
-        options: [
-          "Missing WHERE clause",
-          "No index on email column",
-          "Using SELECT * instead of specific columns",
-          "All of the above"
-        ],
-        correctAnswer: 3,
-        explanation: "The query lacks an index on the email column, and using SELECT * is inefficient. Both issues contribute to poor performance."
-      }
-    },
-    {
-      id: 4,
-      title: "Code Review Master",
-      type: "code_review",
-      challenge: {
-        scenario: "Review this code snippet. What security issue do you spot?",
-        code: `app.post('/login', (req, res) => {
-  const { username, password } = req.body;
-  const user = db.findUser(username, password);
-  if (user) {
-    res.json({ success: true, user });
-  }
-});`,
-        options: [
-          "No input validation",
-          "Passwords stored in plain text",
-          "No rate limiting",
-          "All of the above"
-        ],
-        correctAnswer: 3,
-        explanation: "The code lacks input validation, likely stores passwords in plain text, and has no rate limiting - all major security issues."
-      }
-    }
-  ];
-
   useEffect(() => {
- 
     if (router.query.completed === 'true') {
       setLoading(false);
       return;
@@ -122,58 +91,40 @@ const AdventurePage: React.FC = () => {
     loadLevels();
   }, [language, router.query.completed]);
 
-
+  // Usar los niveles del backend y las preguntas para armar los retos
   const getCurrentLevelData = () => {
-    if (currentLevel <= interactiveChallenges.length) {
-   
-      const challenge = interactiveChallenges[currentLevel - 1];
+    if (dbLevels.length && currentLevel <= dbLevels.length) {
       const dbLevel = dbLevels[currentLevel - 1];
-      
+      const q = levelQuestions[currentLevel - 1] || levelQuestions[0];
       return {
-        ...challenge,
-        story: {
-          title: dbLevel?.title || challenge.title,
-          description: dbLevel?.description || "Historia personal de debugging y resolución de problemas.",
-          tech: dbLevel?.tech || ["Debugging", "Problem Solving", "Technical Skills"]
-        }
-      };
-    } else {
-
-      const dbLevel = dbLevels[currentLevel - 1];
-      if (!dbLevel) return null;
-
-      return {
-        id: currentLevel,
-        title: dbLevel.title,
-        type: "story",
+        id: dbLevel.id,
+        title: dbLevel[`title_${language}`] || dbLevel.title,
+        type: "quiz",
         challenge: {
-          scenario: "Un nuevo desafío técnico",
-          options: ["Continuar"],
-          correctAnswer: 0,
-          explanation: "¡Excelente trabajo!"
+          scenario: q.question,
+          options: q.options.map(opt => opt.text),
+          correctAnswer: q.options.findIndex(opt => opt.correct),
+          explanation: q.options.find(opt => opt.correct)?.explanation || "",
+          explanations: q.explanations,
         },
         story: {
-          title: dbLevel.title,
-          description: dbLevel.description,
+          title: dbLevel[`title_${language}`] || dbLevel.title,
+          description: dbLevel[`description_${language}`] || dbLevel.description,
           tech: dbLevel.tech
         }
       };
+    } else {
+      return null;
     }
   };
 
   const handleLevelComplete = (levelId: number) => {
     setCompletedLevels(prev => new Set(Array.from(prev).concat(levelId)));
-    
-    const totalLevels = Math.max(interactiveChallenges.length, dbLevels.length);
-    
+    const totalLevels = dbLevels.length;
     if (levelId < totalLevels) {
-      setTimeout(() => {
-        setCurrentLevel(levelId + 1);
-      }, 2000);
+      setCurrentLevel(levelId + 1);
     } else {
-      setTimeout(() => {
-        setShowFinale(true);
-      }, 2000);
+      setShowFinale(true);
     }
   };
 
@@ -218,7 +169,7 @@ const AdventurePage: React.FC = () => {
           
           <div className="finale-stats">
             <div className="stat">
-              <span className="stat-number">{Math.max(interactiveChallenges.length, dbLevels.length)}</span>
+              <span className="stat-number">{dbLevels.length}</span>
               <span className="stat-label">{t('adventure.stats.completed')}</span>
             </div>
             <div className="stat">
@@ -263,7 +214,7 @@ const AdventurePage: React.FC = () => {
   }
 
   const currentLevelData = getCurrentLevelData();
-  const totalLevels = Math.max(interactiveChallenges.length, dbLevels.length);
+  const totalLevels = dbLevels.length;
 
   return (
     <div className="adventure-container">

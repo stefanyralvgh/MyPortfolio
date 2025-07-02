@@ -9,6 +9,7 @@ interface Challenge {
   options: string[];
   correctAnswer: number;
   explanation: string;
+  explanations?: string[];
 }
 
 interface Story {
@@ -29,173 +30,21 @@ interface AdventureLevelProps {
 }
 
 const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) => {
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [showStory, setShowStory] = useState(false);
-  const [showExplanation, setShowExplanation] = useState(false);
 
-  const handleAnswerSelect = (answerIndex: number) => {
-    setSelectedAnswer(answerIndex);
-    setIsCorrect(answerIndex === level.challenge.correctAnswer);
+  const handleOptionClick = (index: number) => {
+    setSelectedOption(index);
+    setIsCorrect(index === level.challenge.correctAnswer);
     setShowResult(true);
   };
 
   const handleContinue = () => {
-    if (showResult && !showExplanation) {
-      setShowExplanation(true);
-    } else if (showExplanation && !showStory) {
-      setShowStory(true);
-    } else if (showStory) {
-      onComplete(level.id);
-    }
-  };
-
-  const renderChallenge = () => {
-    switch (level.type) {
-      case 'debug':
-        return (
-          <div className="challenge-content debug">
-            <div className="scenario">
-              <h3>🐛 {level.challenge.scenario}</h3>
-              <div className="error-message">
-                <code>{level.challenge.error}</code>
-              </div>
-            </div>
-          </div>
-        );
-      
-      case 'api':
-        return (
-          <div className="challenge-content api">
-            <div className="scenario">
-              <h3>🔗 {level.challenge.scenario}</h3>
-              <div className="broken-url">
-                <code>{level.challenge.brokenUrl}</code>
-              </div>
-            </div>
-          </div>
-        );
-      
-      case 'database':
-        return (
-          <div className="challenge-content database">
-            <div className="scenario">
-              <h3>🗄️ {level.challenge.scenario}</h3>
-              <div className="slow-query">
-                <code>{level.challenge.query}</code>
-              </div>
-            </div>
-          </div>
-        );
-      
-      case 'code_review':
-        return (
-          <div className="challenge-content code-review">
-            <div className="scenario">
-              <h3>🔍 {level.challenge.scenario}</h3>
-              <div className="code-snippet">
-                <pre><code>{level.challenge.code}</code></pre>
-              </div>
-            </div>
-          </div>
-        );
-      
-      default:
-        return null;
-    }
-  };
-
-  const renderOptions = () => {
-    return (
-      <div className="options-container">
-        <h4>¿Cuál es la solución correcta?</h4>
-        <div className="options-grid">
-          {level.challenge.options.map((option, index) => (
-            <button
-              key={index}
-              className={`option-button ${
-                selectedAnswer === index 
-                  ? isCorrect 
-                    ? 'correct' 
-                    : 'incorrect'
-                  : ''
-              }`}
-              onClick={() => handleAnswerSelect(index)}
-              disabled={showResult}
-            >
-              <span className="option-letter">{String.fromCharCode(65 + index)}</span>
-              <span className="option-text">{option}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-  const renderResult = () => {
-    if (!showResult) return null;
-
-    return (
-      <div className={`result-container ${isCorrect ? 'success' : 'error'}`}>
-        <div className="result-icon">
-          {isCorrect ? '✅' : '❌'}
-        </div>
-        <div className="result-message">
-          <h3>{isCorrect ? '¡Correcto!' : 'Incorrecto'}</h3>
-          <p>{isCorrect ? 'Excelente debugging skills!' : 'No te preocupes, aprenderemos juntos.'}</p>
-        </div>
-        <button className="continue-button" onClick={handleContinue}>
-          Continuar
-        </button>
-      </div>
-    );
-  };
-
-  const renderExplanation = () => {
-    if (!showExplanation) return null;
-
-    return (
-      <div className="explanation-container">
-        <h3>💡 Explicación</h3>
-        <p>{level.challenge.explanation}</p>
-        <button className="continue-button" onClick={handleContinue}>
-          Ver mi historia
-        </button>
-      </div>
-    );
-  };
-
-  const renderStory = () => {
-    if (!showStory) return null;
-
-    return (
-      <div className="story-container">
-        <div className="story-header">
-          <h2>🎉 ¡Nivel Desbloqueado!</h2>
-          <h3>{level.story.title}</h3>
-        </div>
-        
-        <div className="story-content">
-          <p>{level.story.description}</p>
-          
-          <div className="tech-stack">
-            <h4>Tecnologías utilizadas:</h4>
-            <div className="tech-tags">
-              {level.story.tech.map((tech, index) => (
-                <span key={index} className="tech-tag">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-        
-        <button className="continue-button" onClick={handleContinue}>
-          {level.id < 4 ? 'Siguiente Nivel' : 'Completar Aventura'}
-        </button>
-      </div>
-    );
+    setSelectedOption(null);
+    setShowResult(false);
+    setIsCorrect(false);
+    onComplete(level.id);
   };
 
   return (
@@ -203,18 +52,77 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
       <div className="level-header">
         <h2>Nivel {level.id}: {level.title}</h2>
       </div>
-      
       <div className="level-content">
+        {/* Pregunta del reto */}
+        <div className="challenge-narrative">
+          <h3>📝 {level.challenge.scenario}</h3>
+          {level.challenge.error && (
+            <div className="error-message">
+              <code>{level.challenge.error}</code>
+            </div>
+          )}
+          {level.challenge.brokenUrl && (
+            <div className="broken-url">
+              <code>{level.challenge.brokenUrl}</code>
+            </div>
+          )}
+          {level.challenge.query && (
+            <div className="slow-query">
+              <code>{level.challenge.query}</code>
+            </div>
+          )}
+          {level.challenge.code && (
+            <div className="code-snippet">
+              <pre><code>{level.challenge.code}</code></pre>
+            </div>
+          )}
+        </div>
+        {/* Opciones tipo botón en fila horizontal, cuadradas y simétricas */}
         {!showResult && (
-          <>
-            {renderChallenge()}
-            {renderOptions()}
-          </>
+          <div className="options-container" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '2rem', margin: '2rem 0' }}>
+            {level.challenge.options.map((option, idx) => (
+              <button
+                key={idx}
+                className="option-button"
+                onClick={() => handleOptionClick(idx)}
+                style={{
+                  width: '8rem',
+                  height: '8rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.1rem',
+                  fontWeight: 500,
+                  borderRadius: '1.2rem',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
+                  background: '#f7eaff',
+                  border: '2px solid #c9a4e6',
+                  color: '#7a3fa4',
+                  cursor: 'pointer',
+                  transition: 'background 0.2s, border 0.2s',
+                }}
+              >
+                {option}
+              </button>
+            ))}
+          </div>
         )}
-        
-        {renderResult()}
-        {renderExplanation()}
-        {renderStory()}
+        {/* Resultado, explicación e historia personal */}
+        {showResult && (
+          <div className="result-container" style={{ marginTop: '2rem', textAlign: 'center' }}>
+            <h4>{isCorrect ? '¡Correcto!' : 'No era esa 😅'}</h4>
+            <p style={{ fontWeight: 500 }}>
+              {selectedOption !== null && level.challenge.explanations && level.challenge.explanations[selectedOption]}
+            </p>
+            <div className="story-content" style={{ marginTop: '1.5rem' }}>
+              <h4>Historia personal:</h4>
+              <p>{level.story.description}</p>
+            </div>
+            <button className="continue-button" onClick={handleContinue} style={{ marginTop: '2rem' }}>
+              Siguiente reto
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
