@@ -137,18 +137,8 @@ body::-webkit-scrollbar-thumb:hover {
   align-items: center;
 }
 
-.cursor {
-  color: #fff9c4;
-  animation: blink 1s infinite;
-}
-.cursor-blur {
-  color: #b2ebf2;
-  animation: none;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+.cursor, .cursor-blur {
+  display: none !important;
 }
 
 .terminal-input {
@@ -157,6 +147,23 @@ body::-webkit-scrollbar-thumb:hover {
   opacity: 0;
   width: 1px;
   height: 1px;
+}
+
+.visible-input {
+  position: static;
+  left: unset;
+  opacity: 1;
+  width: 90%;
+  height: auto;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff9c4;
+  font: inherit;
+  caret-color: #e75480;
+  animation: none !important;
+  box-shadow: none;
+  z-index: 2;
 }
 
 /* Adventure Page Styles */
