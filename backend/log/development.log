@@ -1491,3 +1491,89 @@ Processing by LevelsController#index as */*
 Completed 200 OK in 1825ms (Views: 17.1ms | ActiveRecord: 1210.7ms | Allocations: 4183)
 
 
+Started GET "/levels?language=en" for ::1 at 2025-07-03 07:04:24 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (5.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (7.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 573ms (Views: 0.9ms | ActiveRecord: 59.7ms | Allocations: 19713)
+
+
+Started GET "/levels" for ::1 at 2025-07-03 07:04:27 -0500
+Processing by LevelsController#index as HTML
+  [1m[36mLevel Load (7.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:5:in `map'
+Completed 200 OK in 16ms (Views: 0.5ms | ActiveRecord: 7.4ms | Allocations: 985)
+
+
+Started GET "/favicon.ico" for ::1 at 2025-07-03 07:04:27 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (14.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to ChangeLevelsStructure (20250701030000)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[35m (65.5ms)[0m  [1m[35mALTER TABLE "levels" DROP COLUMN "title" /*application='Backend'*/[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "levels" DROP COLUMN "description" /*application='Backend'*/[0m
+  [1m[35m (6.3ms)[0m  [1m[35mALTER TABLE "levels" DROP COLUMN "tech" /*application='Backend'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "levels" DROP COLUMN "title_es" /*application='Backend'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "levels" DROP COLUMN "title_en" /*application='Backend'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "levels" DROP COLUMN "title_fr" /*application='Backend'*/[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "levels" DROP COLUMN "description_es" /*application='Backend'*/[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "levels" DROP COLUMN "description_en" /*application='Backend'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "levels" DROP COLUMN "description_fr" /*application='Backend'*/[0m
+  [1m[35m (18.7ms)[0m  [1m[35mALTER TABLE "levels" ADD "titles" jsonb DEFAULT '{}' /*application='Backend'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "levels" ADD "descriptions" jsonb DEFAULT '{}' /*application='Backend'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "levels" ADD "question" jsonb DEFAULT '{}' /*application='Backend'*/[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "levels" ADD "options" jsonb DEFAULT '{}' /*application='Backend'*/[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "levels" ADD "correct_option" character varying /*application='Backend'*/[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "levels" ADD "explanation" jsonb DEFAULT '{}' /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (5.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250701030000') RETURNING "version" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (8.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mLevel Load (1.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Destroy (15.6ms)[0m  [1m[31mDELETE FROM "levels" WHERE "levels"."id" = 1 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Destroy (7.8ms)[0m  [1m[31mDELETE FROM "levels" WHERE "levels"."id" = 2 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Destroy (6.6ms)[0m  [1m[31mDELETE FROM "levels" WHERE "levels"."id" = 3 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Destroy (4.4ms)[0m  [1m[31mDELETE FROM "levels" WHERE "levels"."id" = 4 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (14.4ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (101, '2025-07-03 12:37:28.308766', '2025-07-03 12:37:28.308766', '{"en":"Authentication Madness","es":"Caos de Autenticación","fr":"Chaos d''Authentification"}', '{"en":"Learn how I debugged one of the trickiest bugs in our Clerk integration.","es":"Descubre cómo depuré uno de los bugs más complejos en nuestra integración con Clerk.","fr":"Découvrez comment j''ai débogué un bug complexe lié à Clerk."}', '{"en":"User tokens were not being validated properly across environments. What did I do?","es":"Los tokens de usuario no se validaban bien entre entornos. ¿Qué hice?","fr":"Les jetons utilisateur n''étaient pas correctement validés entre environnements. Qu''ai-je fait ?"}', '{"A":{"en":"I rewrote the entire auth logic from scratch to make sure it was clean.","es":"Reescribí toda la lógica de autenticación desde cero para que quedara limpia.","fr":"J''ai réécrit toute la logique d''authentification à partir de zéro."},"B":{"en":"I debugged the token flow, built test routes, and proposed a safer validation structure.","es":"Depuré el flujo de tokens, creé rutas de prueba y propuse una validación más segura.","fr":"J''ai débogué le flux, créé des routes de test et proposé une structure plus sûre."}}', 'B', '{"en":"The issue was due to environment differences. I added debug routes, improved error handling, and proposed a safer structure.","es":"El problema eran diferencias entre entornos. Agregué rutas de prueba, mejoré el manejo de errores y propuse una validación más segura.","fr":"Le problème venait des environnements. J''ai ajouté des routes de test, amélioré les erreurs et proposé une structure plus fiable."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (5.9ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (102, '2025-07-03 12:37:28.342374', '2025-07-03 12:37:28.342374', '{"en":"Infra Overload","es":"Sobrecarga de Infraestructura","fr":"Surcharge d''Infrastructure"}', '{"en":"Explore how I improved our deploy pipeline under pressure.","es":"Explora cómo mejoré nuestro pipeline de deploy bajo presión.","fr":"Découvrez comment j''ai optimisé notre pipeline de déploiement sous pression."}', '{"en":"Our deploy pipeline was too slow and rebuilding everything every time. What did I do?","es":"Nuestro pipeline era lento y reconstruía todo siempre. ¿Qué hice?","fr":"Notre pipeline était trop lent et reconstruisait tout à chaque fois. Qu''ai-je fait ?"}', '{"A":{"en":"I split the pipeline so it would only build REST or GraphQL, depending on the changes.","es":"Dividí el pipeline para que solo construyera REST o GraphQL según los cambios.","fr":"J''ai séparé les builds REST et GraphQL selon les changements."},"B":{"en":"I removed all build steps and started deploying manually for faster control.","es":"Eliminé los pasos del build y empecé a hacer deploys manualmente.","fr":"J''ai supprimé les étapes du build et commencé les déploiements manuels."}}', 'A', '{"en":"Manual deploys create more chaos long-term. I isolated builds and improved CI/CD scalability.","es":"Los deploys manuales generan caos. Separé los builds y mejoré la escalabilidad de CI/CD.","fr":"Les déploiements manuels sont chaotiques. J''ai isolé les builds pour une meilleure CI/CD."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (5.9ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (103, '2025-07-03 12:37:28.363387', '2025-07-03 12:37:28.363387', '{"en":"The Endpoint Dilemma","es":"El Dilema del Endpoint","fr":"Le Dilemme de l''Endpoint"}', '{"en":"See how I made a shared endpoint work for multiple use cases without duplicating logic.","es":"Mira cómo hice que un solo endpoint funcionara para múltiples casos sin duplicar lógica.","fr":"Comment j''ai rendu un endpoint polyvalent sans dupliquer la logique."}', '{"en":"The endpoint /me was returning too much data and slowing down the student app. What did I do?","es":"El endpoint /me devolvía demasiada data y ralentizaba la app. ¿Qué hice?","fr":"Le endpoint /me envoyait trop de données. Que faire ?"}', '{"A":{"en":"I removed half the data and told the frontend team to request the rest separately.","es":"Eliminé la mitad de los datos y pedí al frontend que solicitara el resto aparte.","fr":"J''ai retiré la moitié des données et demandé au frontend de les charger séparément."},"B":{"en":"I added query parameters to load extra data only when needed, keeping the endpoint lean by default.","es":"Agregué query params para cargar datos extra solo si se necesitaban.","fr":"J''ai ajouté des query params pour charger des données supplémentaires uniquement si nécessaire."}}', 'B', '{"en":"Query params like `includeEnrolled` made the endpoint lean, flexible, and reusable.","es":"Query params como `includeEnrolled` hicieron el endpoint más flexible y eficiente.","fr":"Des query params comme `includeEnrolled` ont rendu le endpoint plus flexible."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (11.8ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (104, '2025-07-03 12:37:28.383269', '2025-07-03 12:37:28.383269', '{"en":"Gamification Chaos","es":"Caos de Gamificación","fr":"Chaos de Gamification"}', '{"en":"Learn how I brought order to streaks, EXP, badges, and skills — and made them work together.","es":"Descubre cómo hice que las streaks, EXP, badges y skills funcionaran en conjunto.","fr":"Comment j''ai harmonisé les streaks, EXP, badges et skills pour les faire fonctionner ensemble."}', '{"en":"The streak and EXP system broke after database changes. What was my approach?","es":"El sistema de streaks y EXP se rompió tras cambios en la base. ¿Qué hice?","fr":"Le système de streak et EXP a cassé après des changements. Quelle a été ma démarche ?"}', '{"A":{"en":"I manually updated values in the DB and hoped the logic worked later.","es":"Actualicé valores a mano en la base y esperé que funcionara.","fr":"J''ai modifié les valeurs à la main et espéré que ça marche."},"B":{"en":"I tested the whole flow end-to-end, debugged the logic, and coordinated with frontend to align expectations.","es":"Probé el flujo completo, depuré la lógica y coordiné con el frontend para alinear expectativas.","fr":"J''ai testé tout le flux, corrigé la logique et aligné avec le frontend."}}', 'B', '{"en":"I didn''t patch blindly. I tested, aligned the flow, and fixed the root cause.","es":"No parchamos sin pensar. Probé todo, alineé y arreglé desde raíz.","fr":"Pas de patch aveugle : j''ai testé, aligné et résolu à la racine."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+Started GET "/levels" for ::1 at 2025-07-03 07:38:13 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as HTML
+  [1m[36mLevel Load (3.3ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 328ms (Views: 79.6ms | ActiveRecord: 27.1ms | Allocations: 17661)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-03 07:38:58 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (3.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 16ms (Views: 11.8ms | ActiveRecord: 3.6ms | Allocations: 1118)
+
+

@@ -108,22 +108,23 @@ const AdventurePage: React.FC = () => {
   const getCurrentLevelData = () => {
     if (dbLevels.length && currentLevel <= dbLevels.length) {
       const dbLevel = dbLevels[currentLevel - 1];
-      const q = levelQuestions[currentLevel - 1] || levelQuestions[0];
       return {
         id: dbLevel.id,
-        title: dbLevel[`title_${language}`] || dbLevel.title,
+        title: dbLevel.titles[language],
         type: "quiz",
         challenge: {
-          scenario: q.question,
-          options: q.options.map(opt => opt.text),
-          correctAnswer: q.options.findIndex(opt => opt.correct),
-          explanation: q.options.find(opt => opt.correct)?.explanation || "",
-          explanations: q.explanations,
+          scenario: dbLevel.question[language],
+          options: [
+            dbLevel.options.A[language],
+            dbLevel.options.B[language]
+          ],
+          correctAnswer: dbLevel.correct_option === 'A' ? 0 : 1,
+          explanation: dbLevel.explanation[language],
         },
         story: {
-          title: dbLevel[`title_${language}`] || dbLevel.title,
-          description: dbLevel[`description_${language}`] || dbLevel.description,
-          tech: dbLevel.tech
+          title: dbLevel.titles[language],
+          description: dbLevel.descriptions[language],
+          tech: [], // Si quieres puedes agregar un campo tech en la nueva estructura
         }
       };
     } else {

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Level } from '../types';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 interface LevelCardProps {
   level: Level;
@@ -8,6 +9,7 @@ interface LevelCardProps {
 }
 
 const LevelCard: React.FC<LevelCardProps> = ({ level, onUnlock, isUnlocked = false }) => {
+  const { language } = useContext(LanguageContext);
   const handleUnlock = () => {
     if (onUnlock) {
       onUnlock(level.id);
@@ -17,13 +19,13 @@ const LevelCard: React.FC<LevelCardProps> = ({ level, onUnlock, isUnlocked = fal
   return (
     <div className={`level-card ${isUnlocked ? 'unlocked' : 'locked'}`}>
       <div className="level-header">
-        <h3>{level.title}</h3>
+        <h3>{level.titles[language]}</h3>
         <span className={`status ${isUnlocked ? 'unlocked' : 'locked'}`}>
           {isUnlocked ? '✅ Desbloqueado' : '🔒 Bloqueado'}
         </span>
       </div>
       
-      <p className="description">{level.description}</p>
+      <p className="description">{level.descriptions[language]}</p>
       
       <div className="tech-stack">
         <strong>Tecnologías:</strong>
