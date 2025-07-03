@@ -475,7 +475,7 @@ body::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #e75480, #f3b1e6);
   color: #2d193c;
   border: none;
-  padding: 15px 30px;
+  padding: 15px 50px;
   border-radius: 25px;
   font-size: 1.1rem;
   font-weight: bold;

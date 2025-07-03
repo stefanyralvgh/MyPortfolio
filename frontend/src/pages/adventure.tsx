@@ -132,11 +132,9 @@ const AdventurePage: React.FC = () => {
     }
   };
 
-  const handleLevelComplete = (levelId: number) => {
-    setCompletedLevels(prev => new Set(Array.from(prev).concat(levelId)));
-    const totalLevels = dbLevels.length;
-    if (levelId < totalLevels) {
-      setCurrentLevel(levelId + 1);
+  const handleLevelComplete = () => {
+    if (currentLevel < dbLevels.length) {
+      setCurrentLevel(currentLevel + 1);
     } else {
       setShowFinale(true);
     }
@@ -335,7 +333,7 @@ const AdventurePage: React.FC = () => {
                 style={{ width: '10rem', height: '3.2rem', borderRadius: '2rem', fontWeight: 500, fontSize: '1rem', background: '#fff7ea', border: '2px solid #e6c9a4', color: '#a47a3f', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0 }}
               >
                 <span style={{ fontSize: '1.3rem', marginRight: '0.7rem' }}>🔄</span>
-                <span style={{ fontSize: '1.05rem', fontWeight: 500 }}>Reiniciar</span>
+                <span style={{ fontSize: '1.05rem', fontWeight: 500 }}>{t('adventure.restart')}</span>
               </button>
             </div>
           </div>
