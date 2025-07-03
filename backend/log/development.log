@@ -1577,3 +1577,43 @@ Processing by LevelsController#index as */*
 Completed 200 OK in 16ms (Views: 11.8ms | ActiveRecord: 3.6ms | Allocations: 1118)
 
 
+Started GET "/levels?language=en" for ::1 at 2025-07-03 07:41:11 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (19.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 87ms (Views: 62.8ms | ActiveRecord: 19.9ms | Allocations: 1113)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-03 07:43:42 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (2.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 21ms (Views: 17.3ms | ActiveRecord: 2.9ms | Allocations: 1103)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-03 07:46:00 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (4.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 27ms (Views: 21.9ms | ActiveRecord: 4.6ms | Allocations: 1103)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-03 07:49:28 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (5.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 37ms (Views: 25.2ms | ActiveRecord: 6.6ms | Allocations: 1103)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-03 07:49:35 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (4.3ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 37ms (Views: 30.9ms | ActiveRecord: 4.3ms | Allocations: 1103)
+
+

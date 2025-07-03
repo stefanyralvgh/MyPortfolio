@@ -109,22 +109,6 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
                 key={idx}
                 className="option-button"
                 onClick={() => handleOptionClick(idx)}
-                style={{
-                  width: '8rem',
-                  height: '8rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '1.1rem',
-                  fontWeight: 500,
-                  borderRadius: '1.2rem',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
-                  background: '#f7eaff',
-                  border: '2px solid #c9a4e6',
-                  color: '#7a3fa4',
-                  cursor: 'pointer',
-                  transition: 'background 0.2s, border 0.2s',
-                }}
               >
                 {option.text}
               </button>

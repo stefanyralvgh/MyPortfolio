@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Level } from '../types';
-import { LanguageContext } from '../contexts/LanguageContext';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface LevelCardProps {
   level: Level;
@@ -9,7 +9,7 @@ interface LevelCardProps {
 }
 
 const LevelCard: React.FC<LevelCardProps> = ({ level, onUnlock, isUnlocked = false }) => {
-  const { language } = useContext(LanguageContext);
+  const { language } = useLanguage();
   const handleUnlock = () => {
     if (onUnlock) {
       onUnlock(level.id);
@@ -26,17 +26,6 @@ const LevelCard: React.FC<LevelCardProps> = ({ level, onUnlock, isUnlocked = fal
       </div>
       
       <p className="description">{level.descriptions[language]}</p>
-      
-      <div className="tech-stack">
-        <strong>Tecnologías:</strong>
-        <div className="tech-tags">
-          {level.tech.map((tech, index) => (
-            <span key={index} className="tech-tag">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
       
       {!isUnlocked && onUnlock && (
         <button 
