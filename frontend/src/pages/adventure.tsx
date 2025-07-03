@@ -108,22 +108,23 @@ const AdventurePage: React.FC = () => {
   const getCurrentLevelData = () => {
     if (dbLevels.length && currentLevel <= dbLevels.length) {
       const dbLevel = dbLevels[currentLevel - 1];
-      const q = levelQuestions[currentLevel - 1] || levelQuestions[0];
       return {
         id: dbLevel.id,
-        title: dbLevel[`title_${language}`] || dbLevel.title,
+        title: dbLevel.titles[language],
         type: "quiz",
         challenge: {
-          scenario: q.question,
-          options: q.options.map(opt => opt.text),
-          correctAnswer: q.options.findIndex(opt => opt.correct),
-          explanation: q.options.find(opt => opt.correct)?.explanation || "",
-          explanations: q.explanations,
+          scenario: dbLevel.question[language],
+          options: [
+            dbLevel.options.A[language],
+            dbLevel.options.B[language]
+          ],
+          correctAnswer: dbLevel.correct_option === 'A' ? 0 : 1,
+          explanation: dbLevel.explanation[language],
         },
         story: {
-          title: dbLevel[`title_${language}`] || dbLevel.title,
-          description: dbLevel[`description_${language}`] || dbLevel.description,
-          tech: dbLevel.tech
+          title: dbLevel.titles[language],
+          description: dbLevel.descriptions[language],
+          tech: [], // Si quieres puedes agregar un campo tech en la nueva estructura
         }
       };
     } else {
@@ -131,11 +132,9 @@ const AdventurePage: React.FC = () => {
     }
   };
 
-  const handleLevelComplete = (levelId: number) => {
-    setCompletedLevels(prev => new Set(Array.from(prev).concat(levelId)));
-    const totalLevels = dbLevels.length;
-    if (levelId < totalLevels) {
-      setCurrentLevel(levelId + 1);
+  const handleLevelComplete = () => {
+    if (currentLevel < dbLevels.length) {
+      setCurrentLevel(currentLevel + 1);
     } else {
       setShowFinale(true);
     }
@@ -333,8 +332,8 @@ const AdventurePage: React.FC = () => {
                 onClick={() => handleFinaleAction('restart')}
                 style={{ width: '10rem', height: '3.2rem', borderRadius: '2rem', fontWeight: 500, fontSize: '1rem', background: '#fff7ea', border: '2px solid #e6c9a4', color: '#a47a3f', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0 }}
               >
-                <span style={{ fontSize: '1.3rem', marginRight: '0.7rem' }}>🔄</span>
-                <span style={{ fontSize: '1.05rem', fontWeight: 500 }}>Reiniciar</span>
+                <span style={{ fontSize: '1.3rem' }}>🔄</span>
+                {t('adventure.restart')}
               </button>
             </div>
           </div>

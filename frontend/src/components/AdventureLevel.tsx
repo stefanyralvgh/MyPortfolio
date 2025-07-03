@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface Challenge {
   scenario: string;
@@ -30,6 +31,7 @@ interface AdventureLevelProps {
 }
 
 const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) => {
+  const { t } = useLanguage();
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -74,7 +76,7 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
   return (
     <div className="adventure-level">
       <div className="level-header">
-        <h2>Nivel {level.id}: {level.title}</h2>
+        <h2>{t('adventure.level')} {level.id}: {level.title}</h2>
       </div>
       <div className="level-content">
         {/* Pregunta del reto */}
@@ -109,22 +111,6 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
                 key={idx}
                 className="option-button"
                 onClick={() => handleOptionClick(idx)}
-                style={{
-                  width: '8rem',
-                  height: '8rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '1.1rem',
-                  fontWeight: 500,
-                  borderRadius: '1.2rem',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
-                  background: '#f7eaff',
-                  border: '2px solid #c9a4e6',
-                  color: '#7a3fa4',
-                  cursor: 'pointer',
-                  transition: 'background 0.2s, border 0.2s',
-                }}
               >
                 {option.text}
               </button>
@@ -134,18 +120,12 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
         {/* Resultado, explicación e historia personal */}
         {showResult && (
           <div className="result-container" style={{ marginTop: '2rem', textAlign: 'center' }}>
-            <h4>{isCorrect ? '¡Correcto!' : 'No era esa 😅'}</h4>
-            {isCorrect ? null : (
-              <p style={{ fontWeight: 500 }}>
-                {selectedOption !== null && shuffledOptions[selectedOption]?.explanation}
-              </p>
-            )}
-            <div className="story-content" style={{ marginTop: '1.5rem' }}>
-              <h4>Historia personal:</h4>
-              <p>{level.story.description}</p>
-            </div>
-            <button className="continue-button" onClick={handleContinue} style={{ marginTop: '2rem' }}>
-              Siguiente reto
+            <h4>{isCorrect ? t('adventure.correct') : t('adventure.incorrect')}</h4>
+            <p style={{ fontWeight: 500, marginBottom: '2.5rem' }}>
+              {level.challenge.explanation}
+            </p>
+            <button className="continue-button" onClick={handleContinue}>
+              {t('adventure.next')}
             </button>
           </div>
         )}

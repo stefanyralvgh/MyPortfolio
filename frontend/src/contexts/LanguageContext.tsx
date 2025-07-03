@@ -55,7 +55,12 @@ const translations = {
     'adventure.actions.linkedin': '🤝 Conectar por LinkedIn',
     'adventure.actions.repo': '🛠️ Ver Repositorio Backend',
     'adventure.actions.restart': '🔄 Jugar de Nuevo',
-    'adventure.back': '← Volver al Terminal',
+    'adventure.back': 'Volver al Terminal',
+    'adventure.correct': '¡Correcto!',
+    'adventure.incorrect': 'No era esa 😅',
+    'adventure.next': 'Siguiente reto',
+    'adventure.restart': 'Reiniciar',
+    
 
   },
     en: {
@@ -101,6 +106,10 @@ const translations = {
     'adventure.actions.repo': '🛠️ Check out the backend code – it powers this terminal',
     'adventure.actions.restart': '🔄 Restart the adventure and discover new things',
     'adventure.back': 'Return to terminal mode',
+    'adventure.correct': 'Correct!',
+    'adventure.incorrect': 'Not quite 😅',
+    'adventure.next': 'Next challenge',
+    'adventure.restart': 'Restart', 
 
   },
   fr: {
@@ -146,7 +155,11 @@ const translations = {
     'adventure.actions.linkedin': '🤝 Se connecter sur LinkedIn',
     'adventure.actions.repo': '🛠️ Voir le Repository Backend',
     'adventure.actions.restart': '🔄 Rejouer',
-    'adventure.back': '← Retour au Terminal',
+    'adventure.back': 'Retour au Terminal',
+    'adventure.correct': 'Correct !',
+    'adventure.incorrect': 'Ce n\'est pas ça 😅',
+    'adventure.next': 'Défi suivant',
+    'adventure.restart': 'Recommencer',
 
   }
 };
