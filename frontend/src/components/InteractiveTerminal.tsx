@@ -159,7 +159,7 @@ const InteractiveTerminal: React.FC = () => {
         case 'start':
           executeCommand({
             command,
-            output: `Starting Stef's Code Adventure...\nRedirecting to level 1...\n`,
+            output: `${t('terminal.starting.adventure')}\n${t('terminal.redirecting.level')}\n`,
             delay: 1000
           });
           setTimeout(() => router.push('/adventure'), 2000);
