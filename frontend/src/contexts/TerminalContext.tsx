@@ -22,7 +22,7 @@ interface TerminalContextType {
 const TerminalContext = createContext<TerminalContextType | undefined>(undefined);
 
 const STORAGE_KEY = 'terminal_state';
-const SESSION_FLAG = 'terminal_session_active';
+const TIMESTAMP_KEY = 'terminal_timestamp';
 
 export const TerminalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [commandHistory, setCommandHistory] = useState<TerminalCommand[]>([]);
@@ -31,19 +31,24 @@ export const TerminalProvider: React.FC<{ children: ReactNode }> = ({ children }
   // Check if this is a page reload vs navigation
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const sessionActive = sessionStorage.getItem(SESSION_FLAG);
+      const currentTime = Date.now();
+      const savedTimestamp = localStorage.getItem(TIMESTAMP_KEY);
+      const timeDiff = savedTimestamp ? currentTime - parseInt(savedTimestamp) : Infinity;
       
-      if (!sessionActive) {
+      // If more than 5 seconds have passed, consider it a fresh load/reload
+      if (!savedTimestamp || timeDiff > 5000) {
         // This is a fresh page load/reload - clear everything
         localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(TIMESTAMP_KEY);
         setCommandHistory([]);
         setIsInitialized(false);
-        // Set session flag to indicate we're in a session
-        sessionStorage.setItem(SESSION_FLAG, 'true');
       } else {
         // This is navigation within the same session - load state
         loadFromLocalStorage();
       }
+      
+      // Update timestamp
+      localStorage.setItem(TIMESTAMP_KEY, currentTime.toString());
     }
   }, []);
 

@@ -2560,3 +2560,19 @@ Language requested: en
 Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 1.6ms | Allocations: 947)
 
 
+Started GET "/levels?language=en" for ::1 at 2025-07-05 15:45:32 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (8.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 183ms (Views: 100.2ms | ActiveRecord: 35.1ms | Allocations: 8862)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-05 15:45:33 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (0.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.8ms | Allocations: 1106)
+
+
