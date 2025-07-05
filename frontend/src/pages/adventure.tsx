@@ -133,9 +133,6 @@ const AdventurePage: React.FC = () => {
   };
 
   const handleLevelComplete = () => {
-  
-    setCompletedLevels(prev => new Set(Array.from(prev).concat(currentLevel)));
-    
     if (currentLevel < dbLevels.length) {
       setCurrentLevel(currentLevel + 1);
     } else {
