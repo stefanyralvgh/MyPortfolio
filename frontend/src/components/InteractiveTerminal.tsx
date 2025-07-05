@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useTerminal } from '../contexts/TerminalContext';
 import LanguageSwitcher from './LanguageSwitcher';
 
 interface TerminalCommand {
@@ -11,10 +12,17 @@ interface TerminalCommand {
 
 const InteractiveTerminal: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
+  const { 
+    commandHistory, 
+    setCommandHistory, 
+    addCommand, 
+    updateCommandOutput, 
+    isInitialized, 
+    setIsInitialized,
+    initializeTerminal 
+  } = useTerminal();
   const [currentLine, setCurrentLine] = useState('');
-  const [commandHistory, setCommandHistory] = useState<TerminalCommand[]>([]);
   const [isTyping, setIsTyping] = useState(false);
-  // const [currentStep, setCurrentStep] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [isInputFocused, setIsInputFocused] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -30,7 +38,6 @@ const InteractiveTerminal: React.FC = () => {
     return () => clearInterval(cursorInterval);
   }, []);
 
-
   useEffect(() => {
     if (!isTyping && inputRef.current) {
       inputRef.current.focus();
@@ -43,7 +50,21 @@ const InteractiveTerminal: React.FC = () => {
     }
   }, []);
 
+  // Initialize terminal only if not already initialized and no saved state
+  useEffect(() => {
+    if (!isInitialized && commandHistory.length === 0) {
+      setTimeout(() => {
+        executeCommand({
+          command: 'ssh stef@portfolio.dev',
+          output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
+          delay: 1000
+        });
+        setIsInitialized(true);
+      }, 500);
+    }
+  }, [isInitialized, commandHistory.length, t, setIsInitialized]);
 
+  // Update command outputs when language changes
   useEffect(() => {
     setCommandHistory(prev => 
       prev.map(cmd => {
@@ -57,7 +78,7 @@ const InteractiveTerminal: React.FC = () => {
           return {
             ...cmd,
             output: `${t('terminal.help')}\n` +
-            `  help --verbose - ${t('terminal.help.verbose')}\n` +
+            `  stack    - ${t('terminal.help.verbose')}\n` +
                     `  start    - ${t('terminal.start')}\n` +
                     `  projects - ${t('terminal.projects')}\n` +
                     `  about    - ${t('terminal.about')}\n` +
@@ -99,35 +120,27 @@ const InteractiveTerminal: React.FC = () => {
         return cmd;
       })
     );
-  }, [language, t]);
-
-
-  useEffect(() => {
-    setTimeout(() => {
-      executeCommand({
-        command: 'ssh stef@portfolio.dev',
-        output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
-        delay: 1000
-      });
-    }, 500);
-  }, []);
+  }, [language, t, setCommandHistory]);
 
   const executeCommand = async (commandData: TerminalCommand) => {
     setIsTyping(true);
     
-  
+    // Type the command
     for (let i = 0; i < commandData.command.length; i++) {
       setCurrentLine(commandData.command.slice(0, i + 1));
       await new Promise(resolve => setTimeout(resolve, 50));
     }
     
     setCurrentLine('');
-    setCommandHistory(prev => [...prev, { command: commandData.command, output: '' }]);
     
-
+    // Add command to history
+    const newCommand = { command: commandData.command, output: '' };
+    addCommand(newCommand);
+    
+    // Wait before showing output
     await new Promise(resolve => setTimeout(resolve, commandData.delay || 500));
     
-
+    // Type the output
     let output = '';
     for (let i = 0; i < commandData.output.length; i++) {
       output += commandData.output[i];
@@ -168,7 +181,7 @@ const InteractiveTerminal: React.FC = () => {
           executeCommand({
             command,
             output: `${t('terminal.help')}\n` +
-            `  help --verbose - ${t('terminal.help.verbose')}\n` +
+            `  stack    - ${t('terminal.help.verbose')}\n` +
                     `  start    - ${t('terminal.start')}\n` +
                     `  projects - ${t('terminal.projects')}\n` +
                     `  about    - ${t('terminal.about')}\n` +
@@ -242,6 +255,7 @@ const InteractiveTerminal: React.FC = () => {
           });
           break;
         case 'help --verbose':
+        case 'stack':
           executeCommand({
             command,
             output:

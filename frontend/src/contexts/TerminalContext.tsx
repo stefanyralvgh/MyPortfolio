@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 interface TerminalCommand {
   command: string;
@@ -15,13 +15,57 @@ interface TerminalContextType {
   isInitialized: boolean;
   setIsInitialized: (initialized: boolean) => void;
   initializeTerminal: () => void;
+  saveToLocalStorage: () => void;
+  loadFromLocalStorage: () => void;
 }
 
 const TerminalContext = createContext<TerminalContextType | undefined>(undefined);
 
+const STORAGE_KEY = 'terminal_state';
+
 export const TerminalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [commandHistory, setCommandHistory] = useState<TerminalCommand[]>([]);
   const [isInitialized, setIsInitialized] = useState(false);
+
+  // Load state from localStorage on mount
+  useEffect(() => {
+    loadFromLocalStorage();
+  }, []);
+
+  // Save to localStorage whenever commandHistory changes
+  useEffect(() => {
+    if (isInitialized) {
+      saveToLocalStorage();
+    }
+  }, [commandHistory, isInitialized]);
+
+  const saveToLocalStorage = () => {
+    try {
+      const stateToSave = {
+        commandHistory,
+        isInitialized
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(stateToSave));
+    } catch (error) {
+      console.error('Error saving terminal state to localStorage:', error);
+    }
+  };
+
+  const loadFromLocalStorage = () => {
+    try {
+      const savedState = localStorage.getItem(STORAGE_KEY);
+      if (savedState) {
+        const parsedState = JSON.parse(savedState);
+        setCommandHistory(parsedState.commandHistory || []);
+        setIsInitialized(parsedState.isInitialized || false);
+      }
+    } catch (error) {
+      console.error('Error loading terminal state from localStorage:', error);
+      // Fallback to default state
+      setCommandHistory([]);
+      setIsInitialized(false);
+    }
+  };
 
   const addCommand = (command: TerminalCommand) => {
     setCommandHistory(prev => {
@@ -75,7 +119,9 @@ export const TerminalProvider: React.FC<{ children: ReactNode }> = ({ children }
       clearHistory,
       isInitialized,
       setIsInitialized,
-      initializeTerminal
+      initializeTerminal,
+      saveToLocalStorage,
+      loadFromLocalStorage
     }}>
       {children}
     </TerminalContext.Provider>
