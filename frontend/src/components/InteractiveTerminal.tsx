@@ -332,7 +332,7 @@ const InteractiveTerminal: React.FC = () => {
         </div>
         <div className="terminal-title">stef@portfolio.dev</div>
         <div style={{ marginLeft: 'auto' }}>
-          <LanguageSwitcher />
+          <LanguageSwitcher hideLabel={true} />
         </div>
       </div>
       

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useLanguage } from '../contexts/LanguageContext';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 
 interface Project {
   id: number;
@@ -64,9 +65,17 @@ const ProjectsPage: React.FC = () => {
 
   return (
     <div className="projects-container">
-      <div className="projects-header">
-        <h1>🚀 {language === 'es' ? 'Mis Proyectos' : language === 'fr' ? 'Mes Projets' : 'My Projects'}</h1>
-        <p>{language === 'es' ? 'Aquí tienes algunos de los proyectos en los que he trabajado' : language === 'fr' ? 'Voici quelques-uns des projets sur lesquels j\'ai travaillé' : 'Here are some of the projects I\'ve worked on'}</p>
+      <div className="projects-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', marginBottom: '0.5rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
+          <h1 style={{ margin: 0, fontSize: '2rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', textAlign: 'center' }}>🚀 {language === 'es' ? 'Mis Proyectos' : language === 'fr' ? 'Mes Projets' : 'My Projects'}</h1>
+          <p style={{ margin: '0.5rem 0 1rem 0', fontSize: '1.1rem', color: '#7a3fa4', fontWeight: 500, textAlign: 'center' }}>{language === 'es' ? 'Aquí tienes algunos de los proyectos en los que he trabajado' : language === 'fr' ? 'Voici quelques-uns des projets sur lesquels j\'ai travaillé' : 'Here are some of the projects I\'ve worked on'}</p>
+        </div>
+        <div style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', marginRight: '0.5rem' }}>
+          <LanguageSwitcher hideLabel={true} />
+        </div>
+      </div>
+      
+      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
         <button 
           className="back-button"
           onClick={() => router.push('/')}

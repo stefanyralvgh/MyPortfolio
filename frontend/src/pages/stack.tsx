@@ -70,7 +70,7 @@ const StackPage: React.FC = () => {
         <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: '700', color: '#e75480' }}>
           🛠️ {t('stack.title')}
         </h1>
-        <LanguageSwitcher />
+        <LanguageSwitcher hideLabel={true} />
       </div>
 
       {/* Main Content */}

@@ -87,7 +87,7 @@ const RecruiterPage: React.FC = () => {
         <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: '700', color: '#e75480' }}>
           💼 Recruiter Mode
         </h1>
-        <LanguageSwitcher />
+        <LanguageSwitcher hideLabel={true} />
       </div>
 
       {/* Main Content */}

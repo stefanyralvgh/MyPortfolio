@@ -2864,3 +2864,160 @@ First project data: {:id=>13, :title=>"Animal Shelter – HENRY Project", :role=
 Completed 200 OK in 507ms (Views: 4.9ms | ActiveRecord: 391.8ms | Allocations: 4612)
 
 
+Started GET "/levels?language=en" for ::1 at 2025-07-05 16:37:22 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (234.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 469ms (Views: 174.3ms | ActiveRecord: 284.2ms | Allocations: 4275)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-05 16:37:47 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.5ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 31ms (Views: 29.3ms | ActiveRecord: 1.5ms | Allocations: 1104)
+
+
+Started GET "/projects?language=es" for ::1 at 2025-07-05 16:42:50 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mProject Count (7.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: es
+  [1m[36mProject Load (0.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>13, :title=>"Refugio Animal – Proyecto HENRY", :role=>"Backend Developer con toques de front", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"Mi primer proyecto en equipo y el primer hijo digital que vió la luz del deploy. Una plataforma para un refugio animal en Salta, Argentina, donde los usuarios podían hacer donaciones y adoptar peluditos. Toqué el front solo lo justo para sobrevivir.", :status=>"Deployado y feliz por ahí", :link=>"No disponible (pero sí vive en mi corazón y en mi GitHub)", :created_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00}
+Completed 200 OK in 59ms (Views: 19.1ms | ActiveRecord: 8.6ms | Allocations: 1433)
+
+
+Started GET "/projects?language=es" for ::1 at 2025-07-05 16:42:51 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mProject Count (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: es
+  [1m[36mProject Load (0.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>13, :title=>"Refugio Animal – Proyecto HENRY", :role=>"Backend Developer con toques de front", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"Mi primer proyecto en equipo y el primer hijo digital que vió la luz del deploy. Una plataforma para un refugio animal en Salta, Argentina, donde los usuarios podían hacer donaciones y adoptar peluditos. Toqué el front solo lo justo para sobrevivir.", :status=>"Deployado y feliz por ahí", :link=>"No disponible (pero sí vive en mi corazón y en mi GitHub)", :created_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00}
+Completed 200 OK in 26ms (Views: 2.1ms | ActiveRecord: 2.1ms | Allocations: 1433)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-05 16:43:47 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 27ms (Views: 25.5ms | ActiveRecord: 0.9ms | Allocations: 1104)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-05 16:43:51 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (0.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.9ms | Allocations: 1104)
+
+
+Started GET "/levels?language=fr" for ::1 at 2025-07-05 16:43:53 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mLevel Load (0.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.7ms | Allocations: 1104)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-05 16:44:04 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (0.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>13, :title=>"Animal Shelter – HENRY Project", :role=>"Backend Developer with a dash of frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.", :status=>"Deployed and happily alive", :link=>"Not available (but it lives in my heart and on GitHub)", :created_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00}
+Completed 200 OK in 27ms (Views: 1.3ms | ActiveRecord: 1.7ms | Allocations: 1433)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-05 16:44:43 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (1.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>13, :title=>"Animal Shelter – HENRY Project", :role=>"Backend Developer with a dash of frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.", :status=>"Deployed and happily alive", :link=>"Not available (but it lives in my heart and on GitHub)", :created_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00}
+Completed 200 OK in 37ms (Views: 1.2ms | ActiveRecord: 3.5ms | Allocations: 1433)
+
+
+Started GET "/projects?language=es" for ::1 at 2025-07-05 16:45:27 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mProject Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: es
+  [1m[36mProject Load (0.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>13, :title=>"Refugio Animal – Proyecto HENRY", :role=>"Backend Developer con toques de front", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"Mi primer proyecto en equipo y el primer hijo digital que vió la luz del deploy. Una plataforma para un refugio animal en Salta, Argentina, donde los usuarios podían hacer donaciones y adoptar peluditos. Toqué el front solo lo justo para sobrevivir.", :status=>"Deployado y feliz por ahí", :link=>"No disponible (pero sí vive en mi corazón y en mi GitHub)", :created_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00}
+Completed 200 OK in 25ms (Views: 0.8ms | ActiveRecord: 1.4ms | Allocations: 1433)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-05 16:45:37 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (0.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>13, :title=>"Animal Shelter – HENRY Project", :role=>"Backend Developer with a dash of frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.", :status=>"Deployed and happily alive", :link=>"Not available (but it lives in my heart and on GitHub)", :created_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00}
+Completed 200 OK in 19ms (Views: 1.4ms | ActiveRecord: 1.4ms | Allocations: 1433)
+
+
+Started GET "/projects?language=es" for ::1 at 2025-07-05 16:45:40 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mProject Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: es
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>13, :title=>"Refugio Animal – Proyecto HENRY", :role=>"Backend Developer con toques de front", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"Mi primer proyecto en equipo y el primer hijo digital que vió la luz del deploy. Una plataforma para un refugio animal en Salta, Argentina, donde los usuarios podían hacer donaciones y adoptar peluditos. Toqué el front solo lo justo para sobrevivir.", :status=>"Deployado y feliz por ahí", :link=>"No disponible (pero sí vive en mi corazón y en mi GitHub)", :created_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00}
+Completed 200 OK in 28ms (Views: 0.8ms | ActiveRecord: 1.4ms | Allocations: 1433)
+
+
+Started GET "/projects?language=fr" for ::1 at 2025-07-05 16:45:43 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mProject Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: fr
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>13, :title=>"Refuge Animal – Projet HENRY", :role=>"Développeuse backend avec une touche de frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"Mon premier projet en équipe et mon premier bébé digital en production. Une plateforme pour un refuge animalier à Salta, Argentine, où les utilisateurs pouvaient faire des dons et adopter des animaux. Le frontend ? Juste ce qu'il fallait pour survivre.", :status=>"Déployé et vivant quelque part", :link=>"Pas de lien (mais vivant dans mon cœur et mon GitHub)", :created_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00}
+Completed 200 OK in 35ms (Views: 0.6ms | ActiveRecord: 1.3ms | Allocations: 1433)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-05 16:45:46 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (0.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>13, :title=>"Animal Shelter – HENRY Project", :role=>"Backend Developer with a dash of frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.", :status=>"Deployed and happily alive", :link=>"Not available (but it lives in my heart and on GitHub)", :created_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00}
+Completed 200 OK in 44ms (Views: 0.5ms | ActiveRecord: 2.3ms | Allocations: 1433)
+
+
