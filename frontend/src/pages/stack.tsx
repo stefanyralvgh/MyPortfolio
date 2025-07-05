@@ -280,29 +280,10 @@ const StackPage: React.FC = () => {
           marginTop: '2rem'
         }}>
           <button
+            className="back-button"
             onClick={() => router.push('/')}
-            style={{
-              padding: '1rem 2rem',
-              background: 'rgba(255, 255, 255, 0.9)',
-              border: 'none',
-              borderRadius: '0.75rem',
-              fontSize: '1rem',
-              fontWeight: '600',
-              color: '#1f2937',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.15)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-            }}
           >
-            ← Back to Terminal
+            {t('adventure.back')}
           </button>
           <button
             onClick={() => router.push('/adventure?completed=true')}

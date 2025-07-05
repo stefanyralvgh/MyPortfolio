@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import LevelCard from '../components/LevelCard';
 import { fetchLevels } from '../utils/api';
 import { Level } from '../types';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const LevelsPage: React.FC = () => {
+    const router = useRouter();
+    const { t } = useLanguage();
     const [levels, setLevels] = useState<Level[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -75,6 +79,15 @@ const LevelsPage: React.FC = () => {
                     <p>No hay niveles disponibles en este momento.</p>
                 </div>
             )}
+            
+            <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+                <button 
+                    className="back-button"
+                    onClick={() => router.push('/')}
+                >
+                    {t('adventure.back')}
+                </button>
+            </div>
         </div>
     );
 };

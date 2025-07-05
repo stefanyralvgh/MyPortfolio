@@ -71,7 +71,7 @@ const ProjectsPage: React.FC = () => {
           className="back-button"
           onClick={() => router.push('/')}
         >
-          ← {language === 'es' ? 'Volver al Terminal' : language === 'fr' ? 'Retour au Terminal' : 'Back to Terminal'}
+          {t('adventure.back')}
         </button>
       </div>
       
