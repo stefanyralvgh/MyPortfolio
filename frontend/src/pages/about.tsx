@@ -166,9 +166,22 @@ Je suis méticuleuse dans mon travail - chaque fonction que j\'écris, chaque AP
       <div className="about-content">
         {/* Photo Section */}
         <div className="about-photo-section">
-          <div className="about-photo-placeholder">
-            <span style={{ fontSize: '4rem' }}>📸</span>
-            <p style={{ marginTop: '1rem', color: '#e75480' }}>Foto de Stef aquí</p>
+          <div className="about-photo-container">
+            <img 
+              src="/stef-photo.jpg" 
+              alt="Stef - Backend Developer" 
+              className="about-photo"
+              onError={(e) => {
+                // Fallback si la imagen no carga
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                target.nextElementSibling?.classList.remove('hidden');
+              }}
+            />
+            <div className="about-photo-placeholder hidden">
+              <span style={{ fontSize: '4rem' }}>📸</span>
+              <p style={{ marginTop: '1rem', color: '#e75480' }}>Foto de Stef aquí</p>
+            </div>
           </div>
         </div>
 
