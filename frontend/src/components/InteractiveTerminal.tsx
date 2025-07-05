@@ -78,9 +78,9 @@ const InteractiveTerminal: React.FC = () => {
           return {
             ...cmd,
             output: `${t('terminal.help')}\n` +
-            `  stack    - ${t('terminal.help.verbose')}\n` +
                     `  start    - ${t('terminal.start')}\n` +
                     `  projects - ${t('terminal.projects')}\n` +
+                    `  stack    - ${t('terminal.stack')}\n` +
                     `  about    - ${t('terminal.about')}\n` +
                     `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
                     `  clear    - ${t('terminal.clear')}\n`
@@ -95,26 +95,28 @@ const InteractiveTerminal: React.FC = () => {
         if (cmd.command === 'stack') {
           return {
             ...cmd,
-            output:
-              `${t('terminal.help.verbose.title')}\n` +
-              `${'='.repeat(50)}\n\n` +
-              `${t('terminal.help.verbose.intro')}\n\n` +
-              `${t('terminal.help.verbose.commands.title')}\n` +
-              `${'-'.repeat(30)}\n` +
-              `  start         - ${t('terminal.help.verbose.start.desc')}\n` +
-              `  projects      - ${t('terminal.help.verbose.projects.desc')}\n` +
-              `  about         - ${t('terminal.help.verbose.about.desc')}\n` +
-              `  recruiter-mode - ${t('terminal.help.verbose.recruiter.desc')}\n` +
-              `  clear         - ${t('terminal.help.verbose.clear.desc')}\n\n` +
-              `${t('terminal.help.verbose.tips.title')}\n` +
-              `${'-'.repeat(20)}\n` +
-              `  ${t('terminal.help.verbose.tips.1')}\n` +
-              `  ${t('terminal.help.verbose.tips.2')}\n` +
-              `  ${t('terminal.help.verbose.tips.3')}\n` +
-              `  ${t('terminal.help.verbose.tips.4')}\n\n` +
-              `${t('terminal.help.verbose.footer')}\n`
+            output: `${t('terminal.redirecting.stack')}\n`
           };
         }
+        if (cmd.command === 'start') {
+          return {
+            ...cmd,
+            output: `${t('terminal.starting.adventure')}\n${t('terminal.redirecting.level')}\n`
+          };
+        }
+        if (cmd.command === 'projects') {
+          return {
+            ...cmd,
+            output: `${t('terminal.redirecting.projects')}\n`
+          };
+        }
+        if (cmd.command === 'recruiter-mode') {
+          return {
+            ...cmd,
+            output: `${t('terminal.fast.track.activated')}\n`
+          };
+        }
+
         return cmd;
       })
     );
@@ -170,7 +172,7 @@ const InteractiveTerminal: React.FC = () => {
         case 'start':
           executeCommand({
             command,
-            output: `Starting Stef's Code Adventure...\nRedirecting to level 1...\n`,
+            output: `${t('terminal.starting.adventure')}\n${t('terminal.redirecting.level')}\n`,
             delay: 1000
           });
           setTimeout(() => router.push('/adventure'), 2000);
@@ -179,9 +181,9 @@ const InteractiveTerminal: React.FC = () => {
           executeCommand({
             command,
             output: `${t('terminal.help')}\n` +
-            `  stack    - ${t('terminal.help.verbose')}\n` +
                     `  start    - ${t('terminal.start')}\n` +
                     `  projects - ${t('terminal.projects')}\n` +
+                    `  stack    - ${t('terminal.stack')}\n` +
                     `  about    - ${t('terminal.about')}\n` +
                     `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
                     `  clear    - ${t('terminal.clear')}\n`,
@@ -242,6 +244,22 @@ const InteractiveTerminal: React.FC = () => {
         case 'stack':
           executeCommand({
             command,
+            output: `${t('terminal.redirecting.stack')}\n`,
+            delay: 300
+          });
+          setTimeout(() => router.push('/stack'), 1000);
+          break;
+        case 'recruiter-mode':
+          executeCommand({
+            command,
+            output: `${t('terminal.fast.track.activated')}\n`,
+            delay: 300
+          });
+          setTimeout(() => router.push('/recruiter'), 1500);
+          break;
+        case 'help --verbose':
+          executeCommand({
+            command,
             output:
               `${t('terminal.help.verbose.title')}\n` +
               `${'='.repeat(50)}\n\n` +
@@ -251,7 +269,6 @@ const InteractiveTerminal: React.FC = () => {
               `  start         - ${t('terminal.help.verbose.start.desc')}\n` +
               `  projects      - ${t('terminal.help.verbose.projects.desc')}\n` +
               `  about         - ${t('terminal.help.verbose.about.desc')}\n` +
-              `  funfacts      - ${t('terminal.help.verbose.funfacts.desc')}\n` +
               `  recruiter-mode - ${t('terminal.help.verbose.recruiter.desc')}\n` +
               `  clear         - ${t('terminal.help.verbose.clear.desc')}\n\n` +
               `${t('terminal.help.verbose.tips.title')}\n` +
@@ -263,14 +280,6 @@ const InteractiveTerminal: React.FC = () => {
               `${t('terminal.help.verbose.footer')}\n`,
             delay: 100
           });
-          break;
-        case 'recruiter-mode':
-          executeCommand({
-            command,
-            output: `⏩ Fast track activated!\n`,
-            delay: 300
-          });
-          setTimeout(() => router.push('/adventure?completed=true'), 1500);
           break;
         case 'skip':
           executeCommand({
