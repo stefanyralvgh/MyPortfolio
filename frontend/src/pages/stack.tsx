@@ -8,17 +8,19 @@ const StackPage: React.FC = () => {
   const { language, t } = useLanguage();
 
   const stackData = {
-    main: [
-      { name: 'Node.js', icon: '🟢', level: 'Advanced' },
-      { name: 'PostgreSQL', icon: '🔵', level: 'Advanced' },
-      { name: 'GraphQL', icon: '🟣', level: 'Advanced' },
-      { name: 'MongoDB', icon: '🟢', level: 'Intermediate' },
-      { name: 'Docker', icon: '🔵', level: 'Intermediate' },
-      { name: 'AWS', icon: '🟠', level: 'Intermediate' },
-      { name: 'Next.js', icon: '⚫', level: 'Intermediate' }
-    ],
+          main: [
+        { name: 'Node.js', icon: '🟢', level: 'Advanced' },
+        { name: 'Express', icon: '🟢', level: 'Advanced' },
+        { name: 'PostgreSQL', icon: '🔵', level: 'Advanced' },
+        { name: 'TypeScript', icon: '🔵', level: 'Advanced' },
+        { name: 'GraphQL', icon: '🟣', level: 'Basic' },
+        { name: 'MongoDB', icon: '🟢', level: 'Intermediate' },
+        { name: 'Docker', icon: '🔵', level: 'Intermediate' },
+        { name: 'AWS', icon: '🟠', level: 'Intermediate' },
+        { name: 'Next.js', icon: '⚫', level: 'Intermediate' }
+      ],
     familiar: [
-      { name: 'Ruby on Rails', icon: '🔴', level: 'Intermediate' },
+      { name: 'Ruby on Rails', icon: '🔴', level: 'Basic' },
       { name: 'Bubble.io', icon: '🟡', level: 'Intermediate' },
       { name: 'React', icon: '🔵', level: 'Intermediate' }
     ],
@@ -41,12 +43,21 @@ const StackPage: React.FC = () => {
     }
   };
 
+  const getLevelTranslation = (level: string) => {
+    switch (level) {
+      case 'Advanced': return t('stack.level.advanced');
+      case 'Intermediate': return t('stack.level.intermediate');
+      case 'Basic': return t('stack.level.basic');
+      default: return level;
+    }
+  };
+
   return (
     <div className="stack-container" style={{
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      background: 'linear-gradient(135deg, #181824 0%, #2d193c 100%)',
       padding: '2rem',
-      fontFamily: 'Inter, system-ui, sans-serif'
+      fontFamily: 'Courier New, Monaco, Menlo, monospace'
     }}>
       {/* Header */}
       <div style={{
@@ -54,12 +65,12 @@ const StackPage: React.FC = () => {
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: '3rem',
-        color: 'white'
+        color: '#f3b1e6'
       }}>
-        <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: '700' }}>
-          🛠️ Tech Stack
+        <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: '700', color: '#e75480' }}>
+          🛠️ {t('stack.title')}
         </h1>
-        <LanguageSwitcher />
+        <LanguageSwitcher hideLabel={true} />
       </div>
 
       {/* Main Content */}
@@ -72,20 +83,21 @@ const StackPage: React.FC = () => {
         
         {/* Main Stack */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
+          background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
           padding: '2rem',
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
+          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+          border: '1px solid rgba(243, 177, 230, 0.2)'
         }}>
           <h2 style={{
             margin: '0 0 1.5rem 0',
             fontSize: '1.8rem',
-            color: '#1f2937',
+            color: '#f3b1e6',
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            🚀 Main Stack
+            🚀 {t('stack.main')}
           </h2>
           <div style={{
             display: 'grid',
@@ -98,13 +110,13 @@ const StackPage: React.FC = () => {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 padding: '1rem',
-                background: '#f8fafc',
+                background: 'rgba(255, 255, 255, 0.05)',
                 borderRadius: '0.75rem',
-                border: '1px solid #e2e8f0'
+                border: '1px solid rgba(243, 177, 230, 0.2)'
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   <span style={{ fontSize: '1.5rem' }}>{tech.icon}</span>
-                  <span style={{ fontWeight: '600', color: '#1f2937' }}>{tech.name}</span>
+                  <span style={{ fontWeight: '600', color: '#f3b1e6' }}>{tech.name}</span>
                 </div>
                 <span style={{
                   padding: '0.25rem 0.75rem',
@@ -114,7 +126,7 @@ const StackPage: React.FC = () => {
                   color: 'white',
                   background: getLevelColor(tech.level)
                 }}>
-                  {tech.level}
+                  {getLevelTranslation(tech.level)}
                 </span>
               </div>
             ))}
@@ -123,20 +135,21 @@ const StackPage: React.FC = () => {
 
         {/* Familiar Technologies */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
+          background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
           padding: '2rem',
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
+          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+          border: '1px solid rgba(243, 177, 230, 0.2)'
         }}>
           <h2 style={{
             margin: '0 0 1.5rem 0',
             fontSize: '1.8rem',
-            color: '#1f2937',
+            color: '#f3b1e6',
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            📚 Also Familiar With
+            📚 {t('stack.familiar')}
           </h2>
           <div style={{
             display: 'grid',
@@ -149,13 +162,13 @@ const StackPage: React.FC = () => {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 padding: '1rem',
-                background: '#f8fafc',
+                background: 'rgba(255, 255, 255, 0.05)',
                 borderRadius: '0.75rem',
-                border: '1px solid #e2e8f0'
+                border: '1px solid rgba(243, 177, 230, 0.2)'
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   <span style={{ fontSize: '1.5rem' }}>{tech.icon}</span>
-                  <span style={{ fontWeight: '600', color: '#1f2937' }}>{tech.name}</span>
+                  <span style={{ fontWeight: '600', color: '#f3b1e6' }}>{tech.name}</span>
                 </div>
                 <span style={{
                   padding: '0.25rem 0.75rem',
@@ -165,7 +178,7 @@ const StackPage: React.FC = () => {
                   color: 'white',
                   background: getLevelColor(tech.level)
                 }}>
-                  {tech.level}
+                  {getLevelTranslation(tech.level)}
                 </span>
               </div>
             ))}
@@ -174,20 +187,21 @@ const StackPage: React.FC = () => {
 
         {/* Tools & Technologies */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
+          background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
           padding: '2rem',
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
+          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+          border: '1px solid rgba(243, 177, 230, 0.2)'
         }}>
           <h2 style={{
             margin: '0 0 1.5rem 0',
             fontSize: '1.8rem',
-            color: '#1f2937',
+            color: '#f3b1e6',
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            🛠️ Tools & Technologies
+            🛠️ {t('stack.tools')}
           </h2>
           <div style={{
             display: 'grid',
@@ -200,12 +214,12 @@ const StackPage: React.FC = () => {
                 alignItems: 'center',
                 gap: '0.75rem',
                 padding: '1rem',
-                background: '#f8fafc',
+                background: 'rgba(255, 255, 255, 0.05)',
                 borderRadius: '0.75rem',
-                border: '1px solid #e2e8f0'
+                border: '1px solid rgba(243, 177, 230, 0.2)'
               }}>
                 <span style={{ fontSize: '1.5rem' }}>{tool.icon}</span>
-                <span style={{ fontWeight: '600', color: '#1f2937' }}>{tool.name}</span>
+                <span style={{ fontWeight: '600', color: '#f3b1e6' }}>{tool.name}</span>
               </div>
             ))}
           </div>
@@ -213,20 +227,21 @@ const StackPage: React.FC = () => {
 
         {/* Quick Stats */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
+          background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
           padding: '2rem',
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)'
+          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+          border: '1px solid rgba(243, 177, 230, 0.2)'
         }}>
           <h2 style={{
             margin: '0 0 1.5rem 0',
             fontSize: '1.8rem',
-            color: '#1f2937',
+            color: '#f3b1e6',
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            📊 Quick Stats
+            📊 {t('stack.stats')}
           </h2>
           <div style={{
             display: 'grid',
@@ -236,38 +251,41 @@ const StackPage: React.FC = () => {
             <div style={{
               textAlign: 'center',
               padding: '1.5rem',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              background: 'rgba(231, 84, 128, 0.2)',
               borderRadius: '0.75rem',
-              color: 'white'
+              color: '#f3b1e6',
+              border: '1px solid #e75480'
             }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem' }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
                 {stackData.main.length + stackData.familiar.length}
               </div>
-              <div style={{ fontSize: '1rem', opacity: 0.9 }}>Technologies</div>
+              <div style={{ fontSize: '1rem', opacity: 0.9 }}>{t('stack.technologies')}</div>
             </div>
             <div style={{
               textAlign: 'center',
               padding: '1.5rem',
-              background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+              background: 'rgba(243, 177, 230, 0.2)',
               borderRadius: '0.75rem',
-              color: 'white'
+              color: '#f3b1e6',
+              border: '1px solid #f3b1e6'
             }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem' }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#f3b1e6' }}>
                 {stackData.tools.length}
               </div>
-              <div style={{ fontSize: '1rem', opacity: 0.9 }}>Tools</div>
+              <div style={{ fontSize: '1rem', opacity: 0.9 }}>{t('stack.tools.label')}</div>
             </div>
             <div style={{
               textAlign: 'center',
               padding: '1.5rem',
-              background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+              background: 'rgba(231, 84, 128, 0.1)',
               borderRadius: '0.75rem',
-              color: 'white'
+              color: '#f3b1e6',
+              border: '1px solid rgba(231, 84, 128, 0.3)'
             }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem' }}>
-                3+
+              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
+                2+
               </div>
-              <div style={{ fontSize: '1rem', opacity: 0.9 }}>Years Experience</div>
+              <div style={{ fontSize: '1rem', opacity: 0.9 }}>{t('stack.experience')}</div>
             </div>
           </div>
         </div>
@@ -280,54 +298,21 @@ const StackPage: React.FC = () => {
           marginTop: '2rem'
         }}>
           <button
+            className="back-button"
             onClick={() => router.push('/')}
-            style={{
-              padding: '1rem 2rem',
-              background: 'rgba(255, 255, 255, 0.9)',
-              border: 'none',
-              borderRadius: '0.75rem',
-              fontSize: '1rem',
-              fontWeight: '600',
-              color: '#1f2937',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.15)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
-            }}
           >
-            ← Back to Terminal
+            {t('adventure.back')}
           </button>
           <button
+            className="back-button"
             onClick={() => router.push('/adventure?completed=true')}
             style={{
-              padding: '1rem 2rem',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              border: 'none',
-              borderRadius: '0.75rem',
-              fontSize: '1rem',
-              fontWeight: '600',
-              color: 'white',
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 0, 0, 0.15)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+              background: 'rgba(243, 177, 230, 0.2)',
+              color: '#f3b1e6',
+              border: '2px solid #f3b1e6'
             }}
           >
-            🚀 Recruiter Mode
+            🚀 {t('stack.recruiter.mode')}
           </button>
         </div>
       </div>

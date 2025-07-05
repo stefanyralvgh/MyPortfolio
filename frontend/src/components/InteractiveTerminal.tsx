@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTerminal } from '../contexts/TerminalContext';
@@ -12,7 +12,15 @@ interface TerminalCommand {
 
 const InteractiveTerminal: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
-  const { commandHistory, setCommandHistory, addCommand, updateCommandOutput, isInitialized, setIsInitialized, initializeTerminal, clearHistory } = useTerminal();
+  const { 
+    commandHistory, 
+    setCommandHistory, 
+    addCommand, 
+    updateCommandOutput, 
+    isInitialized, 
+    setIsInitialized,
+    initializeTerminal 
+  } = useTerminal();
   const [currentLine, setCurrentLine] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
@@ -30,7 +38,6 @@ const InteractiveTerminal: React.FC = () => {
     return () => clearInterval(cursorInterval);
   }, []);
 
-
   useEffect(() => {
     if (!isTyping && inputRef.current) {
       inputRef.current.focus();
@@ -43,8 +50,79 @@ const InteractiveTerminal: React.FC = () => {
     }
   }, []);
 
+  // Initialize terminal only if not already initialized and no saved state
+  useEffect(() => {
+    if (!isInitialized && commandHistory.length === 0) {
+      setTimeout(() => {
+        executeCommand({
+          command: 'ssh stef@portfolio.dev',
+          output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
+          delay: 1000
+        });
+        setIsInitialized(true);
+      }, 500);
+    }
+  }, [isInitialized, commandHistory.length, t, setIsInitialized]);
 
-  const executeCommand = useCallback(async (commandData: TerminalCommand) => {
+  // Update command outputs when language changes
+  useEffect(() => {
+    setCommandHistory(prev => 
+      prev.map(cmd => {
+        if (cmd.command === 'ssh stef@portfolio.dev') {
+          return {
+            ...cmd,
+            output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`
+          };
+        }
+        if (cmd.command === 'help') {
+          return {
+            ...cmd,
+            output: `${t('terminal.help')}\n` +
+                    `  start    - ${t('terminal.start')}\n` +
+                    `  projects - ${t('terminal.projects')}\n` +
+                    `  stack    - ${t('terminal.stack')}\n` +
+                    `  about    - ${t('terminal.about')}\n` +
+                    `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
+                    `  clear    - ${t('terminal.clear')}\n`
+          };
+        }
+        if (cmd.command === 'about') {
+          return {
+            ...cmd,
+            output: `${t('terminal.about.stef')}\n`
+          };
+        }
+        if (cmd.command === 'stack') {
+          return {
+            ...cmd,
+            output: `${t('terminal.redirecting.stack')}\n`
+          };
+        }
+        if (cmd.command === 'start') {
+          return {
+            ...cmd,
+            output: `${t('terminal.starting.adventure')}\n${t('terminal.redirecting.level')}\n`
+          };
+        }
+        if (cmd.command === 'projects') {
+          return {
+            ...cmd,
+            output: `${t('terminal.redirecting.projects')}\n`
+          };
+        }
+        if (cmd.command === 'recruiter-mode') {
+          return {
+            ...cmd,
+            output: `${t('terminal.fast.track.activated')}\n`
+          };
+        }
+
+        return cmd;
+      })
+    );
+  }, [language, t, setCommandHistory]);
+
+  const executeCommand = async (commandData: TerminalCommand) => {
     setIsTyping(true);
     
     // Type the command
@@ -55,86 +133,39 @@ const InteractiveTerminal: React.FC = () => {
     
     setCurrentLine('');
     
-    // Add command to history with empty output first
-    addCommand({ command: commandData.command, output: '' });
+    // Add command to history
+    const newCommand = { command: commandData.command, output: '' };
+    addCommand(newCommand);
     
     // Wait before showing output
     await new Promise(resolve => setTimeout(resolve, commandData.delay || 500));
     
-    // Type the output character by character
+    // Type the output
     let output = '';
     for (let i = 0; i < commandData.output.length; i++) {
       output += commandData.output[i];
-      // Update the last command in history with the current output
-      addCommand({ command: commandData.command, output });
+      setCommandHistory(prev => 
+        prev.map((cmd, idx) => 
+          idx === prev.length - 1 
+            ? { ...cmd, output } 
+            : cmd
+        )
+      );
       await new Promise(resolve => setTimeout(resolve, 20));
     }
     
     setIsTyping(false);
-  }, [addCommand]);
-
-  // Memoize translated command outputs - only translate when not typing
-  const translatedCommands = useMemo(() => {
-    return commandHistory.map(cmd => {
-      let translatedOutput = cmd.output;
-      
-      // Only translate if we're not currently typing
-      if (!isTyping) {
-        // Translate specific command outputs based on language
-        if (cmd.command === 'ssh stef@portfolio.dev') {
-          translatedOutput = `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`;
-        } else if (cmd.command === 'help') {
-          translatedOutput = `${t('terminal.help')}\n` +
-                           `  start    - ${t('terminal.start')}\n` +
-                           `  projects - ${t('terminal.projects')}\n` +
-                           `  stack    - ${t('terminal.stack')}\n` +
-                           `  about    - ${t('terminal.about')}\n` +
-                           `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
-                           `  clear    - ${t('terminal.clear')}\n`;
-        } else if (cmd.command === 'about') {
-          translatedOutput = `${t('terminal.about.stef')}\n`;
-        } else if (cmd.command === 'start') {
-          translatedOutput = `${t('terminal.starting.adventure')}\n${t('terminal.redirecting.level')}\n`;
-        } else if (cmd.command === 'lang') {
-          translatedOutput = `${t('terminal.lang')}:\n` +
-                           `  lang es  - Español\n` +
-                           `  lang en  - English\n` +
-                           `  lang fr  - Français\n`;
-        } else if (cmd.command === 'projects') {
-          translatedOutput = `${t('terminal.projects.redirecting')}\n`;
-        } else if (cmd.command === 'stack') {
-          translatedOutput = `${t('terminal.stack.redirecting')}\n`;
-        } else if (cmd.command === 'recruiter-mode') {
-          translatedOutput = `${t('terminal.recruiter.activated')}\n`;
-        }
-      }
-      
-      return {
-        ...cmd,
-        output: translatedOutput
-      };
-    });
-  }, [commandHistory, language, t, isTyping]);
-
-
-  useEffect(() => {
-    if (!isInitialized) {
-      setTimeout(() => {
-        executeCommand({
-          command: 'ssh stef@portfolio.dev',
-          output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
-          delay: 1000
-        });
-        setIsInitialized(true);
-      }, 500);
-    }
-  }, [isInitialized, t, setIsInitialized, executeCommand]);
+  };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && currentLine.trim()) {
       const command = currentLine.trim();
       setCurrentLine('');
-      switch (command.toLowerCase()) {
+      const commandParts = command.split(' ');
+      const baseCommand = commandParts[0].toLowerCase();
+      const args = commandParts.slice(1);
+      
+      switch (baseCommand) {
         case 'ssh stef@portfolio.dev':
           executeCommand({
             command,
@@ -150,80 +181,128 @@ const InteractiveTerminal: React.FC = () => {
           });
           setTimeout(() => router.push('/adventure'), 2000);
           break;
-        case 'help':
-          executeCommand({
-            command,
-            output: `${t('terminal.help')}\n` +
-                    `  start    - ${t('terminal.start')}\n` +
-                    `  projects - ${t('terminal.projects')}\n` +
-                    `  stack    - ${t('terminal.stack')}\n` +
-                    `  about    - ${t('terminal.about')}\n` +
-                    `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
-                    `  clear    - ${t('terminal.clear')}\n`,
-            delay: 300
-          });
-          break;
+
         case 'about':
-          executeCommand({
-            command,
-            output: `${t('terminal.about.stef')}\n`,
-            delay: 500
-          });
+          if (args.includes('--deep')) {
+            executeCommand({
+              command,
+              output: `${t('terminal.about.redirecting')}\n`,
+              delay: 300
+            });
+            setTimeout(() => router.push('/about'), 1000);
+          } else {
+            executeCommand({
+              command,
+              output: `${t('terminal.about.stef')}\n`,
+              delay: 500
+            });
+          }
           break;
         case 'projects':
           executeCommand({
             command,
-            output: `${t('terminal.projects.redirecting')}\n`,
+            output: `${t('terminal.redirecting.projects')}\n`,
             delay: 500
           });
           setTimeout(() => router.push('/projects'), 1000);
           break;
+
+        case 'clear':
+          setCommandHistory([
+            {
+              command: 'ssh stef@portfolio.dev',
+              output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
+              delay: 0
+            }
+          ]);
+          break;
+
+        case 'lang':
+          if (args.length > 0) {
+            const lang = args[0];
+            const langMessages = {
+              es: `${t('terminal.language.changed')} Español 🇪🇸\n`,
+              en: `${t('terminal.language.changed')} English 🇺🇸\n`,
+              fr: `${t('terminal.language.changed')} Français 🇫🇷\n`
+            };
+            if (lang in langMessages) {
+              setLanguage(lang as 'es' | 'en' | 'fr');
+              executeCommand({
+                command,
+                output: langMessages[lang as keyof typeof langMessages],
+                delay: 300
+              });
+            } else {
+              executeCommand({
+                command,
+                output: 'Language not supported. Use: lang es, lang en, or lang fr\n',
+                delay: 300
+              });
+            }
+          } else {
+            executeCommand({
+              command,
+              output: `${t('terminal.lang')}:\n` +
+                      `  lang es  - Español\n` +
+                      `  lang en  - English\n` +
+                      `  lang fr  - Français\n`,
+              delay: 300
+            });
+          }
+          break;
         case 'stack':
           executeCommand({
             command,
-            output: `${t('terminal.stack.redirecting')}\n`,
-            delay: 500
+            output: `${t('terminal.redirecting.stack')}\n`,
+            delay: 300
           });
           setTimeout(() => router.push('/stack'), 1000);
           break;
-        case 'clear':
-          // Clear history using context function
-          clearHistory();
-          break;
-        case 'lang':
-          executeCommand({
-            command,
-            output: `${t('terminal.lang')}:\n` +
-                    `  lang es  - Español\n` +
-                    `  lang en  - English\n` +
-                    `  lang fr  - Français\n`,
-            delay: 300
-          });
-          break;
-        case 'lang es':
-        case 'lang en':
-        case 'lang fr':
-          const lang = command.split(' ')[1];
-          const langMessages = {
-            es: `${t('terminal.language.changed')} Español 🇪🇸\n`,
-            en: `${t('terminal.language.changed')} English 🇺🇸\n`,
-            fr: `${t('terminal.language.changed')} Français 🇫🇷\n`
-          };
-          setLanguage(lang as 'es' | 'en' | 'fr');
-          executeCommand({
-            command,
-            output: langMessages[lang as keyof typeof langMessages] || 'Language not supported\n',
-            delay: 300
-          });
-          break;
-
         case 'recruiter-mode':
           executeCommand({
             command,
-            output: `${t('terminal.recruiter.activated')}\n`,
+            output: `${t('terminal.fast.track.activated')}\n`,
             delay: 300
           });
           setTimeout(() => router.push('/recruiter'), 1500);
+          break;
+        case 'help':
+          if (args.includes('--verbose')) {
+            executeCommand({
+              command,
+              output:
+                `${t('terminal.help.verbose.title')}\n` +
+                `${'='.repeat(50)}\n\n` +
+                `${t('terminal.help.verbose.intro')}\n\n` +
+                `${t('terminal.help.verbose.commands.title')}\n` +
+                `${'-'.repeat(30)}\n` +
+                `  start         - ${t('terminal.help.verbose.start.desc')}\n` +
+                `  projects      - ${t('terminal.help.verbose.projects.desc')}\n` +
+                `  about         - ${t('terminal.help.verbose.about.desc')}\n` +
+                `  recruiter-mode - ${t('terminal.help.verbose.recruiter.desc')}\n` +
+                `  clear         - ${t('terminal.help.verbose.clear.desc')}\n\n` +
+                `${t('terminal.help.verbose.tips.title')}\n` +
+                `${'-'.repeat(20)}\n` +
+                `  ${t('terminal.help.verbose.tips.1')}\n` +
+                `  ${t('terminal.help.verbose.tips.2')}\n` +
+                `  ${t('terminal.help.verbose.tips.3')}\n` +
+                `  ${t('terminal.help.verbose.tips.4')}\n\n` +
+                `${t('terminal.help.verbose.footer')}\n`,
+              delay: 100
+            });
+          } else {
+            executeCommand({
+              command,
+              output: `${t('terminal.help')}\n` +
+                      `  start    - ${t('terminal.start')}\n` +
+                      `  projects - ${t('terminal.projects')}\n` +
+                      `  stack    - ${t('terminal.stack')}\n` +
+                      `  about    - ${t('terminal.about')}\n` +
+                      `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
+                      `  clear    - ${t('terminal.clear')}\n`,
+              delay: 300
+            });
+          }
           break;
         case 'skip':
           executeCommand({
@@ -264,7 +343,7 @@ const InteractiveTerminal: React.FC = () => {
     if (terminalRef.current && isUserAtBottom) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
-  }, [translatedCommands, isUserAtBottom]);
+  }, [commandHistory, isUserAtBottom]);
 
   return (
     <div className="terminal-container">
@@ -276,7 +355,7 @@ const InteractiveTerminal: React.FC = () => {
         </div>
         <div className="terminal-title">stef@portfolio.dev</div>
         <div style={{ marginLeft: 'auto' }}>
-          <LanguageSwitcher />
+          <LanguageSwitcher hideLabel={true} />
         </div>
       </div>
       
@@ -285,7 +364,7 @@ const InteractiveTerminal: React.FC = () => {
         ref={terminalRef}
         onClick={() => inputRef.current?.focus()}
       >
-        {translatedCommands.map((cmd, index) => (
+        {commandHistory.map((cmd, index) => (
           <div key={index} className="command-block">
             <div className="command-line">
               <span className="prompt">$ </span>
