@@ -72,10 +72,10 @@ const RecruiterPage: React.FC = () => {
   return (
     <div className="recruiter-container" style={{
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      background: 'linear-gradient(135deg, #181824 0%, #2d193c 100%)',
       padding: '2rem',
-      fontFamily: 'Inter, system-ui, sans-serif',
-      color: 'white'
+      fontFamily: 'Courier New, Monaco, Menlo, monospace',
+      color: '#f3b1e6'
     }}>
       {/* Header */}
       <div style={{
@@ -84,7 +84,7 @@ const RecruiterPage: React.FC = () => {
         alignItems: 'center',
         marginBottom: '3rem'
       }}>
-        <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: '700' }}>
+        <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: '700', color: '#e75480' }}>
           💼 Recruiter Mode
         </h1>
         <LanguageSwitcher />
@@ -100,18 +100,20 @@ const RecruiterPage: React.FC = () => {
         
         {/* Mini Intro */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
+          background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
           padding: '2.5rem',
           boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
-          color: '#1f2937'
+          color: '#f3b1e6',
+          border: '1px solid rgba(243, 177, 230, 0.2)'
         }}>
           <p style={{
             fontSize: '1.3rem',
             lineHeight: '1.6',
             margin: 0,
             fontWeight: '500',
-            textAlign: 'center'
+            textAlign: 'center',
+            color: '#f3b1e6'
           }}>
             {recruiterData.intro[language]}
           </p>
@@ -119,16 +121,17 @@ const RecruiterPage: React.FC = () => {
 
         {/* Tech Stack */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
+          background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
           padding: '2.5rem',
           boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
-          color: '#1f2937'
+          color: '#f3b1e6',
+          border: '1px solid rgba(243, 177, 230, 0.2)'
         }}>
           <h2 style={{
             margin: '0 0 1.5rem 0',
             fontSize: '1.8rem',
-            color: '#1f2937',
+            color: '#f3b1e6',
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem'
@@ -140,14 +143,14 @@ const RecruiterPage: React.FC = () => {
               fontSize: '1.1rem',
               margin: 0,
               fontWeight: '600',
-              color: '#374151'
+              color: '#e75480'
             }}>
               {recruiterData.mainStack[language]}
             </p>
             <p style={{
               fontSize: '1rem',
               margin: 0,
-              color: '#6b7280'
+              color: '#f3b1e6'
             }}>
               {recruiterData.familiar[language]}
             </p>
@@ -156,16 +159,17 @@ const RecruiterPage: React.FC = () => {
 
         {/* Highlighted Projects */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
+          background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
           padding: '2.5rem',
           boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
-          color: '#1f2937'
+          color: '#f3b1e6',
+          border: '1px solid rgba(243, 177, 230, 0.2)'
         }}>
           <h2 style={{
             margin: '0 0 1.5rem 0',
             fontSize: '1.8rem',
-            color: '#1f2937',
+            color: '#f3b1e6',
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem'
@@ -176,9 +180,9 @@ const RecruiterPage: React.FC = () => {
             {recruiterData.projects.map((project, index) => (
               <div key={index} style={{
                 padding: '1rem',
-                background: '#f8fafc',
+                background: 'rgba(255, 255, 255, 0.05)',
                 borderRadius: '0.75rem',
-                border: '1px solid #e2e8f0'
+                border: '1px solid rgba(243, 177, 230, 0.2)'
               }}>
                 <div style={{
                   display: 'flex',
@@ -188,7 +192,7 @@ const RecruiterPage: React.FC = () => {
                   <span style={{
                     fontSize: '1.2rem',
                     fontWeight: '700',
-                    color: '#667eea',
+                    color: '#e75480',
                     minWidth: 'fit-content'
                   }}>
                     •
@@ -198,14 +202,14 @@ const RecruiterPage: React.FC = () => {
                       margin: '0 0 0.5rem 0',
                       fontSize: '1.1rem',
                       fontWeight: '600',
-                      color: '#1f2937'
+                      color: '#f3b1e6'
                     }}>
                       {project.name}
                     </h3>
                     <p style={{
                       margin: 0,
                       fontSize: '1rem',
-                      color: '#6b7280',
+                      color: '#f3b1e6',
                       lineHeight: '1.5'
                     }}>
                       {project.description[language]}
@@ -219,16 +223,17 @@ const RecruiterPage: React.FC = () => {
 
         {/* Quick Stats */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
+          background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
           padding: '2.5rem',
           boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
-          color: '#1f2937'
+          color: '#f3b1e6',
+          border: '1px solid rgba(243, 177, 230, 0.2)'
         }}>
           <h2 style={{
             margin: '0 0 1.5rem 0',
             fontSize: '1.8rem',
-            color: '#1f2937',
+            color: '#f3b1e6',
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem'
@@ -243,11 +248,12 @@ const RecruiterPage: React.FC = () => {
             <div style={{
               textAlign: 'center',
               padding: '1.5rem',
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              background: 'rgba(231, 84, 128, 0.2)',
               borderRadius: '0.75rem',
-              color: 'white'
+              color: '#f3b1e6',
+              border: '1px solid #e75480'
             }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem' }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
                 3+
               </div>
               <div style={{ fontSize: '1rem', opacity: 0.9 }}>
@@ -257,11 +263,12 @@ const RecruiterPage: React.FC = () => {
             <div style={{
               textAlign: 'center',
               padding: '1.5rem',
-              background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+              background: 'rgba(243, 177, 230, 0.2)',
               borderRadius: '0.75rem',
-              color: 'white'
+              color: '#f3b1e6',
+              border: '1px solid #f3b1e6'
             }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem' }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#f3b1e6' }}>
                 10+
               </div>
               <div style={{ fontSize: '1rem', opacity: 0.9 }}>
@@ -271,11 +278,12 @@ const RecruiterPage: React.FC = () => {
             <div style={{
               textAlign: 'center',
               padding: '1.5rem',
-              background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+              background: 'rgba(231, 84, 128, 0.1)',
               borderRadius: '0.75rem',
-              color: 'white'
+              color: '#f3b1e6',
+              border: '1px solid rgba(231, 84, 128, 0.3)'
             }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem' }}>
+              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
                 100%
               </div>
               <div style={{ fontSize: '1rem', opacity: 0.9 }}>
@@ -287,16 +295,17 @@ const RecruiterPage: React.FC = () => {
 
         {/* Action Links */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.95)',
+          background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
           padding: '2.5rem',
           boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
-          color: '#1f2937'
+          color: '#f3b1e6',
+          border: '1px solid rgba(243, 177, 230, 0.2)'
         }}>
           <h2 style={{
             margin: '0 0 1.5rem 0',
             fontSize: '1.8rem',
-            color: '#1f2937',
+            color: '#f3b1e6',
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem'
@@ -309,136 +318,65 @@ const RecruiterPage: React.FC = () => {
             gap: '1rem'
           }}>
             <button
+              className="back-button"
               onClick={() => window.open('https://github.com/stefanyralvgh/MyPortfolio', '_blank')}
               style={{
-                padding: '1rem 1.5rem',
-                background: '#1f2937',
-                border: 'none',
-                borderRadius: '0.75rem',
-                fontSize: '1rem',
-                fontWeight: '600',
-                color: 'white',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.5rem'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.background = '#374151';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.background = '#1f2937';
+                background: 'rgba(231, 84, 128, 0.2)',
+                color: '#f3b1e6',
+                border: '2px solid #e75480'
               }}
             >
-              <span>🐙</span>
-              GitHub
+              <span>🐙</span> GitHub
             </button>
             <button
+              className="back-button"
               onClick={() => window.open('https://www.linkedin.com/in/stefanyralvli/', '_blank')}
               style={{
-                padding: '1rem 1.5rem',
-                background: '#0077b5',
-                border: 'none',
-                borderRadius: '0.75rem',
-                fontSize: '1rem',
-                fontWeight: '600',
-                color: 'white',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.5rem'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.background = '#005885';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.background = '#0077b5';
+                background: 'rgba(243, 177, 230, 0.2)',
+                color: '#f3b1e6',
+                border: '2px solid #f3b1e6'
               }}
             >
-              <span>💼</span>
-              LinkedIn
+              <span>💼</span> LinkedIn
             </button>
             <button
+              className="back-button"
               onClick={() => handleDownloadCV(language === 'es' ? 'es' : 'en')}
               style={{
-                padding: '1rem 1.5rem',
-                background: '#10b981',
-                border: 'none',
-                borderRadius: '0.75rem',
-                fontSize: '1rem',
-                fontWeight: '600',
-                color: 'white',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.5rem'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.background = '#059669';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.background = '#10b981';
+                background: 'rgba(231, 84, 128, 0.1)',
+                color: '#f3b1e6',
+                border: '2px solid rgba(231, 84, 128, 0.3)'
               }}
             >
-              <span>📄</span>
-              {language === 'es' ? 'Descargar CV' : language === 'fr' ? 'Télécharger CV' : 'Download CV'}
+              <span>📄</span> {language === 'es' ? 'Descargar CV' : language === 'fr' ? 'Télécharger CV' : 'Download CV'}
             </button>
             <button
+              className="back-button"
               onClick={() => router.push('/stack')}
               style={{
-                padding: '1rem 1.5rem',
-                background: '#8b5cf6',
-                border: 'none',
-                borderRadius: '0.75rem',
-                fontSize: '1rem',
-                fontWeight: '600',
-                color: 'white',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.5rem'
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.background = '#7c3aed';
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.background = '#8b5cf6';
+                background: 'rgba(243, 177, 230, 0.1)',
+                color: '#f3b1e6',
+                border: '2px solid rgba(243, 177, 230, 0.3)'
               }}
             >
-              <span>🛠️</span>
-              {language === 'es' ? 'Ver Stack' : language === 'fr' ? 'Voir Stack' : 'View Stack'}
+              <span>🛠️</span> {language === 'es' ? 'Ver Stack' : language === 'fr' ? 'Voir Stack' : 'View Stack'}
             </button>
           </div>
         </div>
 
         {/* Restart Message */}
         <div style={{
-          background: 'rgba(255, 255, 255, 0.1)',
+          background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
           padding: '2rem',
           textAlign: 'center',
-          border: '1px solid rgba(255, 255, 255, 0.2)'
+          border: '1px solid rgba(243, 177, 230, 0.2)'
         }}>
           <p style={{
             margin: 0,
             fontSize: '1.1rem',
-            opacity: 0.9
+            opacity: 0.9,
+            color: '#f3b1e6'
           }}>
             {language === 'es' 
               ? '¿Quieres explorar más? Escribe `restart` o `help` para volver al modo terminal.'
