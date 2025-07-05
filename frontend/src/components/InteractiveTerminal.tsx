@@ -161,7 +161,11 @@ const InteractiveTerminal: React.FC = () => {
     if (e.key === 'Enter' && currentLine.trim()) {
       const command = currentLine.trim();
       setCurrentLine('');
-      switch (command.toLowerCase()) {
+      const commandParts = command.split(' ');
+      const baseCommand = commandParts[0].toLowerCase();
+      const args = commandParts.slice(1);
+      
+      switch (baseCommand) {
         case 'ssh stef@portfolio.dev':
           executeCommand({
             command,
@@ -177,25 +181,22 @@ const InteractiveTerminal: React.FC = () => {
           });
           setTimeout(() => router.push('/adventure'), 2000);
           break;
-        case 'help':
-          executeCommand({
-            command,
-            output: `${t('terminal.help')}\n` +
-                    `  start    - ${t('terminal.start')}\n` +
-                    `  projects - ${t('terminal.projects')}\n` +
-                    `  stack    - ${t('terminal.stack')}\n` +
-                    `  about    - ${t('terminal.about')}\n` +
-                    `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
-                    `  clear    - ${t('terminal.clear')}\n`,
-            delay: 300
-          });
-          break;
+
         case 'about':
-          executeCommand({
-            command,
-            output: `${t('terminal.about.stef')}\n`,
-            delay: 500
-          });
+          if (args.includes('--deep')) {
+            executeCommand({
+              command,
+              output: `${t('terminal.about.redirecting')}\n`,
+              delay: 300
+            });
+            setTimeout(() => router.push('/about'), 1000);
+          } else {
+            executeCommand({
+              command,
+              output: `${t('terminal.about.stef')}\n`,
+              delay: 500
+            });
+          }
           break;
         case 'projects':
           executeCommand({
@@ -215,31 +216,39 @@ const InteractiveTerminal: React.FC = () => {
             }
           ]);
           break;
+
         case 'lang':
-          executeCommand({
-            command,
-            output: `${t('terminal.lang')}:\n` +
-                    `  lang es  - Español\n` +
-                    `  lang en  - English\n` +
-                    `  lang fr  - Français\n`,
-            delay: 300
-          });
-          break;
-        case 'lang es':
-        case 'lang en':
-        case 'lang fr':
-          const lang = command.split(' ')[1];
-          const langMessages = {
-            es: `${t('terminal.language.changed')} Español 🇪🇸\n`,
-            en: `${t('terminal.language.changed')} English 🇺🇸\n`,
-            fr: `${t('terminal.language.changed')} Français 🇫🇷\n`
-          };
-          setLanguage(lang as 'es' | 'en' | 'fr');
-          executeCommand({
-            command,
-            output: langMessages[lang as keyof typeof langMessages] || 'Language not supported\n',
-            delay: 300
-          });
+          if (args.length > 0) {
+            const lang = args[0];
+            const langMessages = {
+              es: `${t('terminal.language.changed')} Español 🇪🇸\n`,
+              en: `${t('terminal.language.changed')} English 🇺🇸\n`,
+              fr: `${t('terminal.language.changed')} Français 🇫🇷\n`
+            };
+            if (lang in langMessages) {
+              setLanguage(lang as 'es' | 'en' | 'fr');
+              executeCommand({
+                command,
+                output: langMessages[lang as keyof typeof langMessages],
+                delay: 300
+              });
+            } else {
+              executeCommand({
+                command,
+                output: 'Language not supported. Use: lang es, lang en, or lang fr\n',
+                delay: 300
+              });
+            }
+          } else {
+            executeCommand({
+              command,
+              output: `${t('terminal.lang')}:\n` +
+                      `  lang es  - Español\n` +
+                      `  lang en  - English\n` +
+                      `  lang fr  - Français\n`,
+              delay: 300
+            });
+          }
           break;
         case 'stack':
           executeCommand({
@@ -257,29 +266,43 @@ const InteractiveTerminal: React.FC = () => {
           });
           setTimeout(() => router.push('/recruiter'), 1500);
           break;
-        case 'help --verbose':
-          executeCommand({
-            command,
-            output:
-              `${t('terminal.help.verbose.title')}\n` +
-              `${'='.repeat(50)}\n\n` +
-              `${t('terminal.help.verbose.intro')}\n\n` +
-              `${t('terminal.help.verbose.commands.title')}\n` +
-              `${'-'.repeat(30)}\n` +
-              `  start         - ${t('terminal.help.verbose.start.desc')}\n` +
-              `  projects      - ${t('terminal.help.verbose.projects.desc')}\n` +
-              `  about         - ${t('terminal.help.verbose.about.desc')}\n` +
-              `  recruiter-mode - ${t('terminal.help.verbose.recruiter.desc')}\n` +
-              `  clear         - ${t('terminal.help.verbose.clear.desc')}\n\n` +
-              `${t('terminal.help.verbose.tips.title')}\n` +
-              `${'-'.repeat(20)}\n` +
-              `  ${t('terminal.help.verbose.tips.1')}\n` +
-              `  ${t('terminal.help.verbose.tips.2')}\n` +
-              `  ${t('terminal.help.verbose.tips.3')}\n` +
-              `  ${t('terminal.help.verbose.tips.4')}\n\n` +
-              `${t('terminal.help.verbose.footer')}\n`,
-            delay: 100
-          });
+        case 'help':
+          if (args.includes('--verbose')) {
+            executeCommand({
+              command,
+              output:
+                `${t('terminal.help.verbose.title')}\n` +
+                `${'='.repeat(50)}\n\n` +
+                `${t('terminal.help.verbose.intro')}\n\n` +
+                `${t('terminal.help.verbose.commands.title')}\n` +
+                `${'-'.repeat(30)}\n` +
+                `  start         - ${t('terminal.help.verbose.start.desc')}\n` +
+                `  projects      - ${t('terminal.help.verbose.projects.desc')}\n` +
+                `  about         - ${t('terminal.help.verbose.about.desc')}\n` +
+                `  recruiter-mode - ${t('terminal.help.verbose.recruiter.desc')}\n` +
+                `  clear         - ${t('terminal.help.verbose.clear.desc')}\n\n` +
+                `${t('terminal.help.verbose.tips.title')}\n` +
+                `${'-'.repeat(20)}\n` +
+                `  ${t('terminal.help.verbose.tips.1')}\n` +
+                `  ${t('terminal.help.verbose.tips.2')}\n` +
+                `  ${t('terminal.help.verbose.tips.3')}\n` +
+                `  ${t('terminal.help.verbose.tips.4')}\n\n` +
+                `${t('terminal.help.verbose.footer')}\n`,
+              delay: 100
+            });
+          } else {
+            executeCommand({
+              command,
+              output: `${t('terminal.help')}\n` +
+                      `  start    - ${t('terminal.start')}\n` +
+                      `  projects - ${t('terminal.projects')}\n` +
+                      `  stack    - ${t('terminal.stack')}\n` +
+                      `  about    - ${t('terminal.about')}\n` +
+                      `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
+                      `  clear    - ${t('terminal.clear')}\n`,
+              delay: 300
+            });
+          }
           break;
         case 'skip':
           executeCommand({

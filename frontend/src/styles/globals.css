@@ -1001,3 +1001,129 @@ body::-webkit-scrollbar-thumb:hover {
   0% { transform: rotate(0deg);}
   100% { transform: rotate(360deg);}
 }
+
+/* About Page Styles */
+.about-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #181824 0%, #2d193c 100%);
+  padding: 2rem;
+  color: #fff0f6;
+  font-family: 'Courier New', monospace;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about-photo-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.about-photo-placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(231, 84, 128, 0.1);
+  border: 3px solid #e75480;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.about-photo-placeholder:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(231, 84, 128, 0.3);
+}
+
+.about-section {
+  background: rgba(45, 25, 60, 0.9);
+  border-radius: 15px;
+  padding: 2rem;
+  border: 2px solid #e75480;
+  box-shadow: 0 0 30px rgba(231, 84, 128, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 40px rgba(231, 84, 128, 0.3);
+}
+
+.about-section h2 {
+  color: #e75480;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(231, 84, 128, 0.3);
+  border-bottom: 2px solid #e75480;
+  padding-bottom: 0.5rem;
+}
+
+.about-section p {
+  color: #f3b1e6;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about-list li {
+  color: #f3b1e6;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(231, 84, 128, 0.2);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+.about-list li:last-child {
+  border-bottom: none;
+}
+
+.about-list li:hover {
+  color: #e75480;
+  padding-left: 1rem;
+  background: rgba(231, 84, 128, 0.1);
+  border-radius: 8px;
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 1rem;
+  }
+  
+  .about-content {
+    gap: 1.5rem;
+  }
+  
+  .about-section {
+    padding: 1.5rem;
+  }
+  
+  .about-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .about-section p,
+  .about-list li {
+    font-size: 1rem;
+  }
+  
+  .about-photo-placeholder {
+    width: 150px;
+    height: 150px;
+  }
+}
