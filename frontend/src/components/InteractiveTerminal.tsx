@@ -82,7 +82,6 @@ const InteractiveTerminal: React.FC = () => {
                     `  start    - ${t('terminal.start')}\n` +
                     `  projects - ${t('terminal.projects')}\n` +
                     `  about    - ${t('terminal.about')}\n` +
-                    `  funfacts - ${t('terminal.funfacts')}\n` +
                     `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
                     `  clear    - ${t('terminal.clear')}\n`
           };
@@ -93,7 +92,7 @@ const InteractiveTerminal: React.FC = () => {
             output: `${t('terminal.about.stef')}\n`
           };
         }
-        if (cmd.command === 'help --verbose') {
+        if (cmd.command === 'stack') {
           return {
             ...cmd,
             output:
@@ -105,7 +104,6 @@ const InteractiveTerminal: React.FC = () => {
               `  start         - ${t('terminal.help.verbose.start.desc')}\n` +
               `  projects      - ${t('terminal.help.verbose.projects.desc')}\n` +
               `  about         - ${t('terminal.help.verbose.about.desc')}\n` +
-              `  funfacts      - ${t('terminal.help.verbose.funfacts.desc')}\n` +
               `  recruiter-mode - ${t('terminal.help.verbose.recruiter.desc')}\n` +
               `  clear         - ${t('terminal.help.verbose.clear.desc')}\n\n` +
               `${t('terminal.help.verbose.tips.title')}\n` +
@@ -185,7 +183,6 @@ const InteractiveTerminal: React.FC = () => {
                     `  start    - ${t('terminal.start')}\n` +
                     `  projects - ${t('terminal.projects')}\n` +
                     `  about    - ${t('terminal.about')}\n` +
-                    `  funfacts - ${t('terminal.funfacts')}\n` +
                     `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
                     `  clear    - ${t('terminal.clear')}\n`,
             delay: 300
@@ -201,24 +198,12 @@ const InteractiveTerminal: React.FC = () => {
         case 'projects':
           executeCommand({
             command,
-            output: `Redirecting to projects view...\n`,
+            output: `${t('terminal.redirecting.projects')}\n`,
             delay: 500
           });
           setTimeout(() => router.push('/projects'), 1000);
           break;
-        case 'funfacts':
-          executeCommand({
-            command,
-            output: `🎯 Fun Facts about Stef:\n\n` +
-                    `🦷 Ex-dentist turned backend developer\n` +
-                    `🌍 Speaks Spanish, English, and learning French\n` +
-                    `💡 Built this portfolio with Ruby on Rails\n` +
-                    `🎨 Used AI to help with frontend styling\n` +
-                    `🔍 Loves debugging and solving complex problems\n` +
-                    `🚀 Dream company hint: they do healthcare 👀\n`,
-            delay: 300
-          });
-          break;
+
         case 'clear':
           setCommandHistory([
             {
@@ -254,7 +239,6 @@ const InteractiveTerminal: React.FC = () => {
             delay: 300
           });
           break;
-        case 'help --verbose':
         case 'stack':
           executeCommand({
             command,

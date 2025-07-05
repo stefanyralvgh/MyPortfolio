@@ -756,6 +756,132 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .projects-header h1 {
+  color: #f3b1e6;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(243, 177, 230, 0.3);
+}
+
+.projects-header p {
+  color: #e75480;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(243, 177, 230, 0.2);
+  border-radius: 15px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(243, 177, 230, 0.4);
+  box-shadow: 0 10px 30px rgba(243, 177, 230, 0.2);
+}
+
+.project-card h3 {
+  color: #f3b1e6;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.project-role {
+  color: #e75480;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.project-description {
+  color: #fff0f6;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.project-status {
+  margin-bottom: 1rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.status-badge.success {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.status-badge.warning {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.status-badge.error {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.tech-stack {
+  margin-bottom: 1rem;
+}
+
+.tech-stack h4 {
+  color: #f3b1e6;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.tech-stack p {
+  color: #e75480;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.project-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-links a {
+  color: #f3b1e6;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.project-links a:hover {
+  color: #e75480;
+}
+
+.project-link-placeholder {
+  color: #888;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.projects-header h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
   color: #e75480;

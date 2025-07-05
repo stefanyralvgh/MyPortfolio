@@ -2,14 +2,14 @@
 projects_data = [
   {
     title: {
-      "en": "🐶 Animal Shelter – HENRY Project",
-      "es": "🐶 Refugio Animal – Proyecto HENRY",
-      "fr": "🐶 Refuge Animal – Projet HENRY"
+      "en": "Animal Shelter – HENRY Project",
+      "es": "Refugio Animal – Proyecto HENRY",
+      "fr": "Refuge Animal – Projet HENRY"
     },
     role: {
-      "en": "Backend Developer with a dash of frontend ✨",
-      "es": "Backend Developer con toques de front ✨",
-      "fr": "Développeuse backend avec une touche de frontend ✨"
+      "en": "Backend Developer with a dash of frontend",
+      "es": "Backend Developer con toques de front",
+      "fr": "Développeuse backend avec une touche de frontend"
     },
     tech: {
       "en": "Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago",
@@ -17,14 +17,14 @@ projects_data = [
       "fr": "Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago"
     },
     description: {
-      "en": "My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends 🐕🐈. I touched frontend just enough to survive.",
-      "es": "Mi primer proyecto en equipo y el primer hijo digital que vió la luz del deploy. Una plataforma para un refugio animal en Salta, Argentina, donde los usuarios podían hacer donaciones y adoptar peluditos 🐕🐈. Toqué el front solo lo justo para sobrevivir.",
-      "fr": "Mon premier projet en équipe et mon premier bébé digital en production. Une plateforme pour un refuge animalier à Salta, Argentine, où les utilisateurs pouvaient faire des dons et adopter des animaux 🐕🐈. Le frontend ? Juste ce qu'il fallait pour survivre."
+      "en": "My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.",
+      "es": "Mi primer proyecto en equipo y el primer hijo digital que vió la luz del deploy. Una plataforma para un refugio animal en Salta, Argentina, donde los usuarios podían hacer donaciones y adoptar peluditos. Toqué el front solo lo justo para sobrevivir.",
+      "fr": "Mon premier projet en équipe et mon premier bébé digital en production. Une plateforme pour un refuge animalier à Salta, Argentine, où les utilisateurs pouvaient faire des dons et adopter des animaux. Le frontend ? Juste ce qu'il fallait pour survivre."
     },
     status: {
-      "en": "Deployed and happily alive ✅",
-      "es": "Deployado y feliz por ahí ✅",
-      "fr": "Déployé et vivant quelque part ✅"
+      "en": "Deployed and happily alive",
+      "es": "Deployado y feliz por ahí",
+      "fr": "Déployé et vivant quelque part"
     },
     link: {
       "en": "Not available (but it lives in my heart and on GitHub)",
@@ -34,14 +34,14 @@ projects_data = [
   },
   {
     title: {
-      "en": "🏗️ Diidoo – Construction Project Platform",
-      "es": "🏗️ Diidoo – Plataforma para proyectos de construcción",
-      "fr": "🏗️ Diidoo – Plateforme de projets de construction"
+      "en": "Diidoo – Construction Project Platform",
+      "es": "Diidoo – Plataforma para proyectos de construcción",
+      "fr": "Diidoo – Plateforme de projets de construction"
     },
     role: {
-      "en": "Fullstack Developer (Official Bubble hacker) 🧩",
-      "es": "Fullstack Developer (Bubble hacker oficial) 🧩",
-      "fr": "Développeuse Fullstack (hacker Bubble officielle) 🧩"
+      "en": "Fullstack Developer (Official Bubble hacker)",
+      "es": "Fullstack Developer (Bubble hacker oficial)",
+      "fr": "Développeuse Fullstack (hacker Bubble officielle)"
     },
     tech: {
       "en": "Bubble.io, Wompi, complex workflows, lots of patience",
@@ -49,14 +49,14 @@ projects_data = [
       "fr": "Bubble.io, Wompi, workflows complexes, beaucoup de patience"
     },
     description: {
-      "en": "A huge and ambitious app to connect users with providers of architecture, interior design, and construction. Like Trello, but with concrete 🏗️💸.",
-      "es": "Una app enorme y ambiciosa para conectar usuarios con proveedores de arquitectura, diseño de interiores y construcción. Como un Trello, pero con cemento 🏗️💸.",
-      "fr": "Une application énorme et ambitieuse pour connecter des utilisateurs à des prestataires d'architecture, design d'intérieur et construction. Comme Trello, mais en béton 🏗️💸."
+      "en": "A huge and ambitious app to connect users with providers of architecture, interior design, and construction. Like Trello, but with concrete.",
+      "es": "Una app enorme y ambiciosa para conectar usuarios con proveedores de arquitectura, diseño de interiores y construcción. Como un Trello, pero con cemento.",
+      "fr": "Une application énorme et ambitieuse pour connecter des utilisateurs à des prestataires d'architecture, design d'intérieur et construction. Comme Trello, mais en béton."
     },
     status: {
-      "en": "💀 App down, but I learned like I climbed 1000 floors.",
-      "es": "💀 App caída, pero aprendí como si hubiera subido mil pisos.",
-      "fr": "💀 Appli hors ligne, mais j'ai appris comme si j'avais gravi 1000 étages."
+      "en": "App down, but I learned like I climbed 1000 floors.",
+      "es": "App caída, pero aprendí como si hubiera subido mil pisos.",
+      "fr": "Appli hors ligne, mais j'ai appris comme si j'avais gravi 1000 étages."
     },
     link: {
       "en": "App offline (RIP)",
@@ -66,14 +66,14 @@ projects_data = [
   },
   {
     title: {
-      "en": "🎧 Nodd – Music Distribution for Indie Artists",
-      "es": "🎧 Nodd – Distribución musical para artistas independientes",
-      "fr": "🎧 Nodd – Distribution musicale pour artistes indépendants"
+      "en": "Nodd – Music Distribution for Indie Artists",
+      "es": "Nodd – Distribución musical para artistas independientes",
+      "fr": "Nodd – Distribution musicale pour artistes indépendants"
     },
     role: {
-      "en": "Backend Developer of invisible beats 🎛️",
-      "es": "Backend Developer de beats invisibles 🎛️",
-      "fr": "Développeuse backend de beats invisibles 🎛️"
+      "en": "Backend Developer of invisible beats",
+      "es": "Backend Developer de beats invisibles",
+      "fr": "Développeuse backend de beats invisibles"
     },
     tech: {
       "en": "AWS (S3, Lambda, API Gateway), Node.js, Express, PostgreSQL",
@@ -86,9 +86,9 @@ projects_data = [
       "fr": "Une app où les artistes uploadent leur musique, paient un abonnement et... boom ! Distribution sur toutes les plateformes. J'ai plongé dans AWS et appris que la musique a aussi besoin d'un bon backend 🎶"
     },
     status: {
-      "en": "In testing mode 🧪",
-      "es": "En modo pruebas 🧪",
-      "fr": "En mode test 🧪"
+      "en": "In testing mode",
+      "es": "En modo pruebas",
+      "fr": "En mode test"
     },
     link: {
       "en": "noddmusic.com",
@@ -98,14 +98,14 @@ projects_data = [
   },
   {
     title: {
-      "en": "📚 Aidactic – International EdTech in Progress",
-      "es": "📚 Aidactic – EdTech internacional en proceso",
-      "fr": "📚 Aidactic – EdTech international en cours"
+      "en": "Aidactic – International EdTech in Progress",
+      "es": "Aidactic – EdTech internacional en proceso",
+      "fr": "Aidactic – EdTech international en cours"
     },
     role: {
-      "en": "Backend Engineer (my current job) 🧠",
-      "es": "Backend Engineer (mi trabajo actual) 🧠",
-      "fr": "Backend Engineer (mon job actuel) 🧠"
+      "en": "Backend Engineer (my current job)",
+      "es": "Backend Engineer (mi trabajo actual)",
+      "fr": "Backend Engineer (mon job actuel)"
     },
     tech: {
       "en": "Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger",
@@ -118,9 +118,9 @@ projects_data = [
       "fr": "Plateforme éducative pour lycéens et étudiants. Je construis des APIs comme des ponts entre REST et GraphQL. Intégration avec S3, conteneurs Docker et une doc agréable à lire."
     },
     status: {
-      "en": "In development 🛠️",
-      "es": "En desarrollo 🛠️",
-      "fr": "En développement 🛠️"
+      "en": "In development",
+      "es": "En desarrollo",
+      "fr": "En développement"
     },
     link: {
       "en": "Dev link only (coming soon to a screen near you)",

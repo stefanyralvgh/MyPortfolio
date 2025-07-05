@@ -22,14 +22,29 @@ interface TerminalContextType {
 const TerminalContext = createContext<TerminalContextType | undefined>(undefined);
 
 const STORAGE_KEY = 'terminal_state';
+const SESSION_FLAG = 'terminal_session_active';
 
 export const TerminalProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [commandHistory, setCommandHistory] = useState<TerminalCommand[]>([]);
   const [isInitialized, setIsInitialized] = useState(false);
 
-  // Load state from localStorage on mount
+  // Check if this is a page reload vs navigation
   useEffect(() => {
-    loadFromLocalStorage();
+    if (typeof window !== 'undefined') {
+      const sessionActive = sessionStorage.getItem(SESSION_FLAG);
+      
+      if (!sessionActive) {
+        // This is a fresh page load/reload - clear everything
+        localStorage.removeItem(STORAGE_KEY);
+        setCommandHistory([]);
+        setIsInitialized(false);
+        // Set session flag to indicate we're in a session
+        sessionStorage.setItem(SESSION_FLAG, 'true');
+      } else {
+        // This is navigation within the same session - load state
+        loadFromLocalStorage();
+      }
+    }
   }, []);
 
   // Save to localStorage whenever commandHistory changes
