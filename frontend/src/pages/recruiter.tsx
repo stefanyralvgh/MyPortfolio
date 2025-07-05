@@ -254,7 +254,7 @@ const RecruiterPage: React.FC = () => {
               border: '1px solid #e75480'
             }}>
               <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
-                3+
+                2+
               </div>
               <div style={{ fontSize: '1rem', opacity: 0.9 }}>
                 {language === 'es' ? 'Años de experiencia' : language === 'fr' ? 'Années d\'expérience' : 'Years Experience'}

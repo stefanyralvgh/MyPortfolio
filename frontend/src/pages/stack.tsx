@@ -8,17 +8,19 @@ const StackPage: React.FC = () => {
   const { language, t } = useLanguage();
 
   const stackData = {
-    main: [
-      { name: 'Node.js', icon: '🟢', level: 'Advanced' },
-      { name: 'PostgreSQL', icon: '🔵', level: 'Advanced' },
-      { name: 'GraphQL', icon: '🟣', level: 'Advanced' },
-      { name: 'MongoDB', icon: '🟢', level: 'Intermediate' },
-      { name: 'Docker', icon: '🔵', level: 'Intermediate' },
-      { name: 'AWS', icon: '🟠', level: 'Intermediate' },
-      { name: 'Next.js', icon: '⚫', level: 'Intermediate' }
-    ],
+          main: [
+        { name: 'Node.js', icon: '🟢', level: 'Advanced' },
+        { name: 'Express', icon: '🟢', level: 'Advanced' },
+        { name: 'PostgreSQL', icon: '🔵', level: 'Advanced' },
+        { name: 'TypeScript', icon: '🔵', level: 'Advanced' },
+        { name: 'GraphQL', icon: '🟣', level: 'Basic' },
+        { name: 'MongoDB', icon: '🟢', level: 'Intermediate' },
+        { name: 'Docker', icon: '🔵', level: 'Intermediate' },
+        { name: 'AWS', icon: '🟠', level: 'Intermediate' },
+        { name: 'Next.js', icon: '⚫', level: 'Intermediate' }
+      ],
     familiar: [
-      { name: 'Ruby on Rails', icon: '🔴', level: 'Intermediate' },
+      { name: 'Ruby on Rails', icon: '🔴', level: 'Basic' },
       { name: 'Bubble.io', icon: '🟡', level: 'Intermediate' },
       { name: 'React', icon: '🔵', level: 'Intermediate' }
     ],
@@ -41,6 +43,15 @@ const StackPage: React.FC = () => {
     }
   };
 
+  const getLevelTranslation = (level: string) => {
+    switch (level) {
+      case 'Advanced': return t('stack.level.advanced');
+      case 'Intermediate': return t('stack.level.intermediate');
+      case 'Basic': return t('stack.level.basic');
+      default: return level;
+    }
+  };
+
   return (
     <div className="stack-container" style={{
       minHeight: '100vh',
@@ -57,7 +68,7 @@ const StackPage: React.FC = () => {
         color: '#f3b1e6'
       }}>
         <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: '700', color: '#e75480' }}>
-          🛠️ Tech Stack
+          🛠️ {t('stack.title')}
         </h1>
         <LanguageSwitcher />
       </div>
@@ -86,7 +97,7 @@ const StackPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            🚀 Main Stack
+            🚀 {t('stack.main')}
           </h2>
           <div style={{
             display: 'grid',
@@ -115,7 +126,7 @@ const StackPage: React.FC = () => {
                   color: 'white',
                   background: getLevelColor(tech.level)
                 }}>
-                  {tech.level}
+                  {getLevelTranslation(tech.level)}
                 </span>
               </div>
             ))}
@@ -138,7 +149,7 @@ const StackPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            📚 Also Familiar With
+            📚 {t('stack.familiar')}
           </h2>
           <div style={{
             display: 'grid',
@@ -167,7 +178,7 @@ const StackPage: React.FC = () => {
                   color: 'white',
                   background: getLevelColor(tech.level)
                 }}>
-                  {tech.level}
+                  {getLevelTranslation(tech.level)}
                 </span>
               </div>
             ))}
@@ -190,7 +201,7 @@ const StackPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            🛠️ Tools & Technologies
+            🛠️ {t('stack.tools')}
           </h2>
           <div style={{
             display: 'grid',
@@ -230,7 +241,7 @@ const StackPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            📊 Quick Stats
+            📊 {t('stack.stats')}
           </h2>
           <div style={{
             display: 'grid',
@@ -248,7 +259,7 @@ const StackPage: React.FC = () => {
               <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
                 {stackData.main.length + stackData.familiar.length}
               </div>
-              <div style={{ fontSize: '1rem', opacity: 0.9 }}>Technologies</div>
+              <div style={{ fontSize: '1rem', opacity: 0.9 }}>{t('stack.technologies')}</div>
             </div>
             <div style={{
               textAlign: 'center',
@@ -261,7 +272,7 @@ const StackPage: React.FC = () => {
               <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#f3b1e6' }}>
                 {stackData.tools.length}
               </div>
-              <div style={{ fontSize: '1rem', opacity: 0.9 }}>Tools</div>
+              <div style={{ fontSize: '1rem', opacity: 0.9 }}>{t('stack.tools.label')}</div>
             </div>
             <div style={{
               textAlign: 'center',
@@ -272,9 +283,9 @@ const StackPage: React.FC = () => {
               border: '1px solid rgba(231, 84, 128, 0.3)'
             }}>
               <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
-                3+
+                2+
               </div>
-              <div style={{ fontSize: '1rem', opacity: 0.9 }}>Years Experience</div>
+              <div style={{ fontSize: '1rem', opacity: 0.9 }}>{t('stack.experience')}</div>
             </div>
           </div>
         </div>
@@ -301,7 +312,7 @@ const StackPage: React.FC = () => {
               border: '2px solid #f3b1e6'
             }}
           >
-            🚀 Recruiter Mode
+            🚀 {t('stack.recruiter.mode')}
           </button>
         </div>
       </div>

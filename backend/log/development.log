@@ -2852,3 +2852,15 @@ First project data: {:id=>13, :title=>"Animal Shelter – HENRY Project", :role=
 Completed 200 OK in 21ms (Views: 0.9ms | ActiveRecord: 1.6ms | Allocations: 1433)
 
 
+Started GET "/projects" for ::1 at 2025-07-05 16:27:27 -0500
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Count (320.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (1.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>13, :title=>"Animal Shelter – HENRY Project", :role=>"Backend Developer with a dash of frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.", :status=>"Deployed and happily alive", :link=>"Not available (but it lives in my heart and on GitHub)", :created_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.690091000 UTC +00:00}
+Completed 200 OK in 507ms (Views: 4.9ms | ActiveRecord: 391.8ms | Allocations: 4612)
+
+
