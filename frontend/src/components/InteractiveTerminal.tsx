@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useTerminal } from '../contexts/TerminalContext';
 import LanguageSwitcher from './LanguageSwitcher';
 
 interface TerminalCommand {
@@ -11,10 +12,9 @@ interface TerminalCommand {
 
 const InteractiveTerminal: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
+  const { commandHistory, setCommandHistory, addCommand, isInitialized, setIsInitialized, initializeTerminal, clearHistory } = useTerminal();
   const [currentLine, setCurrentLine] = useState('');
-  const [commandHistory, setCommandHistory] = useState<TerminalCommand[]>([]);
   const [isTyping, setIsTyping] = useState(false);
-  // const [currentStep, setCurrentStep] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
   const [isInputFocused, setIsInputFocused] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -44,81 +44,56 @@ const InteractiveTerminal: React.FC = () => {
   }, []);
 
 
-  useEffect(() => {
-    setCommandHistory(prev => 
-      prev.map(cmd => {
-        if (cmd.command === 'ssh stef@portfolio.dev') {
-          return {
-            ...cmd,
-            output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`
-          };
-        }
-        if (cmd.command === 'help') {
-          return {
-            ...cmd,
-            output: `${t('terminal.help')}\n` +
-                    `  start    - ${t('terminal.start')}\n` +
-                    `  projects - ${t('terminal.projects')}\n` +
-                    `  stack    - ${t('terminal.stack')}\n` +
-                    `  about    - ${t('terminal.about')}\n` +
-                    `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
-                    `  clear    - ${t('terminal.clear')}\n`
-          };
-        }
-        if (cmd.command === 'about') {
-          return {
-            ...cmd,
-            output: `${t('terminal.about.stef')}\n`
-          };
-        }
-
-        return cmd;
-      })
-    );
-  }, [language, t]);
-
-
-  useEffect(() => {
-    setTimeout(() => {
-      executeCommand({
-        command: 'ssh stef@portfolio.dev',
-        output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
-        delay: 1000
-      });
-    }, 500);
-  }, []);
-
-  const executeCommand = async (commandData: TerminalCommand) => {
+  const executeCommand = useCallback(async (commandData: TerminalCommand) => {
     setIsTyping(true);
     
-  
+    // Type the command
     for (let i = 0; i < commandData.command.length; i++) {
       setCurrentLine(commandData.command.slice(0, i + 1));
       await new Promise(resolve => setTimeout(resolve, 50));
     }
     
     setCurrentLine('');
-    setCommandHistory(prev => [...prev, { command: commandData.command, output: '' }]);
     
-
+    // Add command to history with empty output first
+    addCommand({ command: commandData.command, output: '' });
+    
+    // Wait before showing output
     await new Promise(resolve => setTimeout(resolve, commandData.delay || 500));
     
-
+    // Type the output character by character
     let output = '';
     for (let i = 0; i < commandData.output.length; i++) {
       output += commandData.output[i];
-      setCommandHistory(prev => 
-        prev.map((cmd, idx) => 
-          idx === prev.length - 1 
-            ? { ...cmd, output } 
-            : cmd
-        )
-      );
+      // Update the last command in history with the current output
+      addCommand({ command: commandData.command, output });
       await new Promise(resolve => setTimeout(resolve, 20));
     }
     
     setIsTyping(false);
-  };
+  }, [addCommand]);
+
+  // Update command outputs when language changes
+  useEffect(() => {
+    if (commandHistory.length > 0) {
+      // This will be handled by the context when we implement it properly
+      // For now, we'll just let the commands stay as they are
+    }
+  }, [language, t, commandHistory.length]);
+
+
+  useEffect(() => {
+    if (!isInitialized) {
+      setTimeout(() => {
+        executeCommand({
+          command: 'ssh stef@portfolio.dev',
+          output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
+          delay: 1000
+        });
+        setIsInitialized(true);
+      }, 500);
+    }
+  }, [isInitialized, t, setIsInitialized, executeCommand]);
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && currentLine.trim()) {
@@ -177,13 +152,8 @@ const InteractiveTerminal: React.FC = () => {
           setTimeout(() => router.push('/stack'), 1000);
           break;
         case 'clear':
-          setCommandHistory([
-            {
-              command: 'ssh stef@portfolio.dev',
-              output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
-              delay: 0
-            }
-          ]);
+          // Clear history using context function
+          clearHistory();
           break;
         case 'lang':
           executeCommand({
