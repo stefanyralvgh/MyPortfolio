@@ -100,6 +100,12 @@ const InteractiveTerminal: React.FC = () => {
                            `  lang es  - Español\n` +
                            `  lang en  - English\n` +
                            `  lang fr  - Français\n`;
+        } else if (cmd.command === 'projects') {
+          translatedOutput = `${t('terminal.projects.redirecting')}\n`;
+        } else if (cmd.command === 'stack') {
+          translatedOutput = `${t('terminal.stack.redirecting')}\n`;
+        } else if (cmd.command === 'recruiter-mode') {
+          translatedOutput = `${t('terminal.recruiter.activated')}\n`;
         }
       }
       
@@ -167,7 +173,7 @@ const InteractiveTerminal: React.FC = () => {
         case 'projects':
           executeCommand({
             command,
-            output: `Redirecting to projects view...\n`,
+            output: `${t('terminal.projects.redirecting')}\n`,
             delay: 500
           });
           setTimeout(() => router.push('/projects'), 1000);
@@ -175,7 +181,7 @@ const InteractiveTerminal: React.FC = () => {
         case 'stack':
           executeCommand({
             command,
-            output: `Redirecting to tech stack view...\n`,
+            output: `${t('terminal.stack.redirecting')}\n`,
             delay: 500
           });
           setTimeout(() => router.push('/stack'), 1000);
@@ -214,7 +220,7 @@ const InteractiveTerminal: React.FC = () => {
         case 'recruiter-mode':
           executeCommand({
             command,
-            output: `⏩ Fast track activated!\n`,
+            output: `${t('terminal.recruiter.activated')}\n`,
             delay: 300
           });
           setTimeout(() => router.push('/recruiter'), 1500);
