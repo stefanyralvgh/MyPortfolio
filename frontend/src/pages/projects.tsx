@@ -90,17 +90,6 @@ const ProjectsPage: React.FC = () => {
               
               <p className="project-description">{project.description}</p>
               
-              <div className="tech-stack">
-
-                {project.tech && typeof project.tech === 'string' ? 
-                  project.tech.split(', ').map((tech, index) => (
-                    <span key={index} className="tech-tag">{tech.trim()}</span>
-                  ))
-                  : 
-                  <span className="tech-tag">{project.tech || 'Tech stack not available'}</span>
-                }
-              </div>
-              
               <div className="project-status">
                 <span className="status-badge">{project.status}</span>
               </div>

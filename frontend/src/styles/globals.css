@@ -821,24 +821,8 @@ body::-webkit-scrollbar-thumb:hover {
   display: block;
   overflow: visible;
   text-overflow: unset;
-  -webkit-line-clamp: unset;
+
   -webkit-box-orient: unset;
-}
-
-.tech-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
-.tech-tag {
-  background: rgba(231, 84, 128, 0.2);
-  color: #e75480;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  border: 1px solid #e75480;
 }
 
 .project-status {
@@ -926,22 +910,4 @@ body::-webkit-scrollbar-thumb:hover {
   .projects-grid {
     grid-template-columns: 1fr;
   }
-}
-
-.project-card .tech-stack {
-  position: static;
-  opacity: 1;
-  pointer-events: auto;
-  background: none;
-  box-shadow: none;
-  border-radius: 0;
-  padding: 0;
-  max-height: none;
-  overflow: visible;
-  transition: none;
-  margin-top: 10px;
-}
-
-.project-card:hover .tech-stack {
-  /* Elimina cualquier regla aquí */
 }
