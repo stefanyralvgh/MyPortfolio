@@ -37,7 +37,7 @@ const translations = {
     'terminal.start': 'Comenzar la aventura',
     'terminal.about': 'Acerca de Stef',
     'terminal.projects': 'Ver proyectos',
-    'terminal.funfacts': 'Datos curiosos',
+    'terminal.stack': 'Ver stack técnico',
     'terminal.recruiter-mode': 'Vía rápida para reclutadores ⏭️ – sin rodeos',
     'terminal.clear': 'Limpiar terminal',
     'terminal.select.language': 'Seleccionar idioma',
@@ -65,6 +65,8 @@ const translations = {
     'projects.title': 'Mis Proyectos',
     'projects.subtitle': 'Aquí tienes algunos de los proyectos en los que he trabajado',
     'projects.back': '← Volver al Terminal',
+    'recruiter.title': 'Modo Reclutador',
+    'recruiter.intro': '¡Hola! Soy Stef, desarrolladora backend con mentalidad de producto, fuertes habilidades en diseño de APIs y un profundo interés en arquitectura escalable.',
 
   },
     en: {
@@ -92,7 +94,7 @@ const translations = {
     'terminal.redirecting.level': 'Redirecting to level 1...',
     'terminal.about': 'Learn who I am, what I love, and why I left dentistry for code',
     'terminal.projects': 'See what I\'ve built – with love, logic, and lots of debugging!',
-    'terminal.funfacts': 'Random bits about me: the unexpected, the fun, and the nerdy 🤓',
+    'terminal.stack': 'View my technical stack and tools',
     'terminal.recruiter-mode': 'Fast track for recruiters ⏭️ – no distractions, just the facts',
     'terminal.clear': 'Clear the screen and get a fresh start',
     'terminal.select.language': 'Choose your language',
@@ -119,6 +121,8 @@ const translations = {
     'projects.title': 'My Projects',
     'projects.subtitle': 'Here are some of the projects I\'ve worked on',
     'projects.back': '← Back to Terminal',
+    'recruiter.title': 'Recruiter Mode',
+    'recruiter.intro': 'Hi! I\'m Stef, a backend developer with a product mindset, strong API design skills, and a deep interest in scalable architecture.',
 
   },
   fr: {
@@ -146,7 +150,7 @@ const translations = {
     'terminal.start': 'Commencer l\'aventure',
     'terminal.about': 'À propos de Stef',
     'terminal.projects': 'Voir les projets',
-    'terminal.funfacts': 'Faits amusants',
+    'terminal.stack': 'Voir mon stack technique',
     'terminal.recruiter-mode': 'Mode recruteur : juste l\'essentiel ⏭️',
     'terminal.clear': 'Effacer le terminal',
     'terminal.select.language': 'Sélectionner la langue',
@@ -174,6 +178,8 @@ const translations = {
     'projects.title': 'Mes Projets',
     'projects.subtitle': 'Voici quelques-uns des projets sur lesquels j\'ai travaillé',
     'projects.back': '← Retour au Terminal',
+    'recruiter.title': 'Mode Recruteur',
+    'recruiter.intro': 'Salut ! Je suis Stef, développeuse backend avec une mentalité produit, de solides compétences en conception d\'API et un vif intérêt pour l\'architecture évolutive.',
 
   }
 };
