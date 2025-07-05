@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTerminal } from '../contexts/TerminalContext';
@@ -12,7 +12,7 @@ interface TerminalCommand {
 
 const InteractiveTerminal: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
-  const { commandHistory, setCommandHistory, addCommand, isInitialized, setIsInitialized, initializeTerminal, clearHistory } = useTerminal();
+  const { commandHistory, setCommandHistory, addCommand, updateCommandOutput, isInitialized, setIsInitialized, initializeTerminal, clearHistory } = useTerminal();
   const [currentLine, setCurrentLine] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
@@ -73,13 +73,42 @@ const InteractiveTerminal: React.FC = () => {
     setIsTyping(false);
   }, [addCommand]);
 
-  // Update command outputs when language changes
-  useEffect(() => {
-    if (commandHistory.length > 0) {
-      // This will be handled by the context when we implement it properly
-      // For now, we'll just let the commands stay as they are
-    }
-  }, [language, t, commandHistory.length]);
+  // Memoize translated command outputs - only translate when not typing
+  const translatedCommands = useMemo(() => {
+    return commandHistory.map(cmd => {
+      let translatedOutput = cmd.output;
+      
+      // Only translate if we're not currently typing
+      if (!isTyping) {
+        // Translate specific command outputs based on language
+        if (cmd.command === 'ssh stef@portfolio.dev') {
+          translatedOutput = `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`;
+        } else if (cmd.command === 'help') {
+          translatedOutput = `${t('terminal.help')}\n` +
+                           `  start    - ${t('terminal.start')}\n` +
+                           `  projects - ${t('terminal.projects')}\n` +
+                           `  stack    - ${t('terminal.stack')}\n` +
+                           `  about    - ${t('terminal.about')}\n` +
+                           `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
+                           `  clear    - ${t('terminal.clear')}\n`;
+        } else if (cmd.command === 'about') {
+          translatedOutput = `${t('terminal.about.stef')}\n`;
+        } else if (cmd.command === 'start') {
+          translatedOutput = `${t('terminal.starting.adventure')}\n${t('terminal.redirecting.level')}\n`;
+        } else if (cmd.command === 'lang') {
+          translatedOutput = `${t('terminal.lang')}:\n` +
+                           `  lang es  - Español\n` +
+                           `  lang en  - English\n` +
+                           `  lang fr  - Français\n`;
+        }
+      }
+      
+      return {
+        ...cmd,
+        output: translatedOutput
+      };
+    });
+  }, [commandHistory, language, t, isTyping]);
 
 
   useEffect(() => {
@@ -229,7 +258,7 @@ const InteractiveTerminal: React.FC = () => {
     if (terminalRef.current && isUserAtBottom) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
     }
-  }, [commandHistory, isUserAtBottom]);
+  }, [translatedCommands, isUserAtBottom]);
 
   return (
     <div className="terminal-container">
@@ -250,7 +279,7 @@ const InteractiveTerminal: React.FC = () => {
         ref={terminalRef}
         onClick={() => inputRef.current?.focus()}
       >
-        {commandHistory.map((cmd, index) => (
+        {translatedCommands.map((cmd, index) => (
           <div key={index} className="command-block">
             <div className="command-line">
               <span className="prompt">$ </span>

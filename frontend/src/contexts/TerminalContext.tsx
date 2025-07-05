@@ -10,6 +10,7 @@ interface TerminalContextType {
   commandHistory: TerminalCommand[];
   setCommandHistory: (history: TerminalCommand[] | ((prev: TerminalCommand[]) => TerminalCommand[])) => void;
   addCommand: (command: TerminalCommand) => void;
+  updateCommandOutput: (commandIndex: number, newOutput: string) => void;
   clearHistory: () => void;
   isInitialized: boolean;
   setIsInitialized: (initialized: boolean) => void;
@@ -29,6 +30,19 @@ export const TerminalProvider: React.FC<{ children: ReactNode }> = ({ children }
         return [...prev.slice(0, -1), command];
       }
       return [...prev, command];
+    });
+  };
+
+  const updateCommandOutput = (commandIndex: number, newOutput: string) => {
+    setCommandHistory(prev => {
+      const newHistory = [...prev];
+      if (newHistory[commandIndex]) {
+        newHistory[commandIndex] = {
+          ...newHistory[commandIndex],
+          output: newOutput
+        };
+      }
+      return newHistory;
     });
   };
 
@@ -57,6 +71,7 @@ export const TerminalProvider: React.FC<{ children: ReactNode }> = ({ children }
       commandHistory,
       setCommandHistory,
       addCommand,
+      updateCommandOutput,
       clearHistory,
       isInitialized,
       setIsInitialized,
