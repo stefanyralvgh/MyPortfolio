@@ -10,7 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_01_030000) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_04_225733) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "levels", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.jsonb "titles", default: {}
+    t.jsonb "descriptions", default: {}
+    t.jsonb "question", default: {}
+    t.jsonb "options", default: {}
+    t.string "correct_option"
+    t.jsonb "explanation", default: {}
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.jsonb "title", default: {}, null: false
+    t.jsonb "role", default: {}, null: false
+    t.jsonb "tech", default: {}, null: false
+    t.jsonb "description", default: {}, null: false
+    t.jsonb "status", default: {}, null: false
+    t.jsonb "link", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["description"], name: "index_projects_on_description", using: :gin
+    t.index ["link"], name: "index_projects_on_link", using: :gin
+    t.index ["role"], name: "index_projects_on_role", using: :gin
+    t.index ["status"], name: "index_projects_on_status", using: :gin
+    t.index ["tech"], name: "index_projects_on_tech", using: :gin
+    t.index ["title"], name: "index_projects_on_title", using: :gin
+  end
+
+end

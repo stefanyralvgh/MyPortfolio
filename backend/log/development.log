@@ -1957,3 +1957,421 @@ Processing by LevelsController#index as */*
 Completed 200 OK in 41ms (Views: 35.7ms | ActiveRecord: 4.7ms | Allocations: 1104)
 
 
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:03:03 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (5.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (8.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 383ms (Views: 65.0ms | ActiveRecord: 51.3ms | Allocations: 17689)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:03:05 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (0.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.9ms | Allocations: 1116)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:07:48 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (3.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 13ms (Views: 9.0ms | ActiveRecord: 2.9ms | Allocations: 1113)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:07:49 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 1.7ms | Allocations: 1103)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:17:56 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (62.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 76ms (Views: -5.6ms | ActiveRecord: 80.6ms | Allocations: 4273)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:17:56 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 1.1ms | Allocations: 1103)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:17:56 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 1.0ms | Allocations: 1103)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:17:56 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.3ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 1.3ms | Allocations: 1103)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:17:56 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 1.2ms | Allocations: 1103)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:17:56 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (1.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 9ms (Views: 6.7ms | ActiveRecord: 1.6ms | Allocations: 1103)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:18:22 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (0.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.9ms | Allocations: 1107)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:18:23 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (0.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 14ms (Views: 13.7ms | ActiveRecord: 0.6ms | Allocations: 1104)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:18:38 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (0.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.9ms | Allocations: 1104)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:18:38 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (0.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.9ms | Allocations: 1104)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:21:41 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (3.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 18ms (Views: 13.3ms | ActiveRecord: 3.9ms | Allocations: 1104)
+
+
+Started GET "/levels?language=es" for ::1 at 2025-07-04 17:21:41 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mLevel Load (0.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.9ms | Allocations: 1104)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-04 17:23:00 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (4.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 16ms (Views: 10.7ms | ActiveRecord: 4.8ms | Allocations: 1104)
+
+
+Started GET "/levels" for ::1 at 2025-07-04 17:25:36 -0500
+Processing by LevelsController#index as HTML
+  [1m[36mLevel Load (2.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 10ms (Views: 7.0ms | ActiveRecord: 2.0ms | Allocations: 1105)
+
+
+Started GET "/favicon.ico" for ::1 at 2025-07-04 17:25:36 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/levels?language=en" for ::1 at 2025-07-04 17:30:02 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (2.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 11ms (Views: 8.1ms | ActiveRecord: 2.4ms | Allocations: 1105)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-04 17:30:02 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (1.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 1.0ms | Allocations: 1103)
+
+
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (6.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+Migrating to CreateProjects (20250704225733)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[35m (80.5ms)[0m  [1m[35mCREATE TABLE "projects" ("id" bigserial primary key, "title" jsonb DEFAULT '{}' NOT NULL, "role" jsonb DEFAULT '{}' NOT NULL, "tech" jsonb DEFAULT '{}' NOT NULL, "description" jsonb DEFAULT '{}' NOT NULL, "status" jsonb DEFAULT '{}' NOT NULL, "link" jsonb DEFAULT '{}' NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='Backend'*/[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE INDEX "index_projects_on_title" ON "projects" USING gin ("title") /*application='Backend'*/[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE INDEX "index_projects_on_role" ON "projects" USING gin ("role") /*application='Backend'*/[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_projects_on_tech" ON "projects" USING gin ("tech") /*application='Backend'*/[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_projects_on_description" ON "projects" USING gin ("description") /*application='Backend'*/[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_projects_on_status" ON "projects" USING gin ("status") /*application='Backend'*/[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE INDEX "index_projects_on_link" ON "projects" USING gin ("link") /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (3.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250704225733') RETURNING "version" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (10.9ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"🐶 Animal Shelter – HENRY Project","es":"🐶 Refugio Animal – Proyecto HENRY","fr":"🐶 Refuge Animal – Projet HENRY"}', '{"en":"Backend Developer with a dash of frontend ✨","es":"Backend Developer con toques de front ✨","fr":"Développeuse backend avec une touche de frontend ✨"}', '{"en":"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago","es":"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago","fr":"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago"}', '{"en":"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends 🐕🐈. I touched frontend just enough to survive.","es":"Mi primer proyecto en equipo y el primer hijo digital que vió la luz del deploy. Una plataforma para un refugio animal en Salta, Argentina, donde los usuarios podían hacer donaciones y adoptar peluditos 🐕🐈. Toqué el front solo lo justo para sobrevivir.","fr":"Mon premier projet en équipe et mon premier bébé digital en production. Une plateforme pour un refuge animalier à Salta, Argentine, où les utilisateurs pouvaient faire des dons et adopter des animaux 🐕🐈. Le frontend ? Juste ce qu''il fallait pour survivre."}', '{"en":"Deployed and happily alive ✅","es":"Deployado y feliz por ahí ✅","fr":"Déployé et vivant quelque part ✅"}', '{"en":"Not available (but it lives in my heart and on GitHub)","es":"No disponible (pero sí vive en mi corazón y en mi GitHub)","fr":"Pas de lien (mais vivant dans mon cœur et mon GitHub)"}', '2025-07-04 23:01:00.307093', '2025-07-04 23:01:00.307093') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (4.0ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"🏗️ Diidoo – Construction Project Platform","es":"🏗️ Diidoo – Plataforma para proyectos de construcción","fr":"🏗️ Diidoo – Plateforme de projets de construction"}', '{"en":"Fullstack Developer (Official Bubble hacker) 🧩","es":"Fullstack Developer (Bubble hacker oficial) 🧩","fr":"Développeuse Fullstack (hacker Bubble officielle) 🧩"}', '{"en":"Bubble.io, Wompi, complex workflows, lots of patience","es":"Bubble.io, Wompi, workflows complejos, mucha paciencia","fr":"Bubble.io, Wompi, workflows complexes, beaucoup de patience"}', '{"en":"A huge and ambitious app to connect users with providers of architecture, interior design, and construction. Like Trello, but with concrete 🏗️💸.","es":"Una app enorme y ambiciosa para conectar usuarios con proveedores de arquitectura, diseño de interiores y construcción. Como un Trello, pero con cemento 🏗️💸.","fr":"Une application énorme et ambitieuse pour connecter des utilisateurs à des prestataires d''architecture, design d''intérieur et construction. Comme Trello, mais en béton 🏗️💸."}', '{"en":"💀 App down, but I learned like I climbed 1000 floors.","es":"💀 App caída, pero aprendí como si hubiera subido mil pisos.","fr":"💀 Appli hors ligne, mais j''ai appris comme si j''avais gravi 1000 étages."}', '{"en":"App offline (RIP)","es":"No disponible (RIP)","fr":"Indisponible (RIP)"}', '2025-07-04 23:01:00.347473', '2025-07-04 23:01:00.347473') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (8.7ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (3.3ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"🎧 Nodd – Music Distribution for Indie Artists","es":"🎧 Nodd – Distribución musical para artistas independientes","fr":"🎧 Nodd – Distribution musicale pour artistes indépendants"}', '{"en":"Backend Developer of invisible beats 🎛️","es":"Backend Developer de beats invisibles 🎛️","fr":"Développeuse backend de beats invisibles 🎛️"}', '{"en":"AWS (S3, Lambda, API Gateway), Node.js, Express, PostgreSQL","es":"AWS (S3, Lambda, API Gateway), Node.js, Express, PostgreSQL","fr":"AWS (S3, Lambda, API Gateway), Node.js, Express, PostgreSQL"}', '{"en":"An app where artists upload music, pay a subscription, and boom! It''s distributed to all streaming platforms. I went deep into AWS and learned that music also needs solid backend 🎶","es":"App donde artistas suben su música, pagan una suscripción y... ¡boom! Se distribuye automáticamente a todas las plataformas de streaming. Usé AWS a fondo y aprendí que la música también necesita buen backend 🎶","fr":"Une app où les artistes uploadent leur musique, paient un abonnement et... boom ! Distribution sur toutes les plateformes. J''ai plongé dans AWS et appris que la musique a aussi besoin d''un bon backend 🎶"}', '{"en":"In testing mode 🧪","es":"En modo pruebas 🧪","fr":"En mode test 🧪"}', '{"en":"noddmusic.com","es":"noddmusic.com","fr":"noddmusic.com"}', '2025-07-04 23:01:00.366288', '2025-07-04 23:01:00.366288') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (3.8ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"📚 Aidactic – International EdTech in Progress","es":"📚 Aidactic – EdTech internacional en proceso","fr":"📚 Aidactic – EdTech international en cours"}', '{"en":"Backend Engineer (my current job) 🧠","es":"Backend Engineer (mi trabajo actual) 🧠","fr":"Backend Engineer (mon job actuel) 🧠"}', '{"en":"Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger","es":"Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger","fr":"Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger"}', '{"en":"Educational platform for high school and university students. I''m building APIs like bridges between REST and GraphQL. Integrated S3 for resources, Docker containers, and docs you''ll actually want to read.","es":"Plataforma educativa para estudiantes de secundaria y universidad. Estoy construyendo APIs como si fueran puentes entre mundos (REST y GraphQL en un solo backend, sí señor). Integración con S3 para recursos, contenedores con Docker y una documentación que sí se deja leer.","fr":"Plateforme éducative pour lycéens et étudiants. Je construis des APIs comme des ponts entre REST et GraphQL. Intégration avec S3, conteneurs Docker et une doc agréable à lire."}', '{"en":"In development 🛠️","es":"En desarrollo 🛠️","fr":"En développement 🛠️"}', '{"en":"Dev link only (coming soon to a screen near you)","es":"Solo dev link por ahora (pronto en cines)","fr":"Lien dev seulement (bientôt sur vos écrans)"}', '2025-07-04 23:01:00.378644', '2025-07-04 23:01:00.378644') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+Started GET "/projects" for ::1 at 2025-07-04 18:01:30 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (1.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Completed 200 OK in 208ms (Views: 49.6ms | ActiveRecord: 18.4ms | Allocations: 17988)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-04 18:15:17 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (311.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 731ms (Views: 116.4ms | ActiveRecord: 498.7ms | Allocations: 10232)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-04 18:16:02 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Load (7.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Completed 200 OK in 29ms (Views: 16.1ms | ActiveRecord: 7.2ms | Allocations: 1154)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-04 18:16:02 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Load (2.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Completed 200 OK in 17ms (Views: 13.3ms | ActiveRecord: 2.7ms | Allocations: 1140)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-04 18:18:24 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Load (1.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Completed 200 OK in 223ms (Views: 62.7ms | ActiveRecord: 17.2ms | Allocations: 17989)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-04 18:19:52 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Load (18.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Completed 200 OK in 31ms (Views: 11.0ms | ActiveRecord: 18.5ms | Allocations: 1153)
+
+
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (20.7ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"🐶 Animal Shelter – HENRY Project","es":"🐶 Refugio Animal – Proyecto HENRY","fr":"🐶 Refuge Animal – Projet HENRY"}', '{"en":"Backend Developer with a dash of frontend ✨","es":"Backend Developer con toques de front ✨","fr":"Développeuse backend avec une touche de frontend ✨"}', '{"en":"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago","es":"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago","fr":"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago"}', '{"en":"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends 🐕🐈. I touched frontend just enough to survive.","es":"Mi primer proyecto en equipo y el primer hijo digital que vió la luz del deploy. Una plataforma para un refugio animal en Salta, Argentina, donde los usuarios podían hacer donaciones y adoptar peluditos 🐕🐈. Toqué el front solo lo justo para sobrevivir.","fr":"Mon premier projet en équipe et mon premier bébé digital en production. Une plateforme pour un refuge animalier à Salta, Argentine, où les utilisateurs pouvaient faire des dons et adopter des animaux 🐕🐈. Le frontend ? Juste ce qu''il fallait pour survivre."}', '{"en":"Deployed and happily alive ✅","es":"Deployado y feliz por ahí ✅","fr":"Déployé et vivant quelque part ✅"}', '{"en":"Not available (but it lives in my heart and on GitHub)","es":"No disponible (pero sí vive en mi corazón y en mi GitHub)","fr":"Pas de lien (mais vivant dans mon cœur et mon GitHub)"}', '2025-07-04 23:20:46.111191', '2025-07-04 23:20:46.111191') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (9.6ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"🏗️ Diidoo – Construction Project Platform","es":"🏗️ Diidoo – Plataforma para proyectos de construcción","fr":"🏗️ Diidoo – Plateforme de projets de construction"}', '{"en":"Fullstack Developer (Official Bubble hacker) 🧩","es":"Fullstack Developer (Bubble hacker oficial) 🧩","fr":"Développeuse Fullstack (hacker Bubble officielle) 🧩"}', '{"en":"Bubble.io, Wompi, complex workflows, lots of patience","es":"Bubble.io, Wompi, workflows complejos, mucha paciencia","fr":"Bubble.io, Wompi, workflows complexes, beaucoup de patience"}', '{"en":"A huge and ambitious app to connect users with providers of architecture, interior design, and construction. Like Trello, but with concrete 🏗️💸.","es":"Una app enorme y ambiciosa para conectar usuarios con proveedores de arquitectura, diseño de interiores y construcción. Como un Trello, pero con cemento 🏗️💸.","fr":"Une application énorme et ambitieuse pour connecter des utilisateurs à des prestataires d''architecture, design d''intérieur et construction. Comme Trello, mais en béton 🏗️💸."}', '{"en":"💀 App down, but I learned like I climbed 1000 floors.","es":"💀 App caída, pero aprendí como si hubiera subido mil pisos.","fr":"💀 Appli hors ligne, mais j''ai appris comme si j''avais gravi 1000 étages."}', '{"en":"App offline (RIP)","es":"No disponible (RIP)","fr":"Indisponible (RIP)"}', '2025-07-04 23:20:46.162425', '2025-07-04 23:20:46.162425') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (3.1ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"🎧 Nodd – Music Distribution for Indie Artists","es":"🎧 Nodd – Distribución musical para artistas independientes","fr":"🎧 Nodd – Distribution musicale pour artistes indépendants"}', '{"en":"Backend Developer of invisible beats 🎛️","es":"Backend Developer de beats invisibles 🎛️","fr":"Développeuse backend de beats invisibles 🎛️"}', '{"en":"AWS (S3, Lambda, API Gateway), Node.js, Express, PostgreSQL","es":"AWS (S3, Lambda, API Gateway), Node.js, Express, PostgreSQL","fr":"AWS (S3, Lambda, API Gateway), Node.js, Express, PostgreSQL"}', '{"en":"An app where artists upload music, pay a subscription, and boom! It''s distributed to all streaming platforms. I went deep into AWS and learned that music also needs solid backend 🎶","es":"App donde artistas suben su música, pagan una suscripción y... ¡boom! Se distribuye automáticamente a todas las plataformas de streaming. Usé AWS a fondo y aprendí que la música también necesita buen backend 🎶","fr":"Une app où les artistes uploadent leur musique, paient un abonnement et... boom ! Distribution sur toutes les plateformes. J''ai plongé dans AWS et appris que la musique a aussi besoin d''un bon backend 🎶"}', '{"en":"In testing mode 🧪","es":"En modo pruebas 🧪","fr":"En mode test 🧪"}', '{"en":"noddmusic.com","es":"noddmusic.com","fr":"noddmusic.com"}', '2025-07-04 23:20:46.183722', '2025-07-04 23:20:46.183722') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (4.3ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"📚 Aidactic – International EdTech in Progress","es":"📚 Aidactic – EdTech internacional en proceso","fr":"📚 Aidactic – EdTech international en cours"}', '{"en":"Backend Engineer (my current job) 🧠","es":"Backend Engineer (mi trabajo actual) 🧠","fr":"Backend Engineer (mon job actuel) 🧠"}', '{"en":"Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger","es":"Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger","fr":"Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger"}', '{"en":"Educational platform for high school and university students. I''m building APIs like bridges between REST and GraphQL. Integrated S3 for resources, Docker containers, and docs you''ll actually want to read.","es":"Plataforma educativa para estudiantes de secundaria y universidad. Estoy construyendo APIs como si fueran puentes entre mundos (REST y GraphQL en un solo backend, sí señor). Integración con S3 para recursos, contenedores con Docker y una documentación que sí se deja leer.","fr":"Plateforme éducative pour lycéens et étudiants. Je construis des APIs comme des ponts entre REST et GraphQL. Intégration avec S3, conteneurs Docker et une doc agréable à lire."}', '{"en":"In development 🛠️","es":"En desarrollo 🛠️","fr":"En développement 🛠️"}', '{"en":"Dev link only (coming soon to a screen near you)","es":"Solo dev link por ahora (pronto en cines)","fr":"Lien dev seulement (bientôt sur vos écrans)"}', '2025-07-04 23:20:46.196213', '2025-07-04 23:20:46.196213') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+Started GET "/projects?language=en" for ::1 at 2025-07-04 18:21:17 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (15.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 8
+Language requested: en
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>1, :title=>"🐶 Animal Shelter – HENRY Project", :role=>"Backend Developer with a dash of frontend ✨", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends 🐕🐈. I touched frontend just enough to survive.", :status=>"Deployed and happily alive ✅", :link=>"Not available (but it lives in my heart and on GitHub)", :created_at=>Fri, 04 Jul 2025 23:01:00.307093000 UTC +00:00, :updated_at=>Fri, 04 Jul 2025 23:01:00.307093000 UTC +00:00}
+Completed 200 OK in 194ms (Views: 0.7ms | ActiveRecord: 30.2ms | Allocations: 18804)
+
+
+  [1m[36mProject Load (1.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Destroy (9.5ms)[0m  [1m[31mDELETE FROM "projects" WHERE "projects"."id" = 1 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Destroy (4.2ms)[0m  [1m[31mDELETE FROM "projects" WHERE "projects"."id" = 2 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Destroy (3.1ms)[0m  [1m[31mDELETE FROM "projects" WHERE "projects"."id" = 3 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Destroy (4.3ms)[0m  [1m[31mDELETE FROM "projects" WHERE "projects"."id" = 4 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Destroy (4.3ms)[0m  [1m[31mDELETE FROM "projects" WHERE "projects"."id" = 5 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Destroy (4.6ms)[0m  [1m[31mDELETE FROM "projects" WHERE "projects"."id" = 6 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Destroy (4.6ms)[0m  [1m[31mDELETE FROM "projects" WHERE "projects"."id" = 7 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Destroy (3.6ms)[0m  [1m[31mDELETE FROM "projects" WHERE "projects"."id" = 8 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (5.8ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"Animal Shelter – HENRY Project","es":"Refugio Animal – Proyecto HENRY","fr":"Refuge Animal – Projet HENRY"}', '{"en":"Backend Developer with a dash of frontend","es":"Backend Developer con toques de front","fr":"Développeuse backend avec une touche de frontend"}', '{"en":"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago","es":"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago","fr":"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago"}', '{"en":"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.","es":"Mi primer proyecto en equipo y el primer hijo digital que vió la luz del deploy. Una plataforma para un refugio animal en Salta, Argentina, donde los usuarios podían hacer donaciones y adoptar peluditos. Toqué el front solo lo justo para sobrevivir.","fr":"Mon premier projet en équipe et mon premier bébé digital en production. Une plateforme pour un refuge animalier à Salta, Argentine, où les utilisateurs pouvaient faire des dons et adopter des animaux. Le frontend ? Juste ce qu''il fallait pour survivre."}', '{"en":"Deployed and happily alive","es":"Deployado y feliz por ahí","fr":"Déployé et vivant quelque part"}', '{"en":"Not available (but it lives in my heart and on GitHub)","es":"No disponible (pero sí vive en mi corazón y en mi GitHub)","fr":"Pas de lien (mais vivant dans mon cœur et mon GitHub)"}', '2025-07-04 23:24:35.980530', '2025-07-04 23:24:35.980530') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (3.7ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"Diidoo – Construction Project Platform","es":"Diidoo – Plataforma para proyectos de construcción","fr":"Diidoo – Plateforme de projets de construction"}', '{"en":"Fullstack Developer (Official Bubble hacker)","es":"Fullstack Developer (Bubble hacker oficial)","fr":"Développeuse Fullstack (hacker Bubble officielle)"}', '{"en":"Bubble.io, Wompi, complex workflows, lots of patience","es":"Bubble.io, Wompi, workflows complejos, mucha paciencia","fr":"Bubble.io, Wompi, workflows complexes, beaucoup de patience"}', '{"en":"A huge and ambitious app to connect users with providers of architecture, interior design, and construction. Like Trello, but with concrete.","es":"Una app enorme y ambiciosa para conectar usuarios con proveedores de arquitectura, diseño de interiores y construcción. Como un Trello, pero con cemento.","fr":"Une application énorme et ambitieuse pour connecter des utilisateurs à des prestataires d''architecture, design d''intérieur et construction. Comme Trello, mais en béton."}', '{"en":"App down, but I learned like I climbed 1000 floors.","es":"App caída, pero aprendí como si hubiera subido mil pisos.","fr":"Appli hors ligne, mais j''ai appris comme si j''avais gravi 1000 étages."}', '{"en":"App offline (RIP)","es":"No disponible (RIP)","fr":"Indisponible (RIP)"}', '2025-07-04 23:24:35.998834', '2025-07-04 23:24:35.998834') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (4.7ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"Nodd – Music Distribution for Indie Artists","es":"Nodd – Distribución musical para artistas independientes","fr":"Nodd – Distribution musicale pour artistes indépendants"}', '{"en":"Backend Developer of invisible beats","es":"Backend Developer de beats invisibles","fr":"Développeuse backend de beats invisibles"}', '{"en":"AWS (S3, Lambda, API Gateway), Node.js, Express, PostgreSQL","es":"AWS (S3, Lambda, API Gateway), Node.js, Express, PostgreSQL","fr":"AWS (S3, Lambda, API Gateway), Node.js, Express, PostgreSQL"}', '{"en":"An app where artists upload music, pay a subscription, and boom! It''s distributed to all streaming platforms. I went deep into AWS and learned that music also needs solid backend","es":"App donde artistas suben su música, pagan una suscripción y... ¡boom! Se distribuye automáticamente a todas las plataformas de streaming. Usé AWS a fondo y aprendí que la música también necesita buen backend","fr":"Une app où les artistes uploadent leur musique, paient un abonnement et... boom ! Distribution sur toutes les plateformes. J''ai plongé dans AWS et appris que la musique a aussi besoin d''un bon backend"}', '{"en":"In testing mode","es":"En modo pruebas","fr":"En mode test"}', '{"en":"noddmusic.com","es":"noddmusic.com","fr":"noddmusic.com"}', '2025-07-04 23:24:36.014514', '2025-07-04 23:24:36.014514') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (3.6ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"Aidactic – International EdTech in Progress","es":"Aidactic – EdTech internacional en proceso","fr":"Aidactic – EdTech international en cours"}', '{"en":"Backend Engineer (my current job)","es":"Backend Engineer (mi trabajo actual)","fr":"Backend Engineer (mon job actuel)"}', '{"en":"Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger","es":"Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger","fr":"Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger"}', '{"en":"Educational platform for high school and university students. I''m building APIs like bridges between REST and GraphQL. Integrated S3 for resources, Docker containers, and docs you''ll actually want to read.","es":"Plataforma educativa para estudiantes de secundaria y universidad. Estoy construyendo APIs como si fueran puentes entre mundos (REST y GraphQL en un solo backend, sí señor). Integración con S3 para recursos, contenedores con Docker y una documentación que sí se deja leer.","fr":"Plateforme éducative pour lycéens et étudiants. Je construis des APIs comme des ponts entre REST et GraphQL. Intégration avec S3, conteneurs Docker et une doc agréable à lire."}', '{"en":"In development","es":"En desarrollo","fr":"En développement"}', '{"en":"Dev link only (coming soon to a screen near you)","es":"Solo dev link por ahora (pronto en cines)","fr":"Lien dev seulement (bientôt sur vos écrans)"}', '2025-07-04 23:24:35.297834', '2025-07-04 23:24:35.297834') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mProject Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*application='Backend'*/[0m
+Started GET "/projects?language=en" for ::1 at 2025-07-04 18:26:34 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (0.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>9, :title=>"Animal Shelter – HENRY Project", :role=>"Backend Developer with a dash of frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.", :status=>"Deployed and happily alive", :link=>"Not available (but it lives in my heart and on GitHub)", :created_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00, :updated_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00}
+Completed 200 OK in 169ms (Views: 0.7ms | ActiveRecord: 18.6ms | Allocations: 18368)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-04 18:28:27 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (3.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (0.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>9, :title=>"Animal Shelter – HENRY Project", :role=>"Backend Developer with a dash of frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.", :status=>"Deployed and happily alive", :link=>"Not available (but it lives in my heart and on GitHub)", :created_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00, :updated_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00}
+Completed 200 OK in 29ms (Views: 2.3ms | ActiveRecord: 4.4ms | Allocations: 1444)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-04 18:34:33 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (40.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>9, :title=>"Animal Shelter – HENRY Project", :role=>"Backend Developer with a dash of frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.", :status=>"Deployed and happily alive", :link=>"Not available (but it lives in my heart and on GitHub)", :created_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00, :updated_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00}
+Completed 200 OK in 59ms (Views: 0.5ms | ActiveRecord: 52.3ms | Allocations: 4575)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-04 18:43:03 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (37.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (1.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>9, :title=>"Animal Shelter – HENRY Project", :role=>"Backend Developer with a dash of frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.", :status=>"Deployed and happily alive", :link=>"Not available (but it lives in my heart and on GitHub)", :created_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00, :updated_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00}
+Completed 200 OK in 66ms (Views: 1.7ms | ActiveRecord: 48.2ms | Allocations: 4575)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-04 19:01:09 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Load (780.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:3:in `index'
+Completed 200 OK in 1059ms (Views: 52.5ms | ActiveRecord: 895.9ms | Allocations: 10303)
+
+
+Started GET "/projects?language=es" for ::1 at 2025-07-04 19:05:26 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mProject Count (18.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: es
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>9, :title=>"Refugio Animal – Proyecto HENRY", :role=>"Backend Developer con toques de front", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"Mi primer proyecto en equipo y el primer hijo digital que vió la luz del deploy. Una plataforma para un refugio animal en Salta, Argentina, donde los usuarios podían hacer donaciones y adoptar peluditos. Toqué el front solo lo justo para sobrevivir.", :status=>"Deployado y feliz por ahí", :link=>"No disponible (pero sí vive en mi corazón y en mi GitHub)", :created_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00, :updated_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00}
+Completed 200 OK in 55ms (Views: 6.3ms | ActiveRecord: 19.3ms | Allocations: 1435)
+
+
+Started GET "/projects?language=fr" for ::1 at 2025-07-04 19:05:39 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mProject Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: fr
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>9, :title=>"Refuge Animal – Projet HENRY", :role=>"Développeuse backend avec une touche de frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"Mon premier projet en équipe et mon premier bébé digital en production. Une plateforme pour un refuge animalier à Salta, Argentine, où les utilisateurs pouvaient faire des dons et adopter des animaux. Le frontend ? Juste ce qu'il fallait pour survivre.", :status=>"Déployé et vivant quelque part", :link=>"Pas de lien (mais vivant dans mon cœur et mon GitHub)", :created_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00, :updated_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00}
+Completed 200 OK in 31ms (Views: 0.5ms | ActiveRecord: 2.0ms | Allocations: 1433)
+
+
+Started GET "/projects?language=es" for ::1 at 2025-07-04 19:05:47 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mProject Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: es
+  [1m[36mProject Load (0.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>9, :title=>"Refugio Animal – Proyecto HENRY", :role=>"Backend Developer con toques de front", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"Mi primer proyecto en equipo y el primer hijo digital que vió la luz del deploy. Una plataforma para un refugio animal en Salta, Argentina, donde los usuarios podían hacer donaciones y adoptar peluditos. Toqué el front solo lo justo para sobrevivir.", :status=>"Deployado y feliz por ahí", :link=>"No disponible (pero sí vive en mi corazón y en mi GitHub)", :created_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00, :updated_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00}
+Completed 200 OK in 29ms (Views: 0.6ms | ActiveRecord: 1.7ms | Allocations: 1434)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-04 19:05:49 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (0.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>9, :title=>"Animal Shelter – HENRY Project", :role=>"Backend Developer with a dash of frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.", :status=>"Deployed and happily alive", :link=>"Not available (but it lives in my heart and on GitHub)", :created_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00, :updated_at=>Fri, 04 Jul 2025 23:24:35.980530000 UTC +00:00}
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 1.9ms | Allocations: 1433)
+
+
