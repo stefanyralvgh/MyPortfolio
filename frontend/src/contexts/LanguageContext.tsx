@@ -62,7 +62,9 @@ const translations = {
     'adventure.incorrect': 'No era esa 😅',
     'adventure.next': 'Siguiente reto',
     'adventure.restart': 'Reiniciar',
-    
+    'projects.title': 'Mis Proyectos',
+    'projects.subtitle': 'Aquí tienes algunos de los proyectos en los que he trabajado',
+    'projects.back': '← Volver al Terminal',
 
   },
     en: {
@@ -114,6 +116,9 @@ const translations = {
     'adventure.incorrect': 'Not quite 😅',
     'adventure.next': 'Next challenge',
     'adventure.restart': 'Restart', 
+    'projects.title': 'My Projects',
+    'projects.subtitle': 'Here are some of the projects I\'ve worked on',
+    'projects.back': '← Back to Terminal',
 
   },
   fr: {
@@ -127,8 +132,8 @@ const translations = {
     'terminal.help.verbose.start.desc': '🚀 Commencez l\'aventure de code - un voyage interactif à travers mon histoire technique avec des défis et des surprises',
     'terminal.help.verbose.projects.desc': '🛠️ Explorez mes projets - des APIs robustes aux expériences folles',
     'terminal.help.verbose.about.desc': '💬 Rencontrez Stef - ex-dentiste, développeuse backend actuelle, passionnée de débogage',
-    'terminal.help.verbose.funfacts.desc': '🎲 Quelques faits amusants – parce qu’il n’y a pas que le code dans la vie.',
-    'terminal.help.verbose.recruiter.desc': '⏭️ Mode recruteur : pas de blabla, juste l’essentiel',
+    'terminal.help.verbose.funfacts.desc': '🎲 Quelques faits amusants – parce qu\'il n\'y a pas que le code dans la vie.',
+    'terminal.help.verbose.recruiter.desc': '⏭️ Mode recruteur : pas de blabla, juste l\'essentiel',
     'terminal.help.verbose.clear.desc': '🔄 Effacez l\'écran - parfait pour un nouveau départ',
     'terminal.help.verbose.tips.title': '💡 CONSEILS PRO :',
     'terminal.help.verbose.tips.1': '• Certaines commandes ont des surprises cachées 😉',
@@ -166,6 +171,9 @@ const translations = {
     'adventure.incorrect': 'Ce n\'est pas ça 😅',
     'adventure.next': 'Défi suivant',
     'adventure.restart': 'Recommencer',
+    'projects.title': 'Mes Projets',
+    'projects.subtitle': 'Voici quelques-uns des projets sur lesquels j\'ai travaillé',
+    'projects.back': '← Retour au Terminal',
 
   }
 };

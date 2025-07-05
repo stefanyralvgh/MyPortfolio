@@ -10,6 +10,18 @@ export interface Level {
   explanation: Record<string, string>;
 }
 
+export interface Project {
+  id: number;
+  title: string;
+  role: string;
+  tech: string;
+  description: string;
+  status: string;
+  link: string;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface Challenge {
   scenario: string;
   error?: string;

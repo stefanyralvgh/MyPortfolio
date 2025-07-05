@@ -1,4 +1,4 @@
-import { Level } from "../types";
+import { Level, Project } from "../types";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 
@@ -31,6 +31,23 @@ export const fetchLevel = async (
     return await response.json();
   } catch (error) {
     console.error("Error fetching level:", error);
+    throw error;
+  }
+};
+
+export const fetchProjects = async (
+  language: string = "en"
+): Promise<Project[]> => {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/projects?language=${language}`
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching projects:", error);
     throw error;
   }
 };
