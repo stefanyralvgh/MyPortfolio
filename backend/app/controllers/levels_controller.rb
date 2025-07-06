@@ -12,7 +12,7 @@ class LevelsController < ApplicationController
         titles: level.titles[language] || level.titles['en'] || 'Title not available',
         descriptions: level.descriptions[language] || level.descriptions['en'] || 'Description not available',
         question: level.question[language] || level.question['en'] || 'Question not available',
-        options: level.options[language] || level.options['en'] || {},
+        options: format_options_for_language(level.options, language),
         correct_option: level.correct_option,
         explanation: level.explanation[language] || level.explanation['en'] || 'Explanation not available'
       }
@@ -32,7 +32,7 @@ class LevelsController < ApplicationController
       titles: level.titles[language] || level.titles['en'] || 'Title not available',
       descriptions: level.descriptions[language] || level.descriptions['en'] || 'Description not available',
       question: level.question[language] || level.question['en'] || 'Question not available',
-      options: level.options[language] || level.options['en'] || {},
+      options: format_options_for_language(level.options, language),
       correct_option: level.correct_option,
       explanation: level.explanation[language] || level.explanation['en'] || 'Explanation not available'
     }
@@ -55,5 +55,19 @@ class LevelsController < ApplicationController
     params.require(:level).permit(
       :titles, :descriptions, :question, :options, :correct_option, :explanation
     )
+  end
+
+  def format_options_for_language(options, language)
+    return {} unless options.is_a?(Hash)
+    
+    options.transform_values do |option_data|
+      if option_data.is_a?(Hash) && option_data[language]
+        option_data[language]
+      elsif option_data.is_a?(Hash) && option_data['en']
+        option_data['en']
+      else
+        'Option not available'
+      end
+    end
   end
 end

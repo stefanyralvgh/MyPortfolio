@@ -10,11 +10,11 @@ class Project < ApplicationRecord
   validates :status, presence: true
   validates :link, presence: true
 
-  # Scopes específicos para proyectos
+
   scope :by_status, ->(status) { where("status->>'en' = ?", status) }
   scope :by_tech, ->(tech) { where("tech::text ILIKE ?", "%#{tech}%") }
   
-  # Métodos específicos para proyectos
+
   def display_title(language = 'en')
     title[language] || title['en'] || 'Title not available'
   end

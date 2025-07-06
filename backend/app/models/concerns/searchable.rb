@@ -27,6 +27,7 @@ module Searchable
   private
 
   def searchable_fields
+    # Default fields for Project model
     %w[title description role tech]
   end
 end 

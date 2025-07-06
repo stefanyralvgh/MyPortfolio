@@ -22,7 +22,7 @@ module Multilingual
     end
   end
 
-  # Override this method in your model to specify which fields are multilingual
+  # Override this method in the model to specify which fields are multilingual
   def multilingual_fields
     %w[title role tech description status link]
   end
