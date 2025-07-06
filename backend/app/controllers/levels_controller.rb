@@ -1,7 +1,7 @@
 class LevelsController < ApplicationController
   def index
     language = params[:language] || 'en'
-    levels = Level.all
+    levels = Level.order(:id)
     
     Rails.logger.info "Levels found: #{levels.count}"
     Rails.logger.info "Language requested: #{language}"

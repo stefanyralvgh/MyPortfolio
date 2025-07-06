@@ -3786,3 +3786,551 @@ First project data: {:id=>14, :title=>"Diidoo – Plataforma para proyectos de c
 Completed 200 OK in 25ms (Views: 1.0ms | ActiveRecord: 1.6ms | Allocations: 1433)
 
 
+Started GET "/levels?language=en" for ::1 at 2025-07-06 17:46:20 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Count (6.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: en
+  [1m[36mLevel Load (1.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>101, :titles=>"Authentication Madness", :descriptions=>"Learn how I debugged one of the trickiest bugs in our Clerk integration.", :question=>"User tokens were not being validated properly across environments. What did I do?", :options=>{}, :correct_option=>"B", :explanation=>"The issue was due to environment differences. I added debug routes, improved error handling, and proposed a safer structure."}
+Completed 200 OK in 431ms (Views: 4.5ms | ActiveRecord: 78.1ms | Allocations: 8648)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-06 17:46:43 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: en
+  [1m[36mLevel Load (0.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>101, :titles=>"Authentication Madness", :descriptions=>"Learn how I debugged one of the trickiest bugs in our Clerk integration.", :question=>"User tokens were not being validated properly across environments. What did I do?", :options=>{}, :correct_option=>"B", :explanation=>"The issue was due to environment differences. I added debug routes, improved error handling, and proposed a safer structure."}
+Completed 200 OK in 172ms (Views: 0.6ms | ActiveRecord: 79.9ms | Allocations: 5758)
+
+
+Started GET "/levels" for ::1 at 2025-07-06 17:47:50 -0500
+Processing by LevelsController#index as HTML
+  [1m[36mLevel Count (2.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: en
+  [1m[36mLevel Load (1.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>101, :titles=>"Authentication Madness", :descriptions=>"Learn how I debugged one of the trickiest bugs in our Clerk integration.", :question=>"User tokens were not being validated properly across environments. What did I do?", :options=>{}, :correct_option=>"B", :explanation=>"The issue was due to environment differences. I added debug routes, improved error handling, and proposed a safer structure."}
+Completed 200 OK in 21ms (Views: 0.8ms | ActiveRecord: 3.6ms | Allocations: 1313)
+
+
+  [1m[36mLevel Load (11.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" ORDER BY "levels"."id" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mLevel Load (6.9ms)[0m  [1m[34mSELECT "levels".* FROM "levels" ORDER BY "levels"."id" ASC LIMIT 1000 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Update (21.1ms)[0m  [1m[33mUPDATE "levels" SET "updated_at" = '2025-07-06 22:50:19.089446', "options" = '{"en":{"A":"I rewrote the entire auth logic from scratch to make sure it was clean.","B":"I debugged the token flow, built test routes, and proposed a safer validation structure."},"es":{"A":"Reescribí toda la lógica de autenticación desde cero para que quedara limpia.","B":"Depuré el flujo de tokens, creé rutas de prueba y propuse una validación más segura."},"fr":{"A":"J''ai réécrit toute la logique d''authentification à partir de zéro.","B":"J''ai débogué le flux, créé des routes de test et proposé une structure plus sûre."}}' WHERE "levels"."id" = 101 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (11.9ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Update (4.3ms)[0m  [1m[33mUPDATE "levels" SET "updated_at" = '2025-07-06 22:50:19.145799', "options" = '{"en":{"A":"I split the pipeline so it would only build REST or GraphQL, depending on the changes.","B":"I removed all build steps and started deploying manually for faster control."},"es":{"A":"Dividí el pipeline para que solo construyera REST o GraphQL según los cambios.","B":"Eliminé los pasos del build y empecé a hacer deploys manualmente."},"fr":{"A":"J''ai séparé les builds REST et GraphQL selon les changements.","B":"J''ai supprimé les étapes du build et commencé les déploiements manuels."}}' WHERE "levels"."id" = 102 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Update (2.9ms)[0m  [1m[33mUPDATE "levels" SET "updated_at" = '2025-07-06 22:50:19.161022', "options" = '{"en":{"A":"I removed half the data and told the frontend team to request the rest separately.","B":"I added query parameters to load extra data only when needed, keeping the endpoint lean by default."},"es":{"A":"Eliminé la mitad de los datos y pedí al frontend que solicitara el resto aparte.","B":"Agregué query params para cargar datos extra solo si se necesitaban."},"fr":{"A":"J''ai retiré la moitié des données et demandé au frontend de les charger séparément.","B":"J''ai ajouté des query params pour charger des données supplémentaires uniquement si nécessaire."}}' WHERE "levels"."id" = 103 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Update (3.3ms)[0m  [1m[33mUPDATE "levels" SET "updated_at" = '2025-07-06 22:50:19.173537', "options" = '{"en":{"A":"I manually updated values in the DB and hoped the logic worked later.","B":"I tested the whole flow end-to-end, debugged the logic, and coordinated with frontend to align expectations."},"es":{"A":"Actualicé valores a mano en la base y esperé que funcionara.","B":"Probé el flujo completo, depuré la lógica y coordiné con el frontend para alinear expectativas."},"fr":{"A":"J''ai modifié les valeurs à la main et espéré que ça marche.","B":"J''ai testé tout le flux, corrigé la logique et aligné avec le frontend."}}' WHERE "levels"."id" = 104 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+Started GET "/levels" for ::1 at 2025-07-06 17:50:23 -0500
+Processing by LevelsController#index as HTML
+  [1m[36mLevel Count (3.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: en
+  [1m[36mLevel Load (1.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>102, :titles=>"Infra Overload", :descriptions=>"Explore how I improved our deploy pipeline under pressure.", :question=>"Our deploy pipeline was too slow and rebuilding everything every time. What did I do?", :options=>{"A"=>"I split the pipeline so it would only build REST or GraphQL, depending on the changes.", "B"=>"I removed all build steps and started deploying manually for faster control."}, :correct_option=>"A", :explanation=>"Manual deploys create more chaos long-term. I isolated builds and improved CI/CD scalability."}
+Completed 200 OK in 25ms (Views: 0.7ms | ActiveRecord: 4.8ms | Allocations: 1326)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-06 17:50:31 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Count (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: en
+  [1m[36mLevel Load (0.7ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>102, :titles=>"Infra Overload", :descriptions=>"Explore how I improved our deploy pipeline under pressure.", :question=>"Our deploy pipeline was too slow and rebuilding everything every time. What did I do?", :options=>{"A"=>"I split the pipeline so it would only build REST or GraphQL, depending on the changes.", "B"=>"I removed all build steps and started deploying manually for faster control."}, :correct_option=>"A", :explanation=>"Manual deploys create more chaos long-term. I isolated builds and improved CI/CD scalability."}
+Completed 200 OK in 29ms (Views: 0.3ms | ActiveRecord: 1.7ms | Allocations: 1325)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-06 17:51:16 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Count (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: en
+  [1m[36mLevel Load (1.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>102, :titles=>"Infra Overload", :descriptions=>"Explore how I improved our deploy pipeline under pressure.", :question=>"Our deploy pipeline was too slow and rebuilding everything every time. What did I do?", :options=>{"A"=>"I split the pipeline so it would only build REST or GraphQL, depending on the changes.", "B"=>"I removed all build steps and started deploying manually for faster control."}, :correct_option=>"A", :explanation=>"Manual deploys create more chaos long-term. I isolated builds and improved CI/CD scalability."}
+Completed 200 OK in 19ms (Views: 0.5ms | ActiveRecord: 2.9ms | Allocations: 1325)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-06 17:51:17 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: en
+  [1m[36mLevel Load (0.8ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>102, :titles=>"Infra Overload", :descriptions=>"Explore how I improved our deploy pipeline under pressure.", :question=>"Our deploy pipeline was too slow and rebuilding everything every time. What did I do?", :options=>{"A"=>"I split the pipeline so it would only build REST or GraphQL, depending on the changes.", "B"=>"I removed all build steps and started deploying manually for faster control."}, :correct_option=>"A", :explanation=>"Manual deploys create more chaos long-term. I isolated builds and improved CI/CD scalability."}
+Completed 200 OK in 26ms (Views: 0.7ms | ActiveRecord: 1.6ms | Allocations: 1325)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-06 17:52:23 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: en
+  [1m[36mLevel Load (1.3ms)[0m  [1m[34mSELECT "levels".* FROM "levels" ORDER BY "levels"."id" ASC /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>101, :titles=>"Authentication Madness", :descriptions=>"Learn how I debugged one of the trickiest bugs in our Clerk integration.", :question=>"User tokens were not being validated properly across environments. What did I do?", :options=>{"A"=>"I rewrote the entire auth logic from scratch to make sure it was clean.", "B"=>"I debugged the token flow, built test routes, and proposed a safer validation structure."}, :correct_option=>"B", :explanation=>"The issue was due to environment differences. I added debug routes, improved error handling, and proposed a safer structure."}
+Completed 200 OK in 92ms (Views: 0.3ms | ActiveRecord: 8.3ms | Allocations: 5834)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-06 17:53:15 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (4.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>14, :title=>"Diidoo – Construction Project Platform", :role=>"Fullstack Developer (Official Bubble hacker)", :tech=>"Bubble.io, Wompi, complex workflows, lots of patience", :description=>"A huge and ambitious app to connect users with providers of architecture, interior design, and construction. Like Trello, but with concrete.", :status=>"App down, but I learned like I climbed 1000 floors.", :link=>"App offline (RIP)", :created_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00}
+Completed 200 OK in 73ms (Views: 1.2ms | ActiveRecord: 9.7ms | Allocations: 5899)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-06 17:53:15 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (1.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>14, :title=>"Diidoo – Construction Project Platform", :role=>"Fullstack Developer (Official Bubble hacker)", :tech=>"Bubble.io, Wompi, complex workflows, lots of patience", :description=>"A huge and ambitious app to connect users with providers of architecture, interior design, and construction. Like Trello, but with concrete.", :status=>"App down, but I learned like I climbed 1000 floors.", :link=>"App offline (RIP)", :created_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00}
+Completed 200 OK in 20ms (Views: 0.6ms | ActiveRecord: 2.6ms | Allocations: 1433)
+
+
+Started GET "/projects?language=es" for ::1 at 2025-07-06 17:56:00 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mProject Count (9.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: es
+  [1m[36mProject Load (1.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>14, :title=>"Diidoo – Plataforma para proyectos de construcción", :role=>"Fullstack Developer (Bubble hacker oficial)", :tech=>"Bubble.io, Wompi, workflows complejos, mucha paciencia", :description=>"Una app enorme y ambiciosa para conectar usuarios con proveedores de arquitectura, diseño de interiores y construcción. Como un Trello, pero con cemento.", :status=>"App caída, pero aprendí como si hubiera subido mil pisos.", :link=>"No disponible (RIP)", :created_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00}
+Completed 200 OK in 41ms (Views: 1.8ms | ActiveRecord: 10.3ms | Allocations: 1433)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-06 17:57:02 -0500
+Processing by ProjectsController#index as HTML
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (3.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (0.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>14, :title=>"Diidoo – Construction Project Platform", :role=>"Fullstack Developer (Official Bubble hacker)", :tech=>"Bubble.io, Wompi, complex workflows, lots of patience", :description=>"A huge and ambitious app to connect users with providers of architecture, interior design, and construction. Like Trello, but with concrete.", :status=>"App down, but I learned like I climbed 1000 floors.", :link=>"App offline (RIP)", :created_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00}
+Completed 200 OK in 19ms (Views: 1.0ms | ActiveRecord: 3.7ms | Allocations: 1432)
+
+
+Started GET "/projects?language=es" for ::1 at 2025-07-06 17:57:07 -0500
+Processing by ProjectsController#index as HTML
+  Parameters: {"language"=>"es"}
+  [1m[36mProject Count (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: es
+  [1m[36mProject Load (1.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>14, :title=>"Diidoo – Plataforma para proyectos de construcción", :role=>"Fullstack Developer (Bubble hacker oficial)", :tech=>"Bubble.io, Wompi, workflows complejos, mucha paciencia", :description=>"Una app enorme y ambiciosa para conectar usuarios con proveedores de arquitectura, diseño de interiores y construcción. Como un Trello, pero con cemento.", :status=>"App caída, pero aprendí como si hubiera subido mil pisos.", :link=>"No disponible (RIP)", :created_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00}
+Completed 200 OK in 29ms (Views: 1.3ms | ActiveRecord: 2.9ms | Allocations: 1432)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-06 18:03:07 -0500
+Processing by ProjectsController#index as HTML
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (121.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (1.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>14, :title=>"Diidoo – Construction Project Platform", :role=>"Fullstack Developer (Official Bubble hacker)", :tech=>"Bubble.io, Wompi, complex workflows, lots of patience", :description=>"A huge and ambitious app to connect users with providers of architecture, interior design, and construction. Like Trello, but with concrete.", :status=>"App down, but I learned like I climbed 1000 floors.", :link=>"App offline (RIP)", :created_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00}
+Completed 200 OK in 162ms (Views: 10.1ms | ActiveRecord: 155.3ms | Allocations: 4609)
+
+
+Started GET "/projects?language=fr" for ::1 at 2025-07-06 18:05:31 -0500
+Processing by ProjectsController#index as HTML
+  Parameters: {"language"=>"fr"}
+  [1m[36mProject Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: fr
+  [1m[36mProject Load (0.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>14, :title=>"Diidoo – Plateforme de projets de construction", :role=>"Développeuse Fullstack (hacker Bubble officielle)", :tech=>"Bubble.io, Wompi, workflows complexes, beaucoup de patience", :description=>"Une application énorme et ambitieuse pour connecter des utilisateurs à des prestataires d'architecture, design d'intérieur et construction. Comme Trello, mais en béton.", :status=>"Appli hors ligne, mais j'ai appris comme si j'avais gravi 1000 étages.", :link=>"Indisponible (RIP)", :created_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00}
+Completed 200 OK in 35ms (Views: 2.4ms | ActiveRecord: 2.0ms | Allocations: 1433)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (11.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[35m (141.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "interactive_portfolio_development" /*application='Backend'*/[0m
+  [1m[35m (96.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "interactive_portfolio_test" /*application='Backend'*/[0m
+  [1m[35m (416.4ms)[0m  [1m[35mCREATE DATABASE "interactive_portfolio_development" ENCODING = 'unicode' /*application='Backend'*/[0m
+  [1m[35m (114.7ms)[0m  [1m[35mCREATE DATABASE "interactive_portfolio_test" ENCODING = 'unicode' /*application='Backend'*/[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql" /*application='Backend'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "levels" CASCADE /*application='Backend'*/[0m
+  [1m[35m (40.6ms)[0m  [1m[35mCREATE TABLE "levels" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "titles" jsonb DEFAULT '{}', "descriptions" jsonb DEFAULT '{}', "question" jsonb DEFAULT '{}', "options" jsonb DEFAULT '{}', "correct_option" character varying, "explanation" jsonb DEFAULT '{}') /*application='Backend'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "projects" CASCADE /*application='Backend'*/[0m
+  [1m[35m (27.0ms)[0m  [1m[35mCREATE TABLE "projects" ("id" bigserial primary key, "title" jsonb DEFAULT '{}' NOT NULL, "role" jsonb DEFAULT '{}' NOT NULL, "tech" jsonb DEFAULT '{}' NOT NULL, "description" jsonb DEFAULT '{}' NOT NULL, "status" jsonb DEFAULT '{}' NOT NULL, "link" jsonb DEFAULT '{}' NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='Backend'*/[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE INDEX "index_projects_on_description" ON "projects" USING gin ("description") /*application='Backend'*/[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE INDEX "index_projects_on_link" ON "projects" USING gin ("link") /*application='Backend'*/[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE INDEX "index_projects_on_role" ON "projects" USING gin ("role") /*application='Backend'*/[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE INDEX "index_projects_on_status" ON "projects" USING gin ("status") /*application='Backend'*/[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE INDEX "index_projects_on_tech" ON "projects" USING gin ("tech") /*application='Backend'*/[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE INDEX "index_projects_on_title" ON "projects" USING gin ("title") /*application='Backend'*/[0m
+  [1m[35m (27.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35m (4.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20250704225733) /*application='Backend'*/[0m
+  [1m[35m (5.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20250701030000),
+(20250701023725),
+(20250701020856),
+(20231010123456); /*application='Backend'*/[0m
+  [1m[35m (25.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (5.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-07-06 23:16:44.395332', '2025-07-06 23:16:44.395336') RETURNING "key" /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (4.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '45fb10e620c49560f27606b9a65bc4d3561bc938', '2025-07-06 23:16:44.415010', '2025-07-06 23:16:44.415014') RETURNING "key" /*application='Backend'*/[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql" /*application='Backend'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "levels" CASCADE /*application='Backend'*/[0m
+  [1m[35m (26.4ms)[0m  [1m[35mCREATE TABLE "levels" ("id" bigserial primary key, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "titles" jsonb DEFAULT '{}', "descriptions" jsonb DEFAULT '{}', "question" jsonb DEFAULT '{}', "options" jsonb DEFAULT '{}', "correct_option" character varying, "explanation" jsonb DEFAULT '{}') /*application='Backend'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "projects" CASCADE /*application='Backend'*/[0m
+  [1m[35m (27.1ms)[0m  [1m[35mCREATE TABLE "projects" ("id" bigserial primary key, "title" jsonb DEFAULT '{}' NOT NULL, "role" jsonb DEFAULT '{}' NOT NULL, "tech" jsonb DEFAULT '{}' NOT NULL, "description" jsonb DEFAULT '{}' NOT NULL, "status" jsonb DEFAULT '{}' NOT NULL, "link" jsonb DEFAULT '{}' NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='Backend'*/[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE INDEX "index_projects_on_description" ON "projects" USING gin ("description") /*application='Backend'*/[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE INDEX "index_projects_on_link" ON "projects" USING gin ("link") /*application='Backend'*/[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE INDEX "index_projects_on_role" ON "projects" USING gin ("role") /*application='Backend'*/[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE INDEX "index_projects_on_status" ON "projects" USING gin ("status") /*application='Backend'*/[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE INDEX "index_projects_on_tech" ON "projects" USING gin ("tech") /*application='Backend'*/[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE INDEX "index_projects_on_title" ON "projects" USING gin ("title") /*application='Backend'*/[0m
+  [1m[35m (23.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[35m (4.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20250704225733) /*application='Backend'*/[0m
+  [1m[35m (3.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20250701030000),
+(20250701023725),
+(20250701020856),
+(20231010123456); /*application='Backend'*/[0m
+  [1m[35m (30.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (5.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-07-06 23:16:44.688676', '2025-07-06 23:16:44.688682') RETURNING "key" /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Update (5.1ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'test', "updated_at" = '2025-07-06 23:16:44.705636' WHERE "ar_internal_metadata"."key" = 'environment' /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (5.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '45fb10e620c49560f27606b9a65bc4d3561bc938', '2025-07-06 23:16:44.717819', '2025-07-06 23:16:44.717823') RETURNING "key" /*application='Backend'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mLevel Load (1.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (5.7ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (101, '2025-07-06 23:16:45.124385', '2025-07-06 23:16:45.124385', '{"en":"Authentication Madness","es":"Caos de Autenticación","fr":"Chaos d''Authentification"}', '{"en":"Learn how I debugged one of the trickiest bugs in our Clerk integration.","es":"Descubre cómo depuré uno de los bugs más complejos en nuestra integración con Clerk.","fr":"Découvrez comment j''ai débogué un bug complexe lié à Clerk."}', '{"en":"User tokens were not being validated properly across environments. What did I do?","es":"Los tokens de usuario no se validaban bien entre entornos. ¿Qué hice?","fr":"Les jetons utilisateur n''étaient pas correctement validés entre environnements. Qu''ai-je fait ?"}', '{"A":{"en":"I rewrote the entire auth logic from scratch to make sure it was clean.","es":"Reescribí toda la lógica de autenticación desde cero para que quedara limpia.","fr":"J''ai réécrit toute la logique d''authentification à partir de zéro."},"B":{"en":"I debugged the token flow, built test routes, and proposed a safer validation structure.","es":"Depuré el flujo de tokens, creé rutas de prueba y propuse una validación más segura.","fr":"J''ai débogué le flux, créé des routes de test et proposé une structure plus sûre."}}', 'B', '{"en":"The issue was due to environment differences. I added debug routes, improved error handling, and proposed a safer structure.","es":"El problema eran diferencias entre entornos. Agregué rutas de prueba, mejoré el manejo de errores y propuse una validación más segura.","fr":"Le problème venait des environnements. J''ai ajouté des routes de test, amélioré les erreurs et proposé une structure plus fiable."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (3.6ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (102, '2025-07-06 23:16:45.143873', '2025-07-06 23:16:45.143873', '{"en":"Infra Overload","es":"Sobrecarga de Infraestructura","fr":"Surcharge d''Infrastructure"}', '{"en":"Explore how I improved our deploy pipeline under pressure.","es":"Explora cómo mejoré nuestro pipeline de deploy bajo presión.","fr":"Découvrez comment j''ai optimisé notre pipeline de déploiement sous pression."}', '{"en":"Our deploy pipeline was too slow and rebuilding everything every time. What did I do?","es":"Nuestro pipeline era lento y reconstruía todo siempre. ¿Qué hice?","fr":"Notre pipeline était trop lent et reconstruisait tout à chaque fois. Qu''ai-je fait ?"}', '{"A":{"en":"I split the pipeline so it would only build REST or GraphQL, depending on the changes.","es":"Dividí el pipeline para que solo construyera REST o GraphQL según los cambios.","fr":"J''ai séparé les builds REST et GraphQL selon les changements."},"B":{"en":"I removed all build steps and started deploying manually for faster control.","es":"Eliminé los pasos del build y empecé a hacer deploys manualmente.","fr":"J''ai supprimé les étapes du build et commencé les déploiements manuels."}}', 'A', '{"en":"Manual deploys create more chaos long-term. I isolated builds and improved CI/CD scalability.","es":"Los deploys manuales generan caos. Separé los builds y mejoré la escalabilidad de CI/CD.","fr":"Les déploiements manuels sont chaotiques. J''ai isolé les builds pour une meilleure CI/CD."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (4.3ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (103, '2025-07-06 23:16:45.157558', '2025-07-06 23:16:45.157558', '{"en":"The Endpoint Dilemma","es":"El Dilema del Endpoint","fr":"Le Dilemme de l''Endpoint"}', '{"en":"See how I made a shared endpoint work for multiple use cases without duplicating logic.","es":"Mira cómo hice que un solo endpoint funcionara para múltiples casos sin duplicar lógica.","fr":"Comment j''ai rendu un endpoint polyvalent sans dupliquer la logique."}', '{"en":"The endpoint /me was returning too much data and slowing down the student app. What did I do?","es":"El endpoint /me devolvía demasiada data y ralentizaba la app. ¿Qué hice?","fr":"Le endpoint /me envoyait trop de données. Que faire ?"}', '{"A":{"en":"I removed half the data and told the frontend team to request the rest separately.","es":"Eliminé la mitad de los datos y pedí al frontend que solicitara el resto aparte.","fr":"J''ai retiré la moitié des données et demandé au frontend de les charger séparément."},"B":{"en":"I added query parameters to load extra data only when needed, keeping the endpoint lean by default.","es":"Agregué query params para cargar datos extra solo si se necesitaban.","fr":"J''ai ajouté des query params pour charger des données supplémentaires uniquement si nécessaire."}}', 'B', '{"en":"Query params like `includeEnrolled` made the endpoint lean, flexible, and reusable.","es":"Query params como `includeEnrolled` hicieron el endpoint más flexible y eficiente.","fr":"Des query params comme `includeEnrolled` ont rendu le endpoint plus flexible."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (3.8ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (104, '2025-07-06 23:16:45.172822', '2025-07-06 23:16:45.172822', '{"en":"Gamification Chaos","es":"Caos de Gamificación","fr":"Chaos de Gamification"}', '{"en":"Learn how I brought order to streaks, EXP, badges, and skills — and made them work together.","es":"Descubre cómo hice que las streaks, EXP, badges y skills funcionaran en conjunto.","fr":"Comment j''ai harmonisé les streaks, EXP, badges et skills pour les faire fonctionner ensemble."}', '{"en":"The streak and EXP system broke after database changes. What was my approach?","es":"El sistema de streaks y EXP se rompió tras cambios en la base. ¿Qué hice?","fr":"Le système de streak et EXP a cassé après des changements. Quelle a été ma démarche ?"}', '{"A":{"en":"I manually updated values in the DB and hoped the logic worked later.","es":"Actualicé valores a mano en la base y esperé que funcionara.","fr":"J''ai modifié les valeurs à la main et espéré que ça marche."},"B":{"en":"I tested the whole flow end-to-end, debugged the logic, and coordinated with frontend to align expectations.","es":"Probé el flujo completo, depuré la lógica y coordiné con el frontend para alinear expectativas.","fr":"J''ai testé tout le flux, corrigé la logique et aligné avec le frontend."}}', 'B', '{"en":"I didn''t patch blindly. I tested, aligned the flow, and fixed the root cause.","es":"No parchamos sin pensar. Probé todo, alineé y arreglé desde raíz.","fr":"Pas de patch aveugle : j''ai testé, aligné et résolu à la racine."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+Started GET "/projects?language=en" for ::1 at 2025-07-06 18:16:57 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (183.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 0
+Language requested: en
+  [1m[36mProject Load (0.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+Completed 200 OK in 341ms (Views: 4.0ms | ActiveRecord: 194.4ms | Allocations: 4095)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-06 18:17:21 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 0
+Language requested: en
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+Completed 200 OK in 179ms (Views: 0.4ms | ActiveRecord: 12.3ms | Allocations: 11284)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-06 18:17:26 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 0
+Language requested: en
+  [1m[36mProject Load (0.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 960)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-06 18:18:09 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (3.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 0
+Language requested: en
+  [1m[36mProject Load (0.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 4.1ms | Allocations: 957)
+
+
+Started GET "/projects?language=fr" for ::1 at 2025-07-06 18:18:13 -0500
+Processing by ProjectsController#index as HTML
+  Parameters: {"language"=>"fr"}
+  [1m[36mProject Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 0
+Language requested: fr
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 948)
+
+
+Started GET "/levelss?language=fr" for ::1 at 2025-07-06 18:18:31 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/levelss"):
+  
+Started GET "/levels?language=fr" for ::1 at 2025-07-06 18:18:36 -0500
+Processing by LevelsController#index as HTML
+  Parameters: {"language"=>"fr"}
+  [1m[36mLevel Count (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: fr
+  [1m[36mLevel Load (1.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" ORDER BY "levels"."id" ASC /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>101, :titles=>"Chaos d'Authentification", :descriptions=>"Découvrez comment j'ai débogué un bug complexe lié à Clerk.", :question=>"Les jetons utilisateur n'étaient pas correctement validés entre environnements. Qu'ai-je fait ?", :options=>{}, :correct_option=>"B", :explanation=>"Le problème venait des environnements. J'ai ajouté des routes de test, amélioré les erreurs et proposé une structure plus fiable."}
+Completed 200 OK in 111ms (Views: 1.9ms | ActiveRecord: 11.2ms | Allocations: 8962)
+
+
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(6636507126438415485)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Started GET "/projects?language=fr" for ::1 at 2025-07-06 18:20:01 -0500
+Processing by ProjectsController#index as HTML
+  Parameters: {"language"=>"fr"}
+  [1m[36mProject Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 0
+Language requested: fr
+  [1m[36mProject Load (1.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+Completed 200 OK in 72ms (Views: 0.5ms | ActiveRecord: 5.0ms | Allocations: 2462)
+
+
+Started GET "/projects?language=fr" for ::1 at 2025-07-06 18:20:04 -0500
+Processing by ProjectsController#index as HTML
+  Parameters: {"language"=>"fr"}
+  [1m[36mProject Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 0
+Language requested: fr
+  [1m[36mProject Load (0.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 1.7ms | Allocations: 947)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mLevel Load (1.5ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Destroy (5.0ms)[0m  [1m[31mDELETE FROM "levels" WHERE "levels"."id" = 101 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Destroy (3.6ms)[0m  [1m[31mDELETE FROM "levels" WHERE "levels"."id" = 102 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Destroy (3.6ms)[0m  [1m[31mDELETE FROM "levels" WHERE "levels"."id" = 103 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Destroy (3.7ms)[0m  [1m[31mDELETE FROM "levels" WHERE "levels"."id" = 104 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (8.4ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (101, '2025-07-06 23:20:42.693793', '2025-07-06 23:20:42.693793', '{"en":"Authentication Madness","es":"Caos de Autenticación","fr":"Chaos d''Authentification"}', '{"en":"Learn how I debugged one of the trickiest bugs in our Clerk integration.","es":"Descubre cómo depuré uno de los bugs más complejos en nuestra integración con Clerk.","fr":"Découvrez comment j''ai débogué un bug complexe lié à Clerk."}', '{"en":"User tokens were not being validated properly across environments. What did I do?","es":"Los tokens de usuario no se validaban bien entre entornos. ¿Qué hice?","fr":"Les jetons utilisateur n''étaient pas correctement validés entre environnements. Qu''ai-je fait ?"}', '{"A":{"en":"I rewrote the entire auth logic from scratch to make sure it was clean.","es":"Reescribí toda la lógica de autenticación desde cero para que quedara limpia.","fr":"J''ai réécrit toute la logique d''authentification à partir de zéro."},"B":{"en":"I debugged the token flow, built test routes, and proposed a safer validation structure.","es":"Depuré el flujo de tokens, creé rutas de prueba y propuse una validación más segura.","fr":"J''ai débogué le flux, créé des routes de test et proposé une structure plus sûre."}}', 'B', '{"en":"The issue was due to environment differences. I added debug routes, improved error handling, and proposed a safer structure.","es":"El problema eran diferencias entre entornos. Agregué rutas de prueba, mejoré el manejo de errores y propuse una validación más segura.","fr":"Le problème venait des environnements. J''ai ajouté des routes de test, amélioré les erreurs et proposé une structure plus fiable."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (3.6ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (102, '2025-07-06 23:20:42.713600', '2025-07-06 23:20:42.713600', '{"en":"Infra Overload","es":"Sobrecarga de Infraestructura","fr":"Surcharge d''Infrastructure"}', '{"en":"Explore how I improved our deploy pipeline under pressure.","es":"Explora cómo mejoré nuestro pipeline de deploy bajo presión.","fr":"Découvrez comment j''ai optimisé notre pipeline de déploiement sous pression."}', '{"en":"Our deploy pipeline was too slow and rebuilding everything every time. What did I do?","es":"Nuestro pipeline era lento y reconstruía todo siempre. ¿Qué hice?","fr":"Notre pipeline était trop lent et reconstruisait tout à chaque fois. Qu''ai-je fait ?"}', '{"A":{"en":"I split the pipeline so it would only build REST or GraphQL, depending on the changes.","es":"Dividí el pipeline para que solo construyera REST o GraphQL según los cambios.","fr":"J''ai séparé les builds REST et GraphQL selon les changements."},"B":{"en":"I removed all build steps and started deploying manually for faster control.","es":"Eliminé los pasos del build y empecé a hacer deploys manualmente.","fr":"J''ai supprimé les étapes du build et commencé les déploiements manuels."}}', 'A', '{"en":"Manual deploys create more chaos long-term. I isolated builds and improved CI/CD scalability.","es":"Los deploys manuales generan caos. Separé los builds y mejoré la escalabilidad de CI/CD.","fr":"Les déploiements manuels sont chaotiques. J''ai isolé les builds pour une meilleure CI/CD."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (4.1ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (103, '2025-07-06 23:20:42.726554', '2025-07-06 23:20:42.726554', '{"en":"The Endpoint Dilemma","es":"El Dilema del Endpoint","fr":"Le Dilemme de l''Endpoint"}', '{"en":"See how I made a shared endpoint work for multiple use cases without duplicating logic.","es":"Mira cómo hice que un solo endpoint funcionara para múltiples casos sin duplicar lógica.","fr":"Comment j''ai rendu un endpoint polyvalent sans dupliquer la logique."}', '{"en":"The endpoint /me was returning too much data and slowing down the student app. What did I do?","es":"El endpoint /me devolvía demasiada data y ralentizaba la app. ¿Qué hice?","fr":"Le endpoint /me envoyait trop de données. Que faire ?"}', '{"A":{"en":"I removed half the data and told the frontend team to request the rest separately.","es":"Eliminé la mitad de los datos y pedí al frontend que solicitara el resto aparte.","fr":"J''ai retiré la moitié des données et demandé au frontend de les charger séparément."},"B":{"en":"I added query parameters to load extra data only when needed, keeping the endpoint lean by default.","es":"Agregué query params para cargar datos extra solo si se necesitaban.","fr":"J''ai ajouté des query params pour charger des données supplémentaires uniquement si nécessaire."}}', 'B', '{"en":"Query params like `includeEnrolled` made the endpoint lean, flexible, and reusable.","es":"Query params como `includeEnrolled` hicieron el endpoint más flexible y eficiente.","fr":"Des query params comme `includeEnrolled` ont rendu le endpoint plus flexible."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (3.4ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (104, '2025-07-06 23:20:42.741324', '2025-07-06 23:20:42.741324', '{"en":"Gamification Chaos","es":"Caos de Gamificación","fr":"Chaos de Gamification"}', '{"en":"Learn how I brought order to streaks, EXP, badges, and skills — and made them work together.","es":"Descubre cómo hice que las streaks, EXP, badges y skills funcionaran en conjunto.","fr":"Comment j''ai harmonisé les streaks, EXP, badges et skills pour les faire fonctionner ensemble."}', '{"en":"The streak and EXP system broke after database changes. What was my approach?","es":"El sistema de streaks y EXP se rompió tras cambios en la base. ¿Qué hice?","fr":"Le système de streak et EXP a cassé après des changements. Quelle a été ma démarche ?"}', '{"A":{"en":"I manually updated values in the DB and hoped the logic worked later.","es":"Actualicé valores a mano en la base y esperé que funcionara.","fr":"J''ai modifié les valeurs à la main et espéré que ça marche."},"B":{"en":"I tested the whole flow end-to-end, debugged the logic, and coordinated with frontend to align expectations.","es":"Probé el flujo completo, depuré la lógica y coordiné con el frontend para alinear expectativas.","fr":"J''ai testé tout le flux, corrigé la logique et aligné avec le frontend."}}', 'B', '{"en":"I didn''t patch blindly. I tested, aligned the flow, and fixed the root cause.","es":"No parchamos sin pensar. Probé todo, alineé y arreglé desde raíz.","fr":"Pas de patch aveugle : j''ai testé, aligné et résolu à la racine."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+Started GET "/projects?language=fr" for ::1 at 2025-07-06 18:20:47 -0500
+Processing by ProjectsController#index as HTML
+  Parameters: {"language"=>"fr"}
+  [1m[36mProject Count (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 0
+Language requested: fr
+  [1m[36mProject Load (0.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+Completed 200 OK in 14ms (Views: 0.3ms | ActiveRecord: 2.4ms | Allocations: 947)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+  [1m[36mLevel Load (1.1ms)[0m  [1m[34mSELECT "levels".* FROM "levels" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Destroy (3.9ms)[0m  [1m[31mDELETE FROM "levels" WHERE "levels"."id" = 101 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (16.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Destroy (3.9ms)[0m  [1m[31mDELETE FROM "levels" WHERE "levels"."id" = 102 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Destroy (3.7ms)[0m  [1m[31mDELETE FROM "levels" WHERE "levels"."id" = 103 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Destroy (3.6ms)[0m  [1m[31mDELETE FROM "levels" WHERE "levels"."id" = 104 /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (4.1ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (101, '2025-07-06 23:21:15.923202', '2025-07-06 23:21:15.923202', '{"en":"Authentication Madness","es":"Caos de Autenticación","fr":"Chaos d''Authentification"}', '{"en":"Learn how I debugged one of the trickiest bugs in our Clerk integration.","es":"Descubre cómo depuré uno de los bugs más complejos en nuestra integración con Clerk.","fr":"Découvrez comment j''ai débogué un bug complexe lié à Clerk."}', '{"en":"User tokens were not being validated properly across environments. What did I do?","es":"Los tokens de usuario no se validaban bien entre entornos. ¿Qué hice?","fr":"Les jetons utilisateur n''étaient pas correctement validés entre environnements. Qu''ai-je fait ?"}', '{"A":{"en":"I rewrote the entire auth logic from scratch to make sure it was clean.","es":"Reescribí toda la lógica de autenticación desde cero para que quedara limpia.","fr":"J''ai réécrit toute la logique d''authentification à partir de zéro."},"B":{"en":"I debugged the token flow, built test routes, and proposed a safer validation structure.","es":"Depuré el flujo de tokens, creé rutas de prueba y propuse una validación más segura.","fr":"J''ai débogué le flux, créé des routes de test et proposé une structure plus sûre."}}', 'B', '{"en":"The issue was due to environment differences. I added debug routes, improved error handling, and proposed a safer structure.","es":"El problema eran diferencias entre entornos. Agregué rutas de prueba, mejoré el manejo de errores y propuse una validación más segura.","fr":"Le problème venait des environnements. J''ai ajouté des routes de test, amélioré les erreurs et proposé une structure plus fiable."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (4.0ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (102, '2025-07-06 23:21:15.938913', '2025-07-06 23:21:15.938913', '{"en":"Infra Overload","es":"Sobrecarga de Infraestructura","fr":"Surcharge d''Infrastructure"}', '{"en":"Explore how I improved our deploy pipeline under pressure.","es":"Explora cómo mejoré nuestro pipeline de deploy bajo presión.","fr":"Découvrez comment j''ai optimisé notre pipeline de déploiement sous pression."}', '{"en":"Our deploy pipeline was too slow and rebuilding everything every time. What did I do?","es":"Nuestro pipeline era lento y reconstruía todo siempre. ¿Qué hice?","fr":"Notre pipeline était trop lent et reconstruisait tout à chaque fois. Qu''ai-je fait ?"}', '{"A":{"en":"I split the pipeline so it would only build REST or GraphQL, depending on the changes.","es":"Dividí el pipeline para que solo construyera REST o GraphQL según los cambios.","fr":"J''ai séparé les builds REST et GraphQL selon les changements."},"B":{"en":"I removed all build steps and started deploying manually for faster control.","es":"Eliminé los pasos del build y empecé a hacer deploys manualmente.","fr":"J''ai supprimé les étapes du build et commencé les déploiements manuels."}}', 'A', '{"en":"Manual deploys create more chaos long-term. I isolated builds and improved CI/CD scalability.","es":"Los deploys manuales generan caos. Separé los builds y mejoré la escalabilidad de CI/CD.","fr":"Les déploiements manuels sont chaotiques. J''ai isolé les builds pour une meilleure CI/CD."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (4.3ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (103, '2025-07-06 23:21:15.952688', '2025-07-06 23:21:15.952688', '{"en":"The Endpoint Dilemma","es":"El Dilema del Endpoint","fr":"Le Dilemme de l''Endpoint"}', '{"en":"See how I made a shared endpoint work for multiple use cases without duplicating logic.","es":"Mira cómo hice que un solo endpoint funcionara para múltiples casos sin duplicar lógica.","fr":"Comment j''ai rendu un endpoint polyvalent sans dupliquer la logique."}', '{"en":"The endpoint /me was returning too much data and slowing down the student app. What did I do?","es":"El endpoint /me devolvía demasiada data y ralentizaba la app. ¿Qué hice?","fr":"Le endpoint /me envoyait trop de données. Que faire ?"}', '{"A":{"en":"I removed half the data and told the frontend team to request the rest separately.","es":"Eliminé la mitad de los datos y pedí al frontend que solicitara el resto aparte.","fr":"J''ai retiré la moitié des données et demandé au frontend de les charger séparément."},"B":{"en":"I added query parameters to load extra data only when needed, keeping the endpoint lean by default.","es":"Agregué query params para cargar datos extra solo si se necesitaban.","fr":"J''ai ajouté des query params pour charger des données supplémentaires uniquement si nécessaire."}}', 'B', '{"en":"Query params like `includeEnrolled` made the endpoint lean, flexible, and reusable.","es":"Query params como `includeEnrolled` hicieron el endpoint más flexible y eficiente.","fr":"Des query params comme `includeEnrolled` ont rendu le endpoint plus flexible."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mLevel Create (3.7ms)[0m  [1m[32mINSERT INTO "levels" ("id", "created_at", "updated_at", "titles", "descriptions", "question", "options", "correct_option", "explanation") VALUES (104, '2025-07-06 23:21:15.967091', '2025-07-06 23:21:15.967091', '{"en":"Gamification Chaos","es":"Caos de Gamificación","fr":"Chaos de Gamification"}', '{"en":"Learn how I brought order to streaks, EXP, badges, and skills — and made them work together.","es":"Descubre cómo hice que las streaks, EXP, badges y skills funcionaran en conjunto.","fr":"Comment j''ai harmonisé les streaks, EXP, badges et skills pour les faire fonctionner ensemble."}', '{"en":"The streak and EXP system broke after database changes. What was my approach?","es":"El sistema de streaks y EXP se rompió tras cambios en la base. ¿Qué hice?","fr":"Le système de streak et EXP a cassé après des changements. Quelle a été ma démarche ?"}', '{"A":{"en":"I manually updated values in the DB and hoped the logic worked later.","es":"Actualicé valores a mano en la base y esperé que funcionara.","fr":"J''ai modifié les valeurs à la main et espéré que ça marche."},"B":{"en":"I tested the whole flow end-to-end, debugged the logic, and coordinated with frontend to align expectations.","es":"Probé el flujo completo, depuré la lógica y coordiné con el frontend para alinear expectativas.","fr":"J''ai testé tout le flux, corrigé la logique et aligné avec le frontend."}}', 'B', '{"en":"I didn''t patch blindly. I tested, aligned the flow, and fixed the root cause.","es":"No parchamos sin pensar. Probé todo, alineé y arreglé desde raíz.","fr":"Pas de patch aveugle : j''ai testé, aligné et résolu à la racine."}') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+Started GET "/projects?language=fr" for ::1 at 2025-07-06 18:21:20 -0500
+Processing by ProjectsController#index as HTML
+  Parameters: {"language"=>"fr"}
+  [1m[36mProject Count (4.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 0
+Language requested: fr
+  [1m[36mProject Load (0.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 5.0ms | Allocations: 947)
+
+
+Started GET "/projects" for ::1 at 2025-07-06 18:21:27 -0500
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Count (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 0
+Language requested: en
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 2.4ms | Allocations: 949)
+
+
+  [1m[36mProject Count (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (5.1ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"Animaladas – HENRY Project","es":"Animaladas – Proyecto HENRY","fr":"Animaladas – Projet HENRY"}', '{"en":"Backend Developer with a dash of frontend","es":"Desarrolladora Backend con toques de front","fr":"Développeuse backend avec une touche de frontend"}', '{"en":"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago","es":"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago","fr":"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago"}', '{"en":"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.","es":"Mi primer proyecto en equipo y el primer proyecto de mi historia profesional que vió la luz del deploy. Una plataforma para un refugio animal en Salta, Argentina, donde los usuarios podían hacer donaciones y adoptar peluditos. Toqué el front solo lo justo para sobrevivir.","fr":"Mon premier projet en équipe et mon premier bébé digital en production. Une plateforme pour un refuge animalier à Salta, Argentine, où les utilisateurs pouvaient faire des dons et adopter des animaux. Le frontend ? Juste ce qu''il fallait pour survivre."}', '{"en":"Deployed and happily alive","es":"Deployado y feliz por ahí","fr":"Déployé et vivant quelque part"}', '{"en":"https://animaladas03.vercel.app/","es":"https://animaladas03.vercel.app/","fr":"https://animaladas03.vercel.app/"}', '2025-07-06 23:22:25.291214', '2025-07-06 23:22:25.291214') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (17.8ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (2.8ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"Diidoo – Construction Project Platform","es":"Diidoo – Plataforma para proyectos de construcción","fr":"Diidoo – Plateforme de projets de construction"}', '{"en":"Fullstack Developer (Official Bubble hacker)","es":"Desarrolladora Fullstack (Bubble hacker oficial)","fr":"Développeuse Fullstack (hacker Bubble officielle)"}', '{"en":"Bubble.io, Wompi, complex workflows, lots of patience","es":"Bubble.io, Wompi, workflows complejos, mucha paciencia","fr":"Bubble.io, Wompi, workflows complexes, beaucoup de patience"}', '{"en":"A huge and ambitious app to connect users with providers of architecture, interior design, and construction.","es":"Una app enorme y ambiciosa para conectar usuarios con proveedores de arquitectura, diseño de interiores y construcción.","fr":"Une application énorme et ambitieuse pour connecter des utilisateurs à des prestataires d''architecture, design d''intérieur et construction."}', '{"en":"App down, but I learned like I climbed 1000 floors.","es":"App caída, pero aprendí como si hubiera subido mil pisos.","fr":"Appli hors ligne, mais j''ai appris comme si j''avais gravi 1000 étages."}', '{"en":"App offline (RIP)","es":"No disponible (RIP)","fr":"Indisponible (RIP)"}', '2025-07-06 23:22:25.320206', '2025-07-06 23:22:25.320206') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (3.0ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"Nodd – Music Distribution for Indie Artists","es":"Nodd – Distribución musical para artistas independientes","fr":"Nodd – Distribution musicale pour artistes indépendants"}', '{"en":"Backend Developer of invisible beats","es":"Desarrolladora Backend de beats invisibles","fr":"Développeuse backend de beats invisibles"}', '{"en":"AWS (S3, Lambda, API Gateway, RDS), Node.js, Express, PostgreSQL","es":"AWS (S3, Lambda, API Gateway, RDS), Node.js, Express, PostgreSQL","fr":"AWS (S3, Lambda, API Gateway), Node.js, Express, PostgreSQL"}', '{"en":"An app where artists upload music, pay a subscription, and boom! It''s distributed to all streaming platforms. I went deep into AWS and learned that music also needs solid backend","es":"App donde artistas suben su música, pagan una suscripción y... ¡boom! Se distribuye automáticamente a todas las plataformas de streaming. Usé AWS a fondo y aprendí que la música también necesita buen backend ","fr":"Une app où les artistes uploadent leur musique, paient un abonnement et... boom ! Distribution sur toutes les plateformes. J''ai plongé dans AWS et appris que la musique a aussi besoin d''un bon backend"}', '{"en":"In testing mode, almost ready","es":"En modo pruebas, casi listo","fr":"En mode test. Presque prêt"}', '{"en":"https://appdev.getnodd.com/","es":"https://appdev.getnodd.com/","fr":"https://appdev.getnodd.com/"}', '2025-07-06 23:22:25.332142', '2025-07-06 23:22:25.332142') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.1ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='Backend'*/[0m
+  [1m[36mProject Create (2.6ms)[0m  [1m[32mINSERT INTO "projects" ("title", "role", "tech", "description", "status", "link", "created_at", "updated_at") VALUES ('{"en":"Aidactic – International EdTech in Progress","es":"Aidactic – EdTech internacional en proceso","fr":"Aidactic – EdTech international en cours"}', '{"en":"Software Engineer - Backend (my current job)","es":"Ingeniera de Software - Backend (mi trabajo actual)","fr":"Software Engineer - Backend (mon job actuel)"}', '{"en":"Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger","es":"Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger","fr":"Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger"}', '{"en":"Educational platform for high school and university students. I''m building APIs like bridges between REST and GraphQL. Integrated S3 for resources, Docker containers, and docs you''ll actually want to read.","es":"Plataforma educativa para estudiantes de secundaria y universidad. Estoy construyendo APIs como si fueran puentes entre mundos (REST y GraphQL en un solo backend, sí señor... y con Next.js). Integración con S3 para recursos, contenedores con Docker y una documentación que sí se deja leer.","fr":"Plateforme éducative pour lycéens et étudiants. Je construis des APIs comme des ponts entre REST et GraphQL. Intégration avec S3, conteneurs Docker et une doc agréable à lire."}', '{"en":"In development","es":"En desarrollo","fr":"En développement"}', '{"en":"Dev link only (coming soon to a screen near you)","es":"Solo dev link por ahora (pronto en cines)","fr":"Lien dev seulement (bientôt sur vos écrans)"}', '2025-07-06 23:22:25.364423', '2025-07-06 23:22:25.364423') RETURNING "id" /*application='Backend'*/[0m
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT /*application='Backend'*/[0m
+Started GET "/projects" for ::1 at 2025-07-06 18:22:29 -0500
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Count (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>1, :title=>"Animaladas – HENRY Project", :role=>"Backend Developer with a dash of frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.", :status=>"Deployed and happily alive", :link=>"https://animaladas03.vercel.app/", :created_at=>Sun, 06 Jul 2025 23:22:25.291214000 UTC +00:00, :updated_at=>Sun, 06 Jul 2025 23:22:25.291214000 UTC +00:00}
+Completed 200 OK in 34ms (Views: 0.8ms | ActiveRecord: 6.2ms | Allocations: 6446)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-06 18:22:34 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>1, :title=>"Animaladas – HENRY Project", :role=>"Backend Developer with a dash of frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"My first team project and the first digital baby I deployed. A platform for an animal shelter in Salta, Argentina, where users could donate and adopt furry friends. I touched frontend just enough to survive.", :status=>"Deployed and happily alive", :link=>"https://animaladas03.vercel.app/", :created_at=>Sun, 06 Jul 2025 23:22:25.291214000 UTC +00:00, :updated_at=>Sun, 06 Jul 2025 23:22:25.291214000 UTC +00:00}
+Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 1433)
+
+
+Started GET "/projects?language=es" for ::1 at 2025-07-06 18:22:46 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mProject Count (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: es
+  [1m[36mProject Load (0.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>1, :title=>"Animaladas – Proyecto HENRY", :role=>"Desarrolladora Backend con toques de front", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"Mi primer proyecto en equipo y el primer proyecto de mi historia profesional que vió la luz del deploy. Una plataforma para un refugio animal en Salta, Argentina, donde los usuarios podían hacer donaciones y adoptar peluditos. Toqué el front solo lo justo para sobrevivir.", :status=>"Deployado y feliz por ahí", :link=>"https://animaladas03.vercel.app/", :created_at=>Sun, 06 Jul 2025 23:22:25.291214000 UTC +00:00, :updated_at=>Sun, 06 Jul 2025 23:22:25.291214000 UTC +00:00}
+Completed 200 OK in 15ms (Views: 1.7ms | ActiveRecord: 2.0ms | Allocations: 1433)
+
+
+Started GET "/projects?language=fr" for ::1 at 2025-07-06 18:25:23 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mProject Count (2.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: fr
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>1, :title=>"Animaladas – Projet HENRY", :role=>"Développeuse backend avec une touche de frontend", :tech=>"Node.js, Express, PostgreSQL, React, Google Auth, MercadoPago", :description=>"Mon premier projet en équipe et mon premier bébé digital en production. Une plateforme pour un refuge animalier à Salta, Argentine, où les utilisateurs pouvaient faire des dons et adopter des animaux. Le frontend ? Juste ce qu'il fallait pour survivre.", :status=>"Déployé et vivant quelque part", :link=>"https://animaladas03.vercel.app/", :created_at=>Sun, 06 Jul 2025 23:22:25.291214000 UTC +00:00, :updated_at=>Sun, 06 Jul 2025 23:22:25.291214000 UTC +00:00}
+Completed 200 OK in 17ms (Views: 0.7ms | ActiveRecord: 3.0ms | Allocations: 1433)
+
+
+  [1m[36mProject Load (1.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /* loading for pp */ ORDER BY "projects"."created_at" DESC LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /* loading for pp */ ORDER BY "projects"."updated_at" DESC LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mProject Load (5.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE (title::text ILIKE '%Node.js%' OR description::text ILIKE '%Node.js%') /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mProject Load (2.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE (title->>'en' ILIKE '%construction%' OR description->>'en' ILIKE '%construction%') /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mProject Load (1.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" ASC LIMIT 1 /*application='Backend'*/[0m
+  [1m[36mProject Load (3.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE (tech::text ILIKE '%AWS%') /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mProject Load (2.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE (title::text ILIKE '%Node.js%' OR description::text ILIKE '%Node.js%') /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
+  [1m[36mProject Load (1.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE (title::text ILIKE '%Node.js%' OR description::text ILIKE '%Node.js%') /* loading for pp */ LIMIT 11 /*application='Backend'*/[0m
