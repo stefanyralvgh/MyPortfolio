@@ -52,17 +52,20 @@ Soy meticulosa en mi trabajo - cada función que escribo, cada API que diseño, 
         }
       },
       en: {
-        title: '👋 Hi, I\'m Stef!',
+        title: '🤗 Hi, I\'m Stef!',
         subtitle: 'Backend Developer • Ex-dentist • Language Enthusiast',
         story: {
           title: 'My Story',
-          content: `I'm Stef, a passionate backend developer who found her path in code after years in dentistry. My transition from healthcare to technology wasn't random - I've always been fascinated by how technology can improve lives and solve complex problems.
+          content: `I'm Stef, a backend developer who found her way into code after years in dentistry.  
+The transition wasn’t random. I’ve always been drawn to how technology can solve real problems and improve lives.  
+As a dentist, I helped one person at a time. As a developer, I can build tools that impact thousands.  
 
-The decision to change careers came from a combination of intellectual curiosity and the desire to create solutions that impact more people. As a dentist, I helped one person at a time. As a developer, I can create tools that benefit thousands.`
+It took me time to see that this path was for me, but my friends and my ex, who’ve been in tech long before I was, saw the potential first.  
+Their support and conviction gave me the push I needed to make the leap.`
         },
         why: {
           title: 'Why I left dentistry?',
-          content: `It wasn't an easy decision, but it was the right one. Dentistry taught me precision, patience, and the importance of attention to detail - skills I now apply to every line of code I write.
+          content: `It wasn't an easy decision, but it was the right one. Dentistry taught me precision, patience, and the importance of attention to detail. Skills I now apply to every line of code I write.
 
 I realized my true passion was in solving complex problems, creating something from scratch, and the satisfaction of seeing how my solutions improve people's lives. Programming gives me that creative freedom and impact I was looking for.`
         },
@@ -70,26 +73,28 @@ I realized my true passion was in solving complex problems, creating something f
           title: 'My Personality',
           content: `I'm naturally curious. I love learning new languages (currently learning French), exploring new technologies, and I'm always looking for ways to improve and grow.
 
-I'm meticulous in my work - every function I write, every API I design, has to be perfect. But I also know when to ask for help and collaborate. AI has been my perfect companion on this journey, amplifying my creativity and helping me take my ideas beyond what I could do alone.`
+I’m not trying to be perfect, I’m trying to get better.  
+I’m creative, I have a strong sense of direction, and I use what I learn to keep improving.  
+There’s still a lot I don’t know. Tech is huge, and I’m always excited to keep learning.  
+Every time I understand something new, I feel like I’ve earned something real.`
         },
         values: {
           title: 'What drives me',
           items: [
-            '💡 Innovation and creativity in problem-solving',
-            '🤝 Collaboration and continuous learning',
-            '🎯 Precision and attention to detail',
-            '🌍 Positive impact on society',
-            '🚀 Constant improvement and personal growth'
+            '✨ Vision and creativity in solving real problems',
+            '🫱🏽‍🫲🏽 Collaboration and learning from others',
+            '🧪 Growth through curiosity and experimentation',
+            '⚙️ Building things that are actually useful',
+            '📈 Getting better with every project'
           ]
         },
         funFacts: {
           title: 'Fun facts',
           items: [
-            '🦷 I can do a professional dental cleaning (but I prefer writing APIs!)',
-            '🌍 I speak Spanish, English and I\'m learning French',
-            '🤖 AI helped me design this portfolio',
-            '💉 My dream company works in health technology',
-            '🎨 Although frontend isn\'t my strong suit, I have a good eye for design'
+            '🍫 I code better with music, snacks, and just the right amount of chaos',
+            '✍🏽 I keep a digital note with every “tiny win” I’ve had while coding',
+            '🧹 I enjoy refactoring more than writing code from scratch (don’t ask me why)',
+            '🐶 I have two dogs and a cat (most of my bug fixes happen after walking the dogs)'
           ]
         }
       },

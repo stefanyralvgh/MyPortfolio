@@ -3708,3 +3708,81 @@ First project data: {:id=>14, :title=>"Diidoo – Construction Project Platform"
 Completed 200 OK in 424ms (Views: 6.0ms | ActiveRecord: 381.1ms | Allocations: 4593)
 
 
+Started GET "/projects?language=es" for ::1 at 2025-07-06 15:25:11 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mProject Count (128.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: es
+  [1m[36mProject Load (2.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>14, :title=>"Diidoo – Plataforma para proyectos de construcción", :role=>"Fullstack Developer (Bubble hacker oficial)", :tech=>"Bubble.io, Wompi, workflows complejos, mucha paciencia", :description=>"Una app enorme y ambiciosa para conectar usuarios con proveedores de arquitectura, diseño de interiores y construcción. Como un Trello, pero con cemento.", :status=>"App caída, pero aprendí como si hubiera subido mil pisos.", :link=>"No disponible (RIP)", :created_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00}
+Completed 200 OK in 231ms (Views: 40.4ms | ActiveRecord: 165.1ms | Allocations: 4577)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-06 15:25:24 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (7.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>14, :title=>"Diidoo – Construction Project Platform", :role=>"Fullstack Developer (Official Bubble hacker)", :tech=>"Bubble.io, Wompi, complex workflows, lots of patience", :description=>"A huge and ambitious app to connect users with providers of architecture, interior design, and construction. Like Trello, but with concrete.", :status=>"App down, but I learned like I climbed 1000 floors.", :link=>"App offline (RIP)", :created_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00}
+Completed 200 OK in 45ms (Views: 2.9ms | ActiveRecord: 7.7ms | Allocations: 1433)
+
+
+Started GET "/projects?language=es" for ::1 at 2025-07-06 15:25:30 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mProject Count (6.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: es
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>14, :title=>"Diidoo – Plataforma para proyectos de construcción", :role=>"Fullstack Developer (Bubble hacker oficial)", :tech=>"Bubble.io, Wompi, workflows complejos, mucha paciencia", :description=>"Una app enorme y ambiciosa para conectar usuarios con proveedores de arquitectura, diseño de interiores y construcción. Como un Trello, pero con cemento.", :status=>"App caída, pero aprendí como si hubiera subido mil pisos.", :link=>"No disponible (RIP)", :created_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00}
+Completed 200 OK in 44ms (Views: 3.0ms | ActiveRecord: 7.4ms | Allocations: 1433)
+
+
+Started GET "/projects?language=fr" for ::1 at 2025-07-06 15:25:34 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"fr"}
+  [1m[36mProject Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: fr
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>14, :title=>"Diidoo – Plateforme de projets de construction", :role=>"Développeuse Fullstack (hacker Bubble officielle)", :tech=>"Bubble.io, Wompi, workflows complexes, beaucoup de patience", :description=>"Une application énorme et ambitieuse pour connecter des utilisateurs à des prestataires d'architecture, design d'intérieur et construction. Comme Trello, mais en béton.", :status=>"Appli hors ligne, mais j'ai appris comme si j'avais gravi 1000 étages.", :link=>"Indisponible (RIP)", :created_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00}
+Completed 200 OK in 16ms (Views: 0.6ms | ActiveRecord: 1.5ms | Allocations: 1433)
+
+
+Started GET "/projects?language=en" for ::1 at 2025-07-06 15:27:40 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mProject Count (9.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: en
+  [1m[36mProject Load (1.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>14, :title=>"Diidoo – Construction Project Platform", :role=>"Fullstack Developer (Official Bubble hacker)", :tech=>"Bubble.io, Wompi, complex workflows, lots of patience", :description=>"A huge and ambitious app to connect users with providers of architecture, interior design, and construction. Like Trello, but with concrete.", :status=>"App down, but I learned like I climbed 1000 floors.", :link=>"App offline (RIP)", :created_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00}
+Completed 200 OK in 78ms (Views: 4.3ms | ActiveRecord: 10.3ms | Allocations: 1433)
+
+
+Started GET "/projects?language=es" for ::1 at 2025-07-06 15:27:50 -0500
+Processing by ProjectsController#index as */*
+  Parameters: {"language"=>"es"}
+  [1m[36mProject Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:6:in `index'
+Projects found: 4
+Language requested: es
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /*action='index',application='Backend',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:9:in `map'
+First project data: {:id=>14, :title=>"Diidoo – Plataforma para proyectos de construcción", :role=>"Fullstack Developer (Bubble hacker oficial)", :tech=>"Bubble.io, Wompi, workflows complejos, mucha paciencia", :description=>"Una app enorme y ambiciosa para conectar usuarios con proveedores de arquitectura, diseño de interiores y construcción. Como un Trello, pero con cemento.", :status=>"App caída, pero aprendí como si hubiera subido mil pisos.", :link=>"No disponible (RIP)", :created_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00, :updated_at=>Sat, 05 Jul 2025 21:07:11.718255000 UTC +00:00}
+Completed 200 OK in 25ms (Views: 1.0ms | ActiveRecord: 1.6ms | Allocations: 1433)
+
+
