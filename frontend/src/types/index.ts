@@ -1,13 +1,13 @@
 export interface Level {
   id: number;
-  titles: Record<string, string>;
-  descriptions: Record<string, string>;
-  question: Record<string, string>;
+  titles: string;
+  descriptions: string;
+  question: string;
   options: {
-    [key: string]: Record<string, string>;
+    [key: string]: string;
   };
   correct_option: string;
-  explanation: Record<string, string>;
+  explanation: string;
 }
 
 export interface Challenge {

@@ -41,6 +41,26 @@ const ProjectsPage: React.FC = () => {
     fetchProjects();
   }, [language]);
 
+  // Función para saber si el link es válido
+  const isValidLink = (link: string) => {
+    if (!link) return false;
+    const invalids = [
+      'Not available',
+      'No disponible',
+      'Indisponible',
+      'App offline',
+      'RIP',
+      'Dev link only',
+      'coming soon to a screen near you'
+    ];
+    return !invalids.some(inv => link.includes(inv));
+  };
+
+  // Ordenar proyectos: primero los que tienen link válido
+  const sortedProjects = [...projects].sort((a, b) => {
+    return (isValidLink(b.link) ? 1 : 0) - (isValidLink(a.link) ? 1 : 0);
+  });
+
   if (loading) {
     return (
       <div className="projects-container">
@@ -85,32 +105,68 @@ const ProjectsPage: React.FC = () => {
       </div>
       
       <div className="projects-grid">
-        {projects.map((project) => (
-          <div key={project.id} className="project-card">
-            <h3>{project.title}</h3>
-            <p className="project-role">{project.role}</p>
-            <p className="project-description">{project.description}</p>
-            <div className="project-status">
-              <span className={`status-badge ${project.status.includes('✅') ? 'success' : project.status.includes('💀') ? 'error' : 'warning'}`}>
-                {project.status}
-              </span>
+        {sortedProjects.map((project) => {
+          const isDevOrOffline =
+            project.link.includes('Dev link only') || project.link.includes('App offline') || project.link.includes('RIP') || project.link.includes('coming soon to a screen near you');
+          return (
+            <div key={project.id} className="project-card">
+              <h3>{project.title}</h3>
+              <p className="project-role">{project.role}</p>
+              <p className="project-description">{project.description}</p>
+              <div className="project-status">
+                <span className={`status-badge ${project.status.includes('✅') ? 'success' : project.status.includes('💀') ? 'error' : 'warning'}`}>{project.status}</span>
+              </div>
+              <div className="tech-stack">
+                <h4>{language === 'es' ? 'Tecnologías:' : language === 'fr' ? 'Technologies:' : 'Technologies:'}</h4>
+                <p>{project.tech}</p>
+              </div>
+              <div className="project-links">
+                {isValidLink(project.link) ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="view-project-button"
+                    style={{
+                      display: 'inline-block',
+                      padding: '0.5rem 1.2rem',
+                      background: 'transparent',
+                      color: '#666',
+                      border: '2px solid #cccccc',
+                      borderRadius: '1.2rem',
+                      textDecoration: 'none',
+                      fontWeight: 600,
+                      marginTop: '0.5rem',
+                      transition: 'background 0.2s, color 0.2s'
+                    }}
+                  >
+                    🌐 {language === 'es' ? 'Ver Proyecto' : language === 'fr' ? 'Voir le Projet' : 'View Project'}
+                  </a>
+                ) : (
+                  <button
+                    className="view-project-button"
+                    style={{
+                      display: 'inline-block',
+                      padding: '0.5rem 1.2rem',
+                      background: 'transparent',
+                      color: '#666',
+                      border: '2px solid #cccccc',
+                      borderRadius: '1.2rem',
+                      textDecoration: 'none',
+                      fontWeight: 600,
+                      marginTop: '0.5rem',
+                      cursor: 'not-allowed',
+                      opacity: 0.7
+                    }}
+                    disabled
+                  >
+                    🌐 {project.link}
+                  </button>
+                )}
+              </div>
             </div>
-            <div className="tech-stack">
-              <h4>{language === 'es' ? 'Tecnologías:' : language === 'fr' ? 'Technologies:' : 'Technologies:'}</h4>
-              <p>{project.tech}</p>
-            </div>
-            <div className="project-links">
-              {project.link && !project.link.includes('Not available') && !project.link.includes('No disponible') && !project.link.includes('Indisponible') && (
-                <a href={project.link} target="_blank" rel="noopener noreferrer">
-                  🌐 {language === 'es' ? 'Ver Proyecto' : language === 'fr' ? 'Voir le Projet' : 'View Project'}
-                </a>
-              )}
-              <span className="project-link-placeholder">
-                {project.link}
-              </span>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

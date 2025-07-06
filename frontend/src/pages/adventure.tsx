@@ -20,52 +20,52 @@ const AdventurePage: React.FC = () => {
 
 
   // Preguntas y opciones para cada nivel (puedes personalizarlas luego)
-  const levelQuestions = [
-    {
-      question: "¿Qué es lo más importante al diseñar una API?",
-      options: [
-        { text: "Que sea fácil de entender y usar", correct: true, explanation: "¡Correcto! Una API clara y predecible es clave para que otros desarrolladores la adopten y la usen bien." },
-        { text: "Que tenga muchos endpoints", correct: false, explanation: "No necesariamente. Lo importante es la claridad y consistencia, no la cantidad de endpoints." }
-      ],
-      explanations: [
-        "¡Correcto! Una API clara y predecible es clave para que otros desarrolladores la adopten y la usen bien.",
-        "No necesariamente. Lo importante es la claridad y consistencia, no la cantidad de endpoints."
-      ]
-    },
-    {
-      question: "¿Qué mejora el rendimiento de una consulta a base de datos?",
-      options: [
-        { text: "Usar índices en las columnas consultadas", correct: true, explanation: "¡Exacto! Los índices aceleran las búsquedas y mejoran el rendimiento." },
-        { text: "Hacer SELECT * siempre", correct: false, explanation: "No es recomendable, ya que puede traer datos innecesarios y ralentizar la consulta." }
-      ],
-      explanations: [
-        "¡Exacto! Los índices aceleran las búsquedas y mejoran el rendimiento.",
-        "No es recomendable, ya que puede traer datos innecesarios y ralentizar la consulta."
-      ]
-    },
-    {
-      question: "¿Qué ayuda a escalar un backend?",
-      options: [
-        { text: "Dividir la lógica en módulos claros", correct: true, explanation: "¡Correcto! La modularidad facilita el mantenimiento y la escalabilidad." },
-        { text: "Poner toda la lógica en un solo archivo", correct: false, explanation: "Eso complica el mantenimiento y limita la escalabilidad." }
-      ],
-      explanations: [
-        "¡Correcto! La modularidad facilita el mantenimiento y la escalabilidad.",
-        "Eso complica el mantenimiento y limita la escalabilidad."
-      ]
-    },
-    {
-      question: "¿Qué es esencial para un flujo de trabajo en equipo?",
-      options: [
-        { text: "Integración continua y buenas prácticas de git", correct: true, explanation: "¡Sí! CI/CD y git ayudan a mantener la calidad y la colaboración." },
-        { text: "Hacer todo en producción directamente", correct: false, explanation: "Eso es riesgoso y puede causar errores graves. Mejor usar buenas prácticas y entornos de prueba." }
-      ],
-      explanations: [
-        "¡Sí! CI/CD y git ayudan a mantener la calidad y la colaboración.",
-        "Eso es riesgoso y puede causar errores graves. Mejor usar buenas prácticas y entornos de prueba."
-      ]
-    }
-  ];
+  // const levelQuestions = [
+  //   {
+  //     question: "¿Qué es lo más importante al diseñar una API?",
+  //     options: [
+  //       { text: "Que sea fácil de entender y usar", correct: true, explanation: "¡Correcto! Una API clara y predecible es clave para que otros desarrolladores la adopten y la usen bien." },
+  //       { text: "Que tenga muchos endpoints", correct: false, explanation: "No necesariamente. Lo importante es la claridad y consistencia, no la cantidad de endpoints." }
+  //     ],
+  //     explanations: [
+  //       "¡Correcto! Una API clara y predecible es clave para que otros desarrolladores la adopten y la usen bien.",
+  //       "No necesariamente. Lo importante es la claridad y consistencia, no la cantidad de endpoints."
+  //     ]
+  //   },
+  //   {
+  //     question: "¿Qué mejora el rendimiento de una consulta a base de datos?",
+  //     options: [
+  //       { text: "Usar índices en las columnas consultadas", correct: true, explanation: "¡Exacto! Los índices aceleran las búsquedas y mejoran el rendimiento." },
+  //       { text: "Hacer SELECT * siempre", correct: false, explanation: "No es recomendable, ya que puede traer datos innecesarios y ralentizar la consulta." }
+  //     ],
+  //     explanations: [
+  //       "¡Exacto! Los índices aceleran las búsquedas y mejoran el rendimiento.",
+  //       "No es recomendable, ya que puede traer datos innecesarios y ralentizar la consulta."
+  //     ]
+  //   },
+  //   {
+  //     question: "¿Qué ayuda a escalar un backend?",
+  //     options: [
+  //       { text: "Dividir la lógica en módulos claros", correct: true, explanation: "¡Correcto! La modularidad facilita el mantenimiento y la escalabilidad." },
+  //       { text: "Poner toda la lógica en un solo archivo", correct: false, explanation: "Eso complica el mantenimiento y limita la escalabilidad." }
+  //     ],
+  //     explanations: [
+  //       "¡Correcto! La modularidad facilita el mantenimiento y la escalabilidad.",
+  //       "Eso complica el mantenimiento y limita la escalabilidad."
+  //     ]
+  //   },
+  //   {
+  //     question: "¿Qué es esencial para un flujo de trabajo en equipo?",
+  //     options: [
+  //       { text: "Integración continua y buenas prácticas de git", correct: true, explanation: "¡Sí! CI/CD y git ayudan a mantener la calidad y la colaboración." },
+  //       { text: "Hacer todo en producción directamente", correct: false, explanation: "Eso es riesgoso y puede causar errores graves. Mejor usar buenas prácticas y entornos de prueba." }
+  //     ],
+  //     explanations: [
+  //       "¡Sí! CI/CD y git ayudan a mantener la calidad y la colaboración.",
+  //       "Eso es riesgoso y puede causar errores graves. Mejor usar buenas prácticas y entornos de prueba."
+  //     ]
+  //   }
+  // ];
 
   useEffect(() => {
     if (router.query.completed === 'true') {
@@ -108,20 +108,20 @@ const AdventurePage: React.FC = () => {
       const dbLevel = dbLevels[currentLevel - 1];
       return {
         id: dbLevel.id,
-        title: dbLevel.titles[language],
+        title: dbLevel.titles,
         type: "quiz",
         challenge: {
-          scenario: dbLevel.question[language],
+          scenario: dbLevel.question,
           options: [
-            dbLevel.options.A[language],
-            dbLevel.options.B[language]
+            dbLevel.options.A,
+            dbLevel.options.B
           ],
           correctAnswer: dbLevel.correct_option === 'A' ? 0 : 1,
-          explanation: dbLevel.explanation[language],
+          explanation: dbLevel.explanation,
         },
         story: {
-          title: dbLevel.titles[language],
-          description: dbLevel.descriptions[language],
+          title: dbLevel.titles,
+          description: dbLevel.descriptions,
           tech: [], // Si quieres puedes agregar un campo tech en la nueva estructura
         }
       };
