@@ -4495,3 +4495,63 @@ First level data: {:id=>101, :titles=>"Authentication Madness", :descriptions=>"
 Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 1345)
 
 
+Started GET "/levels?language=en" for ::1 at 2025-07-06 19:05:35 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Count (126.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: en
+  [1m[36mLevel Load (3.0ms)[0m  [1m[34mSELECT "levels".* FROM "levels" ORDER BY "levels"."id" ASC /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>101, :titles=>"Authentication Madness", :descriptions=>"Learn how I debugged one of the trickiest bugs in our Clerk integration.", :question=>"User tokens were not being validated properly across environments. What did I do?", :options=>{"A"=>"I rewrote the entire auth logic from scratch to make sure it was clean.", "B"=>"I debugged the token flow, built test routes, and proposed a safer validation structure."}, :correct_option=>"B", :explanation=>"The issue was due to environment differences. I added debug routes, improved error handling, and proposed a safer structure."}
+Completed 200 OK in 206ms (Views: 10.1ms | ActiveRecord: 166.7ms | Allocations: 4549)
+
+
+[dotenv] Set [36mDATABASE_NAME[0m, [36mDATABASE_USERNAME[0m, [36mDATABASE_PASSWORD[0m, [36mDATABASE_HOST[0m, and [36mDATABASE_PORT[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mDATABASE_NAME[0m, [36mDATABASE_USERNAME[0m, [36mDATABASE_PASSWORD[0m, [36mDATABASE_HOST[0m, [36mDATABASE_PORT[0m, and [36mDATABASE_URL[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/levels?language=en" for ::1 at 2025-07-06 19:15:02 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Count (4.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: en
+  [1m[36mLevel Load (2.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" ORDER BY "levels"."id" ASC /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>101, :titles=>"Authentication Madness", :descriptions=>"Learn how I debugged one of the trickiest bugs in our Clerk integration.", :question=>"User tokens were not being validated properly across environments. What did I do?", :options=>{"A"=>"I rewrote the entire auth logic from scratch to make sure it was clean.", "B"=>"I debugged the token flow, built test routes, and proposed a safer validation structure."}, :correct_option=>"B", :explanation=>"The issue was due to environment differences. I added debug routes, improved error handling, and proposed a safer structure."}
+Completed 200 OK in 332ms (Views: 0.6ms | ActiveRecord: 66.5ms | Allocations: 18794)
+
+
+Started GET "/levels?language=en" for ::1 at 2025-07-06 19:16:18 -0500
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Count (6.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: en
+  [1m[36mLevel Load (1.4ms)[0m  [1m[34mSELECT "levels".* FROM "levels" ORDER BY "levels"."id" ASC /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>101, :titles=>"Authentication Madness", :descriptions=>"Learn how I debugged one of the trickiest bugs in our Clerk integration.", :question=>"User tokens were not being validated properly across environments. What did I do?", :options=>{"A"=>"I rewrote the entire auth logic from scratch to make sure it was clean.", "B"=>"I debugged the token flow, built test routes, and proposed a safer validation structure."}, :correct_option=>"B", :explanation=>"The issue was due to environment differences. I added debug routes, improved error handling, and proposed a safer structure."}
+Completed 200 OK in 35ms (Views: 1.4ms | ActiveRecord: 8.2ms | Allocations: 1356)
+
+
+[dotenv] Set [36mDATABASE_NAME[0m, [36mDATABASE_USERNAME[0m, [36mDATABASE_PASSWORD[0m, [36mDATABASE_HOST[0m, [36mDATABASE_PORT[0m, and [36mDATABASE_URL[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/levels?language=en" for ::1 at 2025-07-06 19:16:39 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: en
+  [1m[36mLevel Load (1.2ms)[0m  [1m[34mSELECT "levels".* FROM "levels" ORDER BY "levels"."id" ASC /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>101, :titles=>"Authentication Madness", :descriptions=>"Learn how I debugged one of the trickiest bugs in our Clerk integration.", :question=>"User tokens were not being validated properly across environments. What did I do?", :options=>{"A"=>"I rewrote the entire auth logic from scratch to make sure it was clean.", "B"=>"I debugged the token flow, built test routes, and proposed a safer validation structure."}, :correct_option=>"B", :explanation=>"The issue was due to environment differences. I added debug routes, improved error handling, and proposed a safer structure."}
+Completed 200 OK in 335ms (Views: 0.6ms | ActiveRecord: 21.4ms | Allocations: 18791)
+
+

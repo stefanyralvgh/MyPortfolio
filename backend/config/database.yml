@@ -1,28 +1,30 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: interactive_portfolio_development
-  pool: 5
-  username: postgres
-  password: admin
-  host: 127.0.0.1
-  port: 5432
+  database: <%= ENV.fetch('DATABASE_NAME', 'interactive_portfolio_development') %>
+  pool: <%= ENV.fetch('DATABASE_POOL', 5) %>
+  username: <%= ENV.fetch('DATABASE_USERNAME', 'your_username') %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD', 'your_password') %>
+  host: <%= ENV.fetch('DATABASE_HOST', '127.0.0.1') %>
+  port: <%= ENV.fetch('DATABASE_PORT', 5432) %>
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: interactive_portfolio_test
-  pool: 5
-  username: postgres
-  password: admin
-  host: 127.0.0.1
-  port: 5432
+  database: <%= ENV.fetch('TEST_DATABASE_NAME', 'interactive_portfolio_test') %>
+  pool: <%= ENV.fetch('DATABASE_POOL', 5) %>
+  username: <%= ENV.fetch('DATABASE_USERNAME', 'your_username') %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD', 'your_password') %>
+  host: <%= ENV.fetch('DATABASE_HOST', '127.0.0.1') %>
+  port: <%= ENV.fetch('DATABASE_PORT', 5432) %>
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: interactive_portfolio_production
-  pool: 5
-  username: your_username
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: your_production_host
+  database: <%= ENV.fetch('DATABASE_NAME') %>
+  pool: <%= ENV.fetch('DATABASE_POOL', 5) %>
+  username: <%= ENV.fetch('DATABASE_USERNAME') %>
+  password: <%= ENV.fetch('DATABASE_PASSWORD') %>
+  host: <%= ENV.fetch('DATABASE_HOST') %>
+  port: <%= ENV.fetch('DATABASE_PORT', 5432) %>
+  url: <%= ENV.fetch('DATABASE_URL', nil) %>

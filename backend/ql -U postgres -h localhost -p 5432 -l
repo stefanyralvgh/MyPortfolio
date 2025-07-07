@@ -1,9 +1,0 @@
-=> 
-{[33m:[0m[33madapter[0m=>[31m[1m"[0m[31mpostgresql[0m[31m[1m"[0m,
- [33m:[0m[33mencoding[0m=>[31m[1m"[0m[31municode[0m[31m[1m"[0m,
- [33m:[0m[33mdatabase[0m=>[31m[1m"[0m[31minteractive_portfolio_development[0m[31m[1m"[0m,
- [33m:[0m[33mpool[0m=>[34m[1m5[0m,
- [33m:[0m[33musername[0m=>[31m[1m"[0m[31mpostgres[0m[31m[1m"[0m,
- [33m:[0m[33mpassword[0m=>[31m[1m"[0m[31madmin[0m[31m[1m"[0m,
- [33m:[0m[33mhost[0m=>[31m[1m"[0m[31m127.0.0.1[0m[31m[1m"[0m,
- [33m:[0m[33mport[0m=>[34m[1m5432[0m}
