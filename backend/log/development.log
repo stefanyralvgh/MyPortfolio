@@ -4555,3 +4555,177 @@ First level data: {:id=>101, :titles=>"Authentication Madness", :descriptions=>"
 Completed 200 OK in 335ms (Views: 0.6ms | ActiveRecord: 21.4ms | Allocations: 18791)
 
 
+[dotenv] Set [36mDATABASE_NAME[0m, [36mDATABASE_USERNAME[0m, [36mDATABASE_PASSWORD[0m, [36mDATABASE_HOST[0m, [36mDATABASE_PORT[0m, and [36mDATABASE_URL[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/levels?language=en" for ::1 at 2025-07-06 19:29:10 -0500
+  
+ActiveRecord::DatabaseConnectionError (There is an issue connecting to your database with your username/password, username: postgres.
+
+Please check your database configuration to ensure the username/password are valid.
+):
+  
+activerecord (7.1.5.1) lib/active_record/connection_adapters/postgresql_adapter.rb:76:in `rescue in new_client'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/postgresql_adapter.rb:68:in `new_client'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/postgresql_adapter.rb:980:in `connect'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/postgresql_adapter.rb:992:in `reconnect'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:685:in `block in reconnect!'
+activesupport (7.1.5.1) lib/active_support/concurrency/null_lock.rb:9:in `synchronize'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:684:in `reconnect!'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:786:in `block in verify!'
+activesupport (7.1.5.1) lib/active_support/concurrency/null_lock.rb:9:in `synchronize'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:777:in `verify!'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:794:in `connect!'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:1000:in `block in with_raw_connection'
+activesupport (7.1.5.1) lib/active_support/concurrency/null_lock.rb:9:in `synchronize'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:999:in `with_raw_connection'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:1112:in `valid_raw_connection'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/postgresql_adapter.rb:616:in `get_database_version'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/schema_cache.rb:374:in `database_version'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/schema_cache.rb:70:in `database_version'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/schema_cache.rb:200:in `database_version'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:870:in `database_version'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/postgresql_adapter.rb:644:in `check_version'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:680:in `new_connection'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:730:in `checkout_new_connection'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:709:in `try_to_checkout_new_connection'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:654:in `acquire_connection'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `checkout'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:182:in `connection'
+activerecord (7.1.5.1) lib/active_record/migration/pending_migration_connection.rb:8:in `establish_temporary_connection'
+activerecord (7.1.5.1) lib/active_record/migration.rb:774:in `block in pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:773:in `each'
+activerecord (7.1.5.1) lib/active_record/migration.rb:773:in `pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:752:in `check_pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:644:in `block (2 levels) in call'
+activesupport (7.1.5.1) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.1.5.1) lib/active_record/migration.rb:649:in `block in call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:641:in `synchronize'
+activerecord (7.1.5.1) lib/active_record/migration.rb:641:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+[dotenv] Set [36mDATABASE_NAME[0m, [36mDATABASE_USERNAME[0m, [36mDATABASE_PASSWORD[0m, [36mDATABASE_HOST[0m, [36mDATABASE_PORT[0m, and [36mDATABASE_URL[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/levels?language=en" for ::1 at 2025-07-06 19:30:01 -0500
+  
+ActiveRecord::DatabaseConnectionError (There is an issue connecting to your database with your username/password, username: postgres.
+
+Please check your database configuration to ensure the username/password are valid.
+):
+  
+activerecord (7.1.5.1) lib/active_record/connection_adapters/postgresql_adapter.rb:76:in `rescue in new_client'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/postgresql_adapter.rb:68:in `new_client'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/postgresql_adapter.rb:980:in `connect'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/postgresql_adapter.rb:992:in `reconnect'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:685:in `block in reconnect!'
+activesupport (7.1.5.1) lib/active_support/concurrency/null_lock.rb:9:in `synchronize'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:684:in `reconnect!'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:786:in `block in verify!'
+activesupport (7.1.5.1) lib/active_support/concurrency/null_lock.rb:9:in `synchronize'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:777:in `verify!'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:794:in `connect!'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:1000:in `block in with_raw_connection'
+activesupport (7.1.5.1) lib/active_support/concurrency/null_lock.rb:9:in `synchronize'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:999:in `with_raw_connection'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:1112:in `valid_raw_connection'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/postgresql_adapter.rb:616:in `get_database_version'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/schema_cache.rb:374:in `database_version'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/schema_cache.rb:70:in `database_version'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/schema_cache.rb:200:in `database_version'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract_adapter.rb:870:in `database_version'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/postgresql_adapter.rb:644:in `check_version'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:680:in `new_connection'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:730:in `checkout_new_connection'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:709:in `try_to_checkout_new_connection'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:654:in `acquire_connection'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `checkout'
+activerecord (7.1.5.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:182:in `connection'
+activerecord (7.1.5.1) lib/active_record/migration/pending_migration_connection.rb:8:in `establish_temporary_connection'
+activerecord (7.1.5.1) lib/active_record/migration.rb:774:in `block in pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:773:in `each'
+activerecord (7.1.5.1) lib/active_record/migration.rb:773:in `pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:752:in `check_pending_migrations'
+activerecord (7.1.5.1) lib/active_record/migration.rb:644:in `block (2 levels) in call'
+activesupport (7.1.5.1) lib/active_support/file_update_checker.rb:85:in `execute'
+activerecord (7.1.5.1) lib/active_record/migration.rb:649:in `block in call'
+activerecord (7.1.5.1) lib/active_record/migration.rb:641:in `synchronize'
+activerecord (7.1.5.1) lib/active_record/migration.rb:641:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.5.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.5.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `block in tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.5.1) lib/active_support/tagged_logging.rb:139:in `tagged'
+activesupport (7.1.5.1) lib/active_support/broadcast_logger.rb:241:in `method_missing'
+railties (7.1.5.1) lib/rails/rack/logger.rb:24:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.16) lib/rack/runtime.rb:24:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.16) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.5.1) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in `call'
+railties (7.1.5.1) lib/rails/engine.rb:536:in `call'
+puma (6.6.0) lib/puma/configuration.rb:279:in `call'
+puma (6.6.0) lib/puma/request.rb:99:in `block in handle_request'
+puma (6.6.0) lib/puma/thread_pool.rb:390:in `with_force_shutdown'
+puma (6.6.0) lib/puma/request.rb:98:in `handle_request'
+puma (6.6.0) lib/puma/server.rb:472:in `process_client'
+puma (6.6.0) lib/puma/server.rb:254:in `block in run'
+puma (6.6.0) lib/puma/thread_pool.rb:167:in `block in spawn_thread'
+[dotenv] Set [36mDATABASE_NAME[0m, [36mDATABASE_USERNAME[0m, [36mDATABASE_PASSWORD[0m, [36mDATABASE_HOST[0m, [36mDATABASE_PORT[0m, and [36mDATABASE_URL[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/levels?language=en" for ::1 at 2025-07-06 19:30:58 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (5.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='Backend'*/[0m
+Processing by LevelsController#index as */*
+  Parameters: {"language"=>"en"}
+  [1m[36mLevel Count (5.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "levels" /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:6:in `index'
+Levels found: 4
+Language requested: en
+  [1m[36mLevel Load (3.6ms)[0m  [1m[34mSELECT "levels".* FROM "levels" ORDER BY "levels"."id" ASC /*action='index',application='Backend',controller='levels'*/[0m
+  ↳ app/controllers/levels_controller.rb:9:in `map'
+First level data: {:id=>101, :titles=>"Authentication Madness", :descriptions=>"Learn how I debugged one of the trickiest bugs in our Clerk integration.", :question=>"User tokens were not being validated properly across environments. What did I do?", :options=>{"A"=>"I rewrote the entire auth logic from scratch to make sure it was clean.", "B"=>"I debugged the token flow, built test routes, and proposed a safer validation structure."}, :correct_option=>"B", :explanation=>"The issue was due to environment differences. I added debug routes, improved error handling, and proposed a safer structure."}
+Completed 200 OK in 353ms (Views: 0.7ms | ActiveRecord: 62.0ms | Allocations: 18789)
+
+
