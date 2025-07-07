@@ -38,10 +38,16 @@ DATABASE_PORT=5432
 
 # Rails Configuration
 RAILS_ENV=development
-SECRET_KEY_BASE=your_secret_key_here
+SECRET_KEY_BASE=your_generated_secret_key_here
 
 # API Configuration
 API_BASE_URL=http://localhost:3000
+```
+
+**Note:** For development, Rails will generate a temporary SECRET_KEY_BASE if you don't provide one. However, it's recommended to generate your own:
+
+```bash
+./bin/rails secret
 ```
 
 ### 4. Set up the database
@@ -70,7 +76,7 @@ The API will be available at `http://localhost:3000`
 | `DATABASE_HOST`     | Database host     | `127.0.0.1`                         |
 | `DATABASE_PORT`     | Database port     | `5432`                              |
 | `RAILS_ENV`         | Rails environment | `development`                       |
-| `SECRET_KEY_BASE`   | Rails secret key  | Required for production             |
+| `SECRET_KEY_BASE`   | Rails secret key  |
 
 ## Troubleshooting
 
