@@ -1,34 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { AdventureLevelProps} from '../interfaces/adventureInterfaces'
 
-interface Challenge {
-  scenario: string;
-  error?: string;
-  brokenUrl?: string;
-  query?: string;
-  code?: string;
-  options: string[];
-  correctAnswer: number;
-  explanation: string;
-  explanations?: string[];
-}
 
-interface Story {
-  title: string;
-  description: string;
-  tech: string[];
-}
-
-interface AdventureLevelProps {
-  level: {
-    id: number;
-    title: string;
-    type: string;
-    challenge: Challenge;
-    story: Story;
-  };
-  onComplete: (levelId: number) => void;
-}
 
 const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) => {
   const { t } = useLanguage();
@@ -37,7 +11,7 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
   const [isCorrect, setIsCorrect] = useState(false);
   const [shuffledOptions, setShuffledOptions] = useState<{ text: string; explanation: string; correct: boolean; }[]>([]);
 
-  // Shuffle helper
+
   function shuffleArray<T>(array: T[]): T[] {
     const arr = [...array];
     for (let i = arr.length - 1; i > 0; i--) {
@@ -48,7 +22,7 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
   }
 
   useEffect(() => {
-    // Mezclar opciones y explicaciones manteniendo el mapeo
+  
     const options = level.challenge.options.map((text, idx) => ({
       text,
       explanation: level.challenge.explanations ? level.challenge.explanations[idx] : '',
@@ -79,9 +53,9 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
         <h2>{t('adventure.level')} {level.id}: {level.title}</h2>
       </div>
       <div className="level-content">
-        {/* Pregunta del reto */}
+
         <div className="challenge-narrative">
-          <h3>📝 {level.challenge.scenario}</h3>
+          <h3> {level.challenge.scenario}</h3>
           {level.challenge.error && (
             <div className="error-message">
               <code>{level.challenge.error}</code>
@@ -103,7 +77,7 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
             </div>
           )}
         </div>
-        {/* Opciones tipo botón en fila horizontal, cuadradas y simétricas */}
+   
         {!showResult && (
           <div className="options-container" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '2rem', margin: '2rem 0' }}>
             {shuffledOptions.map((option, idx) => (
@@ -117,7 +91,7 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
             ))}
           </div>
         )}
-        {/* Resultado, explicación e historia personal */}
+
         {showResult && (
           <div className="result-container" style={{ marginTop: '2rem', textAlign: 'center' }}>
             <h4>{isCorrect ? t('adventure.correct') : t('adventure.incorrect')}</h4>
