@@ -1,26 +1,60 @@
-# Dependencies
+# --- GLOBAL ---
+# Node dependencies
 node_modules/
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Next.js
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# --- FRONTEND (Next.js) ---
 frontend/.next/
 frontend/out/
 frontend/build/
-
-# Production builds
 frontend/dist/
+frontend/node_modules/
 
-# Environment variables
+# Next.js/React build output
+.next
+
+# Coverage
+coverage/
+*.lcov
+.nyc_output
+
+# Parcel/Gatsby/Storybook
+.cache/
+.parcel-cache
+.nuxt
+dist
+.out
+.storybook-out
+
+# Env files
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Rails
+# --- BACKEND (Rails) ---
 backend/log/
 backend/tmp/
 backend/storage/
@@ -36,78 +70,22 @@ backend/config/credentials/*.key
 # Database
 backend/db/*.sqlite3
 backend/db/*.sqlite3-*
+*.db
+*.sqlite3
+*.sqlite3-*
 
-# Coverage directory used by tools like istanbul
-coverage/
-*.lcov
+# Uploaded files (Rails ActiveStorage)
+backend/storage/*
+!/backend/storage/.keep
+backend/tmp/storage/*
+!/backend/tmp/storage/
+!/backend/tmp/storage/.keep
 
-# nyc test coverage
-.nyc_output
+# Rails config
+backend/config/master.key
+backend/config/application.yml
 
-# Dependency directories
-jspm_packages/
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Microbundle cache
-.rpt2_cache/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
-
-# Next.js build output
-.next
-
-# Nuxt.js build / generate output
-.nuxt
-dist
-
-# Gatsby files
-.cache/
-public
-
-# Storybook build outputs
-.out
-.storybook-out
-
-# Temporary folders
-tmp/
-temp/
-
-# Editor directories and files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Ruby
+# Ruby/Bundler
 *.gem
 *.rbc
 /.config
@@ -119,6 +97,11 @@ Thumbs.db
 /test/tmp/
 /test/version_tmp/
 /tmp/
+/.bundle
+/vendor/bundle
+vendor/bundle/
+.ruby-version
+.ruby-gemset
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -134,56 +117,18 @@ Thumbs.db
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
-/tmp/storage/*
-!/tmp/storage/
-!/tmp/storage/.keep
 
-# Ignore master key for decrypting credentials and more.
-/config/master.key
-
-# Ignore application configuration
-/config/application.yml
-
-# Ignore all .env files
-.env*
-
-# Ignore database files
-*.db
-*.sqlite3
-*.sqlite3-*
-
-# Ignore uploaded files
-/public/uploads/
-
-# Ignore node_modules in Rails
-node_modules/
-
-# Ignore yarn files
-yarn-error.log
+# Yarn
 .yarn-integrity
 
-# Ignore bundle files
-vendor/bundle/
+# Misc
+jspm_packages/
+.npm
+.eslintcache
+*.tgz
 
-# Ignore rbenv files
-.ruby-version
-.ruby-gemset
-
-# Ignore bundler config
-/.bundle
-/vendor/bundle
-
-# Ignore all environment files
-.env*
-!.env.example
-
-# Ignore IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# Ignore OS files
-.DS_Store
-Thumbs.db 
+# --- EXCEPTIONS ---
+# NO ignore for frontend/public/ (static assets)
+# NO ignore for any public/ except backend/public/assets, packs, packs-test
+# NO ignore for .env.example
+!.env.example 
