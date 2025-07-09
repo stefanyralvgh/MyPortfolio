@@ -314,7 +314,9 @@ Configured in `config/initializers/cors.rb` for frontend integration.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. Feel free to use any components or code for your own projects.
+
+**Note**: This is a personal portfolio project. No contributions, pull requests, or modifications are accepted.
 
 ## Support
 

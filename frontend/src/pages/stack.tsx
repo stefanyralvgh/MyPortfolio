@@ -68,7 +68,7 @@ const StackPage: React.FC = () => {
         color: '#f3b1e6'
       }}>
         <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: '700', color: '#e75480' }}>
-          🛠️ {t('stack.title')}
+           {t('stack.title')}
         </h1>
         <LanguageSwitcher hideLabel={true} />
       </div>
@@ -97,7 +97,7 @@ const StackPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            🚀 {t('stack.main')}
+             {t('stack.main')}
           </h2>
           <div style={{
             display: 'grid',
@@ -149,7 +149,7 @@ const StackPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            📚 {t('stack.familiar')}
+             {t('stack.familiar')}
           </h2>
           <div style={{
             display: 'grid',
@@ -201,7 +201,7 @@ const StackPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            🛠️ {t('stack.tools')}
+             {t('stack.tools')}
           </h2>
           <div style={{
             display: 'grid',
@@ -241,7 +241,7 @@ const StackPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            📊 {t('stack.stats')}
+             {t('stack.stats')}
           </h2>
           <div style={{
             display: 'grid',
@@ -305,14 +305,14 @@ const StackPage: React.FC = () => {
           </button>
           <button
             className="back-button"
-            onClick={() => router.push('/adventure?completed=true')}
+            onClick={() => router.push('/recruiter')}
             style={{
               background: 'rgba(243, 177, 230, 0.2)',
               color: '#f3b1e6',
               border: '2px solid #f3b1e6'
             }}
           >
-            🚀 {t('stack.recruiter.mode')}
+            {t('stack.recruiter.mode')}
           </button>
         </div>
       </div>

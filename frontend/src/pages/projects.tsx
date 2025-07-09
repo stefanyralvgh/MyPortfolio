@@ -2,23 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSwitcher from '../components/LanguageSwitcher';
-
-interface Project {
-  id: number;
-  title: string;
-  role: string;
-  tech: string;
-  description: string;
-  status: string;
-  link: string;
-  created_at: string;
-  updated_at: string;
-}
+import LoadingSpinner from '../components/LoadingSpinner';
+import { ProjectDisplay } from '../interfaces/projectInterfaces';
 
 const ProjectsPage: React.FC = () => {
   const router = useRouter();
   const { language, t } = useLanguage();
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<ProjectDisplay[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -41,17 +31,16 @@ const ProjectsPage: React.FC = () => {
     fetchProjects();
   }, [language]);
 
-  // Función para saber si el link es válido
+
   const isValidLink = (link: string) => {
     return typeof link === 'string' && (link.startsWith('http://') || link.startsWith('https://'));
   };
 
-  // Ordenar proyectos: primero los que tienen link válido
+
   const sortedProjects = [...projects].sort((a, b) => {
     return (isValidLink(b.link) ? 1 : 0) - (isValidLink(a.link) ? 1 : 0);
   });
 
-  // Traducciones para la nota de Nodd
   const noddNote = {
     es: 'Puede estar temporalmente fuera de línea mientras se hacen pruebas.',
     en: 'Currently undergoing changes and will be turned off when not in use.',
@@ -63,7 +52,7 @@ const ProjectsPage: React.FC = () => {
       <div className="projects-container">
         <div className="projects-header">
           <h1>🚀 {language === 'es' ? 'Mis Proyectos' : language === 'fr' ? 'Mes Projets' : 'My Projects'}</h1>
-          <p>{language === 'es' ? 'Cargando proyectos...' : language === 'fr' ? 'Chargement des projets...' : 'Loading projects...'}</p>
+          <LoadingSpinner />
         </div>
       </div>
     );
@@ -90,15 +79,6 @@ const ProjectsPage: React.FC = () => {
         <div style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', marginRight: '0.5rem' }}>
           <LanguageSwitcher hideLabel={true} />
         </div>
-      </div>
-      
-      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <button 
-          className="back-button"
-          onClick={() => router.push('/')}
-        >
-          {t('adventure.back')}
-        </button>
       </div>
       
       <div className="projects-grid">
@@ -226,6 +206,14 @@ const ProjectsPage: React.FC = () => {
             </div>
           );
         })}
+      </div>
+      <div className="projects-footer" style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+        <button 
+          className="back-button"
+          onClick={() => router.push('/')}
+        >
+          {t('adventure.back')}
+        </button>
       </div>
     </div>
   );

@@ -11,43 +11,36 @@ const AboutPage: React.FC = () => {
     const content = {
       es: {
         title: '👋 ¡Hola, soy Stef!',
-        subtitle: 'Backend Developer • Ex-dentista • Amante de idiomas',
+        subtitle: 'Backend Developer • Ex-dentista • Amante de los idiomas',
         story: {
-          title: 'Mi Historia',
-          content: `Soy Stef, una desarrolladora backend apasionada que encontró su camino en el código después de años en la odontología. Mi transición de la salud a la tecnología no fue casual - siempre me ha fascinado cómo la tecnología puede mejorar vidas y resolver problemas complejos.
-
-La decisión de cambiar de carrera vino de una combinación de curiosidad intelectual y el deseo de crear soluciones que impacten a más personas. Como odontóloga, ayudaba a una persona a la vez. Como desarrolladora, puedo crear herramientas que beneficien a miles.`
+          title: 'Mi historia',
+          content: `Soy Stef, una desarrolladora backend que encontró su camino en el código después de años en la odontología.\nLa transición no fue al azar. Siempre me ha atraído cómo la tecnología puede resolver problemas reales y mejorar vidas.\n\nComo odontóloga, ayudaba a una persona a la vez. Como desarrolladora, puedo crear herramientas que impacten a miles.\n\nMe tomó tiempo ver que este era mi camino, pero mis amigos y mi ex (que llevan mucho tiempo en tecnología) lo vieron primero.\nSu apoyo y convicción me dieron el empujón que necesitaba para lanzarme.`
         },
         why: {
           title: '¿Por qué dejé la odontología?',
-          content: `No fue una decisión fácil, pero fue la correcta. La odontología me enseñó precisión, paciencia y la importancia de la atención al detalle - habilidades que ahora aplico en cada línea de código que escribo.
-
-Me di cuenta de que mi verdadera pasión estaba en resolver problemas complejos, en crear algo desde cero, y en la satisfacción de ver cómo mis soluciones mejoran la vida de las personas. La programación me da esa libertad creativa y ese impacto que estaba buscando.`
+          content: `No fue una decisión fácil, pero sí la correcta. La odontología me enseñó precisión, paciencia y atención al detalle. Son habilidades que hoy aplico en cada línea de código.\n\nDescubrí que mi verdadera pasión está en resolver problemas complejos, crear algo desde cero y ver cómo mis soluciones mejoran la vida de las personas. La programación me da esa libertad creativa y ese impacto que estaba buscando.`
         },
         personality: {
-          title: 'Mi Personalidad',
-          content: `Soy una persona curiosa por naturaleza. Me encanta aprender nuevos idiomas (actualmente estoy aprendiendo francés), explorar nuevas tecnologías, y siempre estoy buscando formas de mejorar y crecer.
-
-Soy meticulosa en mi trabajo - cada función que escribo, cada API que diseño, tiene que ser perfecta. Pero también sé cuándo pedir ayuda y colaborar. La IA ha sido mi compañera perfecta en este viaje, potenciando mi creatividad y ayudándome a llevar mis ideas más allá de lo que podría hacer sola.`
+          title: 'Mi personalidad',
+          content: `Soy curiosa por naturaleza. Me encanta aprender idiomas (ahora estoy con el francés), explorar tecnologías nuevas y siempre buscar formas de mejorar.\n\nNo busco ser perfecta, busco mejorar. Soy creativa, tengo claro hacia dónde voy, y todo lo que aprendo lo uso para seguir creciendo.\nAún hay mucho que no sé. La tecnología es enorme, y me emociona seguir aprendiendo.\nCada vez que entiendo algo nuevo, siento que gané algo real.`
         },
         values: {
           title: 'Lo que me mueve',
           items: [
-            '💡 Innovación y creatividad en la resolución de problemas',
-            '🤝 Colaboración y aprendizaje continuo',
-            '🎯 Precisión y atención al detalle',
-            '🌍 Impacto positivo en la sociedad',
-            '🚀 Mejora constante y crecimiento personal'
+            '✨ Visión y creatividad para resolver problemas reales',
+            '🫱🏽‍🫲🏽 Colaboración y aprendizaje de otros',
+            '🧪 Curiosidad y experimentación para crecer',
+            '⚙️ Construir cosas que realmente sirvan',
+            '📈 Mejorar en cada proyecto'
           ]
         },
         funFacts: {
           title: 'Datos curiosos',
           items: [
-            '🦷 Puedo hacer una limpieza dental profesional (¡pero prefiero escribir APIs!)',
-            '🌍 Hablo español, inglés y estoy aprendiendo francés',
-            '🤖 La IA me ayudó a diseñar este portafolio',
-            '💉 Mi empresa soñada trabaja en tecnología de salud',
-            '🎨 Aunque el frontend no es mi fuerte, tengo buen ojo para el diseño'
+            '🍫 Programo mejor con música, snacks y un poco de caos',
+            '✍🏽 Llevo una nota con todos mis “tiny wins” de código',
+            '🧹 Disfruto más refactorizar que escribir código desde cero (no sé por qué)',
+            '🐶 Tengo dos perros y un gato (la mayoría de bugs los arreglo después de pasear a los perros)'
           ]
         }
       },
@@ -56,27 +49,15 @@ Soy meticulosa en mi trabajo - cada función que escribo, cada API que diseño, 
         subtitle: 'Backend Developer • Ex-dentist • Language Enthusiast',
         story: {
           title: 'My Story',
-          content: `I'm Stef, a backend developer who found her way into code after years in dentistry.  
-The transition wasn’t random. I’ve always been drawn to how technology can solve real problems and improve lives.  
-As a dentist, I helped one person at a time. As a developer, I can build tools that impact thousands.  
-
-It took me time to see that this path was for me, but my friends and my ex, who’ve been in tech long before I was, saw the potential first.  
-Their support and conviction gave me the push I needed to make the leap.`
+          content: `I'm Stef, a backend developer who found her way into code after years in dentistry.  \nThe transition wasn’t random. I’ve always been drawn to how technology can solve real problems and improve lives.  \nAs a dentist, I helped one person at a time. As a developer, I can build tools that impact thousands.  \n\nIt took me time to see that this path was for me, but my friends and my ex, who’ve been in tech long before I was, saw the potential first.  \nTheir support and conviction gave me the push I needed to make the leap.`
         },
         why: {
           title: 'Why I left dentistry?',
-          content: `It wasn't an easy decision, but it was the right one. Dentistry taught me precision, patience, and the importance of attention to detail. Skills I now apply to every line of code I write.
-
-I realized my true passion was in solving complex problems, creating something from scratch, and the satisfaction of seeing how my solutions improve people's lives. Programming gives me that creative freedom and impact I was looking for.`
+          content: `It wasn't an easy decision, but it was the right one. Dentistry taught me precision, patience, and the importance of attention to detail. Skills I now apply to every line of code I write.\n\nI realized my true passion was in solving complex problems, creating something from scratch, and the satisfaction of seeing how my solutions improve people's lives. Programming gives me that creative freedom and impact I was looking for.`
         },
         personality: {
           title: 'My Personality',
-          content: `I'm naturally curious. I love learning new languages (currently learning French), exploring new technologies, and I'm always looking for ways to improve and grow.
-
-I’m not trying to be perfect, I’m trying to get better.  
-I’m creative, I have a strong sense of direction, and I use what I learn to keep improving.  
-There’s still a lot I don’t know. Tech is huge, and I’m always excited to keep learning.  
-Every time I understand something new, I feel like I’ve earned something real.`
+          content: `I'm naturally curious. I love learning new languages (currently learning French), exploring new technologies, and I'm always looking for ways to improve and grow.\n\nI’m not trying to be perfect, I’m trying to get better.  \nI’m creative, I have a strong sense of direction, and I use what I learn to keep improving.  \nThere’s still a lot I don’t know. Tech is huge, and I’m always excited to keep learning.  \nEvery time I understand something new, I feel like I’ve earned something real.`
         },
         values: {
           title: 'What drives me',
@@ -102,41 +83,34 @@ Every time I understand something new, I feel like I’ve earned something real.
         title: '👋 Salut, je suis Stef !',
         subtitle: 'Développeuse Backend • Ex-dentiste • Passionnée de langues',
         story: {
-          title: 'Mon Histoire',
-          content: `Je suis Stef, une développeuse backend passionnée qui a trouvé sa voie dans le code après des années en dentisterie. Ma transition de la santé à la technologie n\'était pas aléatoire - j\'ai toujours été fascinée par la façon dont la technologie peut améliorer la vie et résoudre des problèmes complexes.
-
-La décision de changer de carrière est venue d\'une combinaison de curiosité intellectuelle et du désir de créer des solutions qui impactent plus de personnes. En tant que dentiste, j\'aidais une personne à la fois. En tant que développeuse, je peux créer des outils qui bénéficient à des milliers.`
+          title: 'Mon histoire',
+          content: `Je suis Stef, une développeuse backend qui a trouvé sa voie dans le code après des années en dentisterie.\nLa transition n'était pas un hasard. J'ai toujours été attirée par la manière dont la technologie peut résoudre des problèmes concrets et améliorer la vie.\n\nEn tant que dentiste, j’aidais une personne à la fois. En tant que développeuse, je peux créer des outils qui touchent des milliers de personnes.\n\nIl m’a fallu du temps pour réaliser que c’était ma voie, mais mes amis et mon ex (déjà dans la tech) l’avait vu bien avant moi.\nLeur soutien et leur conviction m'ont donné l’élan nécessaire pour sauter le pas.`
         },
         why: {
-          title: 'Pourquoi j\'ai quitté la dentisterie ?',
-          content: `Ce n\'était pas une décision facile, mais c\'était la bonne. La dentisterie m\'a appris la précision, la patience et l\'importance de l\'attention aux détails - des compétences que j\'applique maintenant à chaque ligne de code que j\'écris.
-
-J\'ai réalisé que ma vraie passion était de résoudre des problèmes complexes, de créer quelque chose à partir de zéro, et la satisfaction de voir comment mes solutions améliorent la vie des gens. La programmation me donne cette liberté créative et cet impact que je recherchais.`
+          title: 'Pourquoi j’ai quitté la dentisterie ?',
+          content: `Ce n'était pas une décision facile, mais c'était la bonne. La dentisterie m'a appris la précision, la patience et l'attention aux détails. Des compétences que j'applique maintenant dans chaque ligne de code.\n\nJ'ai compris que ma vraie passion, c'est résoudre des problèmes complexes, créer à partir de zéro, et voir comment mes solutions améliorent la vie des gens. La programmation me donne cette liberté créative et cet impact que je cherchais.`
         },
         personality: {
-          title: 'Ma Personnalité',
-          content: `Je suis naturellement curieuse. J\'aime apprendre de nouvelles langues (j\'apprends actuellement le français), explorer de nouvelles technologies, et je cherche toujours des moyens de m\'améliorer et de grandir.
-
-Je suis méticuleuse dans mon travail - chaque fonction que j\'écris, chaque API que je conçois, doit être parfaite. Mais je sais aussi quand demander de l\'aide et collaborer. L\'IA a été ma compagne parfaite dans ce voyage, amplifiant ma créativité et m\'aidant à porter mes idées au-delà de ce que je pourrais faire seule.`
+          title: 'Ma personnalité',
+          content: `Je suis naturellement curieuse. J'adore apprendre des langues (j'apprends le français), explorer de nouvelles technologies, et chercher sans cesse à progresser.\n\nJe ne cherche pas à être parfaite, mais à m’améliorer. J’ai de la créativité, une direction claire, et j’utilise chaque apprentissage pour continuer à avancer.\nIl y a encore tant à apprendre. La tech est vaste, et j’adore cette idée. Chaque fois que je comprends quelque chose de nouveau, j’ai l’impression d’avoir gagné quelque chose de réel.`
         },
         values: {
           title: 'Ce qui me motive',
           items: [
-            '💡 Innovation et créativité dans la résolution de problèmes',
-            '🤝 Collaboration et apprentissage continu',
-            '🎯 Précision et attention aux détails',
-            '🌍 Impact positif sur la société',
-            '🚀 Amélioration constante et croissance personnelle'
+            '✨ Vision et créativité pour résoudre des problèmes réels',
+            '🫱🏽‍🫲🏽 Collaboration et apprentissage des autres',
+            '🧪 Croissance par la curiosité et l’expérimentation',
+            '⚙️ Construire des choses vraiment utiles',
+            '📈 S’améliorer à chaque projet'
           ]
         },
         funFacts: {
           title: 'Faits amusants',
           items: [
-            '🦷 Je peux faire un nettoyage dentaire professionnel (mais je préfère écrire des APIs !)',
-            '🌍 Je parle espagnol, anglais et j\'apprends le français',
-            '🤖 L\'IA m\'a aidée à concevoir ce portfolio',
-            '💉 Mon entreprise de rêve travaille dans la technologie de santé',
-            '🎨 Bien que le frontend ne soit pas mon fort, j\'ai un bon œil pour le design'
+            '🍫 Je code mieux avec de la musique, des snacks et un peu de chaos',
+            '✍🏽 Je note chaque “petite victoire” de code dans une note digitale',
+            '🧹 Je préfère refactorer que coder à partir de zéro (ne me demande pas pourquoi)',
+            '🐶 J’ai deux chiens et un chat (mes bugs se résolvent souvent après une balade)'
           ]
         }
       }
@@ -177,7 +151,7 @@ Je suis méticuleuse dans mon travail - chaque fonction que j\'écris, chaque AP
               alt="Stef - Backend Developer" 
               className="about-photo"
               onError={(e) => {
-                // Fallback si la imagen no carga
+              
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
                 target.nextElementSibling?.classList.remove('hidden');

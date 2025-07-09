@@ -1,23 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-
-interface TerminalCommand {
-  command: string;
-  output: string;
-  delay?: number;
-}
-
-interface TerminalContextType {
-  commandHistory: TerminalCommand[];
-  setCommandHistory: (history: TerminalCommand[] | ((prev: TerminalCommand[]) => TerminalCommand[])) => void;
-  addCommand: (command: TerminalCommand) => void;
-  updateCommandOutput: (commandIndex: number, newOutput: string) => void;
-  clearHistory: () => void;
-  isInitialized: boolean;
-  setIsInitialized: (initialized: boolean) => void;
-  initializeTerminal: () => void;
-  saveToLocalStorage: () => void;
-  loadFromLocalStorage: () => void;
-}
+import { TerminalCommand, TerminalContextType } from '../interfaces/terminalInterfaces';
 
 const TerminalContext = createContext<TerminalContextType | undefined>(undefined);
 
@@ -28,31 +10,31 @@ export const TerminalProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [commandHistory, setCommandHistory] = useState<TerminalCommand[]>([]);
   const [isInitialized, setIsInitialized] = useState(false);
 
-  // Check if this is a page reload vs navigation
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const currentTime = Date.now();
       const savedTimestamp = localStorage.getItem(TIMESTAMP_KEY);
       const timeDiff = savedTimestamp ? currentTime - parseInt(savedTimestamp) : Infinity;
       
-      // If more than 5 seconds have passed, consider it a fresh load/reload
+     
       if (!savedTimestamp || timeDiff > 5000) {
-        // This is a fresh page load/reload - clear everything
+
         localStorage.removeItem(STORAGE_KEY);
         localStorage.removeItem(TIMESTAMP_KEY);
         setCommandHistory([]);
         setIsInitialized(false);
       } else {
-        // This is navigation within the same session - load state
+      
         loadFromLocalStorage();
       }
       
-      // Update timestamp
+
       localStorage.setItem(TIMESTAMP_KEY, currentTime.toString());
     }
   }, []);
 
-  // Save to localStorage whenever commandHistory changes
+
   useEffect(() => {
     if (isInitialized) {
       saveToLocalStorage();
@@ -81,7 +63,7 @@ export const TerminalProvider: React.FC<{ children: ReactNode }> = ({ children }
       }
     } catch (error) {
       console.error('Error loading terminal state from localStorage:', error);
-      // Fallback to default state
+  
       setCommandHistory([]);
       setIsInitialized(false);
     }
@@ -89,7 +71,7 @@ export const TerminalProvider: React.FC<{ children: ReactNode }> = ({ children }
 
   const addCommand = (command: TerminalCommand) => {
     setCommandHistory(prev => {
-      // If this is the same command as the last one, update it instead of adding
+  
       if (prev.length > 0 && prev[prev.length - 1].command === command.command) {
         return [...prev.slice(0, -1), command];
       }

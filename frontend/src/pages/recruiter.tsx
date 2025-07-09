@@ -85,7 +85,7 @@ const RecruiterPage: React.FC = () => {
         marginBottom: '3rem'
       }}>
         <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: '700', color: '#e75480' }}>
-          💼 Recruiter Mode
+           {t('recruiter.mode')}
         </h1>
         <LanguageSwitcher hideLabel={true} />
       </div>
@@ -136,7 +136,7 @@ const RecruiterPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            🛠️ Tech Stack
+           {t('recruiter.tech_stack')}
           </h2>
           <div style={{ display: 'grid', gap: '1rem' }}>
             <p style={{
@@ -174,7 +174,7 @@ const RecruiterPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            🚀 Key Projects
+            {t('recruiter.key_projects')}
           </h2>
           <div style={{ display: 'grid', gap: '1rem' }}>
             {recruiterData.projects.map((project, index) => (
@@ -238,7 +238,7 @@ const RecruiterPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            📊 Quick Stats
+            {t('recruiter.quick_stats')}
           </h2>
           <div style={{
             display: 'grid',
@@ -257,22 +257,7 @@ const RecruiterPage: React.FC = () => {
                 2+
               </div>
               <div style={{ fontSize: '1rem', opacity: 0.9 }}>
-                {language === 'es' ? 'Años de experiencia' : language === 'fr' ? 'Années d\'expérience' : 'Years Experience'}
-              </div>
-            </div>
-            <div style={{
-              textAlign: 'center',
-              padding: '1.5rem',
-              background: 'rgba(243, 177, 230, 0.2)',
-              borderRadius: '0.75rem',
-              color: '#f3b1e6',
-              border: '1px solid #f3b1e6'
-            }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#f3b1e6' }}>
-                10+
-              </div>
-              <div style={{ fontSize: '1rem', opacity: 0.9 }}>
-                {language === 'es' ? 'Proyectos completados' : language === 'fr' ? 'Projets terminés' : 'Projects Completed'}
+                {language === 'es' ? 'Años de experiencia' : language === 'fr' ? "Années d'expérience" : 'Years Experience'}
               </div>
             </div>
             <div style={{
@@ -310,7 +295,7 @@ const RecruiterPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            🔗 Quick Links
+            🔗 {t('recruiter.quick_links')}
           </h2>
           <div style={{
             display: 'grid',
@@ -326,7 +311,7 @@ const RecruiterPage: React.FC = () => {
                 border: '2px solid #e75480'
               }}
             >
-              <span>🐙</span> GitHub
+              <span>🐙</span> {t('recruiter.github')}
             </button>
             <button
               className="back-button"
@@ -337,7 +322,7 @@ const RecruiterPage: React.FC = () => {
                 border: '2px solid #f3b1e6'
               }}
             >
-              <span>💼</span> LinkedIn
+              <span>💼</span> {t('recruiter.linkedin')}
             </button>
             <button
               className="back-button"
@@ -348,7 +333,7 @@ const RecruiterPage: React.FC = () => {
                 border: '2px solid rgba(231, 84, 128, 0.3)'
               }}
             >
-              <span>📄</span> {language === 'es' ? 'Descargar CV' : language === 'fr' ? 'Télécharger CV' : 'Download CV'}
+              <span>📄</span> {t('recruiter.download_cv')}
             </button>
             <button
               className="back-button"
@@ -359,33 +344,12 @@ const RecruiterPage: React.FC = () => {
                 border: '2px solid rgba(243, 177, 230, 0.3)'
               }}
             >
-              <span>🛠️</span> {language === 'es' ? 'Ver Stack' : language === 'fr' ? 'Voir Stack' : 'View Stack'}
+              <span>🛠️</span> {t('recruiter.view_stack')}
             </button>
           </div>
         </div>
 
-        {/* Restart Message */}
-        <div style={{
-          background: 'rgba(255, 255, 255, 0.05)',
-          borderRadius: '1rem',
-          padding: '2rem',
-          textAlign: 'center',
-          border: '1px solid rgba(243, 177, 230, 0.2)'
-        }}>
-          <p style={{
-            margin: 0,
-            fontSize: '1.1rem',
-            opacity: 0.9,
-            color: '#f3b1e6'
-          }}>
-            {language === 'es' 
-              ? '¿Quieres explorar más? Escribe `restart` o `help` para volver al modo terminal.'
-              : language === 'fr'
-              ? 'Envie d\'explorer plus ? Tapez `restart` ou `help` pour revenir au mode terminal.'
-              : 'Want to explore again? Type `restart` or `help` to go back to terminal mode.'
-            }
-          </p>
-        </div>
+      
 
         {/* Action Buttons */}
         <div style={{
