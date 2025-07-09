@@ -305,7 +305,7 @@ const StackPage: React.FC = () => {
           </button>
           <button
             className="back-button"
-            onClick={() => router.push('/adventure?completed=true')}
+            onClick={() => router.push('/recruiter')}
             style={{
               background: 'rgba(243, 177, 230, 0.2)',
               color: '#f3b1e6',
