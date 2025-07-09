@@ -13,10 +13,10 @@ const InteractiveTerminal: React.FC = () => {
     commandHistory, 
     setCommandHistory, 
     addCommand, 
-    // updateCommandOutput, 
+   
     isInitialized, 
     setIsInitialized,
-    // initializeTerminal 
+   
   } = useTerminal();
   const [currentLine, setCurrentLine] = useState('');
   const [isTyping, setIsTyping] = useState(false);

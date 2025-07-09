@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import AdventureLevel from '../components/AdventureLevel';
 import { useLanguage } from '../contexts/LanguageContext';
 import { fetchLevels } from '../utils/api';
-import { Level } from '../types';
+import { Level } from '../interfaces/levelInterfaces';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 
 const AdventurePage: React.FC = () => {
@@ -16,56 +16,8 @@ const AdventurePage: React.FC = () => {
   const [showLoading, setShowLoading] = useState(false);
   const router = useRouter();
   const { language, t } = useLanguage();
-  // Estado para el menú flotante de CV
+ 
 
-
-  // Preguntas y opciones para cada nivel (puedes personalizarlas luego)
-  // const levelQuestions = [
-  //   {
-  //     question: "¿Qué es lo más importante al diseñar una API?",
-  //     options: [
-  //       { text: "Que sea fácil de entender y usar", correct: true, explanation: "¡Correcto! Una API clara y predecible es clave para que otros desarrolladores la adopten y la usen bien." },
-  //       { text: "Que tenga muchos endpoints", correct: false, explanation: "No necesariamente. Lo importante es la claridad y consistencia, no la cantidad de endpoints." }
-  //     ],
-  //     explanations: [
-  //       "¡Correcto! Una API clara y predecible es clave para que otros desarrolladores la adopten y la usen bien.",
-  //       "No necesariamente. Lo importante es la claridad y consistencia, no la cantidad de endpoints."
-  //     ]
-  //   },
-  //   {
-  //     question: "¿Qué mejora el rendimiento de una consulta a base de datos?",
-  //     options: [
-  //       { text: "Usar índices en las columnas consultadas", correct: true, explanation: "¡Exacto! Los índices aceleran las búsquedas y mejoran el rendimiento." },
-  //       { text: "Hacer SELECT * siempre", correct: false, explanation: "No es recomendable, ya que puede traer datos innecesarios y ralentizar la consulta." }
-  //     ],
-  //     explanations: [
-  //       "¡Exacto! Los índices aceleran las búsquedas y mejoran el rendimiento.",
-  //       "No es recomendable, ya que puede traer datos innecesarios y ralentizar la consulta."
-  //     ]
-  //   },
-  //   {
-  //     question: "¿Qué ayuda a escalar un backend?",
-  //     options: [
-  //       { text: "Dividir la lógica en módulos claros", correct: true, explanation: "¡Correcto! La modularidad facilita el mantenimiento y la escalabilidad." },
-  //       { text: "Poner toda la lógica en un solo archivo", correct: false, explanation: "Eso complica el mantenimiento y limita la escalabilidad." }
-  //     ],
-  //     explanations: [
-  //       "¡Correcto! La modularidad facilita el mantenimiento y la escalabilidad.",
-  //       "Eso complica el mantenimiento y limita la escalabilidad."
-  //     ]
-  //   },
-  //   {
-  //     question: "¿Qué es esencial para un flujo de trabajo en equipo?",
-  //     options: [
-  //       { text: "Integración continua y buenas prácticas de git", correct: true, explanation: "¡Sí! CI/CD y git ayudan a mantener la calidad y la colaboración." },
-  //       { text: "Hacer todo en producción directamente", correct: false, explanation: "Eso es riesgoso y puede causar errores graves. Mejor usar buenas prácticas y entornos de prueba." }
-  //     ],
-  //     explanations: [
-  //       "¡Sí! CI/CD y git ayudan a mantener la calidad y la colaboración.",
-  //       "Eso es riesgoso y puede causar errores graves. Mejor usar buenas prácticas y entornos de prueba."
-  //     ]
-  //   }
-  // ];
 
   useEffect(() => {
     if (router.query.completed === 'true') {
@@ -102,7 +54,6 @@ const AdventurePage: React.FC = () => {
     return () => clearTimeout(loadingTimeout);
   }, [language, router.query.completed]);
 
-  // Usar los niveles del backend y las preguntas para armar los retos
   const getCurrentLevelData = () => {
     if (dbLevels.length && currentLevel <= dbLevels.length) {
       const dbLevel = dbLevels[currentLevel - 1];
@@ -113,8 +64,8 @@ const AdventurePage: React.FC = () => {
         challenge: {
           scenario: dbLevel.question,
           options: [
-            dbLevel.options.A,
-            dbLevel.options.B
+            dbLevel.options.A[language as keyof typeof dbLevel.options.A] || dbLevel.options.A.en,
+            dbLevel.options.B[language as keyof typeof dbLevel.options.B] || dbLevel.options.B.en
           ],
           correctAnswer: dbLevel.correct_option === 'A' ? 0 : 1,
           explanation: dbLevel.explanation,
@@ -122,7 +73,7 @@ const AdventurePage: React.FC = () => {
         story: {
           title: dbLevel.titles,
           description: dbLevel.descriptions,
-          tech: [], // Si quieres puedes agregar un campo tech en la nueva estructura
+          tech: [], 
         }
       };
     } else {
@@ -131,7 +82,7 @@ const AdventurePage: React.FC = () => {
   };
 
   const handleLevelComplete = () => {
-    // Agregar el nivel actual a los completados
+   
     setCompletedLevels(prev => new Set(Array.from(prev).concat(currentLevel)));
     
     if (currentLevel < dbLevels.length) {
@@ -165,7 +116,7 @@ const AdventurePage: React.FC = () => {
 
 
 
-  // Función para descargar el CV
+
   const handleDownloadCV = () => {
     const file = language === 'es' ? '/cv_es.pdf' : '/cv_en.pdf';
     const link = document.createElement('a');

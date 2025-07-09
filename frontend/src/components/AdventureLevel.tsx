@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { AdventureLevelProps} from '../interfaces/adventureInterfaces'
+import { AdventureLevelProps} from '../interfaces/commonInterfaces'
 
 
 
 const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [shuffledOptions, setShuffledOptions] = useState<{ text: string; explanation: string; correct: boolean; }[]>([]);
-
 
   function shuffleArray<T>(array: T[]): T[] {
     const arr = [...array];
@@ -22,10 +21,9 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
   }
 
   useEffect(() => {
-  
     const options = level.challenge.options.map((text, idx) => ({
       text,
-      explanation: level.challenge.explanations ? level.challenge.explanations[idx] : '',
+      explanation: '', 
       correct: idx === level.challenge.correctAnswer
     }));
     setShuffledOptions(shuffleArray(options));
@@ -47,35 +45,18 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
     onComplete(level.id);
   };
 
+  const getLocalizedText = (textObj: { en: string; es: string; fr: string }) => {
+    return textObj[language as keyof typeof textObj] || textObj.en;
+  };
+
   return (
     <div className="adventure-level">
       <div className="level-header">
-        <h2>{t('adventure.level')} {level.id}: {level.title}</h2>
+        <h2>{t('adventure.level')} {level.id}: {getLocalizedText(level.title)}</h2>
       </div>
       <div className="level-content">
-
         <div className="challenge-narrative">
-          <h3> {level.challenge.scenario}</h3>
-          {level.challenge.error && (
-            <div className="error-message">
-              <code>{level.challenge.error}</code>
-            </div>
-          )}
-          {level.challenge.brokenUrl && (
-            <div className="broken-url">
-              <code>{level.challenge.brokenUrl}</code>
-            </div>
-          )}
-          {level.challenge.query && (
-            <div className="slow-query">
-              <code>{level.challenge.query}</code>
-            </div>
-          )}
-          {level.challenge.code && (
-            <div className="code-snippet">
-              <pre><code>{level.challenge.code}</code></pre>
-            </div>
-          )}
+          <h3>{getLocalizedText(level.challenge.scenario)}</h3>
         </div>
    
         {!showResult && (
@@ -96,7 +77,7 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
           <div className="result-container" style={{ marginTop: '2rem', textAlign: 'center' }}>
             <h4>{isCorrect ? t('adventure.correct') : t('adventure.incorrect')}</h4>
             <p style={{ fontWeight: 500, marginBottom: '2.5rem' }}>
-              {level.challenge.explanation}
+              {getLocalizedText(level.challenge.explanation)}
             </p>
             <button className="continue-button" onClick={handleContinue}>
               {t('adventure.next')}

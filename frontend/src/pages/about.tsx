@@ -177,7 +177,7 @@ Je suis méticuleuse dans mon travail - chaque fonction que j\'écris, chaque AP
               alt="Stef - Backend Developer" 
               className="about-photo"
               onError={(e) => {
-                // Fallback si la imagen no carga
+              
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
                 target.nextElementSibling?.classList.remove('hidden');
