@@ -19,13 +19,13 @@ const LevelCard: React.FC<LevelCardProps> = ({ level, onUnlock, isUnlocked = fal
   return (
     <div className={`level-card ${isUnlocked ? 'unlocked' : 'locked'}`}>
       <div className="level-header">
-        <h3>{level.titles[language]}</h3>
+        <h3>{level.titles}</h3>
         <span className={`status ${isUnlocked ? 'unlocked' : 'locked'}`}>
           {isUnlocked ? '✅ Desbloqueado' : '🔒 Bloqueado'}
         </span>
       </div>
       
-      <p className="description">{level.descriptions[language]}</p>
+      <p className="description">{level.descriptions}</p>
       
       {!isUnlocked && onUnlock && (
         <button 
