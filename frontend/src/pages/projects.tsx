@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import LoadingSpinner from '../components/LoadingSpinner';
 import { ProjectDisplay } from '../interfaces/projectInterfaces';
 
 const ProjectsPage: React.FC = () => {
@@ -51,7 +52,7 @@ const ProjectsPage: React.FC = () => {
       <div className="projects-container">
         <div className="projects-header">
           <h1>🚀 {language === 'es' ? 'Mis Proyectos' : language === 'fr' ? 'Mes Projets' : 'My Projects'}</h1>
-          <p>{language === 'es' ? 'Cargando proyectos...' : language === 'fr' ? 'Chargement des projets...' : 'Loading projects...'}</p>
+          <LoadingSpinner />
         </div>
       </div>
     );

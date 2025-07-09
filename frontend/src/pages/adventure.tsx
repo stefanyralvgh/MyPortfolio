@@ -5,6 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { fetchLevels } from '../utils/api';
 import { Level } from '../interfaces/levelInterfaces';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const AdventurePage: React.FC = () => {
   const [currentLevel, setCurrentLevel] = useState(1);
@@ -124,7 +125,7 @@ const AdventurePage: React.FC = () => {
       {/* Loading */}
       {showLoading && loading && (
         <div className="loading-container">
-          <div className="loading-spinner"></div>
+          <LoadingSpinner />
         </div>
       )}
       {/* Pantalla final */}
