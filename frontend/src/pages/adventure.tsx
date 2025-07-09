@@ -54,28 +54,10 @@ const AdventurePage: React.FC = () => {
     return () => clearTimeout(loadingTimeout);
   }, [language, router.query.completed]);
 
-  const getCurrentLevelData = () => {
+  const getCurrentLevelData = (): Level | null => {
     if (dbLevels.length && currentLevel <= dbLevels.length) {
       const dbLevel = dbLevels[currentLevel - 1];
-      return {
-        id: dbLevel.id,
-        title: dbLevel.titles,
-        type: "quiz",
-        challenge: {
-          scenario: dbLevel.question,
-          options: [
-            dbLevel.options.A[language as keyof typeof dbLevel.options.A] || dbLevel.options.A.en,
-            dbLevel.options.B[language as keyof typeof dbLevel.options.B] || dbLevel.options.B.en
-          ],
-          correctAnswer: dbLevel.correct_option === 'A' ? 0 : 1,
-          explanation: dbLevel.explanation,
-        },
-        story: {
-          title: dbLevel.titles,
-          description: dbLevel.descriptions,
-          tech: [], 
-        }
-      };
+      return dbLevel; // ya tiene la forma que espera AdventureLevel
     } else {
       return null;
     }
@@ -111,7 +93,7 @@ const AdventurePage: React.FC = () => {
     }
   };
 
-  const currentLevelData = getCurrentLevelData();
+  const currentLevelData: Level | null = getCurrentLevelData();
   const totalLevels = dbLevels.length;
 
 
@@ -181,7 +163,7 @@ const AdventurePage: React.FC = () => {
               {/* LinkedIn */}
               <button 
                 className="finale-button linkedin"
-                onClick={() => window.open('https://www.linkedin.com/in/stefanyralvli/', '_blank')}
+                onClick={() => window.open('https://www.linkedin.com/in/stefanyralvgh/', '_blank')}
                 style={{ width: '10rem', height: '3.2rem', borderRadius: '2rem', fontWeight: 500, fontSize: '1rem', background: '#eafff7', border: '2px solid #a4e6c9', color: '#3fa47a', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0 }}
               >
                 <span style={{ fontSize: '1.3rem', marginRight: '0.7rem' }}>💼</span>
@@ -229,7 +211,17 @@ const AdventurePage: React.FC = () => {
           </div>
           {currentLevelData && (
             <AdventureLevel
-              level={currentLevelData}
+              level={{
+                ...currentLevelData,
+                titles: typeof currentLevelData.titles === 'string' ? currentLevelData.titles : currentLevelData.titles.en,
+                descriptions: typeof currentLevelData.descriptions === 'string' ? currentLevelData.descriptions : currentLevelData.descriptions.en,
+                question: typeof currentLevelData.question === 'string' ? currentLevelData.question : currentLevelData.question.en,
+                explanation: typeof currentLevelData.explanation === 'string' ? currentLevelData.explanation : currentLevelData.explanation.en,
+                options: {
+                  A: typeof currentLevelData.options.A === 'string' ? currentLevelData.options.A : currentLevelData.options.A.en,
+                  B: typeof currentLevelData.options.B === 'string' ? currentLevelData.options.B : currentLevelData.options.B.en,
+                },
+              }}
               onComplete={handleLevelComplete}
             />
           )}

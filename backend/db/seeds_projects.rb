@@ -130,7 +130,7 @@ projects_data = [
   }
 ]
 
-# Create projects
+Project.delete_all
 projects_data.each do |project_data|
   Project.create!(project_data)
 end

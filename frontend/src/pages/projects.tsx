@@ -80,15 +80,6 @@ const ProjectsPage: React.FC = () => {
         </div>
       </div>
       
-      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <button 
-          className="back-button"
-          onClick={() => router.push('/')}
-        >
-          {t('adventure.back')}
-        </button>
-      </div>
-      
       <div className="projects-grid">
         {sortedProjects.map((project) => {
           const isDevOrOffline =
@@ -214,6 +205,14 @@ const ProjectsPage: React.FC = () => {
             </div>
           );
         })}
+      </div>
+      <div className="projects-footer" style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+        <button 
+          className="back-button"
+          onClick={() => router.push('/')}
+        >
+          {t('adventure.back')}
+        </button>
       </div>
     </div>
   );
