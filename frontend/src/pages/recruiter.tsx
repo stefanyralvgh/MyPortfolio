@@ -85,7 +85,7 @@ const RecruiterPage: React.FC = () => {
         marginBottom: '3rem'
       }}>
         <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: '700', color: '#e75480' }}>
-          💼 Recruiter Mode
+           Recruiter Mode
         </h1>
         <LanguageSwitcher hideLabel={true} />
       </div>
@@ -136,7 +136,7 @@ const RecruiterPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            🛠️ Tech Stack
+           Tech Stack
           </h2>
           <div style={{ display: 'grid', gap: '1rem' }}>
             <p style={{
@@ -174,7 +174,7 @@ const RecruiterPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            🚀 Key Projects
+            Key Projects
           </h2>
           <div style={{ display: 'grid', gap: '1rem' }}>
             {recruiterData.projects.map((project, index) => (
@@ -238,7 +238,7 @@ const RecruiterPage: React.FC = () => {
             alignItems: 'center',
             gap: '0.5rem'
           }}>
-            📊 Quick Stats
+            Quick Stats
           </h2>
           <div style={{
             display: 'grid',
@@ -378,12 +378,12 @@ const RecruiterPage: React.FC = () => {
             opacity: 0.9,
             color: '#f3b1e6'
           }}>
-            {language === 'es' 
+            {/* {language === 'es' 
               ? '¿Quieres explorar más? Escribe `restart` o `help` para volver al modo terminal.'
               : language === 'fr'
               ? 'Envie d\'explorer plus ? Tapez `restart` ou `help` pour revenir au mode terminal.'
               : 'Want to explore again? Type `restart` or `help` to go back to terminal mode.'
-            }
+            } */}
           </p>
         </div>
 

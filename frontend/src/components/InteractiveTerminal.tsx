@@ -95,6 +95,12 @@ const InteractiveTerminal: React.FC = () => {
             output: `${t('terminal.about.stef')}\n`
           };
         }
+        if (cmd.command === 'about --deep') {
+          return {
+            ...cmd,
+            output: `${t('terminal.about.redirecting')}\n`
+          };
+        }
         if (cmd.command === 'stack') {
           return {
             ...cmd,
