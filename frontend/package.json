@@ -7,6 +7,7 @@
     "dev": "next dev --turbo -p 4000",
     "build": "next build",
     "start": "next start -p 4000",
+    "export": "next export",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -16,6 +17,7 @@
     "react-dom": "latest"
   },
   "devDependencies": {
+    "@types/node": "^24.0.12",
     "@types/react": "19.1.8",
     "@types/react-dom": "^19.1.6",
     "eslint": "latest",

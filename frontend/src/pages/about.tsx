@@ -10,7 +10,7 @@ const AboutPage: React.FC = () => {
   const getAboutContent = () => {
     const content = {
       es: {
-        title: '👋 ¡Hola, soy Stef!',
+        title: '🤗¡Hola, soy Stef!',
         subtitle: 'Backend Developer • Ex-dentista • Amante de los idiomas',
         story: {
           title: 'Mi historia',
@@ -80,7 +80,7 @@ const AboutPage: React.FC = () => {
         }
       },
       fr: {
-        title: '👋 Salut, je suis Stef !',
+        title: '🤗 Salut, je suis Stef !',
         subtitle: 'Développeuse Backend • Ex-dentiste • Passionnée de langues',
         story: {
           title: 'Mon histoire',
@@ -125,10 +125,10 @@ const AboutPage: React.FC = () => {
     <div className="about-container">
       <div className="about-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', marginBottom: '0.5rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
-          <h1 style={{ margin: 0, fontSize: '2rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', textAlign: 'center' }}>{content.title}</h1>
+          <h1 style={{ margin: 0, fontSize: '2rem', overflow: 'hidden', textOverflow: 'ellipsis', textAlign: 'center' }}>{content.title}</h1>
           <p style={{ margin: '0.5rem 0 1rem 0', fontSize: '1.1rem', color: '#7a3fa4', fontWeight: 500, textAlign: 'center' }}>{content.subtitle}</p>
         </div>
-        <div style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', marginRight: '0.5rem' }}>
+        <div className="about-lang-switcher">
           <LanguageSwitcher hideLabel={true} />
         </div>
       </div>
