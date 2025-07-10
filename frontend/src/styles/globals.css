@@ -226,6 +226,20 @@ body::-webkit-scrollbar-thumb:hover {
   text-shadow: 0 0 10px rgba(231, 84, 128, 0.5);
 }
 
+.adventure-title {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+  font-size: 2.2rem;
+}
+
+@media (max-width: 500px) {
+  .adventure-title {
+    font-size: 1.3rem;
+    padding: 0 0.5rem;
+  }
+}
+
 .progress-bar {
   width: 100%;
   max-width: 600px;
@@ -283,6 +297,10 @@ body::-webkit-scrollbar-thumb:hover {
   color: #f3b1e6;
   margin-bottom: 15px;
   font-size: 1.3rem;
+}
+
+.challenge-narrative {
+  text-align: center;
 }
 
 .error-message, .broken-url, .slow-query {

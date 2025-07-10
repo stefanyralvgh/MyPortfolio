@@ -53,7 +53,7 @@ const ProjectsPage: React.FC = () => {
     <div className="projects-container">
       <div className="projects-header">
         <h1 style={{ margin: 0, fontSize: '2rem', color: '#e75480', flex: 1 }}>
-          🚀 {language === 'es' ? 'Mis Proyectos' : language === 'fr' ? 'Mes Projets' : 'My Projects'}
+         {language === 'es' ? 'Mis Proyectos' : language === 'fr' ? 'Mes Projets' : 'My Projects'}
         </h1>
         <div className="language-switcher">
           <LanguageSwitcher hideLabel={true} />
