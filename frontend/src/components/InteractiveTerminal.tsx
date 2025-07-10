@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useTerminal } from '../contexts/TerminalContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import { TerminalCommand } from '../interfaces/terminalInterfaces'
-
+import { pingApi } from '../utils/api';
 
 
 const InteractiveTerminal: React.FC = () => {
@@ -60,6 +60,11 @@ const InteractiveTerminal: React.FC = () => {
       }, 500);
     }
   }, [isInitialized, commandHistory.length, t, setIsInitialized]);
+
+  useEffect(() => {
+    // Wake up backend API on mount
+    pingApi();
+  }, []);
 
 
   useEffect(() => {
