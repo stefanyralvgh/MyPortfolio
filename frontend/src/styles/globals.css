@@ -1336,3 +1336,37 @@ body::-webkit-scrollbar-thumb:hover {
     padding: 0.2rem 0.4rem !important;
   }
 }
+
+.projects-header, .adventure-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  padding-right: 1.5rem;
+}
+.projects-header h1, .adventure-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #e75480;
+  flex: 1;
+  line-height: 1.1;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.language-switcher {
+  min-width: 90px;
+}
+@media (max-width: 600px) {
+  .projects-header, .adventure-header {
+    padding-right: 1rem;
+  }
+  .projects-header h1, .adventure-header h1 {
+    font-size: 1.2rem;
+  }
+  .language-switcher {
+    min-width: 70px;
+    font-size: 0.95rem;
+  }
+}
