@@ -123,12 +123,9 @@ const AboutPage: React.FC = () => {
 
   return (
     <div className="about-container">
-      <div className="about-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', marginBottom: '0.5rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
-          <h1 style={{ margin: 0, fontSize: '2rem', overflow: 'hidden', textOverflow: 'ellipsis', textAlign: 'center' }}>{content.title}</h1>
-          <p style={{ margin: '0.5rem 0 1rem 0', fontSize: '1.1rem', color: '#7a3fa4', fontWeight: 500, textAlign: 'center' }}>{content.subtitle}</p>
-        </div>
-        <div className="about-lang-switcher">
+      <div className="header-bar">
+        <h1>{content.title}</h1>
+        <div className="language-switcher-fixed">
           <LanguageSwitcher hideLabel={true} />
         </div>
       </div>

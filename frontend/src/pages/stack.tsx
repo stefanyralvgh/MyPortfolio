@@ -60,11 +60,11 @@ const StackPage: React.FC = () => {
       fontFamily: 'Courier New, Monaco, Menlo, monospace'
     }}>
       {/* Header */}
-      <div className="stack-header">
-        <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: '700', color: '#e75480' }}>
-           {t('stack.title')}
-        </h1>
-        <div className="language-switcher"><LanguageSwitcher hideLabel={true} /></div>
+      <div className="header-bar">
+        <h1>{t('stack.title')}</h1>
+        <div className="language-switcher-fixed">
+          <LanguageSwitcher hideLabel={true} />
+        </div>
       </div>
 
       {/* Main Content */}

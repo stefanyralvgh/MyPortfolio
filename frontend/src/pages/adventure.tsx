@@ -113,11 +113,9 @@ const AdventurePage: React.FC = () => {
   return (
     <div className="adventure-container">
       {/* Cabecera siempre visible */}
-      <div className="adventure-header">
-        <h1 style={{ margin: 0, fontSize: '2rem', color: '#e75480', flex: 1 }}>
-          {t('adventure.title')}
-        </h1>
-        <div className="language-switcher">
+      <div className="header-bar">
+        <h1>{t('adventure.title')}</h1>
+        <div className="language-switcher-fixed">
           <LanguageSwitcher hideLabel={true} />
         </div>
       </div>
