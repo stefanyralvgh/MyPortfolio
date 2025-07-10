@@ -11,7 +11,7 @@ It showcases my journey as a backend developer through real coding challenges, m
 - 🧠 **Recruiter Mode** — Clean view with only the essential info
 - 🛠 **Tech Stack Map** — Interactive display of my tools and skills
 
-## Built With
+## Built With...
 
 ### Frontend
 
