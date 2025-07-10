@@ -1,0 +1,134 @@
+# --- GLOBAL ---
+# Node dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# --- FRONTEND (Next.js) ---
+frontend/.next/
+frontend/out/
+frontend/build/
+frontend/dist/
+frontend/node_modules/
+
+# Next.js/React build output
+.next
+
+# Coverage
+coverage/
+*.lcov
+.nyc_output
+
+# Parcel/Gatsby/Storybook
+.cache/
+.parcel-cache
+.nuxt
+dist
+.out
+.storybook-out
+
+# Env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# --- BACKEND (Rails) ---
+backend/log/
+backend/tmp/
+backend/storage/
+backend/public/assets/
+backend/public/packs/
+backend/public/packs-test/
+backend/node_modules/
+backend/yarn-error.log
+backend/.byebug_history
+backend/config/master.key
+backend/config/credentials/*.key
+
+# Database
+backend/db/*.sqlite3
+backend/db/*.sqlite3-*
+*.db
+*.sqlite3
+*.sqlite3-*
+
+# Uploaded files (Rails ActiveStorage)
+backend/storage/*
+!/backend/storage/.keep
+backend/tmp/storage/*
+!/backend/tmp/storage/
+!/backend/tmp/storage/.keep
+
+# Rails config
+backend/config/master.key
+backend/config/application.yml
+
+# Ruby/Bundler
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+/tmp/
+/.bundle
+/vendor/bundle
+vendor/bundle/
+.ruby-version
+.ruby-gemset
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore uploaded files in development.
+/storage/*
+!/storage/.keep
+
+# Yarn
+.yarn-integrity
+
+# Misc
+jspm_packages/
+.npm
+.eslintcache
+*.tgz
+
+# --- EXCEPTIONS ---
+# NO ignore for frontend/public/ (static assets)
+# NO ignore for any public/ except backend/public/assets, packs, packs-test
+# NO ignore for .env.example
+!.env.example 
