@@ -60,17 +60,11 @@ const StackPage: React.FC = () => {
       fontFamily: 'Courier New, Monaco, Menlo, monospace'
     }}>
       {/* Header */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: '3rem',
-        color: '#f3b1e6'
-      }}>
+      <div className="stack-header">
         <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: '700', color: '#e75480' }}>
            {t('stack.title')}
         </h1>
-        <LanguageSwitcher hideLabel={true} />
+        <div className="language-switcher"><LanguageSwitcher hideLabel={true} /></div>
       </div>
 
       {/* Main Content */}
@@ -118,7 +112,7 @@ const StackPage: React.FC = () => {
                   <span style={{ fontSize: '1.5rem' }}>{tech.icon}</span>
                   <span style={{ fontWeight: '600', color: '#f3b1e6' }}>{tech.name}</span>
                 </div>
-                <span style={{
+                <span className="stack-level-tag" style={{
                   padding: '0.25rem 0.75rem',
                   borderRadius: '1rem',
                   fontSize: '0.875rem',
@@ -170,7 +164,7 @@ const StackPage: React.FC = () => {
                   <span style={{ fontSize: '1.5rem' }}>{tech.icon}</span>
                   <span style={{ fontWeight: '600', color: '#f3b1e6' }}>{tech.name}</span>
                 </div>
-                <span style={{
+                <span className="stack-level-tag" style={{
                   padding: '0.25rem 0.75rem',
                   borderRadius: '1rem',
                   fontSize: '0.875rem',
