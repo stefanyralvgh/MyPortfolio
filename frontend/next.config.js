@@ -1,18 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  // swcMinify: true,
-  // experimental: {
-  //   appDir: false,
-  // },
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: "http://localhost:3000/:path*",
-      },
-    ];
-  },
+  output: "export",
+  // ...otras configuraciones si tienes
 };
 
 module.exports = nextConfig;
