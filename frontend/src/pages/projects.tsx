@@ -49,62 +49,106 @@ const ProjectsPage: React.FC = () => {
     fr: 'Actuellement en maintenance, il sera éteint lorsqu\'il n\'est pas utilisé.'
   };
 
-  if (loading) {
-    return (
-      <div className="projects-container">
-        <div className="projects-header">
-          <h1>🚀 {language === 'es' ? 'Mis Proyectos' : language === 'fr' ? 'Mes Projets' : 'My Projects'}</h1>
-          <LoadingSpinner />
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="projects-container">
-        <div className="projects-header">
-          <h1>🚀 {language === 'es' ? 'Mis Proyectos' : language === 'fr' ? 'Mes Projets' : 'My Projects'}</h1>
-          <p style={{ color: '#e75480' }}>Error: {error}</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="projects-container">
-      <div className="projects-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', marginBottom: '0.5rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
-          <h1 style={{ margin: 0, fontSize: '2rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', textAlign: 'center' }}>🚀 {language === 'es' ? 'Mis Proyectos' : language === 'fr' ? 'Mes Projets' : 'My Projects'}</h1>
-          <p style={{ margin: '0.5rem 0 1rem 0', fontSize: '1.1rem', color: '#7a3fa4', fontWeight: 500, textAlign: 'center' }}>{language === 'es' ? 'Aquí tienes algunos de los proyectos en los que he trabajado' : language === 'fr' ? 'Voici quelques-uns des projets sur lesquels j\'ai travaillé' : 'Here are some of the projects I\'ve worked on'}</p>
-        </div>
-        <div style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', marginRight: '0.5rem' }}>
+      <div className="projects-header">
+        <h1 style={{ margin: 0, fontSize: '2rem', color: '#e75480', flex: 1 }}>
+          🚀 {language === 'es' ? 'Mis Proyectos' : language === 'fr' ? 'Mes Projets' : 'My Projects'}
+        </h1>
+        <div className="language-switcher">
           <LanguageSwitcher hideLabel={true} />
         </div>
       </div>
-      
-      <div className="projects-grid">
-        {sortedProjects.map((project) => {
-          const isDevOrOffline =
-            project.link.includes('Dev link only') || project.link.includes('App offline') || project.link.includes('RIP') || project.link.includes('coming soon to a screen near you');
-          return (
-            <div key={project.id} className="project-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
-              <div>
-                <h3>{project.title}</h3>
-                <p className="project-role">{project.role}</p>
-                <p className="project-description">{project.description}</p>
-                <div className="project-status">
-                  <span className={`status-badge ${project.status.includes('✅') ? 'success' : project.status.includes('💀') ? 'error' : 'warning'}`}>{project.status}</span>
+      <p style={{ margin: '0.5rem 0 1rem 0', fontSize: '1.1rem', color: '#7a3fa4', fontWeight: 500, textAlign: 'center' }}>
+        {language === 'es'
+          ? 'Aquí tienes algunos de los proyectos en los que he trabajado'
+          : language === 'fr'
+          ? 'Voici quelques-uns des projets sur lesquels j\'ai travaillé'
+          : 'Here are some of the projects I\'ve worked on'}
+      </p>
+
+      {loading ? (
+        <LoadingSpinner />
+      ) : error ? (
+        <p style={{ color: '#e75480' }}>Error: {error}</p>
+      ) : (
+        <div className="projects-grid">
+          {sortedProjects.map((project) => {
+            const isDevOrOffline =
+              project.link.includes('Dev link only') || project.link.includes('App offline') || project.link.includes('RIP') || project.link.includes('coming soon to a screen near you');
+            return (
+              <div key={project.id} className="project-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+                <div>
+                  <h3>{project.title}</h3>
+                  <p className="project-role">{project.role}</p>
+                  <p className="project-description">{project.description}</p>
+                  <div className="project-status">
+                    <span className={`status-badge ${project.status.includes('✅') ? 'success' : project.status.includes('💀') ? 'error' : 'warning'}`}>{project.status}</span>
+                  </div>
+                  <div className="tech-stack">
+                    <h4>{language === 'es' ? 'Tecnologías:' : language === 'fr' ? 'Technologies:' : 'Technologies:'}</h4>
+                    <p>{project.tech}</p>
+                  </div>
                 </div>
-                <div className="tech-stack">
-                  <h4>{language === 'es' ? 'Tecnologías:' : language === 'fr' ? 'Technologies:' : 'Technologies:'}</h4>
-                  <p>{project.tech}</p>
-                </div>
-              </div>
-              <div className="project-links" style={{ marginTop: 'auto', position: 'relative' }}>
-                {isValidLink(project.link) ? (
-                  project.link.includes('getnodd.com') ? (
-                    <div style={{ position: 'relative', width: '100%' }}>
+                <div className="project-links" style={{ marginTop: 'auto', position: 'relative' }}>
+                  {isValidLink(project.link) ? (
+                    project.link.includes('getnodd.com') ? (
+                      <div style={{ position: 'relative', width: '100%' }}>
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="view-project-button"
+                          style={{
+                            width: '100%',
+                            display: 'block',
+                            padding: '0.5rem 1.2rem',
+                            background: 'transparent',
+                            color: '#666',
+                            border: '2px solid #cccccc',
+                            borderRadius: '1.2rem',
+                            textDecoration: 'none',
+                            fontWeight: 600,
+                            marginTop: '0.5rem',
+                            transition: 'background 0.2s, color 0.2s',
+                            position: 'relative'
+                          }}
+                          onMouseEnter={e => {
+                            const tooltip = e.currentTarget.nextSibling as HTMLElement;
+                            if (tooltip) tooltip.style.opacity = '1';
+                          }}
+                          onMouseLeave={e => {
+                            const tooltip = e.currentTarget.nextSibling as HTMLElement;
+                            if (tooltip) tooltip.style.opacity = '0';
+                          }}
+                        >
+                          🌐 {language === 'es' ? 'Ver Proyecto' : language === 'fr' ? 'Voir le Projet' : 'View Project'}
+                        </a>
+                        <span
+                          style={{
+                            opacity: 0,
+                            pointerEvents: 'none',
+                            transition: 'opacity 0.2s',
+                            position: 'absolute',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            bottom: '120%',
+                            background: '#222',
+                            color: '#fff',
+                            padding: '0.5rem 1rem',
+                            borderRadius: '0.7rem',
+                            fontSize: '0.95rem',
+                            whiteSpace: 'pre-line',
+                            zIndex: 10,
+                            maxWidth: '260px',
+                            textAlign: 'center',
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.15)'
+                          }}
+                        >
+                          {noddNote[language] || noddNote['en']}
+                        </span>
+                      </div>
+                    ) : (
                       <a
                         href={project.link}
                         target="_blank"
@@ -121,49 +165,14 @@ const ProjectsPage: React.FC = () => {
                           textDecoration: 'none',
                           fontWeight: 600,
                           marginTop: '0.5rem',
-                          transition: 'background 0.2s, color 0.2s',
-                          position: 'relative'
-                        }}
-                        onMouseEnter={e => {
-                          const tooltip = e.currentTarget.nextSibling as HTMLElement;
-                          if (tooltip) tooltip.style.opacity = '1';
-                        }}
-                        onMouseLeave={e => {
-                          const tooltip = e.currentTarget.nextSibling as HTMLElement;
-                          if (tooltip) tooltip.style.opacity = '0';
+                          transition: 'background 0.2s, color 0.2s'
                         }}
                       >
                         🌐 {language === 'es' ? 'Ver Proyecto' : language === 'fr' ? 'Voir le Projet' : 'View Project'}
                       </a>
-                      <span
-                        style={{
-                          opacity: 0,
-                          pointerEvents: 'none',
-                          transition: 'opacity 0.2s',
-                          position: 'absolute',
-                          left: '50%',
-                          transform: 'translateX(-50%)',
-                          bottom: '120%',
-                          background: '#222',
-                          color: '#fff',
-                          padding: '0.5rem 1rem',
-                          borderRadius: '0.7rem',
-                          fontSize: '0.95rem',
-                          whiteSpace: 'pre-line',
-                          zIndex: 10,
-                          maxWidth: '260px',
-                          textAlign: 'center',
-                          boxShadow: '0 2px 8px rgba(0,0,0,0.15)'
-                        }}
-                      >
-                        {noddNote[language] || noddNote['en']}
-                      </span>
-                    </div>
+                    )
                   ) : (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
                       className="view-project-button"
                       style={{
                         width: '100%',
@@ -176,39 +185,20 @@ const ProjectsPage: React.FC = () => {
                         textDecoration: 'none',
                         fontWeight: 600,
                         marginTop: '0.5rem',
-                        transition: 'background 0.2s, color 0.2s'
+                        cursor: 'not-allowed',
+                        opacity: 0.7
                       }}
+                      disabled
                     >
-                      🌐 {language === 'es' ? 'Ver Proyecto' : language === 'fr' ? 'Voir le Projet' : 'View Project'}
-                    </a>
-                  )
-                ) : (
-                  <button
-                    className="view-project-button"
-                    style={{
-                      width: '100%',
-                      display: 'block',
-                      padding: '0.5rem 1.2rem',
-                      background: 'transparent',
-                      color: '#666',
-                      border: '2px solid #cccccc',
-                      borderRadius: '1.2rem',
-                      textDecoration: 'none',
-                      fontWeight: 600,
-                      marginTop: '0.5rem',
-                      cursor: 'not-allowed',
-                      opacity: 0.7
-                    }}
-                    disabled
-                  >
-                    🌐 {project.link}
-                  </button>
-                )}
+                      🌐 {project.link}
+                    </button>
+                  )}
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
+      )}
       <div className="projects-footer" style={{ textAlign: 'center', marginTop: '2.5rem' }}>
         <button 
           className="back-button"

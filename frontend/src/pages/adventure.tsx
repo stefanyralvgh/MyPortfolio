@@ -113,15 +113,17 @@ const AdventurePage: React.FC = () => {
   return (
     <div className="adventure-container">
       {/* Cabecera siempre visible */}
-      <div className="adventure-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', marginBottom: '0.5rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
-          <h1 style={{ margin: 0, fontSize: '2rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', textAlign: 'center' }}>{t('adventure.title')}</h1>
-          <span style={{ margin: 0, fontSize: '1.1rem', color: '#7a3fa4', fontWeight: 500, textAlign: 'center' }}>{t('adventure.level')} {currentLevel} {t('adventure.of')} {totalLevels}</span>
-        </div>
-        <div style={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)', marginRight: '0.5rem' }}>
+      <div className="adventure-header">
+        <h1 style={{ margin: 0, fontSize: '2rem', color: '#e75480', flex: 1 }}>
+          {t('adventure.title')}
+        </h1>
+        <div className="language-switcher">
           <LanguageSwitcher hideLabel={true} />
         </div>
       </div>
+      <span style={{ margin: 0, fontSize: '1.1rem', color: '#7a3fa4', fontWeight: 500, textAlign: 'center', display: 'block' }}>
+        {t('adventure.level')} {currentLevel} {t('adventure.of')} {totalLevels}
+      </span>
       {/* Loading */}
       {showLoading && loading && (
         <div className="loading-container">
