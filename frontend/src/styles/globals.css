@@ -1413,11 +1413,20 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 @media (max-width: 600px) {
-  .header-bar h1 {
+  .header-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: unset;
+  }
+  .header-bar h1:not(.about-title) {
     font-size: 1.3rem;
+    padding-right: 0;
+    word-break: break-word;
   }
   .language-switcher-fixed {
-    right: 0.5rem;
-    top: 0.3rem;
+    position: static;
+    margin-top: 0.5rem;
+    align-self: center;
   }
 }
