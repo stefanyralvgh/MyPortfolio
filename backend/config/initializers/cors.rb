@@ -11,7 +11,8 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
             "http://localhost:3001", "http://127.0.0.1:3001",
             "http://localhost:4000", "http://127.0.0.1:4000",
             "https://stefralv.com", "https://www.stefralv.com",
-            "https://686fe1032d20780008f4a16b--vermillion-kitten-349ade.netlify.app"
+            "https://686fe1032d20780008f4a16b--vermillion-kitten-349ade.netlify.app", 
+            "https://api.stefralv.com", "https://www.api.stefralv.com"
 
     resource "*",
       headers: :any,
