@@ -80,13 +80,20 @@ const InteractiveTerminal: React.FC = () => {
         if (cmd.command === 'help') {
           return {
             ...cmd,
-            output: `${t('terminal.help')}\n` +
-                    `  start    - ${t('terminal.start')}\n` +
-                    `  projects - ${t('terminal.projects')}\n` +
-                    `  stack    - ${t('terminal.stack')}\n` +
-                    `  about    - ${t('terminal.about')}\n` +
-                    `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
-                    `  clear    - ${t('terminal.clear')}\n`
+            output: `${t('terminal.help')}
+` +
+              `start    - ${t('terminal.start')}
+` +
+              `projects - ${t('terminal.projects')}
+` +
+              `stack    - ${t('terminal.stack')}
+` +
+              `about    - ${t('terminal.about')}
+` +
+              `recruiter-mode - ${t('terminal.recruiter-mode')}
+` +
+              `clear    - ${t('terminal.clear')}
+`
           };
         }
         if (cmd.command === 'about') {
@@ -361,7 +368,27 @@ const InteractiveTerminal: React.FC = () => {
               <span className="command">{cmd.command}</span>
             </div>
             {cmd.output && (
-              <div className="command-output" dangerouslySetInnerHTML={{ __html: cmd.output.replace(/\n/g, '<br/>') }} />
+              t('terminal.help') && cmd.output.startsWith(t('terminal.help')) ? (
+                <div className="command-output">
+                  {cmd.output.split('\n').map((line, idx) => {
+                    if (line.trim() === '' || line === t('terminal.help')) return line === t('terminal.help') ? <div key={idx}>{line}</div> : null;
+                    const match = line.match(/^(.*?)\s*-\s*(.*)$/);
+                    if (match) {
+                      return (
+                        <div key={idx}>
+                          <span className="help-cmd">{match[1]}</span>
+                          <span> - {match[2]}</span>
+                        </div>
+                      );
+                    }
+                    return <div key={idx}>{line}</div>;
+                  })}
+                </div>
+              ) : (
+                <div className="command-output">{
+                  cmd.output.split('\n').map((line, idx) => <div key={idx}>{line}</div>)
+                }</div>
+              )
             )}
           </div>
         ))}

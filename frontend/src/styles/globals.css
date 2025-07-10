@@ -181,7 +181,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 .help-cmd {
   color: #e75480;
-  font-weight: bold;
+  font-weight: normal;
   font-family: inherit;
   margin-right: 0.5em;
 }
