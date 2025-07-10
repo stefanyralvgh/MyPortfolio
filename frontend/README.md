@@ -121,7 +121,7 @@ The portfolio features a fully interactive terminal with these commands:
 - `about` - Learn about Stef
 - `projects` - View portfolio projects
 - `stack` - See tech stack and skills
-- `recruiter-mode` - Fast track for recruiters
+- `recruiter` - Fast track for recruiters
 - `clear` - Clear terminal screen
 - `lang [es|en|fr]` - Change language
 
