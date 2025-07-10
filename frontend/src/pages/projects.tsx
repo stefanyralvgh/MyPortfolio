@@ -5,6 +5,8 @@ import LanguageSwitcher from '../components/LanguageSwitcher';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { ProjectDisplay } from '../interfaces/projectInterfaces';
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+
 const ProjectsPage: React.FC = () => {
   const router = useRouter();
   const { language, t } = useLanguage();
@@ -15,7 +17,7 @@ const ProjectsPage: React.FC = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch(`/api/projects?language=${language}`);
+        const response = await fetch(`${API_BASE_URL}/projects?language=${language}`);
         if (!response.ok) {
           throw new Error('Failed to fetch projects');
         }
