@@ -94,7 +94,7 @@ export const TerminalProvider: React.FC<{ children: ReactNode }> = ({ children }
 
   const clearHistory = () => {
     setCommandHistory([{
-      command: 'ssh stef@portfolio.dev',
+      command: 'ssh stefanyramosalvis@gmail.com',
       output: 'Welcome to Stef Portfolio Terminal!\nType "help" for available commands.',
       delay: 0
     }]);
@@ -104,7 +104,7 @@ export const TerminalProvider: React.FC<{ children: ReactNode }> = ({ children }
   const initializeTerminal = () => {
     if (!isInitialized) {
       setCommandHistory([{
-        command: 'ssh stef@portfolio.dev',
+        command: 'ssh stefanyramosalvis@gmail.com',
         output: 'Welcome to Stef Portfolio Terminal!\nType "help" for available commands.',
         delay: 0
       }]);

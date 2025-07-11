@@ -226,6 +226,20 @@ body::-webkit-scrollbar-thumb:hover {
   text-shadow: 0 0 10px rgba(231, 84, 128, 0.5);
 }
 
+.adventure-title {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
+  font-size: 2.2rem;
+}
+
+@media (max-width: 500px) {
+  .adventure-title {
+    font-size: 1.3rem;
+    padding: 0 0.5rem;
+  }
+}
+
 .progress-bar {
   width: 100%;
   max-width: 600px;
@@ -283,6 +297,10 @@ body::-webkit-scrollbar-thumb:hover {
   color: #f3b1e6;
   margin-bottom: 15px;
   font-size: 1.3rem;
+}
+
+.challenge-narrative {
+  text-align: center;
 }
 
 .error-message, .broken-url, .slow-query {
@@ -771,17 +789,19 @@ body::-webkit-scrollbar-thumb:hover {
   font-weight: bold;
 }
 .language-switcher select {
-  background: #fff0f6;
+  background: #f3b1e6;
   color: #e75480;
-  border: 1px solid #f3b1e6;
+  border: 1.5px solid #e75480;
   border-radius: 6px;
   padding: 2px 8px;
   font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
   outline: none;
   transition: border 0.2s;
 }
 .language-switcher select:focus {
-  border: 1.5px solid #e75480;
+  border: 2px solid #e75480;
 }
 
 .language-switcher-row {
@@ -889,9 +909,9 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .status-badge.warning {
-  background: rgba(245, 158, 11, 0.2);
-  color: #f59e0b;
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: rgba(231, 84, 128, 0.13);
+  color: #e75480;
+  border: 1px solid #e75480;
 }
 
 .status-badge.error {
@@ -1368,5 +1388,62 @@ body::-webkit-scrollbar-thumb:hover {
   .language-switcher {
     min-width: 70px;
     font-size: 0.95rem;
+  }
+}
+
+.header-bar {
+  position: relative;
+  text-align: center;
+  margin-bottom: 2rem;
+  min-height: 3.5rem;
+}
+
+.header-bar h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  color: #e75480;
+  text-align: center;
+  font-family: inherit;
+  font-weight: 700;
+}
+
+.language-switcher-fixed {
+  position: absolute;
+  top: 0.5rem;
+  right: 1.5rem;
+  z-index: 10;
+}
+
+@media (max-width: 600px) {
+  .header-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: unset;
+  }
+  .header-bar h1:not(.about-title) {
+    font-size: 1.3rem;
+    padding-right: 0;
+    word-break: break-word;
+  }
+  .language-switcher-fixed {
+    position: static;
+    margin-top: 0.5rem;
+    align-self: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .finale-actions {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: center !important;
+  }
+  .finale-actions button,
+  .finale-actions .finale-button {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 320px;
+    margin: 0 auto;
   }
 }

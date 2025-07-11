@@ -51,11 +51,9 @@ const ProjectsPage: React.FC = () => {
 
   return (
     <div className="projects-container">
-      <div className="projects-header">
-        <h1 style={{ margin: 0, fontSize: '2rem', color: '#e75480', flex: 1 }}>
-          🚀 {language === 'es' ? 'Mis Proyectos' : language === 'fr' ? 'Mes Projets' : 'My Projects'}
-        </h1>
-        <div className="language-switcher">
+      <div className="header-bar">
+        <h1>{language === 'es' ? 'Mis Proyectos' : language === 'fr' ? 'Mes Projets' : 'My Projects'}</h1>
+        <div className="language-switcher-fixed">
           <LanguageSwitcher hideLabel={true} />
         </div>
       </div>
@@ -104,11 +102,14 @@ const ProjectsPage: React.FC = () => {
                             display: 'block',
                             padding: '0.5rem 1.2rem',
                             background: 'transparent',
-                            color: '#666',
-                            border: '2px solid #cccccc',
+                            color: 'rgba(255,255,255,0.85)',
+                            border: '2px solid rgba(255,255,255,0.85)',
                             borderRadius: '1.2rem',
                             textDecoration: 'none',
+                            fontFamily: 'inherit',
                             fontWeight: 600,
+                            fontSize: '1rem',
+                            textAlign: 'center',
                             marginTop: '0.5rem',
                             transition: 'background 0.2s, color 0.2s',
                             position: 'relative'
@@ -159,11 +160,14 @@ const ProjectsPage: React.FC = () => {
                           display: 'block',
                           padding: '0.5rem 1.2rem',
                           background: 'transparent',
-                          color: '#666',
-                          border: '2px solid #cccccc',
+                          color: 'rgba(255,255,255,0.85)',
+                          border: '2px solid rgba(255,255,255,0.85)',
                           borderRadius: '1.2rem',
                           textDecoration: 'none',
+                          fontFamily: 'inherit',
                           fontWeight: 600,
+                          fontSize: '1rem',
+                          textAlign: 'center',
                           marginTop: '0.5rem',
                           transition: 'background 0.2s, color 0.2s'
                         }}
@@ -179,11 +183,14 @@ const ProjectsPage: React.FC = () => {
                         display: 'block',
                         padding: '0.5rem 1.2rem',
                         background: 'transparent',
-                        color: '#666',
-                        border: '2px solid #cccccc',
+                        color: '#fff',
+                        border: '2px solid #fff',
                         borderRadius: '1.2rem',
                         textDecoration: 'none',
+                        fontFamily: 'inherit',
                         fontWeight: 600,
+                        fontSize: '1rem',
+                        textAlign: 'center',
                         marginTop: '0.5rem',
                         cursor: 'not-allowed',
                         opacity: 0.7

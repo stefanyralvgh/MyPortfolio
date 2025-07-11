@@ -78,16 +78,11 @@ const RecruiterPage: React.FC = () => {
       color: '#f3b1e6'
     }}>
       {/* Header */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: '3rem'
-      }}>
-        <h1 style={{ margin: 0, fontSize: '2.5rem', fontWeight: '700', color: '#e75480' }}>
-           {t('recruiter.mode')}
-        </h1>
-        <LanguageSwitcher hideLabel={true} />
+      <div className="header-bar">
+        <h1>{t('recruiter.mode')}</h1>
+        <div className="language-switcher-fixed">
+          <LanguageSwitcher hideLabel={true} />
+        </div>
       </div>
 
       {/* Main Content */}
