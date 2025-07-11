@@ -5,6 +5,7 @@ import { useTerminal } from '../contexts/TerminalContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import { TerminalCommand } from '../interfaces/terminalInterfaces'
 import { pingApi } from '../utils/api';
+import Head from 'next/head';
 
 
 const InteractiveTerminal: React.FC = () => {
@@ -349,13 +350,22 @@ const InteractiveTerminal: React.FC = () => {
 
   return (
     <div className="terminal-container">
+      <Head>
+        <title>Stefany R | Backend Developer</title>
+        <meta name="description" content="Stefany Ramos Alvis - Backend Developer. Ruby on Rails, Node.js, PostgreSQL, APIs, arquitectura escalable y más. Portafolio, proyectos y contacto." />
+        <meta name="keywords" content="Stefany Ramos, Backend Developer, Express, Node.js, Typescript, Portfolio, APIs, Colombia, Remote, Stefany R" />
+        <meta property="og:title" content="Stefany Ramos | Backend Developer" />
+        <meta property="og:description" content="Portafolio de Stefany Ramos Alvis, desarrolladora backend especializada en Node.js, SQL, mongoDB, Express, Typescript." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://stefralv.com" />
+      </Head>
       <div className="terminal-header">
         <div className="terminal-buttons">
           <span className="terminal-button close"></span>
           <span className="terminal-button minimize"></span>
           <span className="terminal-button maximize"></span>
         </div>
-        <div className="terminal-title">stef@portfolio</div>
+        <div className="terminal-title">backend@developer</div>
         <div style={{ marginLeft: 'auto' }}>
           <LanguageSwitcher hideLabel={true} />
         </div>
