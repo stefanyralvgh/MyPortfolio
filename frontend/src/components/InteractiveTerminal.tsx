@@ -4,7 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { useTerminal } from '../contexts/TerminalContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import { TerminalCommand } from '../interfaces/terminalInterfaces'
-
+import { pingApi } from '../utils/api';
 
 
 const InteractiveTerminal: React.FC = () => {
@@ -52,7 +52,7 @@ const InteractiveTerminal: React.FC = () => {
     if (!isInitialized && commandHistory.length === 0) {
       setTimeout(() => {
         executeCommand({
-          command: 'ssh stef@portfolio.dev',
+          command: 'ssh stefanyramosalvis@gmail.com',
           output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
           delay: 1000
         });
@@ -61,17 +61,22 @@ const InteractiveTerminal: React.FC = () => {
     }
   }, [isInitialized, commandHistory.length, t, setIsInitialized]);
 
+  useEffect(() => {
+    // Wake up backend API on mount
+    pingApi();
+  }, []);
+
 
   useEffect(() => {
     setCommandHistory(prev => 
       prev.map(cmd => {
-        if (cmd.command === 'ssh stef@portfolio.dev') {
+        if (cmd.command === 'ssh stefanyramosalvis@gmail.com') {
           return {
             ...cmd,
             output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`
           };
         }
-        if (cmd.command === 'ssh stef@portfolio.dev' && cmd.output.includes('Already connected')) {
+        if (cmd.command === 'ssh stefanyramosalvis@gmail.com' && cmd.output.includes('Already connected')) {
           return {
             ...cmd,
             output: t('terminal.already.connected')
@@ -90,7 +95,7 @@ const InteractiveTerminal: React.FC = () => {
 ` +
               `about    - ${t('terminal.about')}
 ` +
-              `recruiter-mode - ${t('terminal.recruiter-mode')}
+              `recruiter - ${t('terminal.recruiter')}
 ` +
               `clear    - ${t('terminal.clear')}
 `
@@ -126,7 +131,7 @@ const InteractiveTerminal: React.FC = () => {
             output: `${t('terminal.redirecting.projects')}\n`
           };
         }
-        if (cmd.command === 'recruiter-mode') {
+        if (cmd.command === 'recruiter') {
           return {
             ...cmd,
             output: `${t('terminal.fast.track.activated')}\n`
@@ -188,7 +193,7 @@ const InteractiveTerminal: React.FC = () => {
       const args = commandParts.slice(1);
       
       switch (baseCommand) {
-        case 'ssh stef@portfolio.dev':
+        case 'ssh stefanyramosalvis@gmail.com':
           executeCommand({
             command,
             output: t('terminal.already.connected'),
@@ -232,7 +237,7 @@ const InteractiveTerminal: React.FC = () => {
         case 'clear':
           setCommandHistory([
             {
-              command: 'ssh stef@portfolio.dev',
+              command: 'ssh stefanyramosalvis@gmail.com',
               output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
               delay: 0
             }
@@ -280,7 +285,7 @@ const InteractiveTerminal: React.FC = () => {
           });
           setTimeout(() => router.push('/stack'), 1000);
           break;
-        case 'recruiter-mode':
+        case 'recruiter':
           executeCommand({
             command,
             output: `${t('terminal.fast.track.activated')}\n`,
@@ -296,7 +301,7 @@ const InteractiveTerminal: React.FC = () => {
                     `  projects - ${t('terminal.projects')}\n` +
                     `  stack    - ${t('terminal.stack')}\n` +
                     `  about    - ${t('terminal.about')}\n` +
-                    `  recruiter-mode - ${t('terminal.recruiter-mode')}\n` +
+                    `  recruiter - ${t('terminal.recruiter')}\n` +
                     `  clear    - ${t('terminal.clear')}\n`,
             delay: 300
           });
@@ -350,7 +355,7 @@ const InteractiveTerminal: React.FC = () => {
           <span className="terminal-button minimize"></span>
           <span className="terminal-button maximize"></span>
         </div>
-        <div className="terminal-title">stef@portfolio.dev</div>
+        <div className="terminal-title">stef@portfolio</div>
         <div style={{ marginLeft: 'auto' }}>
           <LanguageSwitcher hideLabel={true} />
         </div>

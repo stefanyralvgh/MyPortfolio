@@ -54,7 +54,7 @@ const AdventureLevel: React.FC<AdventureLevelProps> = ({ level, onComplete }) =>
   return (
     <div className="adventure-level">
       <div className="level-header">
-        <h2>Level {level.id}: {level.titles}</h2>
+        <h2 className="adventure-title">Level {level.id}: {level.titles}</h2>
       </div>
       <div className="level-content">
         <div className="challenge-narrative">

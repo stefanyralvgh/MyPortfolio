@@ -33,7 +33,7 @@ Try it live and explore:
 - `projects` → Portfolio highlights
 - `start` → Solve real-life bugs I fixed
 - `stack` → Tools and skill levels
-- `recruiter-mode` → Fast-track for recruiters
+- `recruiter` → Fast-track for recruiters
 - `lang es|en|fr` → Change language
 
 ## Note

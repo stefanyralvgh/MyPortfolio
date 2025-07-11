@@ -34,3 +34,12 @@ export const fetchLevel = async (
     throw error;
   }
 };
+
+export const pingApi = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/`);
+    return response.ok;
+  } catch (error) {
+    return false;
+  }
+};
