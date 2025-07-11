@@ -5,6 +5,7 @@ import { useTerminal } from '../contexts/TerminalContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import { TerminalCommand } from '../interfaces/terminalInterfaces'
 import { pingApi } from '../utils/api';
+import Head from 'next/head';
 
 
 const InteractiveTerminal: React.FC = () => {
@@ -349,13 +350,31 @@ const InteractiveTerminal: React.FC = () => {
 
   return (
     <div className="terminal-container">
+      <Head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Stefany Ramos | Backend Developer (Node.js, Express, PostgreSQL)</title>
+        <meta name="description" content="Stefany Ramos Alvis - Backend Developer. Expert in Node.js, Express, PostgreSQL, scalable APIs, and cloud. Portfolio, projects, and contact." />
+        <meta name="keywords" content="Stefany Ramos Alvis, Backend Developer, Node.js, Express, PostgreSQL, APIs, Cloud, Remote, Portfolio, Stefany R" />
+        <meta property="og:title" content="Stefany Ramos | Backend Developer (Node.js, Express, PostgreSQL)" />
+        <meta property="og:description" content="Portfolio of Stefany Ramos Alvis, backend developer specialized in Node.js, Express, PostgreSQL, and scalable architecture." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://stefralv.com" />
+        <meta property="og:image" content="https://stefralv.com/your-photo-or-banner.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Stefany Ramos | Backend Developer (Node.js, Express, PostgreSQL)" />
+        <meta name="twitter:description" content="Portfolio of Stefany Ramos Alvis, backend developer." />
+        <meta name="twitter:image" content="https://stefralv.com/your-photo-or-banner.png" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="canonical" href="https://stefralv.com" />
+      </Head>
       <div className="terminal-header">
         <div className="terminal-buttons">
           <span className="terminal-button close"></span>
           <span className="terminal-button minimize"></span>
           <span className="terminal-button maximize"></span>
         </div>
-        <div className="terminal-title">stef@portfolio</div>
+        <div className="terminal-title">backend@developer</div>
         <div style={{ marginLeft: 'auto' }}>
           <LanguageSwitcher hideLabel={true} />
         </div>
