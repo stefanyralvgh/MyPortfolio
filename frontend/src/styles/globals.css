@@ -789,17 +789,19 @@ body::-webkit-scrollbar-thumb:hover {
   font-weight: bold;
 }
 .language-switcher select {
-  background: #fff0f6;
+  background: #f3b1e6;
   color: #e75480;
-  border: 1px solid #f3b1e6;
+  border: 1.5px solid #e75480;
   border-radius: 6px;
   padding: 2px 8px;
   font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
   outline: none;
   transition: border 0.2s;
 }
 .language-switcher select:focus {
-  border: 1.5px solid #e75480;
+  border: 2px solid #e75480;
 }
 
 .language-switcher-row {
@@ -907,9 +909,9 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .status-badge.warning {
-  background: rgba(245, 158, 11, 0.2);
-  color: #f59e0b;
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background: rgba(231, 84, 128, 0.13);
+  color: #e75480;
+  border: 1px solid #e75480;
 }
 
 .status-badge.error {
@@ -1428,5 +1430,20 @@ body::-webkit-scrollbar-thumb:hover {
     position: static;
     margin-top: 0.5rem;
     align-self: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .finale-actions {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: center !important;
+  }
+  .finale-actions button,
+  .finale-actions .finale-button {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 320px;
+    margin: 0 auto;
   }
 }

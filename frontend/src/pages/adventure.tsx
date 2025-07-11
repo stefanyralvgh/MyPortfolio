@@ -151,6 +151,7 @@ const AdventurePage: React.FC = () => {
                 <span className="stat-label">{t('adventure.stats.possibilities')}</span>
               </div>
             </div>
+            {/* Botones relevantes (CV, LinkedIn, Repo) */}
             <div className="finale-actions" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '1.5rem', marginTop: '2.5rem', position: 'relative' }}>
               {/* Botón CV */}
               <button 
@@ -179,13 +180,13 @@ const AdventurePage: React.FC = () => {
                 <span style={{ fontSize: '1.3rem', marginRight: '0.7rem' }}>🐙</span>
                 <span style={{ fontSize: '1.05rem', fontWeight: 500 }}>Repo</span>
               </button>
-              {/* Reiniciar */}
+            </div>
+            {/* Botón Restart debajo */}
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1.5rem' }}>
               <button 
-                className="finale-button restart"
+                className="back-button"
                 onClick={() => handleFinaleAction('restart')}
-                style={{ width: '10rem', height: '3.2rem', borderRadius: '2rem', fontWeight: 500, fontSize: '1rem', background: '#fff7ea', border: '2px solid #e6c9a4', color: '#a47a3f', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', cursor: 'pointer', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: 0 }}
               >
-                <span style={{ fontSize: '1.3rem' }}>🔄</span>
                 {t('adventure.restart')}
               </button>
             </div>
