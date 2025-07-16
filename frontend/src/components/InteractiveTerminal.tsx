@@ -1,25 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/router';
-import { useLanguage } from '../contexts/LanguageContext';
-import { useTerminal } from '../contexts/TerminalContext';
-import LanguageSwitcher from './LanguageSwitcher';
-import { TerminalCommand } from '../interfaces/terminalInterfaces'
-import { pingApi } from '../utils/api';
-import Head from 'next/head';
-
+import React, { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
+import { useLanguage } from "../contexts/LanguageContext";
+import { useTerminal } from "../contexts/TerminalContext";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { TerminalCommand } from "../interfaces/terminalInterfaces";
+import { pingApi, wakeUpApi } from "../utils/api";
+import Head from "next/head";
 
 const InteractiveTerminal: React.FC = () => {
   const { language, setLanguage, t } = useLanguage();
-  const { 
-    commandHistory, 
-    setCommandHistory, 
-    addCommand, 
-   
-    isInitialized, 
+  const {
+    commandHistory,
+    setCommandHistory,
+    addCommand,
+
+    isInitialized,
     setIsInitialized,
-   
   } = useTerminal();
-  const [currentLine, setCurrentLine] = useState('');
+  const [currentLine, setCurrentLine] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
   const [isInputFocused, setIsInputFocused] = useState(true);
@@ -30,7 +28,7 @@ const InteractiveTerminal: React.FC = () => {
 
   useEffect(() => {
     const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev);
+      setShowCursor((prev) => !prev);
     }, 500);
 
     return () => clearInterval(cursorInterval);
@@ -48,14 +46,13 @@ const InteractiveTerminal: React.FC = () => {
     }
   }, []);
 
-  
   useEffect(() => {
     if (!isInitialized && commandHistory.length === 0) {
       setTimeout(() => {
         executeCommand({
-          command: 'ssh stefanyramosalvis@gmail.com',
-          output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
-          delay: 1000
+          command: "ssh stefanyramosalvis@gmail.com",
+          output: `${t("terminal.welcome")}\n${t("terminal.help.prompt")}`,
+          delay: 1000,
         });
         setIsInitialized(true);
       }, 500);
@@ -63,85 +60,101 @@ const InteractiveTerminal: React.FC = () => {
   }, [isInitialized, commandHistory.length, t, setIsInitialized]);
 
   useEffect(() => {
-    // Wake up backend API on mount
-    pingApi();
+    // Wake up backend API on mount with enhanced retry logic
+    const wakeUpBackend = async () => {
+      const isAlive = await wakeUpApi();
+      if (isAlive) {
+        console.log("Backend API is ready");
+      } else {
+        console.log(
+          "Backend API might be sleeping, will retry on first interaction"
+        );
+      }
+    };
+
+    wakeUpBackend();
   }, []);
 
-
   useEffect(() => {
-    setCommandHistory(prev => 
-      prev.map(cmd => {
-        if (cmd.command === 'ssh stefanyramosalvis@gmail.com') {
+    setCommandHistory((prev) =>
+      prev.map((cmd) => {
+        if (cmd.command === "ssh stefanyramosalvis@gmail.com") {
           return {
             ...cmd,
-            output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`
+            output: `${t("terminal.welcome")}\n${t("terminal.help.prompt")}`,
           };
         }
-        if (cmd.command === 'ssh stefanyramosalvis@gmail.com' && cmd.output.includes('Already connected')) {
+        if (
+          cmd.command === "ssh stefanyramosalvis@gmail.com" &&
+          cmd.output.includes("Already connected")
+        ) {
           return {
             ...cmd,
-            output: t('terminal.already.connected')
+            output: t("terminal.already.connected"),
           };
         }
-        if (cmd.command === 'help') {
+        if (cmd.command === "help") {
           return {
             ...cmd,
-            output: `${t('terminal.help')}
+            output:
+              `${t("terminal.help")}
 ` +
-              `start    - ${t('terminal.start')}
+              `start    - ${t("terminal.start")}
 ` +
-              `projects - ${t('terminal.projects')}
+              `projects - ${t("terminal.projects")}
 ` +
-              `stack    - ${t('terminal.stack')}
+              `stack    - ${t("terminal.stack")}
 ` +
-              `about    - ${t('terminal.about')}
+              `about    - ${t("terminal.about")}
 ` +
-              `recruiter - ${t('terminal.recruiter')}
+              `recruiter - ${t("terminal.recruiter")}
 ` +
-              `clear    - ${t('terminal.clear')}
-`
+              `clear    - ${t("terminal.clear")}
+`,
           };
         }
-        if (cmd.command === 'about') {
+        if (cmd.command === "about") {
           return {
             ...cmd,
-            output: `${t('terminal.about.stef')}\n`
+            output: `${t("terminal.about.stef")}\n`,
           };
         }
-        if (cmd.command === 'about --deep') {
+        if (cmd.command === "about --deep") {
           return {
             ...cmd,
-            output: `${t('terminal.about.redirecting')}\n`
+            output: `${t("terminal.about.redirecting")}\n`,
           };
         }
-        if (cmd.command === 'stack') {
+        if (cmd.command === "stack") {
           return {
             ...cmd,
-            output: `${t('terminal.redirecting.stack')}\n`
+            output: `${t("terminal.redirecting.stack")}\n`,
           };
         }
-        if (cmd.command === 'start') {
+        if (cmd.command === "start") {
           return {
             ...cmd,
-            output: `${t('terminal.starting.adventure')}\n${t('terminal.redirecting.level')}\n`
+            output: `${t("terminal.starting.adventure")}\n${t(
+              "terminal.redirecting.level"
+            )}\n`,
           };
         }
-        if (cmd.command === 'projects') {
+        if (cmd.command === "projects") {
           return {
             ...cmd,
-            output: `${t('terminal.redirecting.projects')}\n`
+            output: `${t("terminal.redirecting.projects")}\n`,
           };
         }
-        if (cmd.command === 'recruiter') {
+        if (cmd.command === "recruiter") {
           return {
             ...cmd,
-            output: `${t('terminal.fast.track.activated')}\n`
+            output: `${t("terminal.fast.track.activated")}\n`,
           };
         }
-        if (cmd.command === 'skip') {
+        if (cmd.command === "skip") {
           return {
             ...cmd,
-            output: t('terminal.skip.deprecated')
+            output: t("terminal.skip.deprecated"),
           };
         }
 
@@ -152,173 +165,175 @@ const InteractiveTerminal: React.FC = () => {
 
   const executeCommand = async (commandData: TerminalCommand) => {
     setIsTyping(true);
-    
- 
+
     for (let i = 0; i < commandData.command.length; i++) {
       setCurrentLine(commandData.command.slice(0, i + 1));
-      await new Promise(resolve => setTimeout(resolve, 50));
+      await new Promise((resolve) => setTimeout(resolve, 50));
     }
-    
-    setCurrentLine('');
-    
 
-    const newCommand = { command: commandData.command, output: '' };
+    setCurrentLine("");
+
+    const newCommand = { command: commandData.command, output: "" };
     addCommand(newCommand);
-    
- 
-    await new Promise(resolve => setTimeout(resolve, commandData.delay || 500));
-    
-  
-    let output = '';
+
+    await new Promise((resolve) =>
+      setTimeout(resolve, commandData.delay || 500)
+    );
+
+    let output = "";
     for (let i = 0; i < commandData.output.length; i++) {
       output += commandData.output[i];
-      setCommandHistory(prev => 
-        prev.map((cmd, idx) => 
-          idx === prev.length - 1 
-            ? { ...cmd, output } 
-            : cmd
+      setCommandHistory((prev) =>
+        prev.map((cmd, idx) =>
+          idx === prev.length - 1 ? { ...cmd, output } : cmd
         )
       );
-      await new Promise(resolve => setTimeout(resolve, 20));
+      await new Promise((resolve) => setTimeout(resolve, 20));
     }
-    
+
     setIsTyping(false);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && currentLine.trim()) {
+    if (e.key === "Enter" && currentLine.trim()) {
       const command = currentLine.trim();
-      setCurrentLine('');
-      const commandParts = command.split(' ');
+      setCurrentLine("");
+      const commandParts = command.split(" ");
       const baseCommand = commandParts[0].toLowerCase();
       const args = commandParts.slice(1);
-      
+
       switch (baseCommand) {
-        case 'ssh stefanyramosalvis@gmail.com':
+        case "ssh stefanyramosalvis@gmail.com":
           executeCommand({
             command,
-            output: t('terminal.already.connected'),
-            delay: 300
+            output: t("terminal.already.connected"),
+            delay: 300,
           });
           break;
-        case 'start':
+        case "start":
           executeCommand({
             command,
-            output: `${t('terminal.starting.adventure')}\n${t('terminal.redirecting.level')}\n`,
-            delay: 1000
+            output: `${t("terminal.starting.adventure")}\n${t(
+              "terminal.redirecting.level"
+            )}\n`,
+            delay: 1000,
           });
-          setTimeout(() => router.push('/adventure'), 2000);
+          setTimeout(() => router.push("/adventure"), 2000);
           break;
 
-        case 'about':
-          if (args.includes('--deep')) {
+        case "about":
+          if (args.includes("--deep")) {
             executeCommand({
               command,
-              output: `${t('terminal.about.redirecting')}\n`,
-              delay: 300
+              output: `${t("terminal.about.redirecting")}\n`,
+              delay: 300,
             });
-            setTimeout(() => router.push('/about'), 1000);
+            setTimeout(() => router.push("/about"), 1000);
           } else {
             executeCommand({
               command,
-              output: `${t('terminal.about.stef')}\n`,
-              delay: 500
+              output: `${t("terminal.about.stef")}\n`,
+              delay: 500,
             });
           }
           break;
-        case 'projects':
+        case "projects":
           executeCommand({
             command,
-            output: `${t('terminal.redirecting.projects')}\n`,
-            delay: 500
+            output: `${t("terminal.redirecting.projects")}\n`,
+            delay: 500,
           });
-          setTimeout(() => router.push('/projects'), 1000);
+          setTimeout(() => router.push("/projects"), 1000);
           break;
 
-        case 'clear':
+        case "clear":
           setCommandHistory([
             {
-              command: 'ssh stefanyramosalvis@gmail.com',
-              output: `${t('terminal.welcome')}\n${t('terminal.help.prompt')}`,
-              delay: 0
-            }
+              command: "ssh stefanyramosalvis@gmail.com",
+              output: `${t("terminal.welcome")}\n${t("terminal.help.prompt")}`,
+              delay: 0,
+            },
           ]);
           break;
 
-        case 'lang':
+        case "lang":
           if (args.length > 0) {
             const lang = args[0];
             const langMessages = {
-              es: `${t('terminal.language.changed')} Español 🇪🇸\n`,
-              en: `${t('terminal.language.changed')} English 🇺🇸\n`,
-              fr: `${t('terminal.language.changed')} Français 🇫🇷\n`
+              es: `${t("terminal.language.changed")} Español 🇪🇸\n`,
+              en: `${t("terminal.language.changed")} English 🇺🇸\n`,
+              fr: `${t("terminal.language.changed")} Français 🇫🇷\n`,
             };
             if (lang in langMessages) {
-              setLanguage(lang as 'es' | 'en' | 'fr');
+              setLanguage(lang as "es" | "en" | "fr");
               executeCommand({
                 command,
                 output: langMessages[lang as keyof typeof langMessages],
-                delay: 300
+                delay: 300,
               });
             } else {
               executeCommand({
                 command,
-                output: t('terminal.language.not.supported'),
-                delay: 300
+                output: t("terminal.language.not.supported"),
+                delay: 300,
               });
             }
           } else {
             executeCommand({
               command,
-              output: `${t('terminal.lang')}:\n` +
-                      `  lang es  - Español\n` +
-                      `  lang en  - English\n` +
-                      `  lang fr  - Français\n`,
-              delay: 300
+              output:
+                `${t("terminal.lang")}:\n` +
+                `  lang es  - Español\n` +
+                `  lang en  - English\n` +
+                `  lang fr  - Français\n`,
+              delay: 300,
             });
           }
           break;
-        case 'stack':
+        case "stack":
           executeCommand({
             command,
-            output: `${t('terminal.redirecting.stack')}\n`,
-            delay: 300
+            output: `${t("terminal.redirecting.stack")}\n`,
+            delay: 300,
           });
-          setTimeout(() => router.push('/stack'), 1000);
+          setTimeout(() => router.push("/stack"), 1000);
           break;
-        case 'recruiter':
+        case "recruiter":
           executeCommand({
             command,
-            output: `${t('terminal.fast.track.activated')}\n`,
-            delay: 300
+            output: `${t("terminal.fast.track.activated")}\n`,
+            delay: 300,
           });
-          setTimeout(() => router.push('/recruiter'), 1500);
+          setTimeout(() => router.push("/recruiter"), 1500);
           break;
-        case 'help':
+        case "help":
           executeCommand({
             command,
-            output: `${t('terminal.help')}\n` +
-                    `  start    - ${t('terminal.start')}\n` +
-                    `  projects - ${t('terminal.projects')}\n` +
-                    `  stack    - ${t('terminal.stack')}\n` +
-                    `  about    - ${t('terminal.about')}\n` +
-                    `  recruiter - ${t('terminal.recruiter')}\n` +
-                    `  clear    - ${t('terminal.clear')}\n`,
-            delay: 300
+            output:
+              `${t("terminal.help")}\n` +
+              `  start    - ${t("terminal.start")}\n` +
+              `  projects - ${t("terminal.projects")}\n` +
+              `  stack    - ${t("terminal.stack")}\n` +
+              `  about    - ${t("terminal.about")}\n` +
+              `  recruiter - ${t("terminal.recruiter")}\n` +
+              `  clear    - ${t("terminal.clear")}\n`,
+            delay: 300,
           });
           break;
-        case 'skip':
+        case "skip":
           executeCommand({
             command,
-            output: t('terminal.skip.deprecated'),
-            delay: 300
+            output: t("terminal.skip.deprecated"),
+            delay: 300,
           });
           break;
         default:
           executeCommand({
             command,
-            output: `${t('terminal.command.not.found')} ${command}\n${t('terminal.type.help')}\n`,
-            delay: 300
+            output: `${t("terminal.command.not.found")} ${command}\n${t(
+              "terminal.type.help"
+            )}\n`,
+            delay: 300,
           });
       }
     }
@@ -328,16 +343,16 @@ const InteractiveTerminal: React.FC = () => {
     const handleScroll = () => {
       if (!terminalRef.current) return;
       const { scrollTop, scrollHeight, clientHeight } = terminalRef.current;
-    
+
       setIsUserAtBottom(scrollTop + clientHeight >= scrollHeight - 10);
     };
     const ref = terminalRef.current;
     if (ref) {
-      ref.addEventListener('scroll', handleScroll);
+      ref.addEventListener("scroll", handleScroll);
     }
     return () => {
       if (ref) {
-        ref.removeEventListener('scroll', handleScroll);
+        ref.removeEventListener("scroll", handleScroll);
       }
     };
   }, []);
@@ -353,18 +368,44 @@ const InteractiveTerminal: React.FC = () => {
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Stefany Ramos | Backend Developer (Node.js, Express, PostgreSQL)</title>
-        <meta name="description" content="Stefany Ramos Alvis - Backend Developer. Expert in Node.js, Express, PostgreSQL, scalable APIs, and cloud. Portfolio, projects, and contact." />
-        <meta name="keywords" content="Stefany Ramos Alvis, Backend Developer, Node.js, Express, PostgreSQL, APIs, Cloud, Remote, Portfolio, Stefany R" />
-        <meta property="og:title" content="Stefany Ramos | Backend Developer (Node.js, Express, PostgreSQL)" />
-        <meta property="og:description" content="Portfolio of Stefany Ramos Alvis, backend developer specialized in Node.js, Express, PostgreSQL, and scalable architecture." />
+        <title>
+          Stefany Ramos | Backend Developer (Node.js, Express, PostgreSQL)
+        </title>
+        <meta
+          name="description"
+          content="Stefany Ramos Alvis - Backend Developer. Expert in Node.js, Express, PostgreSQL, scalable APIs, and cloud. Portfolio, projects, and contact."
+        />
+        <meta
+          name="keywords"
+          content="Stefany Ramos Alvis, Backend Developer, Node.js, Express, PostgreSQL, APIs, Cloud, Remote, Portfolio, Stefany R"
+        />
+        <meta
+          property="og:title"
+          content="Stefany Ramos | Backend Developer (Node.js, Express, PostgreSQL)"
+        />
+        <meta
+          property="og:description"
+          content="Portfolio of Stefany Ramos Alvis, backend developer specialized in Node.js, Express, PostgreSQL, and scalable architecture."
+        />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://stefralv.com" />
-        <meta property="og:image" content="https://stefralv.com/your-photo-or-banner.png" />
+        <meta
+          property="og:image"
+          content="https://stefralv.com/your-photo-or-banner.png"
+        />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Stefany Ramos | Backend Developer (Node.js, Express, PostgreSQL)" />
-        <meta name="twitter:description" content="Portfolio of Stefany Ramos Alvis, backend developer." />
-        <meta name="twitter:image" content="https://stefralv.com/your-photo-or-banner.png" />
+        <meta
+          name="twitter:title"
+          content="Stefany Ramos | Backend Developer (Node.js, Express, PostgreSQL)"
+        />
+        <meta
+          name="twitter:description"
+          content="Portfolio of Stefany Ramos Alvis, backend developer."
+        />
+        <meta
+          name="twitter:image"
+          content="https://stefralv.com/your-photo-or-banner.png"
+        />
         <link rel="icon" href="/favicon.ico" />
         <link rel="canonical" href="https://stefralv.com" />
       </Head>
@@ -375,13 +416,13 @@ const InteractiveTerminal: React.FC = () => {
           <span className="terminal-button maximize"></span>
         </div>
         <div className="terminal-title">backend@developer</div>
-        <div style={{ marginLeft: 'auto' }}>
+        <div style={{ marginLeft: "auto" }}>
           <LanguageSwitcher hideLabel={true} />
         </div>
       </div>
-      
-      <div 
-        className="terminal-body" 
+
+      <div
+        className="terminal-body"
         ref={terminalRef}
         onClick={() => inputRef.current?.focus()}
       >
@@ -391,11 +432,15 @@ const InteractiveTerminal: React.FC = () => {
               <span className="prompt">$ </span>
               <span className="command">{cmd.command}</span>
             </div>
-            {cmd.output && (
-              t('terminal.help') && cmd.output.startsWith(t('terminal.help')) ? (
+            {cmd.output &&
+              (t("terminal.help") &&
+              cmd.output.startsWith(t("terminal.help")) ? (
                 <div className="command-output">
-                  {cmd.output.split('\n').map((line, idx) => {
-                    if (line.trim() === '' || line === t('terminal.help')) return line === t('terminal.help') ? <div key={idx}>{line}</div> : null;
+                  {cmd.output.split("\n").map((line, idx) => {
+                    if (line.trim() === "" || line === t("terminal.help"))
+                      return line === t("terminal.help") ? (
+                        <div key={idx}>{line}</div>
+                      ) : null;
                     const match = line.match(/^(.*?)\s*-\s*(.*)$/);
                     if (match) {
                       return (
@@ -409,15 +454,16 @@ const InteractiveTerminal: React.FC = () => {
                   })}
                 </div>
               ) : (
-                <div className="command-output">{
-                  cmd.output.split('\n').map((line, idx) => <div key={idx}>{line}</div>)
-                }</div>
-              )
-            )}
+                <div className="command-output">
+                  {cmd.output.split("\n").map((line, idx) => (
+                    <div key={idx}>{line}</div>
+                  ))}
+                </div>
+              ))}
           </div>
         ))}
 
-        { !isTyping && (
+        {!isTyping && (
           <div className="current-line">
             <span className="prompt">$ </span>
             <input
@@ -429,7 +475,14 @@ const InteractiveTerminal: React.FC = () => {
               className="terminal-input visible-input"
               autoFocus
               placeholder=""
-              style={{ background: 'transparent', border: 'none', outline: 'none', color: 'inherit', font: 'inherit', width: '90%' }}
+              style={{
+                background: "transparent",
+                border: "none",
+                outline: "none",
+                color: "inherit",
+                font: "inherit",
+                width: "90%",
+              }}
               onFocus={() => setIsInputFocused(true)}
               onBlur={() => setIsInputFocused(false)}
             />
@@ -440,4 +493,4 @@ const InteractiveTerminal: React.FC = () => {
   );
 };
 
-export default InteractiveTerminal; 
+export default InteractiveTerminal;

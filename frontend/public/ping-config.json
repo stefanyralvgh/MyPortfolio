@@ -1,0 +1,23 @@
+{
+    "api_endpoints": {
+        "ping": "https://api.stefralv.com/ping",
+        "health": "https://api.stefralv.com/health",
+        "wake_up_page": "https://stefralv.com/wake-up.html"
+    },
+    "ping_configuration": {
+        "interval_minutes": 10,
+        "timeout_seconds": 10,
+        "retry_attempts": 3,
+        "expected_response": {
+            "ping": {
+                "status": 200,
+                "body_contains": "pong"
+            },
+            "health": {
+                "status": 200,
+                "body_contains": "ok"
+            }
+        }
+    },
+    "description": "API wake up configuration for Stef's portfolio backend. Use these endpoints to keep the API alive and prevent cold starts."
+}

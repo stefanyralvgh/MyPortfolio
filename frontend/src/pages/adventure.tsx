@@ -6,6 +6,7 @@ import { fetchLevels } from "../utils/api";
 import { Level } from "../interfaces/levelInterfaces";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import LoadingSpinner from "../components/LoadingSpinner";
+import { wakeUpApi } from "../utils/api";
 
 const AdventurePage: React.FC = () => {
   const [currentLevel, setCurrentLevel] = useState(1);
@@ -40,6 +41,8 @@ const AdventurePage: React.FC = () => {
 
     const loadLevels = async () => {
       try {
+        // Ensure API is awake before fetching levels
+        await wakeUpApi();
         const levels = await fetchLevels(language);
         setDbLevels(levels);
       } catch (error) {
