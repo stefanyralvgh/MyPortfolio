@@ -1459,6 +1459,40 @@ body::-webkit-scrollbar-thumb:hover {
     max-width: 320px;
     margin: 0 auto;
   }
+
+  .finale-stats {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 2.5rem !important;
+    margin: 2.5rem 0 !important;
+    width: 100% !important;
+  }
+
+  .stat {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 250px !important;
+  }
+
+  .stat-number {
+    font-size: 3rem !important;
+    font-weight: 700 !important;
+    color: #e75480 !important;
+    margin-bottom: 0.8rem !important;
+    display: block !important;
+  }
+
+  .stat-label {
+    font-size: 1rem !important;
+    color: #f3b1e6 !important;
+    line-height: 1.4 !important;
+    display: block !important;
+    text-align: center !important;
+  }
 }
 
 .site-footer {
