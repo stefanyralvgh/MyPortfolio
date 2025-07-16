@@ -4,7 +4,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { useTerminal } from "../contexts/TerminalContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { TerminalCommand } from "../interfaces/terminalInterfaces";
-import { pingApi, wakeUpApi } from "../utils/api";
+import { pingApi } from "../utils/api";
 import Head from "next/head";
 
 const InteractiveTerminal: React.FC = () => {
@@ -60,19 +60,8 @@ const InteractiveTerminal: React.FC = () => {
   }, [isInitialized, commandHistory.length, t, setIsInitialized]);
 
   useEffect(() => {
-    // Wake up backend API on mount with enhanced retry logic
-    const wakeUpBackend = async () => {
-      const isAlive = await wakeUpApi();
-      if (isAlive) {
-        console.log("Backend API is ready");
-      } else {
-        console.log(
-          "Backend API might be sleeping, will retry on first interaction"
-        );
-      }
-    };
-
-    wakeUpBackend();
+    // Wake up backend API on mount
+    pingApi();
   }, []);
 
   useEffect(() => {
