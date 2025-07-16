@@ -37,9 +37,19 @@ export const fetchLevel = async (
 
 export const pingApi = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/`);
+    // Simple ping to wake up the API
+    const response = await fetch(`${API_BASE_URL}/ping`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // Add a timeout to prevent hanging
+      signal: AbortSignal.timeout(5000),
+    });
+
     return response.ok;
   } catch (error) {
+    console.log("API ping failed, backend might be sleeping:", error);
     return false;
   }
 };
