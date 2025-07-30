@@ -98,14 +98,14 @@ projects_data = [
   },
   {
     title: {
-      "en": "Aidactic – International EdTech in Progress",
-      "es": "Aidactic – EdTech internacional en proceso",
-      "fr": "Aidactic – EdTech international en cours"
+      "en": "EduAPIs  – Educational Platform Prototype (Backend)",
+      "es": "EduAPIs  – Prototipo de Plataforma Educativa (Backend)",
+      "fr": "EduAPIs  – Prototype de Plateforme Éducative (Backend)"
     },
     role: {
-      "en": "Software Engineer - Backend (my current job)",
-      "es": "Ingeniera de Software - Backend (mi trabajo actual)",
-      "fr": "Software Engineer - Backend (mon job actuel)"
+      "en": "Software Engineer - Backend",
+      "es": "Ingeniera de Software - Backend",
+      "fr": "Software Engineer - Backend"
     },
     tech: {
       "en": "Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger",
@@ -113,10 +113,11 @@ projects_data = [
       "fr": "Next.js, GraphQL, REST API, MongoDB, AWS, Docker, Swagger"
     },
     description: {
-      "en": "Educational platform for high school and university students. I'm building APIs like bridges between REST and GraphQL. Integrated S3 for resources, Docker containers, and docs you'll actually want to read.",
-      "es": "Plataforma educativa para estudiantes de secundaria y universidad. Estoy construyendo APIs como si fueran puentes entre mundos (REST y GraphQL en un solo backend, sí señor... y con Next.js). Integración con S3 para recursos, contenedores con Docker y una documentación que sí se deja leer.",
-      "fr": "Plateforme éducative pour lycéens et étudiants. Je construis des APIs comme des ponts entre REST et GraphQL. Intégration avec S3, conteneurs Docker et une doc agréable à lire."
+      "en": "Backend prototype of an academic content platform, built as a personal project inspired by past experience. Combines REST and GraphQL in one backend (yes, both!). Runs on Next.js (API layer only), Dockerized, with AWS S3 integration and docs you won’t hate reading.",
+      "es": "Prototipo de backend para una plataforma de contenido académico, desarrollado como proyecto personal inspirado en experiencia previa. Unifica REST y GraphQL en un solo backend (sí, ambos). Corre en Next.js (solo capa API), con Docker, integración con AWS S3 y una documentación que sí se deja leer.",
+      "fr": "Prototype backend d'une plateforme de contenu académique, développé comme projet personnel inspiré d'une expérience passée. Combine REST et GraphQL dans un seul backend (oui, les deux !). Fonctionne avec Next.js (couche API uniquement), Docker, AWS S3 et une doc qu’on lit vraiment."
     },
+
     status: {
       "en": "In development",
       "es": "En desarrollo",
