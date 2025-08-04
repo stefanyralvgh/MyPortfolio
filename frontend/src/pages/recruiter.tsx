@@ -21,7 +21,7 @@ const RecruiterPage: React.FC = () => {
     familiar: {
       es: "También familiarizada con: Ruby on Rails, Bubble.io, React",
       en: "Also familiar with: Ruby on Rails, Bubble.io, React",
-      fr: "Aussi familier avec : Ruby on Rails, Bubble.io, React"
+      fr: "Aussi familière avec : Ruby on Rails, Bubble.io, React"
     },
     projects: [
       {

@@ -84,7 +84,7 @@ const AboutPage: React.FC = () => {
         subtitle: 'Développeuse Backend • Ex-dentiste • Passionnée de langues',
         story: {
           title: 'Mon histoire',
-          content: `Je suis Stef, une développeuse backend qui a trouvé sa voie dans le code après des années en dentisterie.\nLa transition n'était pas un hasard. J'ai toujours été attirée par la manière dont la technologie peut résoudre des problèmes concrets et améliorer la vie.\n\nEn tant que dentiste, j’aidais une personne à la fois. En tant que développeuse, je peux créer des outils qui touchent des milliers de personnes.\n\nIl m’a fallu du temps pour réaliser que c’était ma voie, mais mes amis et mon ex (déjà dans la tech) l’avait vu bien avant moi.\nLeur soutien et leur conviction m'ont donné l’élan nécessaire pour sauter le pas.`
+          content: `Je suis Stef, une développeuse backend qui a trouvé sa voie dans le code après des années en dentisterie.\nLa transition n'était pas un hasard. J'ai toujours été attirée par la manière dont la technologie peut résoudre des problèmes concrets et améliorer la vie.\n\nEn tant que dentiste, j’aidais une personne à la fois. En tant que développeuse, je peux créer des outils qui touchent des milliers de personnes.\n\nIl m’a fallu du temps pour réaliser que c’était ma voie, mais mes amis et mon ex (déjà dans la tech) l’avaient vu bien avant moi.\nLeur soutien et leur conviction m'ont donné l’élan nécessaire pour sauter le pas.`
         },
         why: {
           title: 'Pourquoi j’ai quitté la dentisterie ?',
@@ -101,7 +101,7 @@ const AboutPage: React.FC = () => {
             '🫱🏽‍🫲🏽 Collaboration et apprentissage des autres',
             '🧪 Croissance par la curiosité et l’expérimentation',
             '⚙️ Construire des choses vraiment utiles',
-            '📈 S’améliorer à chaque projet'
+            '📈 M’améliorer à chaque projet'
           ]
         },
         funFacts: {
