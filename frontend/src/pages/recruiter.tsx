@@ -60,7 +60,7 @@ const RecruiterPage: React.FC = () => {
   };
 
   const handleDownloadCV = (lang: 'es' | 'en') => {
-    const file = lang === 'es' ? '/cv_es.pdf' : '/cv_en.pdf';
+    const file = lang === 'es' ? '/es_cv.pdf' : '/en_cv.pdf';
     const link = document.createElement('a');
     link.href = file;
     link.download = file.split('/').pop() || '';
@@ -77,7 +77,7 @@ const RecruiterPage: React.FC = () => {
       fontFamily: 'Courier New, Monaco, Menlo, monospace',
       color: '#f3b1e6'
     }}>
-      {/* Header */}
+
       <div className="header-bar">
         <h1>{t('recruiter.mode')}</h1>
         <div className="language-switcher-fixed">
@@ -85,7 +85,7 @@ const RecruiterPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Content */}
+    
       <div style={{
         maxWidth: '1000px',
         margin: '0 auto',
@@ -93,7 +93,7 @@ const RecruiterPage: React.FC = () => {
         gap: '2.5rem'
       }}>
         
-        {/* Mini Intro */}
+
         <div style={{
           background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
@@ -114,7 +114,7 @@ const RecruiterPage: React.FC = () => {
           </p>
         </div>
 
-        {/* Tech Stack */}
+   
         <div style={{
           background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
@@ -152,7 +152,7 @@ const RecruiterPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Highlighted Projects */}
+  
         <div style={{
           background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
@@ -216,7 +216,7 @@ const RecruiterPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Quick Stats */}
+     
         <div style={{
           background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
@@ -273,7 +273,7 @@ const RecruiterPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Action Links */}
+     
         <div style={{
           background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
@@ -346,7 +346,7 @@ const RecruiterPage: React.FC = () => {
 
       
 
-        {/* Action Buttons */}
+      
         <div style={{
           display: 'flex',
           justifyContent: 'center',
