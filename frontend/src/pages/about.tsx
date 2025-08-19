@@ -93,7 +93,7 @@ const AboutPage: React.FC = () => {
         personality: {
           title: 'Ma personnalité',
           content: `Je suis naturellement curieuse. J'adore apprendre des langues (j'apprends le français), explorer de nouvelles technologies, et chercher sans cesse à progresser.\n\nJe ne cherche pas à être parfaite, mais à m’améliorer. J’ai de la créativité, une direction claire, et j’utilise chaque apprentissage pour continuer à avancer.\nIl y a encore tant à apprendre. La tech est vaste, et j’adore cette idée. Chaque fois que je comprends quelque chose de nouveau, j’ai l’impression d’avoir gagné quelque chose de réel.`
-        },
+        }, 
         values: {
           title: 'Ce qui me motive',
           items: [

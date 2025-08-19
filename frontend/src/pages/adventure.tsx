@@ -58,7 +58,7 @@ const AdventurePage: React.FC = () => {
   const getCurrentLevelData = (): Level | null => {
     if (dbLevels.length && currentLevel <= dbLevels.length) {
       const dbLevel = dbLevels[currentLevel - 1];
-      return dbLevel; // ya tiene la forma que espera AdventureLevel
+      return dbLevel; 
     } else {
       return null;
     }
@@ -99,7 +99,7 @@ const AdventurePage: React.FC = () => {
   const totalLevels = dbLevels.length;
 
   const handleDownloadCV = () => {
-    const file = language === "es" ? "/cv_es.pdf" : "/cv_en.pdf";
+    const file = language === "es" ? "/es_cv.pdf" : "/en_cv.pdf";
     const link = document.createElement("a");
     link.href = file;
     link.download = file.split("/").pop() || "";
@@ -110,7 +110,7 @@ const AdventurePage: React.FC = () => {
 
   return (
     <div className="adventure-container">
-      {/* Cabecera siempre visible */}
+
       <div className="header-bar">
         <h1>{t("adventure.title")}</h1>
         <div className="language-switcher-fixed">
@@ -129,13 +129,13 @@ const AdventurePage: React.FC = () => {
       >
         {t("adventure.level")} {currentLevel} {t("adventure.of")} {totalLevels}
       </span>
-      {/* Loading */}
+  
       {showLoading && loading && (
         <div className="loading-container">
           <LoadingSpinner />
         </div>
       )}
-      {/* Pantalla final */}
+    
       {!loading && showFinale && (
         <>
           <div className="finale-container">
@@ -162,7 +162,7 @@ const AdventurePage: React.FC = () => {
                   </span>
                 </div>
               </div>
-              {/* Botones relevantes (CV, LinkedIn, Repo) */}
+        
               <div
                 className="finale-actions"
                 style={{
@@ -174,7 +174,7 @@ const AdventurePage: React.FC = () => {
                   position: "relative",
                 }}
               >
-                {/* Botón CV */}
+           
                 <button
                   className="finale-button cv"
                   onClick={handleDownloadCV}
@@ -203,7 +203,7 @@ const AdventurePage: React.FC = () => {
                     CV
                   </span>
                 </button>
-                {/* LinkedIn */}
+              
                 <button
                   className="finale-button linkedin"
                   onClick={() =>
@@ -237,7 +237,7 @@ const AdventurePage: React.FC = () => {
                     LinkedIn
                   </span>
                 </button>
-                {/* Repo */}
+              
                 <button
                   className="finale-button repo"
                   onClick={() =>
@@ -272,7 +272,7 @@ const AdventurePage: React.FC = () => {
                   </span>
                 </button>
               </div>
-              {/* Botón Restart debajo */}
+        
               <div
                 style={{
                   display: "flex",
@@ -296,7 +296,7 @@ const AdventurePage: React.FC = () => {
           </div>
         </>
       )}
-      {/* Flujo normal de niveles */}
+
       {!loading && !showFinale && (
         <>
           <div className="progress-bar" style={{ marginBottom: "1.5rem" }}>
