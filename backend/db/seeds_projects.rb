@@ -128,6 +128,38 @@ projects_data = [
       "es": "Solo dev link por ahora (pronto en cines)",
       "fr": "Lien dev seulement (bientôt sur vos écrans)"
     }
+  },
+  {
+    title: {
+      "en": "Digital Wallet Platform with Payment Integration",
+      "es": "Plataforma de Billetera Digital con Integración de Pagos",
+      "fr": "Plateforme de Portefeuille Numérique avec Intégration de Paiements"
+    },
+    role: {
+      "en": "Full-Stack Developer - Serverless Architecture",
+      "es": "Desarrolladora Full-Stack - Arquitectura Serverless",
+      "fr": "Développeuse Full-Stack - Architecture Serverless"
+    },
+    tech: {
+      "en": "Next.js, React, AWS (API Gateway, DynamoDB, Cognito), Mural Pay API, Serverless",
+      "es": "Next.js, React, AWS (API Gateway, DynamoDB, Cognito), Mural Pay API, Serverless",
+      "fr": "Next.js, React, AWS (API Gateway, DynamoDB, Cognito), Mural Pay API, Serverless"
+    },
+    description: {
+      "en": "Full-stack digital wallet application enabling users to create organizations, manage accounts, and process real-time financial transactions. Integrated Mural Pay API for payment processing (pay-ins/pay-outs) and KYC verification. Built with serverless architecture for scalability and cost optimization.",
+      "es": "Aplicación de billetera digital full-stack que permite a los usuarios crear organizaciones, gestionar cuentas y procesar transacciones financieras en tiempo real. Integrada con Mural Pay API para procesamiento de pagos (pay-ins/pay-outs) y verificación KYC. Construida con arquitectura serverless para escalabilidad y optimización de costos.",
+      "fr": "Application de portefeuille numérique full-stack permettant aux utilisateurs de créer des organisations, gérer des comptes et traiter des transactions financières en temps réel. Intégrée avec l'API Mural Pay pour le traitement des paiements (pay-ins/pay-outs) et la vérification KYC. Construite avec une architecture serverless pour la scalabilité et l'optimisation des coûts."
+    },
+    status: {
+      "en": "✅ Completed - Production Ready",
+      "es": "✅ Completado - Listo en Producción",
+      "fr": "✅ Terminé - Prêt pour la Production"
+    },
+    link: {
+      "en": "Dev link only (coming soon to a screen near you)",
+      "es": "Solo dev link por ahora (pronto en cines)",
+      "fr": "Lien dev seulement (bientôt sur vos écrans)"
+    }
   }
 ]
 
