@@ -81,6 +81,9 @@ export const adminAuth = {
 // ======================
 // CVs ✅
 // ======================
+// ======================
+// CVs
+// ======================
 export const adminCVs = {
   getAll: async () => {
     const response = await axios.get(`${API_URL}/admin/cvs`, {
@@ -96,23 +99,20 @@ export const adminCVs = {
 
     const formData = new FormData();
     formData.append("file", file);
+    formData.append("language", language);
 
-    const response = await axios.post(
-      `${API_URL}/admin/cvs/${language}`,
-      formData,
-      {
-        headers: {
-          ...authHeaders(),
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    const response = await axios.post(`${API_URL}/admin/cvs`, formData, {
+      headers: {
+        ...authHeaders(),
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
     return response.data;
   },
 
-  delete: async (id: number | string) => {
-    const response = await axios.delete(`${API_URL}/admin/cvs/${id}`, {
+  delete: async (language: string) => {
+    const response = await axios.delete(`${API_URL}/admin/cvs/${language}`, {
       headers: authHeaders(),
     });
     return response.data;

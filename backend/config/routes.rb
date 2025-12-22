@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     # Authentication
     post '/login', to: 'sessions#create'
     get '/me', to: 'sessions#show'
+    post '/cvs', to: 'cvs#create' 
+    delete '/cvs/:id', to: 'cvs#destroy'  
     
     # Resources
     resources :projects, except: [:new, :edit]
