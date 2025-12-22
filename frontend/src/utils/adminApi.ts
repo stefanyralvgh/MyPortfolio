@@ -184,8 +184,28 @@ export const adminLevels = {
 // ======================
 export const adminProfile = {
   get: async () => {
-    const response = await axios.get(`${API_URL}/admin/profile`, {
-      headers: authHeaders(),
+    const token = getToken();
+    const response = await axios.get(`${API_URL}/profile`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  },
+
+  update: async (profileData: any, photoFile?: File) => {
+    const token = getToken();
+    const formData = new FormData();
+
+    formData.append("profile", JSON.stringify(profileData));
+
+    if (photoFile) {
+      formData.append("photo", photoFile);
+    }
+
+    const response = await axios.put(`${API_URL}/admin/profile`, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
     });
     return response.data;
   },

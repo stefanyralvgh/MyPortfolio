@@ -219,17 +219,12 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
 interface ProfileData {
   name: { [key: string]: string };
   subtitle: { [key: string]: string };
-  bio: { [key: string]: string };
-  story: { [key: string]: string };
-  why: { [key: string]: string };
-  personality: { [key: string]: string };
-  values: { [key: string]: string[] };
-  fun_facts: { [key: string]: string[] };
+  story: { [key: string]: { title: string; content: string } };
+  why: { [key: string]: { title: string; content: string } };
+  personality: { [key: string]: { title: string; content: string } };
+  values: { [key: string]: { title: string; items: string[] } };
+  fun_facts: { [key: string]: { title: string; items: string[] } };
   photo_url?: string;
-  cv_urls?: {
-    es?: string;
-    en?: string;
-  };
 }
 
 const AboutPage: React.FC = () => {
@@ -247,7 +242,7 @@ const AboutPage: React.FC = () => {
           throw new Error('Failed to fetch profile');
         }
         const data = await response.json();
-        console.log('Profile data:', data); // Para debug
+        console.log('Profile data:', data);
         setProfile(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');
@@ -259,66 +254,6 @@ const AboutPage: React.FC = () => {
 
     fetchProfile();
   }, []);
-
-  // Helper function para obtener texto de un campo
-  const getFieldText = (field: any, lang: string): string => {
-    if (!field) return '';
-    
-    // Si el campo es un objeto con idiomas
-    if (typeof field === 'object' && field[lang]) {
-      const langData = field[lang];
-      
-      // Si el valor del idioma es un string, retornarlo
-      if (typeof langData === 'string') {
-        return langData;
-      }
-      
-      // Si es un objeto con 'content', retornar el content
-      if (typeof langData === 'object' && langData.content) {
-        return langData.content;
-      }
-    }
-    
-    // Fallback a inglés
-    if (typeof field === 'object' && field['en']) {
-      const enData = field['en'];
-      if (typeof enData === 'string') {
-        return enData;
-      }
-      if (typeof enData === 'object' && enData.content) {
-        return enData.content;
-      }
-    }
-    
-    return '';
-  };
-
-  // Helper para obtener arrays
-  const getFieldArray = (field: any, lang: string): string[] => {
-    if (!field) return [];
-    
-    if (typeof field === 'object' && field[lang]) {
-      if (Array.isArray(field[lang])) {
-        return field[lang];
-      }
-      // Si es un objeto con 'items'
-      if (typeof field[lang] === 'object' && Array.isArray(field[lang].items)) {
-        return field[lang].items;
-      }
-    }
-    
-    // Fallback a inglés
-    if (typeof field === 'object' && field['en']) {
-      if (Array.isArray(field['en'])) {
-        return field['en'];
-      }
-      if (typeof field['en'] === 'object' && Array.isArray(field['en'].items)) {
-        return field['en'].items;
-      }
-    }
-    
-    return [];
-  };
 
   if (loading) {
     return (
@@ -350,10 +285,10 @@ const AboutPage: React.FC = () => {
       <div className="about-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', marginBottom: '0.5rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
           <h1 style={{ margin: 0, fontSize: '2rem', overflow: 'hidden', textOverflow: 'ellipsis', textAlign: 'center' }}>
-            {getFieldText(profile.name, lang) || 'Hi, I\'m Stef!'}
+            {profile.name?.[lang] || profile.name?.['en'] || 'Hi, I\'m Stef!'}
           </h1>
           <p style={{ margin: '0.5rem 0 1rem 0', fontSize: '1.1rem', color: '#7a3fa4', fontWeight: 500, textAlign: 'center' }}>
-            {getFieldText(profile.subtitle, lang)}
+            {profile.subtitle?.[lang] || profile.subtitle?.['en']}
           </p>
         </div>
         <div className="about-lang-switcher">
@@ -397,43 +332,35 @@ const AboutPage: React.FC = () => {
         </div>
 
         {/* Story Section */}
-        {getFieldText(profile.story, lang) && (
+        {profile.story?.[lang]?.content && (
           <div className="about-section">
-            <h2>
-              {lang === 'es' ? 'Mi historia' : lang === 'fr' ? 'Mon histoire' : 'My Story'}
-            </h2>
-            <p style={{ whiteSpace: 'pre-line' }}>{getFieldText(profile.story, lang)}</p>
+            <h2>{profile.story[lang].title}</h2>
+            <p style={{ whiteSpace: 'pre-line' }}>{profile.story[lang].content}</p>
           </div>
         )}
 
         {/* Why Section */}
-        {getFieldText(profile.why, lang) && (
+        {profile.why?.[lang]?.content && (
           <div className="about-section">
-            <h2>
-              {lang === 'es' ? '¿Por qué dejé la odontología?' : lang === 'fr' ? 'Pourquoi j\'ai quitté la dentisterie ?' : 'Why I left dentistry?'}
-            </h2>
-            <p style={{ whiteSpace: 'pre-line' }}>{getFieldText(profile.why, lang)}</p>
+            <h2>{profile.why[lang].title}</h2>
+            <p style={{ whiteSpace: 'pre-line' }}>{profile.why[lang].content}</p>
           </div>
         )}
 
         {/* Personality Section */}
-        {getFieldText(profile.personality, lang) && (
+        {profile.personality?.[lang]?.content && (
           <div className="about-section">
-            <h2>
-              {lang === 'es' ? 'Mi personalidad' : lang === 'fr' ? 'Ma personnalité' : 'My Personality'}
-            </h2>
-            <p style={{ whiteSpace: 'pre-line' }}>{getFieldText(profile.personality, lang)}</p>
+            <h2>{profile.personality[lang].title}</h2>
+            <p style={{ whiteSpace: 'pre-line' }}>{profile.personality[lang].content}</p>
           </div>
         )}
 
         {/* Values Section */}
-        {getFieldArray(profile.values, lang).length > 0 && (
+        {profile.values?.[lang]?.items && profile.values[lang].items.length > 0 && (
           <div className="about-section">
-            <h2>
-              {lang === 'es' ? 'Lo que me mueve' : lang === 'fr' ? 'Ce qui me motive' : 'What drives me'}
-            </h2>
+            <h2>{profile.values[lang].title}</h2>
             <ul className="about-list">
-              {getFieldArray(profile.values, lang).map((item, index) => (
+              {profile.values[lang].items.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
@@ -441,13 +368,11 @@ const AboutPage: React.FC = () => {
         )}
 
         {/* Fun Facts Section */}
-        {getFieldArray(profile.fun_facts, lang).length > 0 && (
+        {profile.fun_facts?.[lang]?.items && profile.fun_facts[lang].items.length > 0 && (
           <div className="about-section">
-            <h2>
-              {lang === 'es' ? 'Datos curiosos' : lang === 'fr' ? 'Faits amusants' : 'Fun facts'}
-            </h2>
+            <h2>{profile.fun_facts[lang].title}</h2>
             <ul className="about-list">
-              {getFieldArray(profile.fun_facts, lang).map((item, index) => (
+              {profile.fun_facts[lang].items.map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
