@@ -16,4 +16,7 @@ load 'db/seeds_levels.rb'
 # Load project seeds  
 load 'db/seeds_projects.rb'
 
+# Load profile seeds  
+load 'db/seeds_profiles.rb'
+
 puts "Seed data loaded successfully!"

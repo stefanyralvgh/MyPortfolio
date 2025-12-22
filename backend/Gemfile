@@ -1,12 +1,21 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 7.1.0'
+gem 'nokogiri', '~> 1.18.10'
+gem 'rails', '~> 7.1.5.1'
 gem 'pg', '~> 1.2'
 gem 'jbuilder', '~> 2.7'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'puma'
 gem 'rack-cors'
 gem 'bootsnap', require: false
+gem 'bcrypt', '~> 3.1.7'
+gem 'jwt', '~> 2.7'
+gem 'tzinfo-data'
+gem 'fiddle'
+
+
+
+
 
 group :development do
   # Development gems can be added here

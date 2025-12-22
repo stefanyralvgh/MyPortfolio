@@ -14,6 +14,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_04_225733) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "admins", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true
+  end
+
   create_table "levels", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -23,6 +31,24 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_04_225733) do
     t.jsonb "options", default: {}
     t.string "correct_option"
     t.jsonb "explanation", default: {}
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.jsonb "name", default: {}
+    t.jsonb "subtitle", default: {}
+    t.jsonb "bio", default: {}
+    t.jsonb "story", default: {}
+    t.jsonb "why", default: {}
+    t.jsonb "personality", default: {}
+    t.jsonb "values", default: {}
+    t.jsonb "fun_facts", default: {}
+    t.jsonb "social_links", default: {}
+    t.jsonb "main_stack", default: {}
+    t.jsonb "familiar", default: {}
+    t.jsonb "recruiter_projects", default: {}
+    t.jsonb "quick_stats", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|
