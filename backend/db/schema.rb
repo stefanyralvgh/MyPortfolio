@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_12_22_215017) do
+ActiveRecord::Schema[7.1].define(version: 2025_12_23_220026) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -94,6 +94,18 @@ ActiveRecord::Schema[7.1].define(version: 2025_12_22_215017) do
     t.index ["status"], name: "index_projects_on_status", using: :gin
     t.index ["tech"], name: "index_projects_on_tech", using: :gin
     t.index ["title"], name: "index_projects_on_title", using: :gin
+  end
+
+  create_table "stack_items", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "icon", null: false
+    t.string "category", null: false
+    t.string "level"
+    t.integer "position", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category"], name: "index_stack_items_on_category"
+    t.index ["position"], name: "index_stack_items_on_position"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

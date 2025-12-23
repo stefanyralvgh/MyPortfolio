@@ -141,6 +141,11 @@ const AdminDashboard: React.FC = () => {
               description="Editar página para reclutadores"
               onClick={() => router.push('/admin/recruiter')}
             />
+            <NavCard
+              title="🛠️ Tech Stack"
+              description="Gestionar tecnologías y herramientas"
+              onClick={() => router.push('/admin/stack')}
+            />
           </div>
         </div>
       </div>
