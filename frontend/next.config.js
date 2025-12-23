@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Removed output: "export" to allow dynamic pages and API routes
-  // If you need static export for production, use: next export command instead
+  output: "export",
 
+  images: {
+    unoptimized: true,
+  },
   // Configure allowed origins for development
   async headers() {
     return [
