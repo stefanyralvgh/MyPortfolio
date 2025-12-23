@@ -136,6 +136,16 @@ const AdminDashboard: React.FC = () => {
               description="Subir y gestionar CVs"
               onClick={() => router.push('/admin/cvs')}
             />
+            <NavCard
+              title="💼 Recruiter"
+              description="Editar página para reclutadores"
+              onClick={() => router.push('/admin/recruiter')}
+            />
+            <NavCard
+              title="🛠️ Tech Stack"
+              description="Gestionar tecnologías y herramientas"
+              onClick={() => router.push('/admin/stack')}
+            />
           </div>
         </div>
       </div>
