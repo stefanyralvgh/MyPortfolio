@@ -257,3 +257,51 @@ export const adminProfile = {
     return response.data;
   },
 };
+
+// ======================
+// STACK ITEMS
+// ======================
+export const adminStackItems = {
+  getAll: async () => {
+    const response = await axios.get(`${API_URL}/admin/stack_items`, {
+      headers: authHeaders(),
+    });
+    return response.data;
+  },
+
+  getById: async (id: number | string) => {
+    const response = await axios.get(`${API_URL}/admin/stack_items/${id}`, {
+      headers: authHeaders(),
+    });
+    return response.data;
+  },
+
+  create: async (data: any) => {
+    const response = await axios.post(
+      `${API_URL}/admin/stack_items`,
+      { stack_item: data },
+      {
+        headers: authHeaders(),
+      }
+    );
+    return response.data;
+  },
+
+  update: async (id: number | string, data: any) => {
+    const response = await axios.patch(
+      `${API_URL}/admin/stack_items/${id}`,
+      { stack_item: data },
+      {
+        headers: authHeaders(),
+      }
+    );
+    return response.data;
+  },
+
+  delete: async (id: number | string) => {
+    const response = await axios.delete(`${API_URL}/admin/stack_items/${id}`, {
+      headers: authHeaders(),
+    });
+    return response.data;
+  },
+};
