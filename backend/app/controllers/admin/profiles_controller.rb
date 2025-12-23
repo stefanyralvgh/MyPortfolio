@@ -9,7 +9,10 @@ class Admin::ProfilesController < AdminController
   def update
     profile = Profile.instance
     
-    if profile.update(profile_params)
+    # Parse JSON fields before updating
+    parsed_params = parse_json_fields(profile_params)
+    
+    if profile.update(parsed_params)
       # Handle photo upload
       if params[:profile][:photo]
         profile.photo.attach(params[:profile][:photo])
@@ -39,8 +42,25 @@ class Admin::ProfilesController < AdminController
       :main_stack,
       :familiar,
       :recruiter_projects,
-      :quick_stats
+      :quick_stats,
+      :photo
     )
   end
-end
 
+  def parse_json_fields(params)
+    json_fields = [:name, :subtitle, :bio, :story, :why, :personality, :values, :fun_facts, :social_links, :main_stack, :familiar, :recruiter_projects, :quick_stats]
+    
+    parsed = params.to_h
+    json_fields.each do |field|
+      if parsed[field].is_a?(String)
+        begin
+          parsed[field] = JSON.parse(parsed[field])
+        rescue JSON::ParserError
+          # Si no es JSON válido, dejarlo como está
+        end
+      end
+    end
+    
+    parsed
+  end
+end
