@@ -38,7 +38,7 @@ const AdminProjects: React.FC = () => {
   };
 
   const handleDelete = async (id: number) => {
-    if (!confirm('¿Estás seguro de eliminar este proyecto?')) return;
+    if (!confirm('¿Estás segura de eliminar este proyecto?')) return;
     try {
       await adminProjects.delete(id);
       fetchProjects();

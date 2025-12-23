@@ -39,7 +39,7 @@ const AdminLevels: React.FC = () => {
   };
 
   const handleDelete = async (id: number) => {
-    if (!confirm('¿Estás seguro de eliminar este level?')) return;
+    if (!confirm('¿Estás segura de eliminar este level?')) return;
     try {
       await adminLevels.delete(id);
       fetchLevels();

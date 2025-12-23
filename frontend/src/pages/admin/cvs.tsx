@@ -43,7 +43,7 @@ const AdminCVs: React.FC = () => {
   };
 
   const handleDelete = async (language: 'es' | 'en') => {
-    if (!confirm(`¿Estás seguro de eliminar el CV en ${language === 'es' ? 'español' : 'inglés'}?`)) return;
+    if (!confirm(`¿Estás segura de eliminar el CV en ${language === 'es' ? 'español' : 'inglés'}?`)) return;
     try {
       await adminCVs.delete(language); 
       alert('CV eliminado exitosamente');
