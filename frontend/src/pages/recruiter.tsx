@@ -1,87 +1,110 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useLanguage } from '../contexts/LanguageContext';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 
+interface Profile {
+  subtitle: { [key: string]: string };
+  main_stack?: { [key: string]: string };
+  familiar?: { [key: string]: string };
+  quick_stats?: {
+    years_experience?: string;
+    remote?: string;
+  };
+  cv_urls?: {
+    es?: string;
+    en?: string;
+  };
+  social_links?: {
+    linkedin?: string;
+    github?: string;
+    email?: string;
+  };
+}
+
+interface Project {
+  id: number;
+  title: string;
+  tech: string;
+}
+
 const RecruiterPage: React.FC = () => {
   const router = useRouter();
   const { language, t } = useLanguage();
+  const [profile, setProfile] = useState<Profile | null>(null);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const recruiterData = {
-    intro: {
-      es: "¡Hola! Soy Stef, desarrolladora backend con mentalidad de producto, fuertes habilidades en diseño de APIs y un profundo interés en arquitectura escalable. Busco equipos remotos internacionales construyendo cosas significativas.",
-      en: "Hi! I'm Stef, a backend developer with a product mindset, strong API design skills, and a deep interest in scalable architecture. Looking for fully remote, international teams building meaningful stuff.",
-      fr: "Salut ! Je suis Stef, développeuse backend avec une mentalité produit, de solides compétences en conception d'API et un vif intérêt pour l'architecture évolutive. Je recherche des équipes internationales à distance construisant des choses significatives."
-    },
-    mainStack: {
-      es: "Stack principal: Node.js, PostgreSQL, GraphQL, MongoDB, Docker, AWS, Next.js",
-      en: "Main stack: Node.js, PostgreSQL, GraphQL, MongoDB, Docker, AWS, Next.js",
-      fr: "Stack principal : Node.js, PostgreSQL, GraphQL, MongoDB, Docker, AWS, Next.js"
-    },
-    familiar: {
-      es: "También familiarizada con: Ruby on Rails, Bubble.io, React",
-      en: "Also familiar with: Ruby on Rails, Bubble.io, React",
-      fr: "Aussi familière avec : Ruby on Rails, Bubble.io, React"
-    },
-    projects: [
-      {
-        name: "Aidactic",
-        description: {
-          es: "Backend REST + GraphQL, MongoDB, S3, API dockerizada, documentación Swagger",
-          en: "REST + GraphQL backend, MongoDB, S3, Dockerized API, Swagger docs",
-          fr: "Backend REST + GraphQL, MongoDB, S3, API dockerisée, documentation Swagger"
-        }
-      },
-      {
-        name: "Nodd",
-        description: {
-          es: "Distribución de audio con AWS Lambda + S3, PostgreSQL, Express",
-          en: "Audio distribution with AWS Lambda + S3, PostgreSQL, Express",
-          fr: "Distribution audio avec AWS Lambda + S3, PostgreSQL, Express"
-        }
-      },
-      {
-        name: "Diidoo",
-        description: {
-          es: "Bubble.io + integración Wompi, flujos de trabajo complejos",
-          en: "Bubble.io + Wompi integration, complex workflows",
-          fr: "Bubble.io + intégration Wompi, flux de travail complexes"
-        }
-      },
-      {
-        name: "Refugio Henry",
-        description: {
-          es: "Backend Node + Google Auth + MercadoPago",
-          en: "Node backend + Google Auth + MercadoPago",
-          fr: "Backend Node + Google Auth + MercadoPago"
-        }
-      }
-    ]
+  useEffect(() => {
+    fetchData();
+  }, [language]);
+
+  const fetchData = async () => {
+    try {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      
+      // Fetch profile
+      const profileRes = await fetch(`${API_URL}/profile`);
+      const profileData = await profileRes.json();
+      setProfile(profileData);
+      
+      // Fetch projects
+      const projectsRes = await fetch(`${API_URL}/projects?language=${language}`);
+      const projectsData = await projectsRes.json();
+      setProjects(projectsData.slice(0, 4)); // Solo primeros 4 proyectos
+      
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleDownloadCV = async (lang: 'es' | 'en') => {
-    try {
-      // Obtener el profile que tiene las URLs de los CVs
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/profile`);
-      const profileData = await response.json();
-      
-      const cvUrl = profileData.cv_urls?.[lang];
-      
-      if (cvUrl) {
-        window.open(cvUrl, '_blank');
-      } else {
-        alert(language === 'es' 
-          ? 'CV no disponible en este idioma' 
+  const handleDownloadCV = (lang: 'es' | 'en') => {
+    if (profile?.cv_urls?.[lang]) {
+      window.open(profile.cv_urls[lang], '_blank');
+    } else {
+      alert(
+        language === 'es'
+          ? 'CV no disponible en este idioma'
           : language === 'fr'
           ? 'CV non disponible dans cette langue'
           : 'CV not available in this language'
-        );
-      }
-    } catch (error) {
-      console.error('Error downloading CV:', error);
-      alert('Error al descargar el CV');
+      );
     }
   };
+
+  if (loading) {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #181824 0%, #2d193c 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#f3b1e6',
+        fontFamily: 'Courier New, Monaco, Menlo, monospace',
+      }}>
+        Loading...
+      </div>
+    );
+  }
+
+  if (!profile) {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #181824 0%, #2d193c 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#f3b1e6',
+        fontFamily: 'Courier New, Monaco, Menlo, monospace',
+      }}>
+        Error loading data
+      </div>
+    );
+  }
 
   return (
     <div className="recruiter-container" style={{
@@ -99,7 +122,6 @@ const RecruiterPage: React.FC = () => {
         </div>
       </div>
 
-    
       <div style={{
         maxWidth: '1000px',
         margin: '0 auto',
@@ -107,7 +129,7 @@ const RecruiterPage: React.FC = () => {
         gap: '2.5rem'
       }}>
         
-
+        {/* Intro */}
         <div style={{
           background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
@@ -124,170 +146,184 @@ const RecruiterPage: React.FC = () => {
             textAlign: 'center',
             color: '#f3b1e6'
           }}>
-            {recruiterData.intro[language]}
+            {profile.subtitle?.[language] || profile.subtitle?.en || ''}
           </p>
         </div>
 
-   
-        <div style={{
-          background: 'rgba(255, 255, 255, 0.05)',
-          borderRadius: '1rem',
-          padding: '2.5rem',
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
-          color: '#f3b1e6',
-          border: '1px solid rgba(243, 177, 230, 0.2)'
-        }}>
-          <h2 style={{
-            margin: '0 0 1.5rem 0',
-            fontSize: '1.8rem',
+        {/* Tech Stack */}
+        {(profile.main_stack || profile.familiar) && (
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.05)',
+            borderRadius: '1rem',
+            padding: '2.5rem',
+            boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
             color: '#f3b1e6',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
+            border: '1px solid rgba(243, 177, 230, 0.2)'
           }}>
-           {t('recruiter.tech_stack')}
-          </h2>
-          <div style={{ display: 'grid', gap: '1rem' }}>
-            <p style={{
-              fontSize: '1.1rem',
-              margin: 0,
-              fontWeight: '600',
-              color: '#e75480'
+            <h2 style={{
+              margin: '0 0 1.5rem 0',
+              fontSize: '1.8rem',
+              color: '#f3b1e6',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
             }}>
-              {recruiterData.mainStack[language]}
-            </p>
-            <p style={{
-              fontSize: '1rem',
-              margin: 0,
-              color: '#f3b1e6'
-            }}>
-              {recruiterData.familiar[language]}
-            </p>
-          </div>
-        </div>
-
-  
-        <div style={{
-          background: 'rgba(255, 255, 255, 0.05)',
-          borderRadius: '1rem',
-          padding: '2.5rem',
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
-          color: '#f3b1e6',
-          border: '1px solid rgba(243, 177, 230, 0.2)'
-        }}>
-          <h2 style={{
-            margin: '0 0 1.5rem 0',
-            fontSize: '1.8rem',
-            color: '#f3b1e6',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
-          }}>
-            {t('recruiter.key_projects')}
-          </h2>
-          <div style={{ display: 'grid', gap: '1rem' }}>
-            {recruiterData.projects.map((project, index) => (
-              <div key={index} style={{
-                padding: '1rem',
-                background: 'rgba(255, 255, 255, 0.05)',
-                borderRadius: '0.75rem',
-                border: '1px solid rgba(243, 177, 230, 0.2)'
-              }}>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '1rem'
+              {t('recruiter.tech_stack')}
+            </h2>
+            <div style={{ display: 'grid', gap: '1rem' }}>
+              {profile.main_stack && (
+                <p style={{
+                  fontSize: '1.1rem',
+                  margin: 0,
+                  fontWeight: '600',
+                  color: '#e75480'
                 }}>
-                  <span style={{
-                    fontSize: '1.2rem',
-                    fontWeight: '700',
-                    color: '#e75480',
-                    minWidth: 'fit-content'
+                  {profile.main_stack[language] || profile.main_stack.en}
+                </p>
+              )}
+              {profile.familiar && (
+                <p style={{
+                  fontSize: '1rem',
+                  margin: 0,
+                  color: '#f3b1e6'
+                }}>
+                  {profile.familiar[language] || profile.familiar.en}
+                </p>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Key Projects - Desde API de projects */}
+        {projects.length > 0 && (
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.05)',
+            borderRadius: '1rem',
+            padding: '2.5rem',
+            boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+            color: '#f3b1e6',
+            border: '1px solid rgba(243, 177, 230, 0.2)'
+          }}>
+            <h2 style={{
+              margin: '0 0 1.5rem 0',
+              fontSize: '1.8rem',
+              color: '#f3b1e6',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
+            }}>
+              {t('recruiter.key_projects')}
+            </h2>
+            <div style={{ display: 'grid', gap: '1rem' }}>
+              {projects.map((project) => (
+                <div key={project.id} style={{
+                  padding: '1rem',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  borderRadius: '0.75rem',
+                  border: '1px solid rgba(243, 177, 230, 0.2)'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '1rem'
                   }}>
-                    •
-                  </span>
-                  <div>
-                    <h3 style={{
-                      margin: '0 0 0.5rem 0',
-                      fontSize: '1.1rem',
-                      fontWeight: '600',
-                      color: '#f3b1e6'
+                    <span style={{
+                      fontSize: '1.2rem',
+                      fontWeight: '700',
+                      color: '#e75480',
+                      minWidth: 'fit-content'
                     }}>
-                      {project.name}
-                    </h3>
-                    <p style={{
-                      margin: 0,
-                      fontSize: '1rem',
-                      color: '#f3b1e6',
-                      lineHeight: '1.5'
-                    }}>
-                      {project.description[language]}
-                    </p>
+                      •
+                    </span>
+                    <div>
+                      <h3 style={{
+                        margin: '0 0 0.5rem 0',
+                        fontSize: '1.1rem',
+                        fontWeight: '600',
+                        color: '#f3b1e6'
+                      }}>
+                        {project.title}
+                      </h3>
+                      <p style={{
+                        margin: 0,
+                        fontSize: '1rem',
+                        color: '#f3b1e6',
+                        lineHeight: '1.5'
+                      }}>
+                        {project.tech}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
-     
-        <div style={{
-          background: 'rgba(255, 255, 255, 0.05)',
-          borderRadius: '1rem',
-          padding: '2.5rem',
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
-          color: '#f3b1e6',
-          border: '1px solid rgba(243, 177, 230, 0.2)'
-        }}>
-          <h2 style={{
-            margin: '0 0 1.5rem 0',
-            fontSize: '1.8rem',
-            color: '#f3b1e6',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem'
-          }}>
-            {t('recruiter.quick_stats')}
-          </h2>
+        {/* Quick Stats */}
+        {profile.quick_stats && (
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '1.5rem'
+            background: 'rgba(255, 255, 255, 0.05)',
+            borderRadius: '1rem',
+            padding: '2.5rem',
+            boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+            color: '#f3b1e6',
+            border: '1px solid rgba(243, 177, 230, 0.2)'
           }}>
-            <div style={{
-              textAlign: 'center',
-              padding: '1.5rem',
-              background: 'rgba(231, 84, 128, 0.2)',
-              borderRadius: '0.75rem',
+            <h2 style={{
+              margin: '0 0 1.5rem 0',
+              fontSize: '1.8rem',
               color: '#f3b1e6',
-              border: '1px solid #e75480'
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem'
             }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
-                2+
-              </div>
-              <div style={{ fontSize: '1rem', opacity: 0.9 }}>
-                {language === 'es' ? 'Años de experiencia' : language === 'fr' ? "Années d'expérience" : 'Years Experience'}
-              </div>
-            </div>
+              {t('recruiter.quick_stats')}
+            </h2>
             <div style={{
-              textAlign: 'center',
-              padding: '1.5rem',
-              background: 'rgba(231, 84, 128, 0.1)',
-              borderRadius: '0.75rem',
-              color: '#f3b1e6',
-              border: '1px solid rgba(231, 84, 128, 0.3)'
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '1.5rem'
             }}>
-              <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
-                100%
-              </div>
-              <div style={{ fontSize: '1rem', opacity: 0.9 }}>
-                {language === 'es' ? 'Remoto' : language === 'fr' ? 'Télétravail' : 'Remote'}
-              </div>
+              {profile.quick_stats.years_experience && (
+                <div style={{
+                  textAlign: 'center',
+                  padding: '1.5rem',
+                  background: 'rgba(231, 84, 128, 0.2)',
+                  borderRadius: '0.75rem',
+                  color: '#f3b1e6',
+                  border: '1px solid #e75480'
+                }}>
+                  <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
+                    {profile.quick_stats.years_experience}
+                  </div>
+                  <div style={{ fontSize: '1rem', opacity: 0.9 }}>
+                    {language === 'es' ? 'Años de experiencia' : language === 'fr' ? "Années d'expérience" : 'Years Experience'}
+                  </div>
+                </div>
+              )}
+              {profile.quick_stats.remote && (
+                <div style={{
+                  textAlign: 'center',
+                  padding: '1.5rem',
+                  background: 'rgba(231, 84, 128, 0.1)',
+                  borderRadius: '0.75rem',
+                  color: '#f3b1e6',
+                  border: '1px solid rgba(231, 84, 128, 0.3)'
+                }}>
+                  <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
+                    {profile.quick_stats.remote}
+                  </div>
+                  <div style={{ fontSize: '1rem', opacity: 0.9 }}>
+                    {language === 'es' ? 'Remoto' : language === 'fr' ? 'Télétravail' : 'Remote'}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-        </div>
+        )}
 
-     
+        {/* Quick Links */}
         <div style={{
           background: 'rgba(255, 255, 255, 0.05)',
           borderRadius: '1rem',
@@ -313,7 +349,7 @@ const RecruiterPage: React.FC = () => {
           }}>
             <button
               className="back-button"
-              onClick={() => window.open('https://github.com/stefanyralvgh/MyPortfolio', '_blank')}
+              onClick={() => window.open(profile.social_links?.github || 'https://github.com/stefanyralvgh/MyPortfolio', '_blank')}
               style={{
                 background: 'rgba(231, 84, 128, 0.2)',
                 color: '#f3b1e6',
@@ -324,7 +360,7 @@ const RecruiterPage: React.FC = () => {
             </button>
             <button
               className="back-button"
-              onClick={() => window.open('https://www.linkedin.com/in/stefanyralvli/', '_blank')}
+              onClick={() => window.open(profile.social_links?.linkedin || 'https://www.linkedin.com/in/stefanyralvli/', '_blank')}
               style={{
                 background: 'rgba(243, 177, 230, 0.2)',
                 color: '#f3b1e6',
@@ -358,9 +394,7 @@ const RecruiterPage: React.FC = () => {
           </div>
         </div>
 
-      
-
-      
+        {/* Back Button */}
         <div style={{
           display: 'flex',
           justifyContent: 'center',
@@ -379,4 +413,4 @@ const RecruiterPage: React.FC = () => {
   );
 };
 
-export default RecruiterPage; 
+export default RecruiterPage;
