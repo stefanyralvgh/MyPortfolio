@@ -126,7 +126,7 @@ export const adminProjects = {
 };
 
 // ======================
-// LEVELS (placeholder)
+// LEVELS
 // ======================
 export const adminLevels = {
   getAll: async () => {
@@ -135,39 +135,74 @@ export const adminLevels = {
     });
     return response.data;
   },
+
+  getById: async (id: number | string) => {
+    const response = await axios.get(`${API_URL}/admin/levels/${id}`, {
+      headers: authHeaders(),
+    });
+    return response.data;
+  },
+
+  create: async (data: any) => {
+    const jsonFields = [
+      "titles",
+      "descriptions",
+      "question",
+      "options",
+      "explanation",
+    ];
+    const formattedData: any = { ...data };
+
+    jsonFields.forEach((field) => {
+      if (formattedData[field] && typeof formattedData[field] === "object") {
+        formattedData[field] = JSON.stringify(formattedData[field]);
+      }
+    });
+
+    const response = await axios.post(
+      `${API_URL}/admin/levels`,
+      { level: formattedData },
+      {
+        headers: authHeaders(),
+      }
+    );
+    return response.data;
+  },
+
+  update: async (id: number | string, data: any) => {
+    const jsonFields = [
+      "titles",
+      "descriptions",
+      "question",
+      "options",
+      "explanation",
+    ];
+    const formattedData: any = { ...data };
+
+    jsonFields.forEach((field) => {
+      if (formattedData[field] && typeof formattedData[field] === "object") {
+        formattedData[field] = JSON.stringify(formattedData[field]);
+      }
+    });
+
+    const response = await axios.patch(
+      `${API_URL}/admin/levels/${id}`,
+      { level: formattedData },
+      {
+        headers: authHeaders(),
+      }
+    );
+    return response.data;
+  },
+
+  delete: async (id: number | string) => {
+    const response = await axios.delete(`${API_URL}/admin/levels/${id}`, {
+      headers: authHeaders(),
+    });
+    return response.data;
+  },
 };
 
-// // ======================
-// // PROFILE (placeholder)
-// // ======================
-// export const adminProfile = {
-//   get: async () => {
-//     const token = getToken();
-//     const response = await axios.get(`${API_URL}/profile`, {
-//       headers: { Authorization: `Bearer ${token}` },
-//     });
-//     return response.data;
-//   },
-
-//   update: async (profileData: any, photoFile?: File) => {
-//     const token = getToken();
-//     const formData = new FormData();
-
-//     formData.append("profile", JSON.stringify(profileData));
-
-//     if (photoFile) {
-//       formData.append("photo", photoFile);
-//     }
-
-//     const response = await axios.put(`${API_URL}/admin/profile`, formData, {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//         "Content-Type": "multipart/form-data",
-//       },
-//     });
-//     return response.data;
-//   },
-// };
 // ======================
 // PROFILE
 // ======================
@@ -182,7 +217,6 @@ export const adminProfile = {
   update: async (profileData: any, photoFile?: File) => {
     const formData = new FormData();
 
-    // 👇 Campos que son JSON (todos los traducibles)
     const jsonFields = [
       "name",
       "subtitle",
@@ -199,7 +233,6 @@ export const adminProfile = {
       "quick_stats",
     ];
 
-    // Agregar cada campo del profile
     Object.keys(profileData).forEach((key) => {
       if (profileData[key] !== null && profileData[key] !== undefined) {
         // Si es un campo JSON, convertirlo a string
@@ -211,7 +244,6 @@ export const adminProfile = {
       }
     });
 
-    // Agregar la foto si existe
     if (photoFile) {
       formData.append("profile[photo]", photoFile);
     }
