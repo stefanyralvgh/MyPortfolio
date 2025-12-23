@@ -98,14 +98,30 @@ const AdventurePage: React.FC = () => {
   const currentLevelData: Level | null = getCurrentLevelData();
   const totalLevels = dbLevels.length;
 
-  const handleDownloadCV = () => {
-    const file = language === "es" ? "/es_cv.pdf" : "/en_cv.pdf";
-    const link = document.createElement("a");
-    link.href = file;
-    link.download = file.split("/").pop() || "";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleDownloadCV = async () => {
+    try {
+      const cvLang = language === "es" ? "es" : "en";
+      
+      // Obtener el profile que tiene las URLs de los CVs
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'}/profile`);
+      const profileData = await response.json();
+      
+      const cvUrl = profileData.cv_urls?.[cvLang];
+      
+      if (cvUrl) {
+        window.open(cvUrl, '_blank');
+      } else {
+        alert(language === 'es' 
+          ? 'CV no disponible en este idioma' 
+          : language === 'fr'
+          ? 'CV non disponible dans cette langue'
+          : 'CV not available in this language'
+        );
+      }
+    } catch (error) {
+      console.error('Error downloading CV:', error);
+      alert('Error al descargar el CV');
+    }
   };
 
   return (

@@ -151,9 +151,9 @@ projects_data = [
       "fr": "Application de portefeuille numérique full-stack permettant aux utilisateurs de créer des organisations, gérer des comptes et traiter des transactions financières en temps réel. Intégrée avec l'API Mural Pay pour le traitement des paiements (pay-ins/pay-outs) et la vérification KYC. Construite avec une architecture serverless pour la scalabilité et l'optimisation des coûts."
     },
     status: {
-      "en": "✅ Completed - Production Ready",
-      "es": "✅ Completado - Listo en Producción",
-      "fr": "✅ Terminé - Prêt pour la Production"
+      "en": "Completed - Production Ready",
+      "es": "Completado - Listo en Producción",
+      "fr": "Terminé - Prêt pour la Production"
     },
     link: {
       "en": "Dev link only (coming soon to a screen near you)",
