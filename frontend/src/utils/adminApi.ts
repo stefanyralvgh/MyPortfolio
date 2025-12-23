@@ -1,42 +1,3 @@
-// // utils/adminApi.ts
-// import axios from "axios";
-
-// const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
-
-// const getToken = () => {
-//   if (typeof window !== "undefined") {
-//     return localStorage.getItem("admin_token");
-//   }
-//   return null;
-// };
-
-// export const adminAuth = {
-//   login: async (email: string, password: string) => {
-//     const response = await axios.post(`${API_URL}/admin/login`, {
-//       email,
-//       password,
-//     });
-//     return response.data;
-//   },
-
-//   getMe: async () => {
-//     const token = getToken();
-//     const response = await axios.get(`${API_URL}/admin/me`, {
-//       headers: { Authorization: `Bearer ${token}` },
-//     });
-//     return response.data;
-//   },
-// };
-
-// export const adminCVs = {
-//   getAll: async () => {
-//     const token = getToken();
-//     const response = await axios.get(`${API_URL}/admin/cvs`, {
-//       headers: { Authorization: `Bearer ${token}` },
-//     });
-//     return response.data;
-//   },
-// };
 import axios from "axios";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
@@ -79,9 +40,6 @@ export const adminAuth = {
 };
 
 // ======================
-// CVs ✅
-// ======================
-// ======================
 // CVs
 // ======================
 export const adminCVs = {
@@ -120,7 +78,7 @@ export const adminCVs = {
 };
 
 // ======================
-// PROJECTS ✅
+// PROJECTS
 // ======================
 export const adminProjects = {
   getAll: async () => {
@@ -168,7 +126,7 @@ export const adminProjects = {
 };
 
 // ======================
-// LEVELS (placeholder)
+// LEVELS
 // ======================
 export const adminLevels = {
   getAll: async () => {
@@ -177,33 +135,122 @@ export const adminLevels = {
     });
     return response.data;
   },
+
+  getById: async (id: number | string) => {
+    const response = await axios.get(`${API_URL}/admin/levels/${id}`, {
+      headers: authHeaders(),
+    });
+    return response.data;
+  },
+
+  create: async (data: any) => {
+    const jsonFields = [
+      "titles",
+      "descriptions",
+      "question",
+      "options",
+      "explanation",
+    ];
+    const formattedData: any = { ...data };
+
+    jsonFields.forEach((field) => {
+      if (formattedData[field] && typeof formattedData[field] === "object") {
+        formattedData[field] = JSON.stringify(formattedData[field]);
+      }
+    });
+
+    const response = await axios.post(
+      `${API_URL}/admin/levels`,
+      { level: formattedData },
+      {
+        headers: authHeaders(),
+      }
+    );
+    return response.data;
+  },
+
+  update: async (id: number | string, data: any) => {
+    const jsonFields = [
+      "titles",
+      "descriptions",
+      "question",
+      "options",
+      "explanation",
+    ];
+    const formattedData: any = { ...data };
+
+    jsonFields.forEach((field) => {
+      if (formattedData[field] && typeof formattedData[field] === "object") {
+        formattedData[field] = JSON.stringify(formattedData[field]);
+      }
+    });
+
+    const response = await axios.patch(
+      `${API_URL}/admin/levels/${id}`,
+      { level: formattedData },
+      {
+        headers: authHeaders(),
+      }
+    );
+    return response.data;
+  },
+
+  delete: async (id: number | string) => {
+    const response = await axios.delete(`${API_URL}/admin/levels/${id}`, {
+      headers: authHeaders(),
+    });
+    return response.data;
+  },
 };
 
 // ======================
-// PROFILE (placeholder)
+// PROFILE
 // ======================
 export const adminProfile = {
   get: async () => {
-    const token = getToken();
     const response = await axios.get(`${API_URL}/profile`, {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: authHeaders(),
     });
     return response.data;
   },
 
   update: async (profileData: any, photoFile?: File) => {
-    const token = getToken();
     const formData = new FormData();
 
-    formData.append("profile", JSON.stringify(profileData));
+    const jsonFields = [
+      "name",
+      "subtitle",
+      "bio",
+      "story",
+      "why",
+      "personality",
+      "values",
+      "fun_facts",
+      "social_links",
+      "main_stack",
+      "familiar",
+      "recruiter_projects",
+      "quick_stats",
+    ];
+
+    Object.keys(profileData).forEach((key) => {
+      if (profileData[key] !== null && profileData[key] !== undefined) {
+        // Si es un campo JSON, convertirlo a string
+        if (jsonFields.includes(key)) {
+          formData.append(`profile[${key}]`, JSON.stringify(profileData[key]));
+        } else {
+          formData.append(`profile[${key}]`, profileData[key]);
+        }
+      }
+    });
 
     if (photoFile) {
-      formData.append("photo", photoFile);
+      formData.append("profile[photo]", photoFile);
     }
 
     const response = await axios.put(`${API_URL}/admin/profile`, formData, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        ...authHeaders(),
         "Content-Type": "multipart/form-data",
       },
     });
