@@ -9,13 +9,21 @@ class BugReportsController < ApplicationController
     bug = params.require(:bug_report)
     return head :ok if bug["description"].to_s.length < 20
 
-    SendgridBugReport.send!(
-      description: bug["description"],
-      email: bug["email"],
-      url: bug["url"],
-      user_agent: bug["user_agent"],
-      timestamp: bug["timestamp"]
-    )
+    begin
+      Rails.logger.info "📧 Attempting to send email..."
+      BugReportMailer.report_email(
+        description: bug["description"],
+        email: bug["email"],
+        url: bug["url"],
+        user_agent: bug["user_agent"],
+        timestamp: bug["timestamp"]
+      ).deliver_now
+      
+      Rails.logger.info "✅ Email sent successfully"
+    rescue => e
+      Rails.logger.error "❌ Email failed: #{e.class} - #{e.message}"
+      Rails.logger.error e.backtrace.first(5).join("\n")
+    end
 
     head :ok
   end
