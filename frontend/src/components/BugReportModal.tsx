@@ -1,47 +1,52 @@
 import React, { useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 
+type Status = "idle" | "success" | "error";
+
+
 const BugReportModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const { t } = useLanguage();
   const [description, setDescription] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-
+    setStatus("idle");
+  
     try {
-        const response = await fetch(
-            `${process.env.NEXT_PUBLIC_API_URL}/bug_reports`,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                bug_report: {
-                  description,
-                  email,
-                  url: window.location.href,
-                  user_agent: navigator.userAgent,
-                  timestamp: new Date().toISOString(),
-                },
-              }),
-            }
-          );
-          
-
-      if (response.ok) {
-        alert(t("bug.success"));
-        onClose();
-      } else {
-        alert(t("bug.error"));
-      }
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/bug_reports`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            bug_report: {
+              description,
+              email,
+              url: window.location.href,
+              user_agent: navigator.userAgent,
+              timestamp: new Date().toISOString(),
+            },
+          }),
+        }
+      );
+  
+      if (!response.ok) throw new Error();
+  
+      setStatus("success");
+      setDescription("");
+      setEmail("");
     } catch {
-      alert(t("bug.error"));
+      setStatus("error");
     } finally {
       setSubmitting(false);
     }
   };
+  
 
   return (
     <div
@@ -116,6 +121,27 @@ const BugReportModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               }}
             />
           </div>
+          {status !== "idle" && (
+        <div
+            style={{
+            marginBottom: "1rem",
+            padding: "0.75rem 1rem",
+            borderRadius: "0.6rem",
+            fontSize: "0.9rem",
+            backgroundColor:
+                status === "success"
+                ? "rgba(72, 187, 120, 0.15)"
+                : "rgba(245, 101, 101, 0.15)",
+            color: status === "success" ? "#9ae6b4" : "#feb2b2",
+            border:
+                status === "success"
+                ? "1px solid rgba(72, 187, 120, 0.4)"
+                : "1px solid rgba(245, 101, 101, 0.4)",
+            }}
+        >
+            {status === "success" ? t("bug.success") : t("bug.error")}
+        </div>
+        )}
 
           <div
                 style={{
