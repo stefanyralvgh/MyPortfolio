@@ -3,22 +3,20 @@ import { useRouter } from 'next/router';
 import ProtectedRoute from '../../components/admin/ProtectedRoute';
 import { adminProfile } from '../../utils/adminApi';
 
+interface QuickStat {
+  label: string;
+  value: string;
+}
+
 interface RecruiterData {
-    main_stack?: { en?: string; es?: string; fr?: string };
-    familiar?: { en?: string; es?: string; fr?: string };
-    quick_stats?: {
-      years_experience?: string;
-      remote?: string;
-    };
-  }
+  quick_stats?: {
+    [key: string]: string;
+  };
+}
 
 const AdminRecruiter: React.FC = () => {
   const router = useRouter();
-  const [profile, setProfile] = useState<RecruiterData>({
-    main_stack: { en: '', es: '', fr: '' },
-    familiar: { en: '', es: '', fr: '' },
-    quick_stats: { years_experience: '', remote: '' },
-  });
+  const [quickStats, setQuickStats] = useState<QuickStat[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
@@ -29,11 +27,16 @@ const AdminRecruiter: React.FC = () => {
   const fetchProfile = async () => {
     try {
       const data = await adminProfile.get();
-      setProfile({
-        main_stack: data.main_stack || { en: '', es: '', fr: '' },
-        familiar: data.familiar || { en: '', es: '', fr: '' },
-        quick_stats: data.quick_stats || { years_experience: '', remote: '' },
-      });
+      
+      // Convertir el objeto quick_stats a array de stats
+      const statsArray: QuickStat[] = data.quick_stats 
+        ? Object.entries(data.quick_stats).map(([label, value]) => ({
+            label,
+            value: value as string
+          }))
+        : [];
+      
+      setQuickStats(statsArray);
     } catch (error) {
       console.error('Error fetching profile:', error);
     } finally {
@@ -44,14 +47,36 @@ const AdminRecruiter: React.FC = () => {
   const handleSave = async () => {
     setSaving(true);
     try {
-      await adminProfile.update(profile);
-      alert('Datos de recruiter actualizados exitosamente');
+      // Convertir array de stats de vuelta a objeto
+      const quick_stats = quickStats.reduce((acc, stat) => {
+        if (stat.label.trim()) {
+          acc[stat.label] = stat.value;
+        }
+        return acc;
+      }, {} as { [key: string]: string });
+
+      await adminProfile.update({ quick_stats });
+      alert('Quick stats actualizadas exitosamente');
       fetchProfile();
     } catch (error: any) {
       alert(error.response?.data?.errors?.join(', ') || 'Error al guardar');
     } finally {
       setSaving(false);
     }
+  };
+
+  const handleStatChange = (index: number, field: 'label' | 'value', newValue: string) => {
+    const updated = [...quickStats];
+    updated[index][field] = newValue;
+    setQuickStats(updated);
+  };
+
+  const addStat = () => {
+    setQuickStats([...quickStats, { label: '', value: '' }]);
+  };
+
+  const removeStat = (index: number) => {
+    setQuickStats(quickStats.filter((_, i) => i !== index));
   };
 
   if (loading) {
@@ -71,12 +96,6 @@ const AdminRecruiter: React.FC = () => {
     );
   }
 
-  const languages = [
-    { code: 'en' as const, label: 'English' },
-    { code: 'es' as const, label: 'Español' },
-    { code: 'fr' as const, label: 'Français' },
-  ];
-
   return (
     <ProtectedRoute>
       <div style={{
@@ -93,7 +112,7 @@ const AdminRecruiter: React.FC = () => {
             alignItems: 'center',
             marginBottom: '2rem',
           }}>
-            <h1 style={{ margin: 0, fontSize: '2rem' }}>💼 Recruiter Page</h1>
+            <h1 style={{ margin: 0, fontSize: '2rem' }}>📊 Recruiter Quick Stats</h1>
             <button
               onClick={() => router.push('/admin/dashboard')}
               style={{
@@ -110,143 +129,7 @@ const AdminRecruiter: React.FC = () => {
             </button>
           </div>
 
-          {/* Main Stack */}
-          <div style={{ marginBottom: '2rem' }}>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', fontSize: '1.2rem' }}>
-              Main Stack
-            </label>
-            <p style={{ margin: '0 0 1rem 0', opacity: 0.7, fontSize: '0.9rem' }}>
-              Lista principal de tecnologías
-            </p>
-            {languages.map((lang) => (
-              <textarea
-                key={lang.code}
-                value={profile.main_stack?.[lang.code] || ''}
-                onChange={(e) => setProfile({
-                  ...profile,
-                  main_stack: {
-                    ...profile.main_stack,
-                    [lang.code]: e.target.value,
-                  },
-                })}
-                placeholder={`Main stack (${lang.label})`}
-                rows={2}
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  borderRadius: '0.5rem',
-                  border: '1px solid rgba(243, 177, 230, 0.3)',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  color: '#f3b1e6',
-                  fontFamily: 'inherit',
-                  marginBottom: '0.5rem',
-                  resize: 'vertical',
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Familiar */}
-          <div style={{ marginBottom: '2rem' }}>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', fontSize: '1.2rem' }}>
-              Familiar With
-            </label>
-            <p style={{ margin: '0 0 1rem 0', opacity: 0.7, fontSize: '0.9rem' }}>
-              Tecnologías con las que también estás familiarizada
-            </p>
-            {languages.map((lang) => (
-              <textarea
-                key={lang.code}
-                value={profile.familiar?.[lang.code] || ''}
-                onChange={(e) => setProfile({
-                  ...profile,
-                  familiar: {
-                    ...profile.familiar,
-                    [lang.code]: e.target.value,
-                  },
-                })}
-                placeholder={`Familiar with (${lang.label})`}
-                rows={2}
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  borderRadius: '0.5rem',
-                  border: '1px solid rgba(243, 177, 230, 0.3)',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  color: '#f3b1e6',
-                  fontFamily: 'inherit',
-                  marginBottom: '0.5rem',
-                  resize: 'vertical',
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Quick Stats */}
-          <div style={{ marginBottom: '2rem' }}>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', fontSize: '1.2rem' }}>
-              Quick Stats
-            </label>
-            <p style={{ margin: '0 0 1rem 0', opacity: 0.7, fontSize: '0.9rem' }}>
-              Estadísticas rápidas (ej: "2+", "100%")
-            </p>
-            
-            <div style={{ marginBottom: '1rem' }}>
-              <label style={{ display: 'block', marginBottom: '0.5rem', opacity: 0.9 }}>
-                Years of Experience
-              </label>
-              <input
-                type="text"
-                value={profile.quick_stats?.years_experience || ''}
-                onChange={(e) => setProfile({
-                  ...profile,
-                  quick_stats: {
-                    ...profile.quick_stats,
-                    years_experience: e.target.value,
-                  },
-                })}
-                placeholder="ej: 2+"
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  borderRadius: '0.5rem',
-                  border: '1px solid rgba(243, 177, 230, 0.3)',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  color: '#f3b1e6',
-                  fontFamily: 'inherit',
-                }}
-              />
-            </div>
-
-            <div>
-              <label style={{ display: 'block', marginBottom: '0.5rem', opacity: 0.9 }}>
-                Remote
-              </label>
-              <input
-                type="text"
-                value={profile.quick_stats?.remote || ''}
-                onChange={(e) => setProfile({
-                  ...profile,
-                  quick_stats: {
-                    ...profile.quick_stats,
-                    remote: e.target.value,
-                  },
-                })}
-                placeholder="ej: 100%"
-                style={{
-                  width: '100%',
-                  padding: '0.75rem',
-                  borderRadius: '0.5rem',
-                  border: '1px solid rgba(243, 177, 230, 0.3)',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  color: '#f3b1e6',
-                  fontFamily: 'inherit',
-                }}
-              />
-            </div>
-          </div>
-
-          {/* Note about projects */}
+          {/* Info Box */}
           <div style={{
             background: 'rgba(231, 84, 128, 0.1)',
             border: '1px solid rgba(231, 84, 128, 0.3)',
@@ -255,10 +138,168 @@ const AdminRecruiter: React.FC = () => {
             marginBottom: '2rem',
           }}>
             <p style={{ margin: 0, fontSize: '0.9rem' }}>
-              💡 <strong>Nota:</strong> Los proyectos mostrados en la página Recruiter se toman automáticamente de la sección Projects. 
-              Para editarlos, ve a Projects en el dashboard.
+              💡 <strong>Nota:</strong> Las tecnologías (Main Stack, Familiar, Tools) se gestionan desde la sección <strong>Stack</strong>. 
+              Aquí solo editas las estadísticas rápidas que aparecen en la página Recruiter.
             </p>
           </div>
+
+          {/* Quick Stats */}
+          <div style={{ marginBottom: '2rem' }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: '1rem'
+            }}>
+              <label style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>
+                Quick Stats
+              </label>
+              <button
+                onClick={addStat}
+                style={{
+                  padding: '0.5rem 1rem',
+                  borderRadius: '0.5rem',
+                  border: '1px solid #e75480',
+                  background: 'rgba(231, 84, 128, 0.2)',
+                  color: '#f3b1e6',
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  fontSize: '0.9rem',
+                }}
+              >
+                + Agregar Stat
+              </button>
+            </div>
+            
+            <p style={{ margin: '0 0 1.5rem 0', opacity: 0.7, fontSize: '0.9rem' }}>
+              Estadísticas que se muestran como tarjetas destacadas. Ejemplos: "years_experience: 2+", "remote: 100%", "projects: 15+"
+            </p>
+
+            {quickStats.length === 0 ? (
+              <div style={{
+                padding: '2rem',
+                textAlign: 'center',
+                background: 'rgba(255, 255, 255, 0.05)',
+                borderRadius: '0.5rem',
+                border: '1px dashed rgba(243, 177, 230, 0.3)',
+                opacity: 0.6
+              }}>
+                No hay stats. Haz clic en "+ Agregar Stat" para crear una.
+              </div>
+            ) : (
+              <div style={{ display: 'grid', gap: '1rem' }}>
+                {quickStats.map((stat, index) => (
+                  <div key={index} style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr 1fr auto',
+                    gap: '1rem',
+                    padding: '1rem',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    borderRadius: '0.5rem',
+                    border: '1px solid rgba(243, 177, 230, 0.2)',
+                    alignItems: 'center'
+                  }}>
+                    <div>
+                      <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', opacity: 0.8 }}>
+                        Label (key)
+                      </label>
+                      <input
+                        type="text"
+                        value={stat.label}
+                        onChange={(e) => handleStatChange(index, 'label', e.target.value)}
+                        placeholder="years_experience"
+                        style={{
+                          width: '100%',
+                          padding: '0.5rem',
+                          borderRadius: '0.5rem',
+                          border: '1px solid rgba(243, 177, 230, 0.3)',
+                          background: 'rgba(255, 255, 255, 0.1)',
+                          color: '#f3b1e6',
+                          fontFamily: 'inherit',
+                        }}
+                      />
+                    </div>
+
+                    <div>
+                      <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', opacity: 0.8 }}>
+                        Value
+                      </label>
+                      <input
+                        type="text"
+                        value={stat.value}
+                        onChange={(e) => handleStatChange(index, 'value', e.target.value)}
+                        placeholder="2+"
+                        style={{
+                          width: '100%',
+                          padding: '0.5rem',
+                          borderRadius: '0.5rem',
+                          border: '1px solid rgba(243, 177, 230, 0.3)',
+                          background: 'rgba(255, 255, 255, 0.1)',
+                          color: '#f3b1e6',
+                          fontFamily: 'inherit',
+                        }}
+                      />
+                    </div>
+
+                    <button
+                      onClick={() => removeStat(index)}
+                      style={{
+                        padding: '0.5rem 0.75rem',
+                        borderRadius: '0.5rem',
+                        border: '1px solid rgba(245, 101, 101, 0.4)',
+                        background: 'rgba(245, 101, 101, 0.1)',
+                        color: '#feb2b2',
+                        cursor: 'pointer',
+                        fontFamily: 'inherit',
+                        fontSize: '1.2rem',
+                        marginTop: '1.5rem'
+                      }}
+                      title="Eliminar"
+                    >
+                      🗑️
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Preview */}
+          {quickStats.length > 0 && (
+            <div style={{
+              background: 'rgba(243, 177, 230, 0.1)',
+              border: '1px solid rgba(243, 177, 230, 0.3)',
+              borderRadius: '0.5rem',
+              padding: '1.5rem',
+              marginBottom: '2rem',
+            }}>
+              <h3 style={{ margin: '0 0 1rem 0', fontSize: '1.1rem' }}>Vista Previa</h3>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: '1rem'
+              }}>
+                {quickStats.map((stat, index) => (
+                  stat.label && stat.value && (
+                    <div key={index} style={{
+                      textAlign: 'center',
+                      padding: '1.5rem',
+                      background: 'rgba(231, 84, 128, 0.2)',
+                      borderRadius: '0.75rem',
+                      border: '1px solid #e75480'
+                    }}>
+                      <div style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
+                        {stat.value}
+                      </div>
+                      <div style={{ fontSize: '0.9rem', opacity: 0.9, textTransform: 'capitalize' }}>
+                        {stat.label.replace(/_/g, ' ')}
+                      </div>
+                    </div>
+                  )
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Save Button */}
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'flex-end', marginTop: '2rem' }}>
@@ -276,7 +317,7 @@ const AdminRecruiter: React.FC = () => {
                 fontSize: '1rem',
               }}
             >
-              {saving ? 'Guardando...' : 'Guardar'}
+              {saving ? 'Guardando...' : 'Guardar Quick Stats'}
             </button>
           </div>
         </div>
