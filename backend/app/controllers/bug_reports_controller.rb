@@ -17,7 +17,7 @@ class BugReportsController < ApplicationController
       key = "bug_report:#{bug_report['email']}"
 
       if Rails.cache.read(key)
-        return head :too_many_requests
+        return head :ok
       end
 
       Rails.cache.write(key, true, expires_in: 10.minutes)
@@ -32,7 +32,7 @@ class BugReportsController < ApplicationController
       url: bug_report["url"],
       user_agent: bug_report["user_agent"],
       timestamp: bug_report["timestamp"]
-    ).deliver_later
+    ).deliver_now
 
     head :ok
   end
