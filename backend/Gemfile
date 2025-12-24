@@ -13,6 +13,7 @@ gem 'jwt', '~> 2.7'
 gem 'tzinfo-data'
 gem 'fiddle'
 gem "sendgrid-ruby"
+gem 'sendgrid-actionmailer'
 
 
 

@@ -203,6 +203,9 @@ GEM
       io-console (~> 0.5)
     ruby_http_client (3.6.0)
     securerandom (0.4.1)
+    sendgrid-actionmailer (3.2.0)
+      mail (~> 2.7)
+      sendgrid-ruby (~> 6.4)
     sendgrid-ruby (6.7.0)
       ruby_http_client (~> 3.4)
     stringio (3.2.0)
@@ -235,6 +238,7 @@ DEPENDENCIES
   rack-attack (~> 6.8)
   rack-cors
   rails (~> 7.1.5.1)
+  sendgrid-actionmailer
   sendgrid-ruby
   tzinfo-data
 
@@ -309,6 +313,7 @@ CHECKSUMS
   reline (0.6.3) sha256=1198b04973565b36ec0f11542ab3f5cfeeec34823f4e54cebde90968092b1835
   ruby_http_client (3.6.0) sha256=9308505d3a0421810d2dc012d79d986f7d360d5b02178641190849a22fd279f2
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
+  sendgrid-actionmailer (3.2.0) sha256=6c1f0b0938d84b2a36f4d4ae0f75a9757dc87fbd71fbe226358d07aba429c219
   sendgrid-ruby (6.7.0) sha256=c9ff96bd37c9d6d3ce39c3c1017ee3cd9d09c155ec6af1b5078d05b5d832d111
   stringio (3.2.0) sha256=c37cb2e58b4ffbd33fe5cd948c05934af997b36e0b6ca6fdf43afa234cf222e1
   thor (1.4.0) sha256=8763e822ccb0f1d7bee88cde131b19a65606657b847cc7b7b4b82e772bcd8a3d
