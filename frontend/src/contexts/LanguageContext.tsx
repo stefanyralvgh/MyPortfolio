@@ -63,6 +63,18 @@ const translations = {
     'recruiter.linkedin': 'LinkedIn',
     'recruiter.download_cv': 'Descargar CV',
     'recruiter.view_stack': 'Ver Stack',
+    'bug.button': '¿Viste un error?',
+    'bug.title': 'Reportar un error',
+    'bug.description': 'Describe el error:',
+    'bug.description.placeholder': '¿Qué pasó? ¿En qué página estabas?',
+    'bug.email': 'Tu email (opcional):',
+    'bug.email.placeholder': 'tu@email.com',
+    'bug.cancel': 'Cancelar',
+    'bug.submit': 'Enviar',
+    'bug.sending': 'Enviando...',
+    'bug.success': '¡Gracias por reportar! Te contactaré pronto.',
+    'bug.error': 'Error al enviar el reporte. Intenta nuevamente.'
+
   },
   en: {
     'terminal.welcome': 'Hi! Welcome to Stef\'s adventure ✨ This portfolio is a playful terminal simulation, made for devs and the curious alike.\n\nAre you a recruiter? Type "recruiter" for a fast track to the essentials.\n',
@@ -122,6 +134,18 @@ const translations = {
     'recruiter.linkedin': 'LinkedIn',
     'recruiter.download_cv': 'Download CV',
     'recruiter.view_stack': 'View Stack',
+    'bug.button': 'Saw a bug?',
+    'bug.title': 'Report a bug',
+    'bug.description': 'Describe the issue:',
+    'bug.description.placeholder': 'What happened? What page were you on?',
+    'bug.email': 'Your email (optional):',
+    'bug.email.placeholder': 'you@email.com',
+    'bug.cancel': 'Cancel',
+    'bug.submit': 'Send',
+    'bug.sending': 'Sending...',
+    'bug.success': 'Thanks for reporting! I’ll get back to you soon.',
+    'bug.error': 'Failed to send the report. Please try again.'
+
   },
   fr: {
     'terminal.welcome': 'Bienvenue dans l\'aventure de Stef ✨ Ce portfolio est une simulation de terminal ludique, conçue pour les devs et les esprits curieux.\n\nRecruteur ? Tape "recruiter" pour accéder directement à l\'essentiel.\n',
@@ -181,6 +205,18 @@ const translations = {
     'recruiter.linkedin': 'LinkedIn',
     'recruiter.download_cv': 'Télécharger CV',
     'recruiter.view_stack': 'Voir Stack',
+    'bug.button': 'Un bug ?',
+    'bug.title': 'Signaler un bug',
+    'bug.description': 'Décris le problème :',
+    'bug.description.placeholder': 'Que s’est-il passé ? Sur quelle page étais-tu ?',
+    'bug.email': 'Ton email (optionnel) :',
+    'bug.email.placeholder': 'ton@email.com',
+    'bug.cancel': 'Annuler',
+    'bug.submit': 'Envoyer',
+    'bug.sending': 'Envoi...',
+    'bug.success': 'Merci pour le signalement ! Je te contacterai bientôt.',
+    'bug.error': 'Erreur lors de l’envoi. Réessaie.'
+
   }
 };
 
