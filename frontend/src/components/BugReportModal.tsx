@@ -12,20 +12,23 @@ const BugReportModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     setSubmitting(true);
 
     try {
-      const response = await fetch(
-        process.env.NEXT_PUBLIC_FORMSPREE_URL!,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            description,
-            email,
-            url: window.location.href,
-            userAgent: navigator.userAgent,
-            timestamp: new Date().toISOString(),
-          }),
-        }
-      );
+        const response = await fetch(
+            `${process.env.NEXT_PUBLIC_API_URL}/bug_reports`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                bug_report: {
+                  description,
+                  email,
+                  url: window.location.href,
+                  user_agent: navigator.userAgent,
+                  timestamp: new Date().toISOString(),
+                },
+              }),
+            }
+          );
+          
 
       if (response.ok) {
         alert(t("bug.success"));

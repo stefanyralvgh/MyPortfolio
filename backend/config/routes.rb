@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :levels, only: [:index]
   resources :projects, only: [:index]
   resources :stack_items, only: [:index]
+  resources :bug_reports, only: [:create]
   get '/profile', to: 'profiles#show'
 
   # Admin routes
@@ -23,5 +24,6 @@ Rails.application.routes.draw do
     resources :stack_items, except: [:new, :edit]
     resource :profile, only: [:show, :update]
     resources :cvs, only: [:index, :create, :destroy]
+    
   end
 end
