@@ -10,6 +10,8 @@ const BugReportModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [company, setCompany] = useState("");
+
 
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,6 +29,7 @@ const BugReportModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
             bug_report: {
               description,
               email,
+              company,
               url: window.location.href,
               user_agent: navigator.userAgent,
               timestamp: new Date().toISOString(),
@@ -102,6 +105,18 @@ const BugReportModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               }}
             />
           </div>
+          <div>
+            <input
+                type="text"
+                name="company"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                style={{ display: "none" }}
+            />
+
+          </div>
 
           <div style={{ marginBottom: "1.5rem" }}>
             <label style={{ color: "#f3b1e6" }}>
@@ -121,8 +136,9 @@ const BugReportModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               }}
             />
           </div>
+          
           {status !== "idle" && (
-        <div
+          <div
             style={{
             marginBottom: "1rem",
             padding: "0.75rem 1rem",
@@ -138,7 +154,7 @@ const BugReportModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 ? "1px solid rgba(72, 187, 120, 0.4)"
                 : "1px solid rgba(245, 101, 101, 0.4)",
             }}
-        >
+         >
             {status === "success" ? t("bug.success") : t("bug.error")}
         </div>
         )}

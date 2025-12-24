@@ -23,3 +23,4 @@ end
 
 # Add any additional gems below this line
 # For example, if you want to use a gem for authentication, you can add it here.
+gem "rack-attack", "~> 6.8"
