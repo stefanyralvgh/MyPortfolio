@@ -12,6 +12,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt', '~> 2.7'
 gem 'tzinfo-data'
 gem 'fiddle'
+gem "sendgrid-ruby"
+
 
 
 
