@@ -7,6 +7,7 @@ interface Profile {
   subtitle: { [key: string]: string };
   main_stack?: { [key: string]: string };
   familiar?: { [key: string]: string };
+  tools?: { [key: string]: string };  // ← Agregar esta línea
   quick_stats?: {
     years_experience?: string;
     remote?: string;
@@ -46,12 +47,36 @@ const RecruiterPage: React.FC = () => {
       // Fetch profile
       const profileRes = await fetch(`${API_URL}/profile`);
       const profileData = await profileRes.json();
-      setProfile(profileData);
+      
+      // Fetch stack items
+      const stackRes = await fetch(`${API_URL}/stack_items`);
+      const stackData = await stackRes.json();
+      
+      // Crear strings de tecnologías
+      const mainStack = stackData.main
+        ?.map((item: any) => item.name)
+        .join(', ') || '';
+      
+      const familiar = stackData.familiar
+        ?.map((item: any) => item.name)
+        .join(', ') || '';
+      
+      const tools = stackData.tools
+        ?.map((item: any) => item.name)
+        .join(', ') || '';
+      
+      // Agregar al profile
+      setProfile({
+        ...profileData,
+        main_stack: { [language]: mainStack },
+        familiar: { [language]: familiar },
+        tools: { [language]: tools }
+      });
       
       // Fetch projects
       const projectsRes = await fetch(`${API_URL}/projects?language=${language}`);
       const projectsData = await projectsRes.json();
-      setProjects(projectsData.slice(0, 4)); // Solo primeros 4 proyectos
+      setProjects(projectsData.slice(0, 4));
       
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -151,7 +176,7 @@ const RecruiterPage: React.FC = () => {
         </div>
 
         {/* Tech Stack */}
-        {(profile.main_stack || profile.familiar) && (
+        {(profile.main_stack || profile.familiar || profile.tools) && (
           <div style={{
             background: 'rgba(255, 255, 255, 0.05)',
             borderRadius: '1rem',
@@ -168,32 +193,79 @@ const RecruiterPage: React.FC = () => {
               alignItems: 'center',
               gap: '0.5rem'
             }}>
-              {t('recruiter.tech_stack')}
+              🚀 {t('recruiter.tech_stack')}
             </h2>
-            <div style={{ display: 'grid', gap: '1rem' }}>
+            <div style={{ display: 'grid', gap: '1.5rem' }}>
+              
+              {/* Main Stack */}
               {profile.main_stack && (
-                <p style={{
-                  fontSize: '1.1rem',
-                  margin: 0,
-                  fontWeight: '600',
-                  color: '#e75480'
-                }}>
-                  {profile.main_stack[language] || profile.main_stack.en}
-                </p>
+                <div>
+                  <h3 style={{
+                    margin: '0 0 0.75rem 0',
+                    fontSize: '1.2rem',
+                    fontWeight: '700',
+                    color: '#e75480'
+                  }}>
+                    Main Stack
+                  </h3>
+                  <p style={{
+                    fontSize: '1.1rem',
+                    margin: 0,
+                    color: '#f3b1e6',
+                    lineHeight: '1.6'
+                  }}>
+                    {profile.main_stack[language] || profile.main_stack.en}
+                  </p>
+                </div>
               )}
+              
+              {/* Familiar */}
               {profile.familiar && (
-                <p style={{
-                  fontSize: '1rem',
-                  margin: 0,
-                  color: '#f3b1e6'
-                }}>
-                  {profile.familiar[language] || profile.familiar.en}
-                </p>
+                <div>
+                  <h3 style={{
+                    margin: '0 0 0.75rem 0',
+                    fontSize: '1.2rem',
+                    fontWeight: '700',
+                    color: '#e75480'
+                  }}>
+                    Familiar With
+                  </h3>
+                  <p style={{
+                    fontSize: '1rem',
+                    margin: 0,
+                    color: '#f3b1e6',
+                    lineHeight: '1.6'
+                  }}>
+                    {profile.familiar[language] || profile.familiar.en}
+                  </p>
+                </div>
               )}
+              
+              {/* Tools */}
+              {profile.tools && (
+                <div>
+                  <h3 style={{
+                    margin: '0 0 0.75rem 0',
+                    fontSize: '1.2rem',
+                    fontWeight: '700',
+                    color: '#e75480'
+                  }}>
+                    Tools
+                  </h3>
+                  <p style={{
+                    fontSize: '1rem',
+                    margin: 0,
+                    color: '#f3b1e6',
+                    lineHeight: '1.6'
+                  }}>
+                    {profile.tools[language] || profile.tools.en}
+                  </p>
+                </div>
+              )}
+              
             </div>
           </div>
         )}
-
         {/* Key Projects - Desde API de projects */}
         {projects.length > 0 && (
           <div style={{
@@ -261,7 +333,7 @@ const RecruiterPage: React.FC = () => {
         )}
 
         {/* Quick Stats */}
-        {profile.quick_stats && (
+        {profile.quick_stats && Object.keys(profile.quick_stats).length > 0 && (
           <div style={{
             background: 'rgba(255, 255, 255, 0.05)',
             borderRadius: '1rem',
@@ -285,8 +357,8 @@ const RecruiterPage: React.FC = () => {
               gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
               gap: '1.5rem'
             }}>
-              {profile.quick_stats.years_experience && (
-                <div style={{
+              {Object.entries(profile.quick_stats).map(([key, value]) => (
+                <div key={key} style={{
                   textAlign: 'center',
                   padding: '1.5rem',
                   background: 'rgba(231, 84, 128, 0.2)',
@@ -294,35 +366,26 @@ const RecruiterPage: React.FC = () => {
                   color: '#f3b1e6',
                   border: '1px solid #e75480'
                 }}>
-                  <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
-                    {profile.quick_stats.years_experience}
+                  <div style={{ 
+                    fontSize: '2.5rem', 
+                    fontWeight: '700', 
+                    marginBottom: '0.5rem', 
+                    color: '#e75480' 
+                  }}>
+                    {value}
                   </div>
-                  <div style={{ fontSize: '1rem', opacity: 0.9 }}>
-                    {language === 'es' ? 'Años de experiencia' : language === 'fr' ? "Années d'expérience" : 'Years Experience'}
-                  </div>
-                </div>
-              )}
-              {profile.quick_stats.remote && (
-                <div style={{
-                  textAlign: 'center',
-                  padding: '1.5rem',
-                  background: 'rgba(231, 84, 128, 0.1)',
-                  borderRadius: '0.75rem',
-                  color: '#f3b1e6',
-                  border: '1px solid rgba(231, 84, 128, 0.3)'
-                }}>
-                  <div style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '0.5rem', color: '#e75480' }}>
-                    {profile.quick_stats.remote}
-                  </div>
-                  <div style={{ fontSize: '1rem', opacity: 0.9 }}>
-                    {language === 'es' ? 'Remoto' : language === 'fr' ? 'Télétravail' : 'Remote'}
+                  <div style={{ 
+                    fontSize: '1rem', 
+                    opacity: 0.9,
+                    textTransform: 'capitalize' 
+                  }}>
+                    {key.replace(/_/g, ' ')}
                   </div>
                 </div>
-              )}
+              ))}
             </div>
           </div>
         )}
-
         {/* Quick Links */}
         <div style={{
           background: 'rgba(255, 255, 255, 0.05)',
