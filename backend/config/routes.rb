@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get '/me', to: 'sessions#show'
     post '/cvs', to: 'cvs#create' 
     delete '/cvs/:id', to: 'cvs#destroy'  
+    patch '/profile', to: 'admin/profiles#update'
     
     # Resources
     resources :projects, except: [:new, :edit]
